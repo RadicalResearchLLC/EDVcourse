@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Environmental Data Visualization"
+  subtitle: 'A course on the theory and practice of communication through data visualization'
+  author: "Michael McCarthy, PhD"
+  affiliation: "Pitzer College"
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - Syllabus.qmd
+    - weather.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    code-fold: true
+    theme: united
+    toc: true
+    self-contained: true
+
+
+

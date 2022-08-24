@@ -1,0 +1,48 @@
+# Introductions {.unnumbered}
+
+Welcome to **EA 078 PZ: Environmental Data Visualization**!
+
+## Course Description
+
+This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas).  
+
+## About Me
+
+Call me any of the following:
+
+* Mike
+* Dr. Mike
+* Professor Mike
+* Dr. McCarthy
+* Professor McCarthy
+
+My pronouns are he/him. Here is some of my background.
+
+* Adjunct Professor
+* I have been an Environmental Consultant for ~20 years 
+  + currently I am a sole propietor at [Radical Research LLC](http:/radicalresearch.llc)
+  + prior to that I worked at a company called [Sonoma Technology, Inc.](www.sonomatech.com)
+* Trained as a chemist/atmospheric chemist 
+  + undergrad at [Creighton University](www.creighton.edu) 
+  + grad school at [UC Berkeley](www.berkeley.edu)
+* In my spare time
+  + games (board, tabletop roleplaying, video games)
+  + yoga
+  + swim
+  + fight warehouse development
+* My spouse is a Professor of Botany and Plant Sciences at [UC Riverside](www.ucr.edu), and my son is a student in middle school
+* My goals for this course
+  + bounce ideas around for cool new ways of looking at environmental data
+  + explore and connect with your environmental interests
+  + continuously improve my teaching to better meet your needs
+  + learn new ways of thinking about problems
+  + build tools to empower, inform, and persuade our communities
+
+## About You
+
+Now it is your turn to introduce yourself.  Please address the following four bullets. Please add anything else you think will be helpful for me and/or your colleagues to know about you.
+
+* Name (as you would like to be addressed)
+* Year
+* Major/Field
+* Your goal(s) for this course (if any)

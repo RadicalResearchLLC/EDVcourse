@@ -1,0 +1,163 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Environmental Data Visualization",
+    "section": "",
+    "text": "This is the course website for ‘Environmental Data Visualization’. In this course, you will learn to import, manipulate, and visualize data using R, with hands-on examples. You will also learn the theory and ethics of environmental data visualization.\nI wrote it for non-programmers to provide a friendly introduction to the R language. Throughout the course, you will have the opportunity to practice and apply the skills and judgment of data visualization to provide effective illustrations of real-world data in order to persuade, inform, and communicate.\n\n\n\n\n\n\nThis book is created using the Quarto publishing system in order to provide an example of its use in environmental data visualization and as a course resource tool for easy display of coding examples and visualization."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introductions",
+    "section": "",
+    "text": "Welcome to EA 078 PZ: Environmental Data Visualization!"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Facebook, Twitter, Show more sharing options, Facebook, Twitter,\nLinkedIn, Email, Copy Link URLCopied!, and Print. 2022.\n“Op-Ed: We Mapped the Warehouse Takeover\nof the Inland Empire. The Results Are\nOverwhelming.” Los Angeles Times.\nhttps://www.latimes.com/opinion/story/2022-05-01/inland-empire-warehouse-growth-map-environment.\n\n\nHorton, Simon, Stan Nowak, and Pascal Haegeli. 2020. “Enhancing\nthe Operational Value of Snowpack Models with Visualization Design\nPrinciples.” Natural Hazards and Earth System Sciences\n20 (6): 1557–72. https://doi.org/10.5194/nhess-20-1557-2020.\n\n\nTufte, Edward R. 2001. The Visual Display of\nQuantitative Information, 2nd Ed. 2nd\nedition. Cheshire, Conn: Graphics Press.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain FranÃois, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Environmental Data Visualization",
+    "section": "License",
+    "text": "License\nThis website is free to use, and is licensed under the Creative Commons Attribution-ShareAlike 4.0 License."
+  },
+  {
+    "objectID": "intro.html#about-you",
+    "href": "intro.html#about-you",
+    "title": "Introductions",
+    "section": "About You",
+    "text": "About You\nNow it is your turn to introduce yourself. Please address the following four bullets. Please add anything else you think will be helpful for me and/or your colleagues to know about you.\n\nName (as you would like to be addressed)\nYear\nMajor/Field\nYour goal(s) for this course (if any)"
+  },
+  {
+    "objectID": "intro.html#course-description",
+    "href": "intro.html#course-description",
+    "title": "Introductions",
+    "section": "Course Description",
+    "text": "Course Description\nThis is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas)."
+  },
+  {
+    "objectID": "intro.html#course-goals-learning-objectives",
+    "href": "intro.html#course-goals-learning-objectives",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.2 Course Goals & Learning Objectives",
+    "text": "2.2 Course Goals & Learning Objectives\nUpon successful completion of this course, students will\n\nacquire critical thinking skills on the display of visual information\nimprove team-based collaboration abilities by working on group projects\nknow how to acquire, tidy, and summarize quantitative environmental datasets\ncreate graphs and maps in R\ncritically review current environmental justice tools such as CalEnviroScreen and EJScreen\nunderstand basic theory and ethics of environmental data visualization"
+  },
+  {
+    "objectID": "intro.html#student-learning-outcomes",
+    "href": "intro.html#student-learning-outcomes",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.3 Student Learning Outcomes",
+    "text": "2.3 Student Learning Outcomes\n\nCritical Thinking, Quantitative Reasoning, and Effective Expression - Upon completion of this course, student’s will be able to critically examine the elements of environmental data visualization, create effective maps and graphs of environmental data, and effectively communicate environmental ideas in a quantitative visual manner. It will also focus on the theory and ethics of data visualization with readings and critical analysis of existing environmental justice tools.\nSocial Justice Theory - This course will identify and quantitatively explore the unequal distribution and access to natural resources (Environmental Justice) within California and the United States. Students will critically examine the ways Environmental Justice is currently characterized by government agencies and describe the types of data visualization used to quantitatively identify areas of disproportional impact and understand the limitations of existing tools in promoting effective change."
+  },
+  {
+    "objectID": "intro.html#classroom-approach",
+    "href": "intro.html#classroom-approach",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.4 Classroom Approach",
+    "text": "2.4 Classroom Approach\nIn-person class time will include approximately 40% of time to devoted to lectures, 30% to hands-on coding and data visualization, and 30% to discussion."
+  },
+  {
+    "objectID": "intro.html#assignments-and-activities",
+    "href": "intro.html#assignments-and-activities",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.5 Assignments and Activities",
+    "text": "2.5 Assignments and Activities\n\nClassroom participation during discussion sections\nClassroom participation during coding sessions\nAssigned reading (Tufte, news and peer-review articles, online books)\nAssigned review of web tools (CalEnviroScren, EJScreen, EnviroAtlas)\nGroup coding projects\nClass presentation on an environmental data visualization\nThree individual projects displaying environmental data\nGroup project displaying environmental data\nFinal exam"
+  },
+  {
+    "objectID": "intro.html#grading-and-assessment-breakdown",
+    "href": "intro.html#grading-and-assessment-breakdown",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.6 Grading and Assessment Breakdown",
+    "text": "2.6 Grading and Assessment Breakdown\nThe class will be based on a total of 1000 points.\n\nThe group project displaying environmental data visualization will count for 200 points\nThe three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).\n\nRemix of an environmental justice dataset from an existing EJ tool\nA written critique of an existing environmental data visualization\nA student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)\n\nA presentation on environmental data visualization in Environmental Justice tools will count for 200 points\nClassroom participation will count for 100 points throughout the course of the semester.\n\nThese points will be awarded for attendance and active participation in classroom discussion and coding sessions.\n\nOnline attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\n\nMissing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\n\n\nFinal exam will count for 200 points. This will cover theory, ethics, and environmental justice.\n\nExtra credit - TBD\n\nStudents get a single free individual or group project that can be late by up to seven days from the due date. For the group project, if a member of the group has already used their individual free late project, the group cannot use other individual free periods. If any other project is late, scores will be reduced by 10% per day beyond the due date of the project.\nThe final exam and assigned presentation date require a doctor’s note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.\nTable 2.1\n\n\n\n\nTable 2.1:  Breakdown of course points \n \n  \n    Assignments \n    Points \n  \n \n\n  \n    Group Project - data visualization \n    200 \n  \n  \n    Individual project 1 - EJ tool remix \n    100 \n  \n  \n    Individual Project 2 - written critique (minimum 2 pages) \n    100 \n  \n  \n    Individual Project 3 - data visualization \n    100 \n  \n  \n    Presentation on EJ tools \n    200 \n  \n  \n    Classroom participation \n    100 \n  \n  \n    Final exam \n    200 \n  \n  \n    Extra Credit \n    50"
+  },
+  {
+    "objectID": "intro.html#readings",
+    "href": "intro.html#readings",
+    "title": "1  Welcome to EA 078 PZ: Environmental Data Visualization",
+    "section": "2.7 Readings",
+    "text": "2.7 Readings\nThe theory of environmental data visualization will use selected readings assigned to students. Every other class will involve a discussion of an assigned reading or analysis of an environmental data visualization.\nAssigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles. A selection of readings that are likely to be discussed in the course includes:\n\nSelections from Tufte’s book ‘The Visual Display of Quantitative Information’ (Tufte 2001)\nSelections from Hadley Wickham’s “Grammar of Graphics” with ggplot2, shiny, and other R packages. (Wickham et al. 2019)\nA selection of Peer-review journal articles listed in the references below. Grainger, Mao, and Buytaert (2016)\nNewspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth (Facebook et al. 2022)\nReadings on the meaning, use, and technical limitations of Environmental Justice tools\n\n\n\n\n\nFacebook, Twitter, Show more sharing options, Facebook, Twitter, LinkedIn, Email, Copy Link URLCopied!, and Print. 2022. “Op-Ed: We Mapped the Warehouse Takeover of the Inland Empire. The Results Are Overwhelming.” Los Angeles Times. https://www.latimes.com/opinion/story/2022-05-01/inland-empire-warehouse-growth-map-environment.\n\n\nGommeh, Efrat, Huub Dijstelbloem, and Tamara Metze. 2021. “Visual Discourse Coalitions: Visualization and Discourse Formation in Controversies over Shale Gas Development.” Journal of Environmental Policy & Planning 23 (3): 363–80. https://doi.org/10.1080/1523908X.2020.1823208.\n\n\nGrainger, Sam, Feng Mao, and Wouter Buytaert. 2016. “Environmental Data Visualisation for Non-Scientific Contexts: Literature Review and Design Framework.” Environmental Modelling & Software 85 (November): 299–318. https://doi.org/10.1016/j.envsoft.2016.09.004.\n\n\nHorton, Simon, Stan Nowak, and Pascal Haegeli. 2020. “Enhancing the Operational Value of Snowpack Models with Visualization Design Principles.” Natural Hazards and Earth System Sciences 20 (6): 1557–72. https://doi.org/10.5194/nhess-20-1557-2020.\n\n\nKelleher, Christa, and Thorsten Wagener. 2011. “Ten Guidelines for Effective Data Visualization in Scientific Publications.” Environmental Modelling & Software 26 (6): 822–27. https://doi.org/10.1016/j.envsoft.2010.12.006.\n\n\nMurchie, Karen J., and Dylan Diomede. 2020. “Fundamentals of Graphic Designessential Tools for Effective Visual Science Communication.” FACETS 5 (1): 409–22. https://doi.org/10.1139/facets-2018-0049.\n\n\nTufte, Edward R. 2001. The Visual Display of Quantitative Information, 2nd Ed. 2nd edition. Cheshire, Conn: Graphics Press.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain FranÃois, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686."
+  },
+  {
+    "objectID": "intro.html#about-me",
+    "href": "intro.html#about-me",
+    "title": "Introductions",
+    "section": "About Me",
+    "text": "About Me\nCall me any of the following:\n\nMike\nDr. Mike\nProfessor Mike\nDr. McCarthy\nProfessor McCarthy\n\nMy pronouns are he/him. Here is some of my background.\n\nAdjunct Professor\nI have been an Environmental Consultant for ~20 years\n\ncurrently I am a sole propietor at Radical Research LLC\nprior to that I worked at a company called Sonoma Technology, Inc.\n\nTrained as a chemist/atmospheric chemist\n\nundergrad at Creighton University\ngrad school at UC Berkeley\n\nIn my spare time\n\ngames (board, tabletop roleplaying, video games)\nyoga\nswim\nfight warehouse development\n\nMy spouse is a Professor of Botany and Plant Sciences at UC Riverside, and my son is a student in middle school\nMy goals for this course\n\nbounce ideas around for cool new ways of looking at environmental data\nexplore and connect with your environmental interests\ncontinuously improve my teaching to better meet your needs\nlearn new ways of thinking about problems\nbuild tools to empower, inform, and persuade our communities"
+  },
+  {
+    "objectID": "Syllabus.html",
+    "href": "Syllabus.html",
+    "title": "1  Syllabus",
+    "section": "",
+    "text": "This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas)."
+  },
+  {
+    "objectID": "Syllabus.html#course-goals-learning-objectives",
+    "href": "Syllabus.html#course-goals-learning-objectives",
+    "title": "1  Syllabus",
+    "section": "1.2 Course Goals & Learning Objectives",
+    "text": "1.2 Course Goals & Learning Objectives\nUpon successful completion of this course, students will\n\nacquire critical thinking skills on the display of visual information\nimprove team-based collaboration abilities by working on group projects\nknow how to acquire, tidy, and summarize quantitative environmental datasets\ncreate graphs and maps in R\ncritically review current environmental justice tools such as CalEnviroScreen and EJScreen\nunderstand basic theory and ethics of environmental data visualization"
+  },
+  {
+    "objectID": "Syllabus.html#student-learning-outcomes",
+    "href": "Syllabus.html#student-learning-outcomes",
+    "title": "1  Syllabus",
+    "section": "1.3 Student Learning Outcomes",
+    "text": "1.3 Student Learning Outcomes\n\nCritical Thinking, Quantitative Reasoning, and Effective Expression - Upon completion of this course, student’s will be able to critically examine the elements of environmental data visualization, create effective maps and graphs of environmental data, and effectively communicate environmental ideas in a quantitative visual manner. It will also focus on the theory and ethics of data visualization with readings and critical analysis of existing environmental justice tools.\nSocial Justice Theory - This course will identify and quantitatively explore the unequal distribution and access to natural resources (Environmental Justice) within California and the United States. Students will critically examine the ways Environmental Justice is currently characterized by government agencies and describe the types of data visualization used to quantitatively identify areas of disproportional impact and understand the limitations of existing tools in promoting effective change."
+  },
+  {
+    "objectID": "Syllabus.html#classroom-approach",
+    "href": "Syllabus.html#classroom-approach",
+    "title": "1  Syllabus",
+    "section": "1.4 Classroom Approach",
+    "text": "1.4 Classroom Approach\nIn-person class time will include approximately 40% of time to devoted to lectures, 30% to hands-on coding and data visualization, and 30% to discussion."
+  },
+  {
+    "objectID": "Syllabus.html#assignments-and-activities",
+    "href": "Syllabus.html#assignments-and-activities",
+    "title": "1  Syllabus",
+    "section": "1.5 Assignments and Activities",
+    "text": "1.5 Assignments and Activities\n\nClassroom participation during discussion sections\nClassroom participation during coding sessions\nAssigned reading (Tufte, news and peer-review articles, online books)\nAssigned review of web tools (CalEnviroScren, EJScreen, EnviroAtlas)\nGroup coding projects\nClass presentation on an environmental data visualization\nThree individual projects displaying environmental data\nGroup project displaying environmental data\nFinal exam"
+  },
+  {
+    "objectID": "Syllabus.html#grading-and-assessment-breakdown",
+    "href": "Syllabus.html#grading-and-assessment-breakdown",
+    "title": "1  Syllabus",
+    "section": "1.6 Grading and Assessment Breakdown",
+    "text": "1.6 Grading and Assessment Breakdown\nThe class will be based on a total of 1000 points.\n\nThe group project displaying environmental data visualization will count for 200 points\nThe three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).\n\nRemix of an environmental justice dataset from an existing EJ tool\nA written critique of an existing environmental data visualization\nA student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)\n\nA presentation on environmental data visualization in Environmental Justice tools will count for 200 points\nClassroom participation will count for 100 points throughout the course of the semester.\n\nThese points will be awarded for attendance and active participation in classroom discussion and coding sessions.\n\nOnline attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\n\nMissing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\n\n\nFinal exam will count for 200 points. This will cover theory, ethics, and environmental justice.\n\nExtra credit - TBD\n\nStudents get a single free individual or group project that can be late by up to seven days from the due date. For the group project, if a member of the group has already used their individual free late project, the group cannot use other individual free periods. If any other project is late, scores will be reduced by 10% per day beyond the due date of the project.\nThe final exam and assigned presentation date require a doctor’s note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.\nTable 1.1\n\n\n\n\nTable 1.1:  Breakdown of course points \n \n  \n    Assignments \n    Points \n  \n \n\n  \n    Group Project - data visualization \n    200 \n  \n  \n    Individual project 1 - EJ tool remix \n    100 \n  \n  \n    Individual Project 2 - written critique (minimum 2 pages) \n    100 \n  \n  \n    Individual Project 3 - data visualization \n    100 \n  \n  \n    Presentation on EJ tools \n    200 \n  \n  \n    Classroom participation \n    100 \n  \n  \n    Final exam \n    200 \n  \n  \n    Extra Credit \n    50"
+  },
+  {
+    "objectID": "Syllabus.html#readings",
+    "href": "Syllabus.html#readings",
+    "title": "1  Syllabus",
+    "section": "1.7 Readings",
+    "text": "1.7 Readings\nThe theory of environmental data visualization will use selected readings assigned to students. Every other class will involve a discussion of an assigned reading or analysis of an environmental data visualization.\nAssigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles. A selection of readings that are likely to be discussed in the course includes:\n\nSelections from Tufte’s book ‘The Visual Display of Quantitative Information’ (Tufte 2001)\nSelections from Hadley Wickham’s “Grammar of Graphics” with ggplot2, shiny, and other R packages. (Wickham et al. 2019)\nA selection of Peer-review journal articles listed in the references below. Grainger, Mao, and Buytaert (2016)\nNewspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth (Facebook et al. 2022)\nReadings on the meaning, use, and technical limitations of Environmental Justice tools\n\n\n\n\n\nFacebook, Twitter, Show more sharing options, Facebook, Twitter, LinkedIn, Email, Copy Link URLCopied!, and Print. 2022. “Op-Ed: We Mapped the Warehouse Takeover of the Inland Empire. The Results Are Overwhelming.” Los Angeles Times. https://www.latimes.com/opinion/story/2022-05-01/inland-empire-warehouse-growth-map-environment.\n\n\nGommeh, Efrat, Huub Dijstelbloem, and Tamara Metze. 2021. “Visual Discourse Coalitions: Visualization and Discourse Formation in Controversies over Shale Gas Development.” Journal of Environmental Policy & Planning 23 (3): 363–80. https://doi.org/10.1080/1523908X.2020.1823208.\n\n\nGrainger, Sam, Feng Mao, and Wouter Buytaert. 2016. “Environmental Data Visualisation for Non-Scientific Contexts: Literature Review and Design Framework.” Environmental Modelling & Software 85 (November): 299–318. https://doi.org/10.1016/j.envsoft.2016.09.004.\n\n\nHorton, Simon, Stan Nowak, and Pascal Haegeli. 2020. “Enhancing the Operational Value of Snowpack Models with Visualization Design Principles.” Natural Hazards and Earth System Sciences 20 (6): 1557–72. https://doi.org/10.5194/nhess-20-1557-2020.\n\n\nKelleher, Christa, and Thorsten Wagener. 2011. “Ten Guidelines for Effective Data Visualization in Scientific Publications.” Environmental Modelling & Software 26 (6): 822–27. https://doi.org/10.1016/j.envsoft.2010.12.006.\n\n\nMurchie, Karen J., and Dylan Diomede. 2020. “Fundamentals of Graphic Designessential Tools for Effective Visual Science Communication.” FACETS 5 (1): 409–22. https://doi.org/10.1139/facets-2018-0049.\n\n\nTufte, Edward R. 2001. The Visual Display of Quantitative Information, 2nd Ed. 2nd edition. Cheshire, Conn: Graphics Press.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain FranÃois, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686."
+  },
+  {
+    "objectID": "weather.html",
+    "href": "weather.html",
+    "title": "2  Weather",
+    "section": "",
+    "text": "It is a great example for us to start talking about environmental data.\n\n2.0.1 Newspaper - Los Angeles Times\nExamine Figure 2.1 as a prototypical environmental data visualization from the LA Times.\n\n\n\n\nFigure 2.1: WeatherMap\n\n\n\n\n\n2.0.2 Discussion\n\n\n\n\n\n\nDescribe and discuss the information in this visualization.\n\nNumbers\nColors\nSymbols\nShapes\nText\nUnits\nSpatial\nTemporal\n\n\n\n\n\n\n2.0.3 Categories of information\n\nQuantitative (i.e., numerical) data\n\nTemperatures (high, low, average)\nPrecipitation\nWind speeds and directions"
+  },
+  {
+    "objectID": "index.html#earth-from-space",
+    "href": "index.html#earth-from-space",
+    "title": "Environmental Data Visualization",
+    "section": "Earth from space",
+    "text": "Earth from space\nFigure 1 is the Pale Blue Dot image taken by the Voyager 1 space probe in 1990 from beyond Neptune. The Earth in this image is only a single pixel in size.\n\n\n\nFigure 1: PaleBlueDot"
+  }
+]

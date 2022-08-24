@@ -1,0 +1,32 @@
+# Weather
+
+The most common environmental dataset that people encounter is the weather. Every major type of media devotes time to the weather: newspapers, [news shows](https://www.youtube.com/watch?v=gTol-2-Iwio), [apps](https://www.wunderground.com/), [twitter](https://twitter.com/EmojiWeatherUSA?lang=en) [bots](https://twitter.com/laxweatherbot), and [The Weather Channel](https://weather.com/).
+
+It is a great example for us to start talking about environmental data.
+
+### Newspaper - [Los Angeles Times](https://www.latimes.com)
+
+Examine @fig-WeatherMap as a prototypical environmental data visualization from the LA Times.
+
+:::{.column-page}
+![WeatherMap](images/LATimesWeather.jpg){#fig-WeatherMap}
+:::
+
+### Discussion
+
+::: {.callout-note appearance="simple"}
+What does this visualization reveal?  
+:::
+
+### Categories of information illustrated by the newspaper weather visualization
+
+* [Quantitative](https://en.wikipedia.org/wiki/Level_of_measurement) (i.e., numerical) data 
+  + Temperatures (high, low)
+  + Precipitation 
+  + Wind speeds and directions
+  + Air quality index
+  + UV index
+  + Tide heights and times
+  + Sunrise & sunset times
+* []
+  

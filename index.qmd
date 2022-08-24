@@ -1,0 +1,34 @@
+---
+description-meta: |
+  This book will serve as the course outline and lesson plan for the 2022 
+  Pitzer College course 078 PZ - Environmental Data Visualization.  
+---
+
+## Preface {.unnumbered}
+
+This is the course website for **'Environmental Data Visualization'**. In this course,
+you will learn to import, manipulate, and visualize data using R, with hands-on 
+examples. You will also learn the theory and ethics of environmental data visualization.  
+I wrote it for non-programmers to provide a friendly introduction to  the R 
+language. Throughout the course, you will have the opportunity to practice and 
+apply the skills and judgment of data visualization to provide effective illustrations
+of real-world data in order to persuade, inform, and communicate.
+
+::: {.callout-note appearance="simple"}
+This book is created using the [Quarto](https://quarto.org) publishing system in 
+order to provide an example of its use in environmental data visualization and 
+as a course resource tool for easy display of coding examples and visualization.
+:::
+
+## License
+
+This website is **free to use**, and is licensed under the [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/) License. 
+
+![cc-by-sa-image](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
+![cc-by-sa-shield](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)
+
+## Earth from space
+
+@fig-PaleBlueDot is the [Pale Blue Dot](https://solarsystem.nasa.gov/resources/536/voyager-1s-pale-blue-dot/) image taken by the Voyager 1 space probe in 1990 from beyond Neptune.  The Earth in this image is only a single pixel in size. 
+
+![PaleBlueDot](images/paleBlueDot.jpg){#fig-PaleBlueDot}
