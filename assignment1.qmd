@@ -1,0 +1,6 @@
+# Assignment 1 {#sec-assignment1}
+
+::: {.callout-note appearance="simple"}
+Time to make a weather map, app, or figure!
+:::
+

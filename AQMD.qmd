@@ -1,0 +1,16 @@
+# Environmental Justice Conference {#sec-AQMD}
+
+::: {.callout-note appearance="simple"}
+South Coast AQMD presents the 8th Annual [Environmental Justice Conference](http://www.aqmd.gov/nav/about/initiatives/environmental-justice/ejcp/environmental-justice-conference)
+:::
+
+## Speakers
+
+* U.S. EPA Region 9 Administrator **Martha Guzman**
+* California Attorney General **Rob Bonta**
+
+## Panels
+
+* AB 617 Community Air Protection Program: Lessons Learned
+* Community Air Monitoring
+* Building the Road to a Zero-Emissions Future

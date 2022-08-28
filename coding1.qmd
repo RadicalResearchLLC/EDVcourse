@@ -1,0 +1,5 @@
+# Coding in R - Basics {#sec-coding1}
+
+::: {.callout-note appearance="simple"}
+Come back soon!
+:::

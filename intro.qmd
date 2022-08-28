@@ -1,4 +1,5 @@
-# Introductions {#sec-intro}
+# Introductions {#sec-intro .unnumbered}
+
 
 Welcome to **EA 078 PZ: Environmental Data Visualization**!
 
@@ -28,7 +29,7 @@ My pronouns are he/him. Here is some of my background.
 * In my spare time, I enjoy
   + games (board, tabletop roleplaying, video games)
   + yoga
-  + swim
+  + swimming
   + fighting warehouse development in my neighborhood
 * My spouse is a Professor of Botany and Plant Sciences at [UC Riverside](www.ucr.edu), and my son is a student in middle school
 * My goals for this course

@@ -36,7 +36,6 @@ format:
     code-fold: true
     theme: united
     toc: true
-    self-contained: true
 
 
 
