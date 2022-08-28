@@ -1,32 +1,20 @@
-# Weather
+# Unit 1: Weather {#sec-weather}
 
 The most common environmental dataset that people encounter is the weather. Every major type of media devotes time to the weather: newspapers, [news shows](https://www.youtube.com/watch?v=gTol-2-Iwio), [apps](https://www.wunderground.com/), [twitter](https://twitter.com/EmojiWeatherUSA?lang=en) [bots](https://twitter.com/laxweatherbot), and [The Weather Channel](https://weather.com/).
 
 It is a great example for us to start talking about environmental data.
 
-### Newspaper - [Los Angeles Times](https://www.latimes.com)
+### Comparative Analysis
 
-Examine @fig-WeatherMap as a prototypical environmental data visualization from the LA Times.
-
-:::{.column-page}
-![WeatherMap](images/LATimesWeather.jpg){#fig-WeatherMap}
-:::
-
-### Discussion
+Examine @fig-WeatherMap from the [LA Times](www.latimes.com), a twitter bot with [emoji maps](https://twitter.com/EmojiWeatherUSA?lang=en),
+and a screenshot from [Wunderground](www.wunderground.com).
 
 ::: {.callout-note appearance="simple"}
-What does this visualization reveal?  
+What are your impressions of these different visualizations?  
 :::
 
-### Categories of information illustrated by the newspaper weather visualization
+![WeatherMap](images/LATimesWeather.jpg){#fig-WeatherMap}
 
-* [Quantitative](https://en.wikipedia.org/wiki/Level_of_measurement) (i.e., numerical) data 
-  + Temperatures (high, low)
-  + Precipitation 
-  + Wind speeds and directions
-  + Air quality index
-  + UV index
-  + Tide heights and times
-  + Sunrise & sunset times
-* []
-  
+![emojiMap](images/emojiWeather.png){#fig-emojiMap}
+
+![wunderScreen](images/wunderground.png){#fig-Wunderground}

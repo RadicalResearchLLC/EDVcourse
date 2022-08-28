@@ -1,0 +1,64 @@
+# R and RStudio Installation and Overview {#sec-appendix-tools}
+
+[R](https://www.r-project.org/) is a free software environment for statistical computing and graphics.  
+Current version 4.2.1 "Funny-Looking Kid" was released June 23, 2022.
+
+[RStudio](https://www.rstudio.com/products/rstudio/#rstudio-desktop) is an integrated development environment (IDE) for R. It is available in open source and commercial editions.  Current version is 2022.07.1-554 'Spotted Wakerobin" was released July 25, 2022.
+
+These tools will be the primary software used in this course to develop environmental visualizations.  
+
+## Download and Install R
+
+R is maintained and made available through the web-page at [The Comprehensive R Archive Network](https://cran.r-project.org/) aka CRAN.
+
+The top of the CRAN web page provides three links for downloading R.  Follow the link that describes the OS of your computer: Mac, Windows, or Linux.
+
+### R for macOS
+
+To install R on a Mac, click the **“Download R for macOS”** link. Next, click on the R-4.2.1 package link (or the package link for the most current release of R). An installer will download to guide you through the installation process. As a starting point, I recommend that most users should choose the default installation settings until they are familiar with R.
+
+### R for Windows
+
+To install R on Windows, click the **"Download R for Windows"** link. Next, click on the **install R for the first time** link which contains base R. Then click on the link that says **Download R-4.2.1 for Windows**.  A win.exe file will be downloaded to your downloads folder.  Open that file after it downloads and follow the installation process. As a starting point, I recommend that most users should choose the default installation settings until they are familiar with R.    
+
+### R for Linux
+
+R comes preinstalled on many Linux systems, but update to the newest version of R if yours is out of date.  The CRAN website provides files for different Linux builds including Debian, Fedora, Redhat, Suse, and Ubuntu. Choose the appropriate directory and the installation procedure for your flavor of Linux.   
+
+## About R
+
+R is not a friendly computer program like a web browser or a Microsoft Office product. R is a programming language, like C++, Python, or Java. R can be run like an old-school UNIX terminal, writing commands directly onto monitors with green fonts; imagine Neo in the Matrix or Angelina Jolie in Hackers. While one can still do that, most folks use the RStudio IDE.
+
+![hackers](images/hackers.jpg)
+
+## RStudio IDE
+
+RStudio is an application - like MS Word or a browser.  However, Rstudio is an app that helps you write in "R", not English.  It is literally a foreign language (unless you know it already). And just like any language, R has its own syntax, grammar, and vocabulary.  It takes training and time to learn R, but I believe it is worth it.
+
+We will use RStudio in this course because it makes using R much easier. Also, the RStudio interface looks about the same for different operating systems, which will help me because I am a Windows user and I've heard that Pitzer students tend to lean towards macOS.
+
+[Download RStudio desktop here](https://www.rstudio.com/products/rstudio/download/#download) - I recommend the free open source version. Make sure to pick the version that is appropriate for your OS. Then follow the installation instructions.  
+
+Once installed, RStudio can be opened like any other program or app on your computer; usually just click on the icon on the desktop.  When you open it, it should look something like @fig-RStudio. 
+
+![RStudio](images/RStudio.png){#fig-RStudio}
+
+Here, there are four separate windows or "Panels".
+
+* The source panel is top-left and this is basically a text editor where you type R code or regular text. Code here gets colored and looks different if it is doing various R things. More on this later. Code doesn't get immediately executed here; it is more like a holding place for writing/testing/debugging bigger "scripts" or programs.
+* The console/terminal is bottom-left. The terminal is the 1980s window that does commands directly. Type print('Hello World'), press enter/return, and you've written some code. This console is what R would look like if you ran it without RStudio.
+* The top-right is the file manager panel.  It shows files in your directory, plots, packages, and help files.
+* The bottom-right is the programming environment.  It contains things you've loaded or coded. Right now it should be empty because you've done neither.
+
+Of course all of these can be moved around to match how you like to set it up.  And I need a different color-scheme than the ugly default.  
+
+Select the **Tools** menu, followed by **Global Options** in the dropdown Tools menu. Navigate to appearance and you should be able to alter the color scheme to something more your style. My preferred style is **Merbivore Soft** as shown in #fig-Rstudio_good.  
+
+![RStudio_good](images/Rstudio_good.png){#fig-RStudio_good}
+
+::: callout-tip
+## Do I still need to download R?
+
+Even if you use RStudio, you'll still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn't come with a version of R on its own.
+:::
+

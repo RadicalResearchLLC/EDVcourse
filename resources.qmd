@@ -1,0 +1,48 @@
+# Resources {#sec-appendix-resources}
+
+Base R is the collection of functions that come preloaded with R.  A function is a code block that performs a task. Functions that come in R are in-built functions. However, the real power of R (and programming languages more generally) are the large number of user-built functions that are built to perform tasks that can be loaded into base R.
+
+Sets of functions that have a common purpose are bundled together in R in "packages". There are literally thousands of packages custom-built for R.  
+
+During this course, I will ask you to use some important packages for data acquisition, tidying, and visualization. There are two steps to using a package in R.
+
+First, it needs to be installed. Here's a non-functional example.
+
+```{r}
+#echo:| true
+#warning:| false
+
+#install.packages('<PACKAGE.NAME>')
+#remove the # in front of the install.packages to change this from a comment to code
+
+```
+
+And this example will install an actual package called `janitor`. This package features a nice import function that fixes column names on import called clean_names().
+
+```{r}
+#echo:| true
+#warning:| false
+
+#install.packages('janitor')
+#remove the # in front of the install.packages to change this from a comment to code
+
+```
+
+In a meta way, you now have used a function to install a package. 'install.package()' is an example of an in-built R function.  
+
+Once a package is installed, it needs to be loaded.  While the installation has put the package on your computer, you need to tell R that it should load these functions for use.  
+
+::: {.callout-note appearance="simple"}
+R and other programming languages only do EXACTLY what they are told to do. 
+:::
+
+Loading a package is accomplished by calling base R `library` function. Success is indicated with a message like "Attaching package: 'janitor'
+
+```{r}
+#echo:| true
+
+library(janitor)
+```
+
+Libraries have to be loaded each time you restart your R session. The current libraries loaded can be founded in the file manager panel under the `Packages` tab.
+

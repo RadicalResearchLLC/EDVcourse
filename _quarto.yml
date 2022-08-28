@@ -10,8 +10,23 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - Syllabus.qmd
-    - weather.qmd
+    - part: weather.qmd
+      chapters:
+        - information.qmd
+        - coding1.qmd
+        - maps1.qmd
+        - assignment1.qmd
+    - part: EJ.qmd
+      chapters:
+        - AQMD.qmd
+        - EJtheory.qmd
+        - EJtools.qmd
+        - EJdata.qmd
+        - maps2.qmd
+  appendices: 
+    - syllabus.qmd
+    - tools.qmd
+    - resources.qmd
     - references.qmd
 
 bibliography: references.bib

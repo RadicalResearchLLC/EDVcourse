@@ -1,0 +1,9 @@
+# Syllabus, Resources, and References {#logistics}
+
+This upfront section contains resources for use in **EA 078 PZ: Environmental Data Visualization**!
+
+* The Syllabus provides an overview of course expectations and outcomes
+* The Tools section provides guides for installation of R, RStudio, and R packages used in this course
+* The Resources section will provide any other resources useful for this course.  It will include zoom links, web links, and Pitzer College resources 
+* The References section will provide citations for course reading materials
+

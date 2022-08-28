@@ -1,4 +1,4 @@
-# Syllabus 
+# Syllabus {#sec-appendix-syllabus}
 
 ## Course Description
 
@@ -80,6 +80,17 @@ kableExtra::kable(table.score)
 
 ```
 
+## Office Hours
+
+* Mondays 9 AM - 11 AM on Zoom
+* Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy 
+
+## COVID policy
+
+COVID-19 safety guidelines and recommendations continue to evolve. Please read Pitzer’s [Community Messages](https://www.pitzer.edu/pathway-forward/category/community-messages/) and [FAQs](https://www.pitzer.edu/pathway-forward/frequently-asked-questions/faqs/) and visit the Student Health Services (SHS) [COVID page](https://services.claremont.edu/covid/) for the latest campus information and guidance.
+
+I will be wearing a mask in any indoor environment with others around. All applicable campus and LA county policies will apply in this class and I will follow them to the extent feasible.  I hope you do too. 
+
 ## Readings
 
 The theory of environmental data visualization will use selected readings assigned to students. Every other class will involve a discussion of an assigned reading or analysis of an environmental data visualization.
@@ -87,7 +98,8 @@ The theory of environmental data visualization will use selected readings assign
 Assigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles.  A selection of readings that are likely to be discussed in the course includes:
 
 * Selections from Tufte's book 'The Visual Display of Quantitative Information' [@tufteVisualDisplayQuantitative2001]
+* Selections from Tufte's book 'Envisioning Information' [@tufteEnvisioningInformation2013]
 * Selections from Hadley Wickham's "Grammar of Graphics" with ggplot2, shiny, and other R packages. [@wickhamWelcomeTidyverse2019] 
-* A selection of Peer-review journal articles listed in the references below. [@hortonEnhancingOperationalValue2020, @kelleherTenGuidelinesEffective2011, @vanbeekEnvironmentalVisualizationFraming2020, , @gommehVisualDiscourseCoalitions2021, @murchieFundamentalsGraphicDesign2020, @graingerEnvironmentalDataVisualisation2016]
+* A selection of Peer-review journal articles listed in the references below. [@hortonEnhancingOperationalValue2020; @kelleherTenGuidelinesEffective2011; @vanbeekEnvironmentalVisualizationsFraming2020; @gommehVisualDiscourseCoalitions2021; @murchieFundamentalsGraphicDesign2020; @graingerEnvironmentalDataVisualisation2016]
 * Newspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth [@facebookOpEdWeMapped2022]
 * Readings on the meaning, use, and technical limitations of Environmental Justice tools

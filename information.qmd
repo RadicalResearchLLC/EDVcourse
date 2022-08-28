@@ -1,0 +1,81 @@
+# Data, Information, and Knowledge {#sec-information}
+
+::: {.callout-note appearance="simple"}
+Today we will be focusing on the theory of data visualization. 
+:::
+
+
+
+
+```{r}
+#| label: fig-dataInfoInsight
+#| fig-cap: Conceptual model of the relationship between data, information, and knowledge
+#| warning: false
+
+
+library(DiagrammeR)
+
+DiagrammeR::mermaid('
+graph LR
+  id1[Data] --- id2(Information)
+  id2(Information) --- id3.((Knowledge/Insight))
+')
+```
+
+## Definitions of terms
+
+### What is data?
+
+* Facts, or discrete elements of **information**.  
+* quantitative or qualitative observations or descriptions
+* statistics or values represented in a form suitable for processing by computer
+* plural of _datum_ (never ever use this, IMO, everything is data, singular or plural)
+
+### What is information?  
+
+* The act of informing or the condition of being informed; communication of **knowledge**
+* Processed, stored, or transmitted **data**; structured data; data in context and significance
+* Stimuli that has meaning in some context for its receiver
+
+### What is knowledge? 
+
+* General understanding or familiarity with a subject
+* Awareness of a subject; the state of being informed
+* Intellectual understanding; the state of appreciating the truth of **information**
+
+## Weather map example
+
+![WeatherMap](images/LATimesWeather.jpg){#fig-WeatherMap}
+
+The visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency.                                        
+
+### Categories of information illustrated by the newspaper weather visualization
+
+* [Quantitative](https://en.wikipedia.org/wiki/Level_of_measurement) (i.e., numerical) data 
+  + Temperatures (high, low)
+  + Precipitation 
+  + Wind speeds and directions
+  + Air quality index
+  + UV index
+  + Tide heights and times
+  + Sunrise & sunset times
+* [Qualitative](https://en.wikipedia.org/wiki/Qualitative_research) observations
+  + 'Seasonably warm'
+  + 'Fog, then mostly sunny'
+  + Sky categories (partly cloudy, thunderstorms, rain, sunny, showers, fog, snow, ice)
+  + Air quality categories (e.g., unhealthy, moderate)
+  + Flood potential
+  + Warm front/cold front
+  + Low/high pressure
+  + dangerous rip currents risk is moderate/low
+  
+::: {.callout-note appearance="simple"}
+Why am I calling this **information**, and not _data_ or _insight_? 
+
+Why isn't this course called **Environmental Information Visualization**?
+:::
+
+### Abstraction
+
+
+

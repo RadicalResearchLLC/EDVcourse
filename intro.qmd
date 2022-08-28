@@ -1,4 +1,4 @@
-# Introductions {.unnumbered}
+# Introductions {#sec-intro}
 
 Welcome to **EA 078 PZ: Environmental Data Visualization**!
 
@@ -25,11 +25,11 @@ My pronouns are he/him. Here is some of my background.
 * Trained as a chemist/atmospheric chemist 
   + undergrad at [Creighton University](www.creighton.edu) 
   + grad school at [UC Berkeley](www.berkeley.edu)
-* In my spare time
+* In my spare time, I enjoy
   + games (board, tabletop roleplaying, video games)
   + yoga
   + swim
-  + fight warehouse development
+  + fighting warehouse development in my neighborhood
 * My spouse is a Professor of Botany and Plant Sciences at [UC Riverside](www.ucr.edu), and my son is a student in middle school
 * My goals for this course
   + bounce ideas around for cool new ways of looking at environmental data
