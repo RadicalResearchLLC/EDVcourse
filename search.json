@@ -1,0 +1,261 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Environmental Data Visualization",
+    "section": "",
+    "text": "This is the course website for ‘EA 078 PZ - Environmental Data Visualization’. In this course, you will learn to import, manipulate, and visualize data using R, with hands-on examples. You will also learn the theory and ethics of environmental data visualization.\nI wrote it for non-programmers to provide a friendly introduction to the R language. Throughout the course, you will have the opportunity to practice and apply the skills and judgment of data visualization to provide effective illustrations of real-world data in order to persuade, inform, and communicate.\n\n\n\n\n\n\nThis book is created using the Quarto publishing system in order to provide an example of its use in environmental data visualization and as a course resource tool for display of coding examples and visualization."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Environmental Data Visualization",
+    "section": "License",
+    "text": "License\nThis website is free to use, and is licensed under the Creative Commons Attribution-ShareAlike 4.0 License."
+  },
+  {
+    "objectID": "index.html#earth-selfie",
+    "href": "index.html#earth-selfie",
+    "title": "Environmental Data Visualization",
+    "section": "Earth Selfie",
+    "text": "Earth Selfie\nFigure 1 is the iconic Pale Blue Dot image taken by the Voyager 1 space probe in 1990 from beyond Neptune. The Earth in this image is only a single pixel in size.\n\n\n\nFigure 1: PaleBlueDot"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introductions",
+    "section": "",
+    "text": "Welcome to EA 078 PZ: Environmental Data Visualization!"
+  },
+  {
+    "objectID": "intro.html#course-description",
+    "href": "intro.html#course-description",
+    "title": "Introductions",
+    "section": "Course Description",
+    "text": "Course Description\nThis is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas)."
+  },
+  {
+    "objectID": "intro.html#about-me",
+    "href": "intro.html#about-me",
+    "title": "Introductions",
+    "section": "About Me",
+    "text": "About Me\nCall me any of the following:\n\nMike\nDr. Mike\nProfessor Mike\nDr. McCarthy\nProfessor McCarthy\n\nMy pronouns are he/him. Here is some of my background.\n\nAdjunct Professor\nI have been an Environmental Consultant for ~20 years\n\ncurrently I am a sole propietor at Radical Research LLC\nprior to that I worked at a company called Sonoma Technology, Inc.\n\nTrained as a chemist/atmospheric chemist\n\nundergrad at Creighton University\ngrad school at UC Berkeley\n\nIn my spare time, I enjoy\n\ngames (board, tabletop roleplaying, video games)\nyoga\nswimming\nfighting warehouse development in my neighborhood\n\nMy spouse is a Professor of Botany and Plant Sciences at UC Riverside, and my son is a student in middle school\nMy goals for this course\n\nbounce ideas around for cool new ways of looking at environmental data\nexplore and connect with your environmental interests\ncontinuously improve my teaching to better meet your needs\nlearn new ways of thinking about problems\nbuild tools to empower, inform, and persuade our communities"
+  },
+  {
+    "objectID": "intro.html#about-you",
+    "href": "intro.html#about-you",
+    "title": "Introductions",
+    "section": "About You",
+    "text": "About You\nNow it is your turn to introduce yourself. Please address the following four bullets. Please add anything else you think will be helpful for me and/or your colleagues to know about you.\n\nName (as you would like to be addressed)\nYear\nMajor/Field\nYour goal(s) for this course (if any)"
+  },
+  {
+    "objectID": "weather.html",
+    "href": "weather.html",
+    "title": "Unit 1: Weather",
+    "section": "",
+    "text": "It is a great example for us to start talking about environmental data.\n\nComparative Analysis\nExamine Figure 1 from the LA Times, a twitter bot with emoji maps, and a screenshot from Wunderground.\n\n\n\n\n\n\nWhat are your impressions of these different visualizations?\n\n\n\n\n\n\nFigure 1: WeatherMap\n\n\n\n\n\nFigure 2: emojiMap\n\n\n\n\n\nFigure 3: wunderScreen"
+  },
+  {
+    "objectID": "information.html",
+    "href": "information.html",
+    "title": "1  Data, Information, and Knowledge",
+    "section": "",
+    "text": "Today we will be focusing on the theory of data visualization."
+  },
+  {
+    "objectID": "information.html#definitions-of-terms",
+    "href": "information.html#definitions-of-terms",
+    "title": "1  Data, Information, and Knowledge",
+    "section": "1.1 Definitions of terms",
+    "text": "1.1 Definitions of terms\n\n1.1.1 What is data?\n\nFacts, or discrete elements of information.\n\nquantitative or qualitative observations or descriptions\nstatistics or values represented in a form suitable for processing by computer\nplural of datum (never ever use this, IMO, everything is data, singular or plural)\n\n\n\n1.1.2 What is information?\n\nThe act of informing or the condition of being informed; communication of knowledge\nProcessed, stored, or transmitted data; structured data; data in context and significance\nStimuli that has meaning in some context for its receiver\n\n\n\n1.1.3 What is knowledge?\n\nGeneral understanding or familiarity with a subject\nAwareness of a subject; the state of being informed\nIntellectual understanding; the state of appreciating the truth of information"
+  },
+  {
+    "objectID": "information.html#weather-map-example",
+    "href": "information.html#weather-map-example",
+    "title": "1  Data, Information, and Knowledge",
+    "section": "1.2 Weather map example",
+    "text": "1.2 Weather map example\n\n\n\nFigure 1.2: WeatherMap\n\n\nThe visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency.\n\n1.2.1 Categories of information illustrated by the newspaper weather visualization\n\nQuantitative (i.e., numerical) data\n\nTemperatures (high, low)\nPrecipitation\nWind speeds and directions\nAir quality index\nUV index\nTide heights and times\nSunrise & sunset times\n\nQualitative observations\n\n‘Seasonably warm’\n‘Fog, then mostly sunny’\nSky categories (partly cloudy, thunderstorms, rain, sunny, showers, fog, snow, ice)\nAir quality categories (e.g., unhealthy, moderate)\nFlood potential\nWarm front/cold front\nLow/high pressure\ndangerous rip currents risk is moderate/low\n\n\n\n\n\n\n\n\nWhy am I calling this information, and not data or insight?\nWhy isn’t this course called Environmental Information Visualization?\n\n\n\n\n\n1.2.2 Abstraction"
+  },
+  {
+    "objectID": "coding1.html",
+    "href": "coding1.html",
+    "title": "2  Coding in R - Basics",
+    "section": "",
+    "text": "Come back soon!"
+  },
+  {
+    "objectID": "maps1.html",
+    "href": "maps1.html",
+    "title": "3  Maps",
+    "section": "",
+    "text": "Come back soon!"
+  },
+  {
+    "objectID": "assignment1.html",
+    "href": "assignment1.html",
+    "title": "4  Assignment 1",
+    "section": "",
+    "text": "Time to make a weather map, app, or figure!"
+  },
+  {
+    "objectID": "EJ.html",
+    "href": "EJ.html",
+    "title": "Unit 2: Environmental Justice",
+    "section": "",
+    "text": "This unit focuses on the identification and quantification of the unequal distribution and access to natural resources within California and the United States - Environmental Justice"
+  },
+  {
+    "objectID": "AQMD.html",
+    "href": "AQMD.html",
+    "title": "5  Environmental Justice Conference",
+    "section": "",
+    "text": "South Coast AQMD presents the 8th Annual Environmental Justice Conference"
+  },
+  {
+    "objectID": "AQMD.html#speakers",
+    "href": "AQMD.html#speakers",
+    "title": "5  Environmental Justice Conference",
+    "section": "5.1 Speakers",
+    "text": "5.1 Speakers\n\nU.S. EPA Region 9 Administrator Martha Guzman\nCalifornia Attorney General Rob Bonta"
+  },
+  {
+    "objectID": "AQMD.html#panels",
+    "href": "AQMD.html#panels",
+    "title": "5  Environmental Justice Conference",
+    "section": "5.2 Panels",
+    "text": "5.2 Panels\n\nAB 617 Community Air Protection Program: Lessons Learned\nCommunity Air Monitoring\nBuilding the Road to a Zero-Emissions Future"
+  },
+  {
+    "objectID": "EJtheory.html",
+    "href": "EJtheory.html",
+    "title": "6  Environmental Justice - Theory",
+    "section": "",
+    "text": "Under Construction. Come back soon!"
+  },
+  {
+    "objectID": "EJtools.html",
+    "href": "EJtools.html",
+    "title": "7  Environmental Justice - Tools",
+    "section": "",
+    "text": "Under Construction. Come back soon!"
+  },
+  {
+    "objectID": "EJdata.html",
+    "href": "EJdata.html",
+    "title": "8  Environmental Justice - Data",
+    "section": "",
+    "text": "Under Construction. Come back soon!"
+  },
+  {
+    "objectID": "maps2.html",
+    "href": "maps2.html",
+    "title": "9  Maps for Environmental Justice",
+    "section": "",
+    "text": "Under Construction. Come back soon!"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Appendix A — Syllabus",
+    "section": "",
+    "text": "This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas)."
+  },
+  {
+    "objectID": "syllabus.html#course-goals-learning-objectives",
+    "href": "syllabus.html#course-goals-learning-objectives",
+    "title": "Appendix A — Syllabus",
+    "section": "A.2 Course Goals & Learning Objectives",
+    "text": "A.2 Course Goals & Learning Objectives\nUpon successful completion of this course, students will\n\nacquire critical thinking skills on the display of visual information\nimprove team-based collaboration abilities by working on group projects\nknow how to acquire, tidy, and summarize quantitative environmental datasets\ncreate graphs and maps in R\ncritically review current environmental justice tools such as CalEnviroScreen and EJScreen\nunderstand basic theory and ethics of environmental data visualization"
+  },
+  {
+    "objectID": "syllabus.html#student-learning-outcomes",
+    "href": "syllabus.html#student-learning-outcomes",
+    "title": "Appendix A — Syllabus",
+    "section": "A.3 Student Learning Outcomes",
+    "text": "A.3 Student Learning Outcomes\n\nCritical Thinking, Quantitative Reasoning, and Effective Expression - Upon completion of this course, student’s will be able to critically examine the elements of environmental data visualization, create effective maps and graphs of environmental data, and effectively communicate environmental ideas in a quantitative visual manner. It will also focus on the theory and ethics of data visualization with readings and critical analysis of existing environmental justice tools.\nSocial Justice Theory - This course will identify and quantitatively explore the unequal distribution and access to natural resources (Environmental Justice) within California and the United States. Students will critically examine the ways Environmental Justice is currently characterized by government agencies and describe the types of data visualization used to quantitatively identify areas of disproportional impact and understand the limitations of existing tools in promoting effective change."
+  },
+  {
+    "objectID": "syllabus.html#classroom-approach",
+    "href": "syllabus.html#classroom-approach",
+    "title": "Appendix A — Syllabus",
+    "section": "A.4 Classroom Approach",
+    "text": "A.4 Classroom Approach\nIn-person class time will include approximately 40% of time to devoted to lectures, 30% to hands-on coding and data visualization, and 30% to discussion."
+  },
+  {
+    "objectID": "syllabus.html#assignments-and-activities",
+    "href": "syllabus.html#assignments-and-activities",
+    "title": "Appendix A — Syllabus",
+    "section": "A.5 Assignments and Activities",
+    "text": "A.5 Assignments and Activities\n\nClassroom participation during discussion sections\nClassroom participation during coding sessions\nAssigned reading (Tufte, news and peer-review articles, online books)\nAssigned review of web tools (CalEnviroScren, EJScreen, EnviroAtlas)\nGroup coding projects\nClass presentation on an environmental data visualization\nThree individual projects displaying environmental data\nGroup project displaying environmental data\nFinal exam"
+  },
+  {
+    "objectID": "syllabus.html#grading-and-assessment-breakdown",
+    "href": "syllabus.html#grading-and-assessment-breakdown",
+    "title": "Appendix A — Syllabus",
+    "section": "A.6 Grading and Assessment Breakdown",
+    "text": "A.6 Grading and Assessment Breakdown\nThe class will be based on a total of 1000 points.\n\nThe group project displaying environmental data visualization will count for 200 points\nThe three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).\n\nRemix of an environmental justice dataset from an existing EJ tool\nA written critique of an existing environmental data visualization\nA student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)\n\nA presentation on environmental data visualization in Environmental Justice tools will count for 200 points\nClassroom participation will count for 100 points throughout the course of the semester.\n\nThese points will be awarded for attendance and active participation in classroom discussion and coding sessions.\n\nOnline attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\n\nMissing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\n\n\nFinal exam will count for 200 points. This will cover theory, ethics, and environmental justice.\n\nExtra credit - TBD\n\nStudents get a single free individual or group project that can be late by up to seven days from the due date. For the group project, if a member of the group has already used their individual free late project, the group cannot use other individual free periods. If any other project is late, scores will be reduced by 10% per day beyond the due date of the project.\nThe final exam and assigned presentation date require a doctor’s note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.\nTable tbl-scores\n\n\n\n\nTable A.1:  Breakdown of course points \n \n  \n    Assignments \n    Points \n  \n \n\n  \n    Group Project - data visualization \n    200 \n  \n  \n    Individual project 1 - EJ tool remix \n    100 \n  \n  \n    Individual Project 2 - written critique (minimum 2 pages) \n    100 \n  \n  \n    Individual Project 3 - data visualization \n    100 \n  \n  \n    Presentation on EJ tools \n    200 \n  \n  \n    Classroom participation \n    100 \n  \n  \n    Final exam \n    200 \n  \n  \n    Extra Credit \n    50"
+  },
+  {
+    "objectID": "syllabus.html#office-hours",
+    "href": "syllabus.html#office-hours",
+    "title": "Appendix A — Syllabus",
+    "section": "A.7 Office Hours",
+    "text": "A.7 Office Hours\n\nMondays 9 AM - 11 AM on Zoom\nFridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy"
+  },
+  {
+    "objectID": "syllabus.html#covid-policy",
+    "href": "syllabus.html#covid-policy",
+    "title": "Appendix A — Syllabus",
+    "section": "A.8 COVID policy",
+    "text": "A.8 COVID policy\nCOVID-19 safety guidelines and recommendations continue to evolve. Please read Pitzer’s Community Messages and FAQs and visit the Student Health Services (SHS) COVID page for the latest campus information and guidance.\nI will be wearing a mask in any indoor environment with others around. All applicable campus and LA county policies will apply in this class and I will follow them to the extent feasible. I hope you do too."
+  },
+  {
+    "objectID": "syllabus.html#readings",
+    "href": "syllabus.html#readings",
+    "title": "Appendix A — Syllabus",
+    "section": "A.9 Readings",
+    "text": "A.9 Readings\nThe theory of environmental data visualization will use selected readings assigned to students. Every other class will involve a discussion of an assigned reading or analysis of an environmental data visualization.\nAssigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles. A selection of readings that are likely to be discussed in the course includes:\n\nSelections from Tufte’s book ‘The Visual Display of Quantitative Information’ (Tufte 2001)\nSelections from Tufte’s book ‘Envisioning Information’ (Tufte 2013)\nSelections from Hadley Wickham’s “Grammar of Graphics” with ggplot2, shiny, and other R packages. (Wickham et al. 2019)\nA selection of Peer-review journal articles listed in the references below. (Horton, Nowak, and Haegeli 2020; Kelleher and Wagener 2011; van Beek et al. 2020; Gommeh, Dijstelbloem, and Metze 2021; Murchie and Diomede 2020; Grainger, Mao, and Buytaert 2016)\nNewspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth (Facebook et al. 2022)\nReadings on the meaning, use, and technical limitations of Environmental Justice tools\n\n\n\n\n\nFacebook, Twitter, Show more sharing options, Facebook, Twitter, LinkedIn, Email, Copy Link URLCopied!, and Print. 2022. “Op-Ed: We Mapped the Warehouse Takeover of the Inland Empire. The Results Are Overwhelming.” Los Angeles Times. https://www.latimes.com/opinion/story/2022-05-01/inland-empire-warehouse-growth-map-environment.\n\n\nGommeh, Efrat, Huub Dijstelbloem, and Tamara Metze. 2021. “Visual Discourse Coalitions: Visualization and Discourse Formation in Controversies over Shale Gas Development.” Journal of Environmental Policy & Planning 23 (3): 363–80. https://doi.org/10.1080/1523908X.2020.1823208.\n\n\nGrainger, Sam, Feng Mao, and Wouter Buytaert. 2016. “Environmental Data Visualisation for Non-Scientific Contexts: Literature Review and Design Framework.” Environmental Modelling & Software 85 (November): 299–318. https://doi.org/10.1016/j.envsoft.2016.09.004.\n\n\nHorton, Simon, Stan Nowak, and Pascal Haegeli. 2020. “Enhancing the Operational Value of Snowpack Models with Visualization Design Principles.” Natural Hazards and Earth System Sciences 20 (6): 1557–72. https://doi.org/10.5194/nhess-20-1557-2020.\n\n\nKelleher, Christa, and Thorsten Wagener. 2011. “Ten Guidelines for Effective Data Visualization in Scientific Publications.” Environmental Modelling & Software 26 (6): 822–27. https://doi.org/10.1016/j.envsoft.2010.12.006.\n\n\nMurchie, Karen J., and Dylan Diomede. 2020. “Fundamentals of Graphic Designessential Tools for Effective Visual Science Communication.” FACETS 5 (1): 409–22. https://doi.org/10.1139/facets-2018-0049.\n\n\nTufte, Edward R. 2001. The Visual Display of Quantitative Information, 2nd Ed. 2nd edition. Cheshire, Conn: Graphics Press.\n\n\n———, ed. 2013. Envisioning Information. 14. print. Cheshire, Conn: Graphics Press.\n\n\nvan Beek, Lisette, Tamara Metze, Eva Kunseler, Hiddo Huitzing, Filip de Blois, and Arjan Wardekker. 2020. “Environmental Visualizations: Framing and Reframing Between Science, Policy and Society.” Environmental Science & Policy 114 (December): 497–505. https://doi.org/10.1016/j.envsci.2020.09.011.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain FranÃois, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686."
+  },
+  {
+    "objectID": "tools.html",
+    "href": "tools.html",
+    "title": "Appendix B — R and RStudio Installation and Overview",
+    "section": "",
+    "text": "R is a free software environment for statistical computing and graphics.\nCurrent version 4.2.1 “Funny-Looking Kid” was released June 23, 2022.\nRStudio is an integrated development environment (IDE) for R. It is available in open source and commercial editions. Current version is 2022.07.1-554 ’Spotted Wakerobin” was released July 25, 2022.\nThese tools will be the primary software used in this course to develop environmental visualizations."
+  },
+  {
+    "objectID": "tools.html#download-and-install-r",
+    "href": "tools.html#download-and-install-r",
+    "title": "Appendix B — R and RStudio Installation and Overview",
+    "section": "B.1 Download and Install R",
+    "text": "B.1 Download and Install R\nR is maintained and made available through the web-page at The Comprehensive R Archive Network aka CRAN.\nThe top of the CRAN web page provides three links for downloading R. Follow the link that describes the OS of your computer: Mac, Windows, or Linux.\n\nB.1.1 R for macOS\nTo install R on a Mac, click the “Download R for macOS” link. Next, click on the R-4.2.1 package link (or the package link for the most current release of R). An installer will download to guide you through the installation process. As a starting point, I recommend that most users should choose the default installation settings until they are familiar with R.\n\n\nB.1.2 R for Windows\nTo install R on Windows, click the “Download R for Windows” link. Next, click on the install R for the first time link which contains base R. Then click on the link that says Download R-4.2.1 for Windows. A win.exe file will be downloaded to your downloads folder. Open that file after it downloads and follow the installation process. As a starting point, I recommend that most users should choose the default installation settings until they are familiar with R.\n\n\nB.1.3 R for Linux\nR comes preinstalled on many Linux systems, but update to the newest version of R if yours is out of date. The CRAN website provides files for different Linux builds including Debian, Fedora, Redhat, Suse, and Ubuntu. Choose the appropriate directory and the installation procedure for your flavor of Linux."
+  },
+  {
+    "objectID": "tools.html#about-r",
+    "href": "tools.html#about-r",
+    "title": "Appendix B — R and RStudio Installation and Overview",
+    "section": "B.2 About R",
+    "text": "B.2 About R\nR is not a friendly computer program like a web browser or a Microsoft Office product. R is a programming language, like C++, Python, or Java. R can be run like an old-school UNIX terminal, writing commands directly onto monitors with green fonts; imagine Neo in the Matrix or Angelina Jolie in Hackers. While one can still do that, most folks use the RStudio IDE.\n\n\n\nhackers"
+  },
+  {
+    "objectID": "tools.html#rstudio-ide",
+    "href": "tools.html#rstudio-ide",
+    "title": "Appendix B — R and RStudio Installation and Overview",
+    "section": "B.3 RStudio IDE",
+    "text": "B.3 RStudio IDE\nRStudio is an application - like MS Word or a browser. However, Rstudio is an app that helps you write in “R”, not English. It is literally a foreign language (unless you know it already). And just like any language, R has its own syntax, grammar, and vocabulary. It takes training and time to learn R, but I believe it is worth it.\nWe will use RStudio in this course because it makes using R much easier. Also, the RStudio interface looks about the same for different operating systems, which will help me because I am a Windows user and I’ve heard that Pitzer students tend to lean towards macOS.\nDownload RStudio desktop here - I recommend the free open source version. Make sure to pick the version that is appropriate for your OS. Then follow the installation instructions.\nOnce installed, RStudio can be opened like any other program or app on your computer; usually just click on the icon on the desktop. When you open it, it should look something like Figure B.1.\n\n\n\nFigure B.1: RStudio\n\n\nHere, there are four separate windows or “Panels”.\n\nThe source panel is top-left and this is basically a text editor where you type R code or regular text. Code here gets colored and looks different if it is doing various R things. More on this later. Code doesn’t get immediately executed here; it is more like a holding place for writing/testing/debugging bigger “scripts” or programs.\nThe console/terminal is bottom-left. The terminal is the 1980s window that does commands directly. Type print(‘Hello World’), press enter/return, and you’ve written some code. This console is what R would look like if you ran it without RStudio.\nThe top-right is the file manager panel. It shows files in your directory, plots, packages, and help files.\nThe bottom-right is the programming environment. It contains things you’ve loaded or coded. Right now it should be empty because you’ve done neither.\n\nOf course all of these can be moved around to match how you like to set it up. And I need a different color-scheme than the ugly default.\nSelect the Tools menu, followed by Global Options in the dropdown Tools menu. Navigate to appearance and you should be able to alter the color scheme to something more your style. My preferred style is Merbivore Soft as shown in #fig-Rstudio_good.\n\n\n\nFigure B.2: RStudio_good\n\n\n\n\n\n\n\n\nDo I still need to download R?\n\n\n\nEven if you use RStudio, you’ll still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn’t come with a version of R on its own."
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Appendix C — Resources",
+    "section": "",
+    "text": "Sets of functions that have a common purpose are bundled together in R in “packages”. There are literally thousands of packages custom-built for R.\nDuring this course, I will ask you to use some important packages for data acquisition, tidying, and visualization. There are two steps to using a package in R.\nFirst, it needs to be installed. Here’s a non-functional example.\n\n\nCode\n#echo:| true\n#warning:| false\n\n#install.packages('<PACKAGE.NAME>')\n#remove the # in front of the install.packages to change this from a comment to code\n\n\nAnd this example will install an actual package called janitor. This package features a nice import function that fixes column names on import called clean_names().\n\n\nCode\n#echo:| true\n#warning:| false\n\n#install.packages('janitor')\n#remove the # in front of the install.packages to change this from a comment to code\n\n\nIn a meta way, you now have used a function to install a package. ‘install.package()’ is an example of an in-built R function.\nOnce a package is installed, it needs to be loaded. While the installation has put the package on your computer, you need to tell R that it should load these functions for use.\n\n\n\n\n\n\nR and other programming languages only do EXACTLY what they are told to do.\n\n\n\nLoading a package is accomplished by calling base R library function. Success is indicated with a message like “Attaching package: ‘janitor’\n\n\nCode\n#echo:| true\n\nlibrary(janitor)\n\n\n\nAttaching package: 'janitor'\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\n\nLibraries have to be loaded each time you restart your R session. The current libraries loaded can be founded in the file manager panel under the Packages tab."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Facebook, Twitter, Show more sharing options, Facebook, Twitter,\nLinkedIn, Email, Copy Link URLCopied!, and Print. 2022.\n“Op-Ed: We Mapped the Warehouse Takeover\nof the Inland Empire. The Results Are\nOverwhelming.” Los Angeles Times.\nhttps://www.latimes.com/opinion/story/2022-05-01/inland-empire-warehouse-growth-map-environment.\n\n\nGommeh, Efrat, Huub Dijstelbloem, and Tamara Metze. 2021. “Visual\nDiscourse Coalitions: Visualization and Discourse Formation in\nControversies over Shale Gas Development.” Journal of\nEnvironmental Policy & Planning 23 (3): 363–80. https://doi.org/10.1080/1523908X.2020.1823208.\n\n\nGrainger, Sam, Feng Mao, and Wouter Buytaert. 2016. “Environmental\nData Visualisation for Non-Scientific Contexts: Literature\nReview and Design Framework.” Environmental Modelling &\nSoftware 85 (November): 299–318. https://doi.org/10.1016/j.envsoft.2016.09.004.\n\n\nHorton, Simon, Stan Nowak, and Pascal Haegeli. 2020. “Enhancing\nthe Operational Value of Snowpack Models with Visualization Design\nPrinciples.” Natural Hazards and Earth System Sciences\n20 (6): 1557–72. https://doi.org/10.5194/nhess-20-1557-2020.\n\n\nKelleher, Christa, and Thorsten Wagener. 2011. “Ten Guidelines for\nEffective Data Visualization in Scientific Publications.”\nEnvironmental Modelling & Software 26 (6): 822–27. https://doi.org/10.1016/j.envsoft.2010.12.006.\n\n\nMurchie, Karen J., and Dylan Diomede. 2020. “Fundamentals of\nGraphic Designessential Tools for Effective Visual Science\nCommunication.” FACETS 5 (1): 409–22. https://doi.org/10.1139/facets-2018-0049.\n\n\nTufte, Edward R. 2001. The Visual Display of\nQuantitative Information, 2nd Ed. 2nd\nedition. Cheshire, Conn: Graphics Press.\n\n\n———, ed. 2013. Envisioning Information. 14. print.\nCheshire, Conn: Graphics Press.\n\n\nvan Beek, Lisette, Tamara Metze, Eva Kunseler, Hiddo Huitzing, Filip de\nBlois, and Arjan Wardekker. 2020. “Environmental Visualizations:\nFraming and Reframing Between Science, Policy and\nSociety.” Environmental Science & Policy 114\n(December): 497–505. https://doi.org/10.1016/j.envsci.2020.09.011.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain FranÃois, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686."
+  }
+]
