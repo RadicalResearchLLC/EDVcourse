@@ -1,28 +1,10 @@
-# Data, Information, and Knowledge {#sec-information}
+# Fundamentals of Data Visualization {#sec-information}
 
 ::: {.callout-note appearance="simple"}
 Today we will be focusing on the theory of data visualization. 
 :::
 
-
-
-
-```{r}
-#| label: fig-dataInfoInsight
-#| fig-cap: Conceptual model of the relationship between data, information, and knowledge
-#| warning: false
-
-
-library(DiagrammeR)
-
-DiagrammeR::mermaid('
-graph LR
-  id1[Data] --- id2(Information)
-  id2(Information) --- id3.((Knowledge/Insight))
-')
-```
-
-## Definitions of terms
+## Data, Information, and Knowledge
 
 ### What is data?
 
@@ -47,7 +29,7 @@ graph LR
 
 ![WeatherMap](images/LATimesWeather.jpg){#fig-WeatherMap}
 
-The visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency.                                        
+The visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency. It imparts knowledge.       
 
 ### Categories of information illustrated by the newspaper weather visualization
 
@@ -75,7 +57,107 @@ Why am I calling this **information**, and not _data_ or _insight_?
 Why isn't this course called **Environmental Information Visualization**?
 :::
 
-### Abstraction
+## Abstraction
 
+When we talk about the weather and use a data visualization, we are abstracting from [THE WEATHER]{#fig-actualweather} to a 2-D representation of some numbers, colors, pictures on a pixelized screen.  
 
+![PalmSprings](images/palm_springs_lightning.jpg){#fig-actualweather}
+🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️
+
+Data visualization is an artistic abstraction.  
+
+Any environmental data visualization is _not the thing itself_. We are abstracting _the thing itself_ in order to represent it in a condensed and structured way that conveys information. A thunderstorm emoji conveys the information about the weather in an abstract way, but is not the weather. However, we can put that thunderstorm emoji 
+ * on a map to provide spatial information 
+ * on a clock to provide temporal information
+ * on a phone or an electronic device to communicate the weather in shorthand
+ 
+Similarly, the abstraction of data into information allows for substantial control over the stylistic choices.  Just like art has impressionism, realism, and surrealism, there are many different schools of thought about the appropriate ways to convey information. 
+
+In other words, the colors, symbols, shapes, and other stylistic choices encode and reveal truths about the data. 
+
+## Ethics
+
+::: {.callout-note appearance="important"}
+Avoid misrepresention!
+:::
+
+Visualization methods can, purposefully or inadvertently, distort the underlying data's meaning. There are many underlying causes that can cause this distortion. Distortion can be caused (un)intentionly by the designer of the visualization. The other side is that the visualization may not be understandable to the user. Broadly, these problems can be categorized as:
+
+* **projection** - 2-Dimensional cartographic representations (i.e., maps) distort either shapes, distances, or sizes
+* **cognitive** - problems associated with 
+  + graphical elements
+  + clarity
+  + over-simplification
+  + under-simplification
+  + heterogeneity of intended audience (e.g., language barriers, color palettes for color-blindness).
+* **emotional** - graphical design or content may be repellent or triggering
+* **social** - cross-cultural norms
+  + directionality of reading (left-to-right vs. right-to-left)
+  + context of color-scales (e.g., red-green in eastern vs. western cultures)
+  
+Understanding the intended audience and their norms is always key to open and empathetic communication, whether through words or visualizations.  Multiple visualizations may be required for communication with a diverse (i.e., heterogeneous) audience.  
+
+## What is the Baseline?
+
+One of the most common distortions is changing the scale of the axis to distort magnitudes. Here's an example.
+
+The code below loads some R packages that are useful for data processing and visualization.
+
+```{r}
+#warning: false
+library(data.table)
+library(tidyverse)
+library(plotly)
+
+```
+
+This code imports monthly mean Mauna Loa CO~2~ data from [NOAA GMD CMDL](https://www.gml.noaa.gov/ccgg/trends/data.html), renames the columns, and then displays the bottom five rows to make sure it shows what we think it should.
+
+```{r}
+#label: ImportCO2
+#warning: false
+
+co2 <- fread('https://www.gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt', 
+ skip = 53 ) #%>%
+#head(co2)
+fieldNames <- c('year', 'month', 'decDate', 'meanCO2', 'trendedCO2', 'days', 'stdev', 'unc')
+colnames(co2) <- fieldNames
+
+tail(co2)
+
+```
+
+The CO~2~ data is displayed in #fig-KeelingCurve1 and #fig-KeelingCurve2. How does the y-axis scale affect the interpretation of the same dataset?
+
+```{r}
+#label: KeelingCurve1
+#fig-cap: The Keeling Curve showing monthly average CO~2~ concentrations (ppm) at Mauna Loa
+#warning: false
+
+plot1 <- co2 %>% 
+  ggplot(aes(x = decDate, y = meanCO2)) +
+  geom_line(color = 'black', size = 2) +
+  theme_bw() +
+  labs(x = 'Year', y = 'Concentration CO2 (ppb)')
+
+ggplotly(plot1)
+```
+
+```{r}
+#label: KeelingCurve2
+#fig-cap: The Keeling Curve showing monthly average CO~2~ concentrations (ppm) at Mauna Loa
+#warning: false
+
+plot2 <- plot1 + 
+  scale_y_continuous(limits = c(0,425))
+
+ggplotly(plot2)
+
+```
+
+A longer viewpoint is shown in @fig-paleoCO2 going back well beyond the late 1950s using CO~2~ data from ice cores, sediments, and other paleo-climatological sources. It shows another y-axis scale.  
+
+How do the three different y-axis scales distort the user impression of the data?  
+
+![HistoricalCO2](images/Co2-levels-historic.jpg){fig-paleoCO2}
 

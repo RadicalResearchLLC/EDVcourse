@@ -82,14 +82,18 @@ kableExtra::kable(table.score)
 
 ## Office Hours
 
-* Mondays 9 AM - 11 AM on Zoom
+* Mondays 9 AM - 11 AM on [Pitzer Zoom](https://pitzer.zoom.us/j/2600893680) 
 * Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy 
 
 ## COVID policy
 
 COVID-19 safety guidelines and recommendations continue to evolve. Please read Pitzer’s [Community Messages](https://www.pitzer.edu/pathway-forward/category/community-messages/) and [FAQs](https://www.pitzer.edu/pathway-forward/frequently-asked-questions/faqs/) and visit the Student Health Services (SHS) [COVID page](https://services.claremont.edu/covid/) for the latest campus information and guidance.
 
-I will be wearing a mask in any indoor environment with others around. All applicable campus and LA county policies will apply in this class and I will follow them to the extent feasible.  I hope you do too. 
+![SneezeCFD](images/COVID_mask.png)
+
+I will be wearing a mask in any indoor environment with others around. All applicable campus and LA County policies will apply in this class and I will follow them to the extent feasible. If mask wearing is optional under Pitzer and LA County guidelines, then it is in this classroom as well. If you need to sneeze, cover up with an elbow...
+
+If we do have a COVID breakout or otherwise require hybrid/remote class environments through Zoom, I will post meeting links via email.   
 
 ## Readings
 
