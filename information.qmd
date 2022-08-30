@@ -159,5 +159,5 @@ A longer viewpoint is shown in @fig-paleoCO2 going back well beyond the late 195
 
 How do the three different y-axis scales distort the user impression of the data?  
 
-![HistoricalCO2](images/Co2-levels-historic.jpg){fig-paleoCO2}
+![HistoricalCO2](images/Co2-levels-historic.jpg){#fig-paleoCO2}
 

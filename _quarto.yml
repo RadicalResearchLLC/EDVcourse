@@ -24,7 +24,7 @@ book:
         - EJdata.qmd
         - maps2.qmd
   appendices: 
-    - Syllabus.qmd
+    - Syllabus.qmd  
     - tools.qmd
     - resources.qmd
     - references.qmd
