@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Environmental Data Visualization - 1&nbsp; Data, Information, and Knowledge</title>
+<title>Environmental Data Visualization - 1&nbsp; Fundamentals of Data Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -15,69 +15,6 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -118,14 +55,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="site_libs/d3-3.3.8/d3.min.js"></script>
-<script src="site_libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="site_libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet">
-<script src="site_libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="site_libs/chromatography-0.1/chromatography.js"></script>
-<script src="site_libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 </head>
@@ -136,7 +65,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data, Information, and Knowledge</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,7 +108,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./information.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data, Information, and Knowledge</span></a>
+  <a href="./information.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -244,6 +173,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Syllabus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./tools.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">R and RStudio Installation and Overview</span></a>
   </div>
 </li>
@@ -268,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definitions-of-terms" id="toc-definitions-of-terms" class="nav-link active" data-scroll-target="#definitions-of-terms"> <span class="header-section-number">1.1</span> Definitions of terms</a>
+  <li><a href="#data-information-and-knowledge" id="toc-data-information-and-knowledge" class="nav-link active" data-scroll-target="#data-information-and-knowledge"> <span class="header-section-number">1.1</span> Data, Information, and Knowledge</a>
   <ul class="collapse">
   <li><a href="#what-is-data" id="toc-what-is-data" class="nav-link" data-scroll-target="#what-is-data"> <span class="header-section-number">1.1.1</span> What is data?</a></li>
   <li><a href="#what-is-information" id="toc-what-is-information" class="nav-link" data-scroll-target="#what-is-information"> <span class="header-section-number">1.1.2</span> What is information?</a></li>
@@ -278,6 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#categories-of-information-illustrated-by-the-newspaper-weather-visualization" id="toc-categories-of-information-illustrated-by-the-newspaper-weather-visualization" class="nav-link" data-scroll-target="#categories-of-information-illustrated-by-the-newspaper-weather-visualization"> <span class="header-section-number">1.2.1</span> Categories of information illustrated by the newspaper weather visualization</a></li>
   <li><a href="#abstraction" id="toc-abstraction" class="nav-link" data-scroll-target="#abstraction"> <span class="header-section-number">1.2.2</span> Abstraction</a></li>
+  <li><a href="#ethics" id="toc-ethics" class="nav-link" data-scroll-target="#ethics"> <span class="header-section-number">1.2.3</span> Ethics</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -287,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-information" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data, Information, and Knowledge</span></span></h1>
+<h1 class="title"><span id="sec-information" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></span></h1>
 </div>
 
 
@@ -311,27 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">mermaid</span>(<span class="st">'</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">graph LR</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">  id1[Data] --- id2(Information)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">  id2(Information) --- id3.((Knowledge/Insight))</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="fig-dataInfoInsight" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<div id="htmlwidget-952e59737b9158f031f9" style="width:100%;height:464px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-952e59737b9158f031f9">{"x":{"diagram":"\ngraph LR\n  id1[Data] --- id2(Information)\n  id2(Information) --- id3.((Knowledge/Insight))\n"},"evals":[],"jsHooks":[]}</script>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1.1: Conceptual model of the relationship between data, information, and knowledge</figcaption><p></p>
-</figure>
-</div>
-</div>
-<section id="definitions-of-terms" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="definitions-of-terms"><span class="header-section-number">1.1</span> Definitions of terms</h2>
+<section id="data-information-and-knowledge" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="data-information-and-knowledge"><span class="header-section-number">1.1</span> Data, Information, and Knowledge</h2>
 <section id="what-is-data" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="what-is-data"><span class="header-section-number">1.1.1</span> What is data?</h3>
 <ul>
@@ -364,10 +280,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-WeatherMap" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/LATimesWeather.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1.2: WeatherMap</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1.1: WeatherMap</figcaption><p></p>
 </figure>
 </div>
-<p>The visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency.</p>
+<p>The visualization structures the underlying data into information. A good visualization communicates complex ideas with clarity, precision, and efficiency. It imparts knowledge.</p>
 <section id="categories-of-information-illustrated-by-the-newspaper-weather-visualization" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="categories-of-information-illustrated-by-the-newspaper-weather-visualization"><span class="header-section-number">1.2.1</span> Categories of information illustrated by the newspaper weather visualization</h3>
 <ul>
@@ -407,6 +323,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="abstraction" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="abstraction"><span class="header-section-number">1.2.2</span> Abstraction</h3>
+<p>When we talk about the weather and use a data visualization, we are abstracting from <span id="fig-actualweather">THE WEATHER</span> to a 2-D representation of some numbers, colors, pictures on a pixelized screen.</p>
+<p><img src="images/palm_springs_lightning.jpg" id="fig-actualweather" class="img-fluid" alt="PalmSprings"> 🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️</p>
+<p>Data visualization is an artistic abstraction.</p>
+<p>Any environmental data visualization is <em>not the thing itself</em>. We are abstracting <em>the thing itself</em> in order to represent it in a condensed and structured way that conveys information. A thunderstorm emoji conveys the information about the weather in an abstract way, but is not the weather. However, we can put that thunderstorm emoji * on a map to provide spatial information * on a clock to provide temporal information * on a phone or an electronic device to communicate the weather in shorthand</p>
+<p>Similarly, the abstraction of data into information allows for substantial control over the stylistic choices. Just like art has impressionism, realism, and surrealism, there are many different schools of thought about the appropriate ways to convey information.</p>
+<p>In other words, the colors, symbols, shapes, and other stylistic choices encode and reveal truths about the data.</p>
+</section>
+<section id="ethics" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="ethics"><span class="header-section-number">1.2.3</span> Ethics</h3>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Avoid misrepresention!</p>
+</div>
+</div>
+<p>Visualization methods can, purposefully or inadvertently, distort the underlying data’s meaning. There are many underlying causes that can cause this distortion. Distortion can be caused (un)intentionly by the designer of the visualization. The other side is that the visualization may not be understandable to the user. Broadly, these problems can be categorized as:</p>
+<ul>
+<li><strong>projection</strong> - 2-Dimensional cartographic representations (i.e., maps) distort either shapes, distances, or sizes</li>
+<li><strong>cognitive</strong> - problems associated with
+<ul>
+<li>graphical elements</li>
+<li>clarity</li>
+<li>over-simplification</li>
+<li>under-simplification</li>
+<li>heterogeneity of intended audience (e.g., language barriers, color palettes for color-blindness).</li>
+</ul></li>
+<li><strong>emotional</strong> - graphical design or content may be repellent or triggering</li>
+<li><strong>social</strong> - cross-cultural norms
+<ul>
+<li>directionality of reading (left-to-right vs.&nbsp;right-to-left)</li>
+<li>context of color-scales (e.g., red-green in eastern vs.&nbsp;western cultures)</li>
+</ul></li>
+</ul>
+<p>Understanding the intended audience and their norms is always key to open and empathetic communication, whether through words or visualizations. Multiple visualizations may be required for communication with a diverse (i.e., heterogeneous) audience.</p>
 
 
 </section>
