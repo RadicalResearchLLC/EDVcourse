@@ -1,6 +1,5 @@
 # Introductions {#sec-intro .unnumbered}
 
-
 Welcome to **EA 078 PZ: Environmental Data Visualization**!
 
 ## Course Description
