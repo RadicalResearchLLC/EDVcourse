@@ -9,8 +9,7 @@ description-meta: |
 This is the course website for **'EA 078 PZ - Environmental Data Visualization'**. In this course,
 you will learn to import, manipulate, and visualize data using R, with hands-on 
 examples. You will also learn the theory and ethics of environmental data visualization.  
-I wrote it for non-programmers to provide a friendly introduction to  the R 
-language. Throughout the course, you will have the opportunity to practice and 
+Throughout the course, you will have the opportunity to practice and 
 apply the skills and judgment of data visualization to provide effective illustrations
 of real-world data in order to persuade, inform, and communicate.
 
