@@ -52,7 +52,7 @@ Here, there are four separate windows or "Panels".
 
 Of course all of these can be moved around to match how you like to set it up.  And I need a different color-scheme than the ugly default.  
 
-Select the **Tools** menu, followed by **Global Options** in the dropdown Tools menu. Navigate to appearance and you should be able to alter the color scheme to something more your style. My preferred style is **Merbivore Soft** as shown in #fig-Rstudio_good.  
+Select the **Tools** menu, followed by **Global Options** in the dropdown Tools menu. Navigate to appearance and you should be able to alter the color scheme to something more your style. My preferred style is **Merbivore Soft** as shown in @fig-goodRStudio.  
 
 ![goodRstudio](images/Mervbivore.png){#fig-goodRStudio}
 
