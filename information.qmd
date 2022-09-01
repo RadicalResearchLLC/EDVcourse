@@ -226,7 +226,7 @@ How does [CalEnviroScreen](https://oehha.ca.gov/calenviroscreen/report/calenviro
 
 ::: {layout-ncol=2}
 
-![](images/BluesCalEJ.png)
+![](images/bluesCalEJ.png)
 
 ![](images/magmaCalEJ.png)
 
