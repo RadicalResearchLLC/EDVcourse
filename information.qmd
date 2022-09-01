@@ -74,7 +74,7 @@ Why isn't this course called **Environmental Information Visualization**?
 
 ## Abstraction
 
-When we talk about the weather and use a data visualization, we are abstracting from [THE WEATHER]{@fig-actualweather} to a 2-D representation of some numbers, colors, pictures on a pixelized screen.  
+When we talk about the weather and use a data visualization, we are abstracting from @fig-actualweather to a 2-D representation of some numbers, colors, or pictures on a pixelized screen.  
 
 ![PalmSprings](images/palm_springs_lightning.jpg){#fig-actualweather}
 🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️
@@ -98,16 +98,19 @@ Avoid misrepresention!
 
 Visualization methods can, purposefully or inadvertently, distort the underlying data's meaning. There are many underlying causes that can cause this distortion. Distortion can be caused (un)intentionly by the designer of the visualization. The other side is that the visualization may not be understandable to the user. Broadly, these problems can be categorized as:
 
-### **Projection** 
+### Spatial projection 
 
-2-Dimensional cartographic representations (i.e., maps) distort either [angles](https://map-projections.net/img/jpg/azimutal-equal-area-gpolar.jpg?ft=59bfd4f5), [distances](https://image4.slideserve.com/303535/all-projections-have-some-degree-of-distortion-l.jpg), or [sizes](https://kartoweb.itc.nl/geometrics/Bitmaps/Figure%204.19%20(scale%20distortion)a.gif)
+2-Dimensional cartographic representations (i.e., maps) distort either
 
-### **Cognitive** -
+* [angles](https://map-projections.net/img/jpg/azimutal-equal-area-gpolar.jpg?ft=59bfd4f5),  
+* [distances](https://image4.slideserve.com/303535/all-projections-have-some-degree-of-distortion-l.jpg), or  
+* [sizes](https://kartoweb.itc.nl/geometrics/Bitmaps/Figure%204.19%20(scale%20distortion)a.gif)
+
+### Cognitive
 
 Problems associated with - 
 
 * graphical elements - "Roses are <span style='color:blue'>red</span>, violets are <span style='color:red'>blue</span>."
-* clarity  
 * over-simplification - compare ozone alert images from KTLA news and the SCAQMD.
 
 ::: {layout-ncol=2}
@@ -124,7 +127,9 @@ Problems associated with -
     
 ### **Emotional** 
 
-Graphical design or [content](https://epa.maps.arcgis.com/apps/MapSeries/index.html?appid=e5a7e59018c7424eaddcb64b31ba4a41) may be repellent or triggering
+Graphical design or [content](https://epa.maps.arcgis.com/apps/MapSeries/index.html?appid=e5a7e59018c7424eaddcb64b31ba4a41) may be repellent or triggering.  
+
+![CovidSneeze](images/COVID_mask.png)
 
 ### **Social** 
 
@@ -217,12 +222,27 @@ Color is very commonly used to manipulate the audience in environmental data vis
   
 ![Rcolorbrewer color palettes](https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/figures/029-r-color-palettes-rcolorbrewer-palettes-colorblind-friendly-1.png){#fig-colorPalettes}
 
+How does [CalEnviroScreen](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) look when changing from a `Blues` colorPalette to `viridis` `magma`?
+
+::: {layout-ncol=2}
+
+![](images/BluesCalEJ.png)
+
+![](images/magmaCalEJ.png)
+
+:::
+
+
 Looking for more on color palettes?  Check out [Berkeley Advanced Media Institute](https://multimedia.journalism.berkeley.edu/tutorials/data-visualization-color/), this [Data Visualization Society](https://chartio.com/learn/charts/how-to-choose-colors-data-visualization/) post, or this [color harmony](https://medium.com/global-maksimum-data-information-technologies/color-harmony-in-data-visualization-2610f9dab390) blog post for marketing design.   
 
 ## Salience
 
 Visual salience is the distinctive perceptual measure of how much a visual stimuli stands out from its surrounding neighbors to grab an observer's attention.
 
+[Read this!](http://www.scholarpedia.org/article/Visual_salience)
+
 ::: {.callout-note appearance="important"}
-![Read this!](http://www.scholarpedia.org/article/Visual_salience) focusing mostly on the pictures to get an impression of visual salience.   
+Focus on the pictures and captions to get an impression of visual salience. We'll be using this as reading as a topic for discussion. 
 :::
+
+
