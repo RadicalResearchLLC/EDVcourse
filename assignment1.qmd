@@ -9,7 +9,7 @@ This includes the list of assignments for Unit 1
 #| tbl-cap: Assignments from Unit 1
 #| echo: false
 #| warning: false
-
+library(dplyr)
 library(kableExtra)
 
 
@@ -18,11 +18,14 @@ assignment <- c('Install R', 'Install RStudio', 'Visual Salience Reading',
 date <- c('Aug 31, 2022', 'Aug 31, 2022', 'Sept 2, 2022', 'Sept 2, 2022')
 source <- c('http://radicalresearch.llc/EDVcourse/tools.html',  'http://radicalresearch.llc/EDVcourse/tools.html',          'http://www.scholarpedia.org/article/Visual_salience', 'https://r-graphics.org/')
 
-unit1 <- data.frame(assignment, date, source) 
+unit1 <- data.frame(assignment, date, source)# %>% 
+  
 
-kableExtra::kable(unit1, 'html') %>% 
-  kable_material(c('striped', 'hover')) %>% 
-  column_spec(1, bold = TRUE) %>% 
-  column_spec(3, link = 'html')
+unit1 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>% 
+  select(-source) %>% 
+  kableExtra::kable('html', escape = FALSE) %>% 
+  kable_material_dark(c('condensed', 'hover')) %>% 
+  column_spec(1, width = '20em') #%>% 
+  #column_spec(3, link = 'html')
 
 ```
