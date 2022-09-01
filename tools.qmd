@@ -54,7 +54,7 @@ Of course all of these can be moved around to match how you like to set it up.  
 
 Select the **Tools** menu, followed by **Global Options** in the dropdown Tools menu. Navigate to appearance and you should be able to alter the color scheme to something more your style. My preferred style is **Merbivore Soft** as shown in #fig-Rstudio_good.  
 
-![goodRstudio](images/Rstudio_good.png){#fig-goodRStudio}
+![goodRstudio](images/Mervbivore.png){#fig-goodRStudio}
 
 ::: callout-tip
 ## Do I still need to download R?
