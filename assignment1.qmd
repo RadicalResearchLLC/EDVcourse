@@ -1,6 +1,28 @@
-# Assignment 1 {#sec-assignment1}
+# Assignments for Unit 1 {#sec-assignment1}
 
 ::: {.callout-note appearance="simple"}
-Time to make a weather map, app, or figure!
+This includes the list of assignments for Unit 1
 :::
 
+```{r}
+#| label: tbl-unit1assignments
+#| tbl-cap: Assignments from Unit 1
+#| echo: false
+#| warning: false
+
+library(kableExtra)
+
+
+assignment <- c('Install R', 'Install RStudio', 'Visual Salience Reading',
+          'R Graphics Cookbook - Preface and 1.1 through 1.5 in R Basics')
+date <- c('Aug 31, 2022', 'Aug 31, 2022', 'Sept 2, 2022', 'Sept 2, 2022')
+source <- c('http://radicalresearch.llc/EDVcourse/tools.html',  'http://radicalresearch.llc/EDVcourse/tools.html',          'http://www.scholarpedia.org/article/Visual_salience', 'https://r-graphics.org/')
+
+unit1 <- data.frame(assignment, date, source) 
+
+kableExtra::kable(unit1, 'html') %>% 
+  kable_material(c('striped', 'hover')) %>% 
+  column_spec(1, bold = TRUE) %>% 
+  column_spec(3, link = 'html')
+
+```

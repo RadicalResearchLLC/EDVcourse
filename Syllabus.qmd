@@ -4,6 +4,16 @@
 
 This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas).  
 
+## Course Materials
+
+Go [here](http://radicalresearch.llc/EDVcourse/) to see all course materials.
+
+The course materials are built using the [quarto](https://quarto.org/docs/guide) environment which is [R Markdown](https://rmarkdown.rstudio.com/) adjacent, but allows a user to embed functional code in R, Python, Julia, and/or Observable JS. 
+
+All code used is on [github](https://github.com/RadicalResearchLLC/EDVcourse)
+
+Any readings assigned will be emailed to students and/or posted to Box for download. Box will be linked within the course materials for assignments.
+
 ## Course Goals & Learning Objectives
 
 Upon successful completion of this course, students will 
@@ -30,7 +40,7 @@ In-person class time will include approximately 40% of time to devoted to lectur
 * Classroom participation during discussion sections
 * Classroom participation during coding sessions
 * Assigned reading (Tufte, news and peer-review articles, online books)
-* Assigned review of web tools (CalEnviroScren, EJScreen, EnviroAtlas)
+* Assigned review of web tools (CalEnviroScreen, EJScreen, EnviroAtlas)
 * Group coding projects
 * Class presentation on an environmental data visualization
 * Three individual projects displaying environmental data
@@ -84,6 +94,17 @@ kableExtra::kable(table.score)
 
 * Mondays 9 AM - 11 AM on [Pitzer Zoom](https://pitzer.zoom.us/j/2600893680) 
 * Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy 
+
+## Contact Info
+
+The best way to get a hold of me is email: michael_mccarthy@pitzer.edu
+You may also see emails from my business address: mikem@radicalresearch.llc
+
+## Course materials
+
+All course materials will be hosted on [github](https://github.com/RadicalResearchLLC/EDVcourse).
+
+Go [here](http://radicalresearch.llc/EDVcourse/) to see all course materials.
 
 ## COVID policy
 
