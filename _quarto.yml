@@ -33,9 +33,10 @@ bibliography: references.bib
 
 format:
   html:
-    code-fold: true
     theme: united
     toc: true
+    toc-depth: 4
+    
 
 
 

@@ -12,23 +12,23 @@ The Tidyverse framework for visualization is shown in @fig-TidyverseFramework
 
 ## Overview
 
-0. **Step 0** - [Install R and RStudio](http://radicalresearch.llc/EDVcourse/tools.html) - should have this done already
+0. **Step 0** - [Install R and RStudio](http://radicalresearch.llc/EDVcourse/tools.html) - This was last week's assignment.
 1. **Step 1 - Open RStudio **  
   A. Put in a header comment - who, when, what, where  
   B. Install key packages  
   C. Load key packages  
-2. **Step 2 - Acquire and/or Load Data**
-  A. Identify the `path` to the data 
-  B. Identify the data format
+2. **Step 2 - Acquire and/or Load Data**  
+  A. Identify the `path` to the data   
+  B. Identify the data format  
   C. Choose the _right_ function to load the data - go to _Step 1B_ and _1C_ again as needed
-  D. Write code to import the data
-  E. Run the code to import the data
-    i) Check for Error messages and warning messages in console; if failure, go back to _Step 2D_  
-    ii) Check to make sure data is loaded (look in `Environment` window)  
+  D. Write code to import the data  
+  E. Run the code to import the data  
+    i) Check for Error messages and warning messages in console; if failure, go back to _Step 2D_    
+    ii) Check to make sure data is loaded (look in `Environment` window)   
   F. Step 2F - Look at the data - did it import correctly  
     i) Check column headers  
     ii) Check data types  
-  G. Repeat Step 2 as needed for any other data required for visualization  
+  G. Repeat Step 2 as needed for any other data required for visualization    
 3. **Step 3 - Tidy the data** [Advanced data science](https://r4ds.had.co.nz/tidy-data.html) 
 4. **Step 4 - Visualize the data**  
   A. Choose the visualization type  
@@ -76,11 +76,12 @@ It is good coding practice to put a basic header on your script.
 
 Go to the text editor and type `#`.  Any line in an R script that starts with `#` is a comment and is not executable code. Lines starting with `#` will have a unique color.
 
-I usually add:
-* Name of project
-* Author(s) of project 
-* Month and Year created
-* Month and Year last modified
+I usually add:  
+
+* Name of project  
+* Author(s) of project   
+* Month and Year created  
+* Month and Year last modified  
 
 #### Install and load packages
 
@@ -89,8 +90,9 @@ Type the following code into the text editor. This will download and install the
 ```{r}
 #| label: setup
 #| echo: true
+#| eval: false
 
-#install.packages('tidyverse')
+install.packages('tidyverse')
 
 ```
 
@@ -135,13 +137,13 @@ This dataset is already reasonably tidy and so this step is not necessary for th
 
 The package `ggplot` is the most common graphics package within the `tidyverse` framework. It is extremely versatile, but requires an understanding of the grammar of graphics. `ggplot` is loaded as part of the `tidyverse` package.
 
-#### 4A. Choose the visualization type
+#### Choose the visualization type
 
 We'll be exploring point, line, and smoothed visualization types - `geom_point`, `geom_line`, 'geom_smooth`. In point plots, the individual data are shown as points.  In line plots, individual points are connected by lines.  In a smoothed plot, the points are usually shown with a curve attempting to fit the data to a model.
 
 There are many more types of visualizations (text, histogram, box, bar, heatmaps, density, jitter, polygons, maps, quantiles, rasters, and violins) available, and we'll explore the grammar for interesting ones in future classes. 
 
-#### 4B. Choose the visualization function
+#### Choose the visualization function
 
 * `ggplot()`
   + `geom_point()`
@@ -150,7 +152,7 @@ There are many more types of visualizations (text, histogram, box, bar, heatmaps
 
 We'll apply `ggplot()` for every visualization for now, and add at least one `geom` function.  We will then combine them to make fancier visualizations with overlays.
 
-#### 4C. Write the code to do a _basic_ visualization
+#### Write the code to do a _basic_ visualization
 
 Coding in the R tidyverse is a lot like writing a sentence, just in a foreign language that puts things in an order that may not be familiar.
 
@@ -158,7 +160,7 @@ Coding in the R tidyverse is a lot like writing a sentence, just in a foreign la
 * Add an object to apply the action to - this is usually the dataframe, but can be a list or another type of data object.
 * Add adjectives and adverbs to modify the action or the object
 
-@fig-basic shows a very basic example using `mpg` as our dataset, `ggplot` as our first action (i.e., make a figure), and `geom_point` as our category of visualization (with points).
+@fig-basic shows a very basic visualization.
 
 ```{r}
 #| label: fig-basic
@@ -170,15 +172,15 @@ ggplot(data = mpg) +
 
 ```
 
-This is our most basic point plot.  The x-axis shows engine displacement (Liters) for gasoline vehicles, and the y-axis shows highway driving fuel efficiency in miles per gallon.
+This is a basic point plot.  The x-axis shows engine displacement (Liters) for gasoline vehicles, and the y-axis shows highway driving fuel efficiency in miles per gallon.
 
 Three functions were used.  
 
-`ggplot()` - make a figure
-`geom_point()` - shows the data as points
-`aes()` - aes is an abbreviation for _aesthetics_; map these variables for display.
+* `ggplot()` - make a figure using `mpg` as the dataset  
+* `geom_point()` - shows the data as points  
+* `aes()` - aes is an abbreviation for _aesthetics_; map these variables for display  
 
-In the abstract, a code template for a basic graph is:.
+In the abstract, a code template for a basic graph is:
 
 ```{r}
 #| label: template
@@ -189,7 +191,7 @@ ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 
 ```
-@fig-line shows a basic line plot using `geom_line` instead of points. It is a visual abomination.
+@fig-line shows a basic line plot using `geom_line` instead of points. It is a visual abomination for this dataset.  We'll show why below.
 
 ```{r}
 #| label: fig-line
@@ -207,13 +209,14 @@ ggplot(data = mpg) +
 #| label: fig-smooth
 #| fig-cap: "Basic smooth visualization"
 #| echo: true
+#| warning: false
 
 ggplot(data = mpg) +
   geom_smooth(aes(x = displ, y = hwy))
 
 ```
 
-#### 4D. Improve the Visualization
+#### Improve the Visualization
 
 The basic visualization is in need of some improvement. First, let's explore how the dataset looks by adding the aesthetics of `color`, then `shape`.
 
@@ -236,6 +239,7 @@ Interesting!  The _2seater_ vehicle class gets better fuel efficiency then the S
 #| label: fig-shape
 #| fig-cap: "Basic shape visualization"
 #| echo: true
+
 
 ggplot(data = mpg) +
   geom_point(aes(x = displ, y = hwy, shape = class))
