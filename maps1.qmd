@@ -1,5 +1,54 @@
 # Maps {#sec-maps1}
 
 ::: {.callout-note appearance="simple"}
-Come back soon!
+Today we will be focusing on the practice of data visualization.
 :::
+
+R has multiple packages that enable geospatial data visualization. Today, we create 
+basic maps using the `sf` and `leaflet`.  `sf` stands for ![Simple Features](https://r-spatial.github.io/sf/articles/sf1.html). 
+
+As a reminder, when we first use a package, we need to install it locally.  Let's start by installing both packages.
+This only needs to be done once.
+
+```{r}
+#\ label: installation of leaflet and sf
+#\ warning: false
+#\ eval: false
+
+install.packages('sf')
+install.packages('leaflet')
+
+```
+
+Next, we load the packages to make sure they are available within the R environment.
+
+```{r}
+#\ label: installation of leaflet and sf
+#\ warning: false
+
+
+library(sf)
+library(leaflet)
+
+```
+
+So far, this should be very familiar to what we did last week.
+
+Now we'll import a test `sf`
+
+```{r}
+#\ label: NC dataset?
+#\ warning: false
+
+nc <- st_read(system.file("shape/nc.shp", package="sf"))
+
+```
+
+Let's
+
+```{r}
+
+library(tidyverse)
+
+
+```
