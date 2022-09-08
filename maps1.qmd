@@ -1,60 +1,451 @@
-# Maps {#sec-maps1}
+# Introduction to Spatial Visualization {#sec-maps1}
 
 ::: {.callout-note appearance="simple"}
-Today we will be focusing on the practice of data visualization.
+Today we will be focusing on the practice of geospatial data visualization.
 :::
 
 As a reminder, our framework for the workflow of data visualization is shown in @fig-TidyverseFramework
 
 ![Tidyverse](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
 
-## Geospatial Packages
+## Load and Install Packages
+
+As a warmup, let's load the `tidyverse`. Remember, you can check to make sure a package is loaded in your R session by checking on the _files, plots, and packages_ panel, clicking on the _Packages_ tab, and scrolling down to `tidyverse` to make sure it is checked.
+
+```{r}
+#| label: load tidyverse
+#| echo: true
+
+library(tidyverse)
+
+```
+
+### Geospatial Packages
 
 R has multiple packages that enable geospatial data visualization. Today, we create 
-basic maps using the `sf` and `leaflet`.  `sf` stands for ![Simple Features](https://r-spatial.github.io/sf/articles/sf1.html) which is an open-source geographic information systems data format that works pretty well with tidyverse. Leaflet is an open-source library for mobile-friendly interactive maps.  
+basic maps using the `sf` and `leaflet`.  `sf` stands for [`Simple Features`](https://r-spatial.github.io/sf/articles/sf1.html) which is an open-source geographic information systems data format that works pretty well with tidyverse. [`Leaflet`](https://rstudio.github.io/leaflet/) is an open-source library for mobile-friendly interactive maps. 
 
 As a reminder, when we first use a package, we need to install it locally.  Let's start by installing both packages. This only needs to be done once.
 
 ```{r}
-#\ label: installation of leaflet and sf
-#\ warning: false
-#\ eval: false
+#| label: installation of leaflet, sf
+#| echo: true
+#| eval: false
 
 install.packages('sf')
 install.packages('leaflet')
 
 ```
 
-Next, we load the packages to make sure they are available within the R environment. Add in our friend from last session - `tidyverse` 
+Next, we load the packages to make sure they are available within the R environment. 
 
 ```{r}
-#\ label: installation of leaflet and sf
-#\ warning: false
-
+#| label: load leaflet and sf packages
+#| warning: false
 
 library(sf)
 library(leaflet)
-library(tidyverse)
 
 ```
 
-So far, this should be pretty straightforward.  Installing and loading packages is easy.
+Installing and loading packages like a boss! 
 
-Now we'll import a test `sf`
+## Acquiring Data
+
+We are going to acquire two datasets for testing today. The first dataset is the `nc` shapefile dataset that should be installed as part of the `sf` package. Unlike `mpg`, thisdataset is not directly available in the global environment. 
+
+We also will import geospatial environmental data set for our test examples. We are going to use a curated version of the [CalEnviroscreen4.0](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) data.  The data for the full state of California can be acquired as a zipped esri shapefile  [.shp](https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40shpf2021shp.zip). I've hosted a smaller version just for SoCal on my gitHub repository for this analysis. Downloading, unzipping, and then importing files is a big part of data science. Unfortunately, it has been my experience that having 15 people all have the same directory and file structures on 15 different machines is fraught with peril.  I don't want to troubleshoot that for an hour in class, so I tried to make the EZ mode code below. 
+
+### North Carolina shapefile
+
+We will read the data in using the `sf` function `st_read` and the base R function `system.file`.
+
+`st_read()` is a specialized function that reads and loads in geospatial data files of various formats.
+`system_file()` is a function that checks for files that are within system directories that have been loaded as packages. It searches within the package directories on your computer.  
+
+Lastly, we assign the North Carolina data we're reading into a dataset using the `<-` operator. The `<-` operator tells R that the data we are loading should be placed into a dataset that we have named `nc`. In future functions, `nc` will access that underlying data within `nc`.
 
 ```{r}
-#\ label: NC dataset?
-#\ warning: false
+#| label: NC dataset
+#| warning: false
+#| echo: true
 
-nc <- st_read(system.file("shape/nc.shp", package="sf"))
+nc <- st_read(system.file("shape/nc.shp", package="sf")) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
 
 ```
 
-Let's
+We then use the `head()` function to print the first 5 rows of the `nc` dataset.
+
+::: {.callout-note appearance="simple"}
+Pro tip: Always look at the data after import. Importing data is fraught with peril.
+:::
 
 ```{r}
+#| label: check import using head()
+#| warning: false
+#| echo: true
 
-library(tidyverse)
+head(nc)
 
+```
+
+### Calenviroscreen4.0 geoJSON 
+
+The second dataset is hosted on the [github](https://github.com) repository where the class materials are version controlled. The code below names the internet URL where the data is stored as `URL.path`. If you go to the URL [link](https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON), you will see the raw .geoJSON formatted spatial data file. 
+
+Next, we apply the same `st_read()` function to read the geoJSON file. geoJSON is a common format for encoding geographic data structures, and `st_read()` natively knows how to read it in. There's also a reference coordinate transformation using `st_transform()` required to display this properly in `leaflet` in the [WGS84](https://gisgeography.com/wgs84-world-geodetic-system/) coordinate system. 
+
+This time, we've named the dataset `SoCalEJ`.  
+
+Finally, we use the `head()` function on our `SoCalEJ` dataset to look at the first 5 rows.
+
+```{r}
+#| label: California Enviroscreen 4.0 SoCal dataset
+#| warning: false
+#| echo: true
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+head(SoCalEJ)
+
+```
+
+::: {.callout-note appearance="simple"}
+Sometimes the data import messes up at the end of the dataset. A thorough scholar will use the `tail` function to check the bottom 5 rows as well.
+:::
+
+In future classes, we may dive into the perilous world of file structures and directories.  However, that is unfun, unrewarding, and gruesomely detail oriented, so we'll avoid it for now.  
+
+### Creating a New Geospatial Dataset
+
+In addition to importing data, sometimes we just to create our own dataset. Let's demonstrate how to create a very simple `data frame` in R for the latitude and longitude of a couple different locations we want to put on a map.
+
+I want to show the location of this classroom at the Redford Conservancy and the neighborhood where I live.
+
+I can use [Google Earth](https://earth.google.com/web/) or similar websites to get the latitude and longitude data. Latitude is North and South.  Longitude is East and West.
+
+* The [Redford Conservancy](https://www.pitzer.edu/redfordconservancy/) is at 34.1100576 N and -117.710074 W.
+* My zip code 92508 has a [centroid](https://en.wikipedia.org/wiki/Centroid) at 33.8895145 N and -117.319014 W.  
+
+The code below will create a `data frame` which is an R data structure that has rows and columns. A `data frame` is a generic data object that can store tabular data of many different types.  
+
+We'll use two base R functions to create the data frame, `c()` and `data.frame()`.  
+
+* `c()` - this function concatenates data. It is used to create a list.
+* 'data.frame()` - this function turns a list (or lists) into a data.frame type.  
+
+We assign latitude values to a variable named lat, and a longitude values to a variable named lng. We use `c()` because we have multiple values that we want to include. We combine them into the `locations` data.frame. Then we check it worked by typing `locations`.
+
+```{r}
+#| label: My very first lat-long dataset
+#| warning: false
+#| echo: true
+
+lat <- c(34.1100576, 33.8895145)
+lng <- c(-117.710074, -117.319014)
+
+locations <- data.frame(lat, lng) 
+locations
+```
+
+#### Exercise 1
+
+1. Find another location's latitude and longitude coordinates that you want to add to a map.
+2. Hack the code to add your location of interest to the two existing `locations` data.frame.
+3. Display the output of the `locations` data.frame to show that your code worked!
+
+## Visualize the Data - Geospatial Edition
+
+### Choose the visualization type
+
+We'll be exploring `leaflet()` maps for our visualizations. Leaflet has a number of in-built display functions for geospatial data that make things look really cool. I will note that `ggplot` can make maps too with `geom_sf()` and other functionality, but I prefer the leaflet tiles for interactive maps as a superior visualization tool.
+
+### Choose the visualization function
+
+* `leaflet()`
+  + `addTiles()`
+  + `addMarkers()`
+  + `addPolygons()`
+  + `addLegends()`
+  
+We'll apply `leaflet()` to every visualization for geospatial data today, and add at least one `add` function to display spatial information.  
+
+### Write the code for a _basic_ geospatial visualization
+
+`Leaflet` is a super cool package for making interactive maps with very few lines of code.  As before let's start with basics and then iterate.  
+
+Note that `Leaflet` has a different style and coding aesthetic than `ggplot`, so some of the syntax and grammar is a bit different. However, the steps are the same as for `ggplot`.    
+
+* Add a verb or two for an action - usually this is the function.
+* Add an object to apply the action to - this is usually the dataframe, but can be a list or another type of data object.
+* Add adjectives and adverbs to modify the action or the object
+
+#### Example 1 - Basic Tile Map 
+
+@fig-mapBasic shows the standard leaflet map with a minimal reproducible example. This map shows the whole world in a Mercator projection. The map is interactive, just like most of the maps you come across in standard apps and websites on the modern internet. You can zoom in and see the details of an area like Los Angeles, with all the annotation and standard roads, forests, city names, etc.
+
+The code is simply two lines with two actionable functions.
+
+* `leaflet()` - this function identifies the type of visualization. 
+* `addTiles()` - this function tells the leaflet map to display the default visualization 'tile'.  Tiles are the way geospatial data are rendered depending on the zoom level that makes it work for not displaying too much detail as you zoom out.
+
+Lastly, there is the pipe operator `%>%` which is introduced in the `magrittr` package which is part of the core tidyverse. These `magrittr` pipes are amazing. I cannot express my love for the `%>%` in words alone.  It allows existing data or information to be passed to the next line of code after some operation has been done on the data. The pipe operator says, 'take the output from this line of code, and now do this next thing'.  For now, take it on faith that this is the most useful operator in the tidyverse and will be littered throughout this course.    
+
+```{r}
+#| label: fig-mapBasic
+#| fig-cap: A very basic Leaflet map
+#| echo: true
+
+leaflet() %>% 
+  addTiles()
+
+```
+
+A map is useful by itself, but we have not added any _information_ to it. A map alone is not going to be useful as a visualization unless we add some data.  
+
+#### Example 2. Tile Map with Location Markers
+
+Remember that locations `data frame` we created earlier.  Let's add that to the map.
+
+`addMarkers()` is a useful function to add point data to a map.  
+
+@fig-Markers shows the map with my two locations on it added as markers. We added another line of code with a pipe operator to put the locations data on the map.
+
+```{r}
+#| label: fig-Markers
+#| fig-cap: Leaflet map with locations
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(data = locations)
+
+```
+
+Whoot! A map with locations! And now the spatial extent of the map defaults to just show an area that encompasses the markers in the locations dataset.  If your location that you added to the dataset happens to be outside California, your map will be zoomed way out compared to someone who only includes locations in SoCal.  
+
+::: {.callout-note appearance="simple"}
+I purposely made the column names lat and lng because then we don't have to assign those variables in the addMarkers call. If your columns are named something else (e.g., Lati or long), leaflet will need to be told that those are the correct columns to look for.    
+:::
+
+#### Example 3. North Carolina Counties on a Tile Map
+
+Going beyond point locations, geospatial data really shines when we display shapes.  We'll start by displaying the `nc` dataframe.
+
+`addPolygons()` is the function used to display polygons. 
+
+@fig-NC shows the North Carolina counties.
+
+```{r}
+#| label: fig-NC
+#| fig-cap: Leaflet map with North Carolina Counties
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc)
+
+```
+
+We have done it! 
+
+#### Exercise 2
+
+* Make a leaflet map with the SoCalEJ dataset. It should look like @fig-CalEJ.
+
+```{r}
+#| label: fig-CalEJ
+#| fig-cap: Leaflet map with Calenviroscreen 4.0
+#| echo: false
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = SoCalEJ)
+
+```
+
+### Improve the Visualization
+
+The basic visualization is in need of some improvement.  First let's explore colors, fillcolors, stroke, and opacity.
+
+Within the `addPolygons()` function, there are many options that can be modified to alter the output from the default settings. We won't cover all these options today.  
+
+* `color`
+* `weight`
+* `opacity`
+* `fillColor`
+* `fillOpacity`
+* `stroke`
+* `group`
+* `label`
+
+Let's iterate and make some improvements! 
+
+@fig-black shows what happens we just change the color from blue to black. Both the fill and line color are changed.
+
+```{r}
+#| label: fig-black 
+#| fig-cap: Leaflet map with North Carolina Counties and color changed to black
+#| echo: false
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc, color = 'black')
+
+```
+
+The lines are too heavy. Let's lower the `weight` - we'll let the color go back to blue to keep the example minimal.
+
+@fig-weight shows the result, which is a much cleaner look.
+
+```{r}
+#| label: fig-weight
+#| fig-cap: Leaflet map for North Carolina Counties with line weight changed to 1.
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc, weight = 1)
+
+```
+
+Much better!
+
+Within the North Carolina dataset are some numerical values by county. Let's use fillcolor the counties to indicate the values.
+
+Unfortunately, `leaflet` requires us to do a bit of coding on our color palette.  
+
+Functions that help define the color palette in `leaflet` are
+
+* `colorNumeric()` - a linear color scale
+* `colorQuantile()` - a color scale that makes sure the bin sizes are approximately equal
+* `colorFactor()` - a color scale that is good for categorical ('non-numeric') data
+
+This creates a numeric color palette for the `BIR79` category of data for North Carolina in a numeric and quantile format. I have chosen the `YlGn` palette from @fig-colorPalettes.    
+
+```{r}
+#| label: assign color palette for nc
+#| echo: true
+
+pal1 <- colorNumeric(palette = 'YlGn', domain = nc$BIR79)
+pal2 <- colorQuantile(palette = 'YlGn', domain = nc$BIR79, n = 5)
+
+```
+
+Now we see what those two palettes look like in the map.
+@fig-numeric shows the default numeric palette, but it is too faint with the background tiles.
+
+```{r}
+#| label: fig-numeric
+#| fig-cap: Leaflet map for North Carolina Counties with numeric palette for BIR79 and line weight = 1.
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc,
+              weight = 1,
+              fillColor = ~pal1(BIR79))
+
+```
+
+Increasing the `fillOpacity` to 0.8 will help us to see the data much better. Also, let's remove the lines completely by setting `stroke` to FALSE. @fig-Opacity shows 
+
+```{r}
+#| label: fig-Opacity 
+#| fig-cap: Leaflet map for North Carolina Counties with numeric palette for BIR79, increasing opacity, removing lines.
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc,
+              stroke = FALSE,
+              fillColor = ~pal1(BIR79),
+              fillOpacity = 0.8)
+
+```
+
+That has a much better pop and we can really see the county differences in the high and low population areas.  
+
+
+@fig-quantile shows the quantile binned palette _pal2_. Now the number of counties in each color bin is about the same, which helps to sort the differences among the lowest population counties.
+
+```{r}
+#| label: fig-quantile
+#| fig-cap: Leaflet map for North Carolina Counties with quantile palette for BIR79, opacity optimized, and lines removed.
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = nc, 
+              stroke = FALSE,
+              fillColor = ~pal2(BIR79),
+              fillOpacity = 0.8)
+
+```
+
+
+### Exercise 3
+
+1.  Select a different color palette from @fig-colorPalettes to replace 'YlGn' in _pal1_.
+2.  Generate a North Carolina map with your choice of color palette for the _BIR79_ category.  
+
+#### Adding a Legend
+
+The existing map is not bad, but the color scale is not self-explanatory. We need to add a legend so a user can understand the data scale.  
+
+`addLegend()` will provides that functionality.  
+
+@fig-legend shows the legend overlay with the map. Note that we need to either move the `data = nc` into the initial call to `leaflet()` or define it separately in both the `addPolygons` and `addLegend` functions. 
+
+The `addLegend` polygon require the inputs for `pal` and `values`. Defining the color palette _pal1_ and the values of the scale _~BIR79_ are required. The `title` is optional, but the scale doesn't make much sense without a description.    
+
+```{r}
+#| label: fig-legend
+#| fig-cap: Leaflet map for North Carolina Counties with numeric palette for BIR79, color legend, opacity optimized, and lines removed.
+#| echo: true
+
+leaflet(data = nc) %>% 
+  addTiles() %>% 
+  addPolygons(stroke = FALSE,
+              fillColor = ~pal1(BIR79),
+              fillOpacity = 0.8) %>% 
+  addLegend(pal = pal1, 
+            title = 'Births in 1979', 
+            values = ~BIR79)
+
+```
+
+#### Exercise 4
+
+1. Create a colorPalette for a SoCalEJ dataset variable. Choose **one** of the following numerical variables and a colorPalette from @fig-colorPalettes
+  + _Poverty_
+  + _Hispanic_
+  + _AfricanAm_
+  + _Ozone_
+  + _DieselPM_P_
+2. Create a map for the SoCalEJ dataset with census tracts color coded for your chosen category of the following categories:
+3. Add a Legend to the map
+
+That map might look like @fig-DPM. 
+
+```{r}
+#| label: fig-DPM
+#| fig-cap: Leaflet map for Diesel PM percentile in Southern California
+#| echo: false
+
+palDPM <- colorNumeric(palette = 'YlOrBr', domain = SoCalEJ$DieselPM_P, n = 5)
+
+leaflet(data = SoCalEJ) %>% 
+  addTiles() %>% 
+  setView(lat = 34, lng = -117.60, zoom = 9) %>% 
+  addPolygons(stroke = FALSE,
+              fillColor = ~palDPM(DieselPM_P),
+              fillOpacity = 0.8) %>% 
+  addLegend(pal = palDPM, 
+            title = 'Diesel Particulate Matter (%)', 
+            values = ~DieselPM_P)
 
 ```
