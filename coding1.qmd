@@ -248,7 +248,7 @@ ggplot(data = mpg) +
 
 Notice anything missing?  Our SUV class is gone because ggplot defaults to only allowing six individual shapes at a time. We can override this default.
 
-The last new thing I want to show is a `facet_wrap()` which will make this visualization much easier to interpret on a class basis. @fig-face shows how this works on our basic visualization by adding a line to our basic visualization.  
+The last new thing I want to show is a `facet_wrap()` which will make this visualization much easier to interpret on a class basis. @fig-facet shows how this works on our basic visualization by adding a line to our basic visualization.  
 
 ```{r}
 #| label: fig-facet

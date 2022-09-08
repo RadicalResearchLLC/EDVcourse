@@ -4,11 +4,16 @@
 Today we will be focusing on the practice of data visualization.
 :::
 
-R has multiple packages that enable geospatial data visualization. Today, we create 
-basic maps using the `sf` and `leaflet`.  `sf` stands for ![Simple Features](https://r-spatial.github.io/sf/articles/sf1.html). 
+As a reminder, our framework for the workflow of data visualization is shown in @fig-TidyverseFramework
 
-As a reminder, when we first use a package, we need to install it locally.  Let's start by installing both packages.
-This only needs to be done once.
+![Tidyverse](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
+
+## Geospatial Packages
+
+R has multiple packages that enable geospatial data visualization. Today, we create 
+basic maps using the `sf` and `leaflet`.  `sf` stands for ![Simple Features](https://r-spatial.github.io/sf/articles/sf1.html) which is an open-source geographic information systems data format that works pretty well with tidyverse. Leaflet is an open-source library for mobile-friendly interactive maps.  
+
+As a reminder, when we first use a package, we need to install it locally.  Let's start by installing both packages. This only needs to be done once.
 
 ```{r}
 #\ label: installation of leaflet and sf
@@ -20,7 +25,7 @@ install.packages('leaflet')
 
 ```
 
-Next, we load the packages to make sure they are available within the R environment.
+Next, we load the packages to make sure they are available within the R environment. Add in our friend from last session - `tidyverse` 
 
 ```{r}
 #\ label: installation of leaflet and sf
@@ -29,10 +34,11 @@ Next, we load the packages to make sure they are available within the R environm
 
 library(sf)
 library(leaflet)
+library(tidyverse)
 
 ```
 
-So far, this should be very familiar to what we did last week.
+So far, this should be pretty straightforward.  Installing and loading packages is easy.
 
 Now we'll import a test `sf`
 
