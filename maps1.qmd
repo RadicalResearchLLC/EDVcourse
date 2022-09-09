@@ -60,9 +60,9 @@ We also will import geospatial environmental data set for our test examples. We 
 
 We will read the data in using the `sf` function `st_read` and the base R function `system.file`.
 
-`st_read()` is a specialized function that reads and loads in geospatial data files of various formats.
-`system_file()` is a function that checks for files that are within system directories that have been loaded as packages. It searches within the package directories on your computer. 
-`st_transform()` is required to display the polygons properly in `leaflet` in the [WGS84](https://gisgeography.com/wgs84-world-geodetic-system/) coordinate reference system. 
+* `st_read()` is a specialized function that reads and loads in geospatial data files of various formats.  
+* `system_file()` is a function that checks for files that are within system directories that have been loaded as packages. It searches within the package directories on your computer.  
+* `st_transform()` is required to display the polygons properly in `leaflet` in the [WGS84](https://gisgeography.com/wgs84-world-geodetic-system/) coordinate reference system.  
 
 We assign the North Carolina data we're reading into a dataset using the `<-` operator. The `<-` operator tells R that the data we are loading should be placed into a dataset that we have named `nc`. In future functions, `nc` will access that underlying data within `nc`.
 
