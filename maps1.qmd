@@ -61,9 +61,12 @@ We also will import geospatial environmental data set for our test examples. We 
 We will read the data in using the `sf` function `st_read` and the base R function `system.file`.
 
 `st_read()` is a specialized function that reads and loads in geospatial data files of various formats.
-`system_file()` is a function that checks for files that are within system directories that have been loaded as packages. It searches within the package directories on your computer.  
+`system_file()` is a function that checks for files that are within system directories that have been loaded as packages. It searches within the package directories on your computer. 
+`st_transform()` is required to display the polygons properly in `leaflet` in the [WGS84](https://gisgeography.com/wgs84-world-geodetic-system/) coordinate reference system. 
 
-Lastly, we assign the North Carolina data we're reading into a dataset using the `<-` operator. The `<-` operator tells R that the data we are loading should be placed into a dataset that we have named `nc`. In future functions, `nc` will access that underlying data within `nc`.
+We assign the North Carolina data we're reading into a dataset using the `<-` operator. The `<-` operator tells R that the data we are loading should be placed into a dataset that we have named `nc`. In future functions, `nc` will access that underlying data within `nc`.
+
+Lastly, there is the pipe operator `%>%` which is introduced in the `magrittr` package which is part of the core tidyverse. These `magrittr` pipes are amazing. I cannot express my love for the `%>%` in words alone.  It allows existing data or information to be passed to the next line of code after some operation has been done on the data. The pipe operator says, 'take the output from this line of code, and now do this next thing'.  For now, take it on faith that this is the most useful operator in the tidyverse and will be littered throughout this course.    
 
 ```{r}
 #| label: NC dataset
@@ -94,7 +97,7 @@ head(nc)
 
 The second dataset is hosted on the [github](https://github.com) repository where the class materials are version controlled. The code below names the internet URL where the data is stored as `URL.path`. If you go to the URL [link](https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON), you will see the raw .geoJSON formatted spatial data file. 
 
-Next, we apply the same `st_read()` function to read the geoJSON file. geoJSON is a common format for encoding geographic data structures, and `st_read()` natively knows how to read it in. There's also a reference coordinate transformation using `st_transform()` required to display this properly in `leaflet` in the [WGS84](https://gisgeography.com/wgs84-world-geodetic-system/) coordinate system. 
+Next, we apply the same `st_read()` function to read the geoJSON file. geoJSON is a common format for encoding geographic data structures, and `st_read()` natively knows how to read it in. The `st_transform()` function again changes the polygons into the WGS84 coordinate reference system.  
 
 This time, we've named the dataset `SoCalEJ`.  
 
@@ -191,8 +194,6 @@ The code is simply two lines with two actionable functions.
 
 * `leaflet()` - this function identifies the type of visualization. 
 * `addTiles()` - this function tells the leaflet map to display the default visualization 'tile'.  Tiles are the way geospatial data are rendered depending on the zoom level that makes it work for not displaying too much detail as you zoom out.
-
-Lastly, there is the pipe operator `%>%` which is introduced in the `magrittr` package which is part of the core tidyverse. These `magrittr` pipes are amazing. I cannot express my love for the `%>%` in words alone.  It allows existing data or information to be passed to the next line of code after some operation has been done on the data. The pipe operator says, 'take the output from this line of code, and now do this next thing'.  For now, take it on faith that this is the most useful operator in the tidyverse and will be littered throughout this course.    
 
 ```{r}
 #| label: fig-mapBasic
