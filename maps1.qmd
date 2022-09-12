@@ -290,8 +290,8 @@ Let's iterate and make some improvements!
 ```{r}
 #| label: fig-black 
 #| fig-cap: Leaflet map with North Carolina Counties and color changed to black
-#| echo: false
-
+#| echo: true
+#| 
 leaflet() %>% 
   addTiles() %>% 
   addPolygons(data = nc, color = 'black')

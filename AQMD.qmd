@@ -6,11 +6,15 @@ South Coast AQMD presents the 8th Annual [Environmental Justice Conference](http
 
 ## Speakers
 
-* U.S. EPA Region 9 Administrator **Martha Guzman**
-* California Attorney General **Rob Bonta**
+* U.S. EPA Region 9 Administrator **Martha Guzman** - 
+* California Attorney General **Rob Bonta** - 9:10 AM
 
 ## Panels
 
-* AB 617 Community Air Protection Program: Lessons Learned
 * Community Air Monitoring
+
+Commercially available “low-cost” air quality sensors are accessible to the public and communities. This session will focus on “low-cost” air quality sensors, including how effective they are in measuring pollutants, real world costs, infrastructure needs and other challenges, and what can be learned from the data. Panelists are experts from South Coast AQMD, community leaders, and academics who have deployed “low-cost” air sensors.
+
 * Building the Road to a Zero-Emissions Future
+
+This panel will discuss zero-emission technologies for medium- and heavy-duty trucks and pathways/challenges to deploy zero emission technologies including infrastructure, cost, and workforce training.

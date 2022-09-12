@@ -46,3 +46,7 @@ library(janitor)
 
 Libraries have to be loaded each time you restart your R session. The current libraries loaded can be founded in the file manager panel under the `Packages` tab.
 
+### Color Resources
+
+Courtesy of Dalai - a [color palette cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)
+
