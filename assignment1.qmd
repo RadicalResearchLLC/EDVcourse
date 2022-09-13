@@ -15,10 +15,13 @@ library(kableExtra)
 
 assignment <- c('Install R', 'Install RStudio', 'Visual Salience Reading',
           'R Graphics Cookbook - Preface and 1.1 through 1.5 in R Basics',
-          'R for Data Science - 3. Data Visualization', 'Leaflet for R')
-due.Date <- c('Sept 2, 2022', 'Sept 2, 2022', 'Sept 7, 2022', 'Sept 7, 2022', 'Sept 9, 2022', 'Sept 14, 2022')
+          'R for Data Science - 3. Data Visualization', 'Leaflet for R',
+          'LA Times - Prof. Phillips - Warehouse Growth', 'Guardian - Maanvi Singh - Ontario Warehouses')
+due.Date <- c('Sept 2, 2022', 'Sept 2, 2022', 'Sept 7, 2022', 'Sept 7, 2022', 'Sept 9, 2022', 'Sept 14, 2022',
+              'Sept 16, 2022', 'Sept 16, 2022')
 source <- c('http://radicalresearch.llc/EDVcourse/tools.html',  'http://radicalresearch.llc/EDVcourse/tools.html',          'http://www.scholarpedia.org/article/Visual_salience', 'https://r-graphics.org/',
-            'https://r4ds.had.co.nz/data-visualisation.html', 'https://rstudio.github.io/leaflet/')
+            'https://r4ds.had.co.nz/data-visualisation.html', 'https://rstudio.github.io/leaflet/',
+            '', 'https://www.theguardian.com/us-news/2022/sep/13/ontario-california-amazon-warehouses')
 
 unit1 <- data.frame(assignment, due.Date, source)# %>% 
 
