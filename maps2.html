@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Environmental Data Visualization - 9&nbsp; Maps for Environmental Justice</title>
+<title>Environmental Data Visualization - 5&nbsp; Introduction to Spatial Visualization 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,8 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./syllabus.html" rel="next">
-<link href="./EJdata.html" rel="prev">
+<link href="./assignment1.html" rel="next">
+<link href="./AQMD.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Maps for Environmental Justice</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization 2</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -123,12 +186,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./maps1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization</span></a>
+  <a href="./maps1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization - 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></a>
+  <a href="./AQMD.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Environmental Justice Conference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></a>
   </div>
 </li>
       </ul>
@@ -143,27 +216,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./AQMD.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Environmental Justice Conference</span></a>
+  <a href="./EJtheory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environmental Justice - Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EJtheory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Environmental Justice - Theory</span></a>
+  <a href="./EJtools.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Environmental Justice - Tools</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EJtools.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environmental Justice - Tools</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./EJdata.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Environmental Justice - Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./maps2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Maps for Environmental Justice</span></a>
+  <a href="./EJdata.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Environmental Justice - Data</span></a>
   </div>
 </li>
       </ul>
@@ -203,14 +266,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-and-install-packages" id="toc-load-and-install-packages" class="nav-link active" data-scroll-target="#load-and-install-packages"><span class="toc-section-number">5.1</span>  Load and Install Packages</a></li>
+  <li><a href="#acquire-data" id="toc-acquire-data" class="nav-link" data-scroll-target="#acquire-data"><span class="toc-section-number">5.2</span>  Acquire Data</a>
+  <ul>
+  <li><a href="#create-a-locations-table" id="toc-create-a-locations-table" class="nav-link" data-scroll-target="#create-a-locations-table"><span class="toc-section-number">5.2.1</span>  Create a Locations Table</a></li>
+  </ul></li>
+  <li><a href="#visualize-the-data---geospatial-ggplot-edition" id="toc-visualize-the-data---geospatial-ggplot-edition" class="nav-link" data-scroll-target="#visualize-the-data---geospatial-ggplot-edition"><span class="toc-section-number">5.3</span>  Visualize the Data - Geospatial <code>ggplot</code> Edition</a>
+  <ul>
+  <li><a href="#visualization-functions" id="toc-visualization-functions" class="nav-link" data-scroll-target="#visualization-functions"><span class="toc-section-number">5.3.1</span>  Visualization functions</a></li>
+  <li><a href="#make-a-basic-visualization" id="toc-make-a-basic-visualization" class="nav-link" data-scroll-target="#make-a-basic-visualization"><span class="toc-section-number">5.3.2</span>  Make a basic visualization</a></li>
+  <li><a href="#improve-the-visualization" id="toc-improve-the-visualization" class="nav-link" data-scroll-target="#improve-the-visualization"><span class="toc-section-number">5.3.3</span>  Improve the Visualization</a>
+  <ul class="collapse">
+  <li><a href="#exercise---improve-the-socalej-visualization" id="toc-exercise---improve-the-socalej-visualization" class="nav-link" data-scroll-target="#exercise---improve-the-socalej-visualization"><span class="toc-section-number">5.3.3.1</span>  Exercise - Improve the SoCalEJ Visualization</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-maps2" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Maps for Environmental Justice</span></span></h1>
+<h1 class="title"><span id="sec-maps2" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization 2</span></span></h1>
 </div>
 
 
@@ -230,12 +312,349 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Under Construction. Come back soon!</p>
+<p>Today we will be focusing on the practice of geospatial data visualization.</p>
 </div>
+</div>
+</div>
+<p>Once again, my preferred framework for the workflow of data visualization is shown in <a href="#fig-TidyverseFramework">Figure&nbsp;<span>5.1</span></a></p>
+<div id="fig-TidyverseFramework" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: Tidyverse data visualization framework</figcaption><p></p>
+</figure>
+</div>
+<section id="load-and-install-packages" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="load-and-install-packages"><span class="header-section-number">5.1</span> Load and Install Packages</h2>
+<p>Load the <code>tidyverse</code> and <code>sf</code>. Today we will be making static maps in <code>ggplot</code> which is part of the <code>tidyverse</code> ecosystem. We need the <code>sf</code> package to load, transform, and display geospatial data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.8     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.1
+✔ readr   2.1.2     ✔ forcats 0.5.2
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="acquire-data" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="acquire-data"><span class="header-section-number">5.2</span> Acquire Data</h2>
+<p>Import the <code>nc</code> and <code>SoCalEJ</code> datasets again. Refer to <a href="maps1.html"><span>Chapter&nbsp;3</span></a> for details on functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">"shape/nc.shp"</span>, <span class="at">package=</span><span class="st">"sf"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `nc' from data source 
+  `C:\Users\ubers\AppData\Local\R\win-library\4.2\sf\shape\nc.shp' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 100 features and 14 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
+Geodetic CRS:  NAD27</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(nc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 14 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -79.07426 ymin: 33.88212 xmax: -76.28737 ymax: 35.01676
+CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
+     AREA PERIMETER CNTY_ CNTY_ID        NAME  FIPS FIPSNO CRESS_ID BIR74 SID74
+95  0.125     2.868  2156    2156    Carteret 37031  37031       16  2414     5
+96  0.225     2.107  2162    2162      Bladen 37017  37017        9  1782     8
+97  0.214     2.152  2185    2185      Pender 37141  37141       71  1228     4
+98  0.240     2.365  2232    2232    Columbus 37047  37047       24  3350    15
+99  0.042     0.999  2238    2238 New Hanover 37129  37129       65  5526    12
+100 0.212     2.024  2241    2241   Brunswick 37019  37019       10  2181     5
+    NWBIR74 BIR79 SID79 NWBIR79                       geometry
+95      341  3339     4     487 MULTIPOLYGON (((-77.14865 3...
+96      818  2052     5    1023 MULTIPOLYGON (((-78.26123 3...
+97      580  1602     3     763 MULTIPOLYGON (((-78.02565 3...
+98     1431  4144    17    1832 MULTIPOLYGON (((-78.65546 3...
+99     1633  6917     9    2100 MULTIPOLYGON (((-77.96045 3...
+100     659  2655     6     841 MULTIPOLYGON (((-78.65546 3...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>URL.path <span class="ot">&lt;-</span> <span class="st">'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>SoCalEJ <span class="ot">&lt;-</span> <span class="fu">st_read</span>(URL.path) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `CalEJ' from data source 
+  `https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON' 
+  using driver `GeoJSON'
+Simple feature collection with 3747 features and 66 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 97418.38 ymin: -577885.1 xmax: 539719.6 ymax: -236300
+Projected CRS: NAD83 / California Albers</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(SoCalEJ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 66 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -118.2062 ymin: 33.96317 xmax: -117.9014 ymax: 34.16102
+CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
+          Tract   ZIP      County    ApproxLoc TotPop19  CIscore CIscoreP
+3742 6037400602 91702 Los Angeles        Azusa     4250 32.63778 63.50227
+3743 6037430302 91016 Los Angeles     Monrovia     5339 17.12483 30.61019
+3744 6037430723 91007 Los Angeles      Arcadia     4365 13.84199 22.56682
+3745 6037431100 91016 Los Angeles     Monrovia     6758 39.69785 74.50832
+3746 6037533603 90201 Los Angeles         Bell     6986 62.93104 97.04992
+3747 6037534101 90201 Los Angeles Bell Gardens     2358 63.31505 97.22642
+          Ozone   OzoneP    PM2_5  PM2_5_P   DieselPM DieselPM_P Pesticide
+3742 0.06236471 88.69944 11.32762 58.23273 0.25141035   70.16801   0.00000
+3743 0.06236471 88.69944 11.87334 72.10952 0.03484052   12.43311   0.00000
+3744 0.05938691 79.98755 11.81607 70.24269 0.05856793   21.30678   0.00000
+3745 0.06133785 84.57996 11.89265 72.90604 0.52993389   90.91475   0.00000
+3746 0.04632538 46.99440 12.01973 79.45240 0.11636699   42.26509   0.00000
+3747 0.04716458 50.54138 12.02588 79.77598 0.89400714   97.51089  25.17289
+     PesticideP  Tox_Rel Tox_Rel_P   Traffic TrafficP DrinkWat DrinkWatP
+3742    0.00000 1128.208  66.72918  515.5913  22.0875 365.8082  37.91682
+3743    0.00000 1235.359  69.21730  471.5739  18.7625 570.8214  66.86649
+3744    0.00000 1324.937  70.43011 1003.0337  57.9875 667.6980  73.14850
+3745    0.00000 1575.716  74.35609 1560.1642  79.2625 497.7552  60.33471
+3746    0.00000 4435.870  91.04776 1071.6749  62.4000 639.0632  71.36256
+3747   67.58621 4409.633  90.89772 3653.6009  98.0750 514.1607  61.83340
+         Lead   Lead_P Cleanup  CleanupP GWThreat GWThreatP HazWaste HazWasteP
+3742 59.07638 64.54946    3.00 31.243001    46.85  89.10842    0.460  66.60490
+3743 71.04484 80.34026    1.40 19.914147     1.80  11.30666    0.320  52.64064
+3744 50.87304 52.71582    0.40  5.636432     5.00  30.88162    0.150  26.67108
+3745 54.59725 57.99622   43.50 94.438223    36.75  84.14411    1.885  92.15089
+3746 87.11610 94.82042   14.65 74.300112    17.05  63.42354    0.375  58.80874
+3747 90.85649 97.39130   20.35 82.232176    15.00  59.60485    1.110  86.60490
+     ImpWatBod ImpWatBodP SolWaste SolWasteP PollBurd PolBurdSc PolBurdP Asthma
+3742         0    0.00000     0.00  0.000000 46.49568  5.677114 60.95831  71.92
+3743         3   33.15834     0.25 11.592211 42.60985  5.202654 50.36714  48.33
+3744         0    0.00000     0.00  0.000000 39.69752  4.847059 42.02862  18.84
+3745         2   23.87652     8.75 87.949599 68.86648  8.408583 97.88426  46.90
+3746         7   66.73667     2.00 52.898053 61.77303  7.542474 93.03049  54.25
+3747         7   66.73667     0.20  9.667812 73.95742  9.030186 99.39017  52.71
+       AsthmaP LowBirtWt  LowBirWP Cardiovas CardiovasP Educatn  EducatP
+3742 79.847956      5.09 54.849885     17.02   76.34596    14.1 53.40420
+3743 53.950648      2.72  6.209905     11.22   39.70588     6.4 27.61326
+3744  7.614656      3.48 15.871183      7.73   11.83948     4.5 18.80537
+3745 51.856929      3.91 24.570182     10.87   36.88933    16.0 57.61832
+3746 62.076271      5.87 72.478830     23.93   96.68495    42.6 91.88813
+3747 59.895314      2.87  7.775212     23.15   95.45115    46.0 94.25462
+     Ling_Isol Ling_IsolP Poverty PovertyP Unempl   UnemplP HousBurd HousBurdP
+3742       5.6   40.89863    24.0 42.61307    2.9 15.838105     17.1  49.72117
+3743       7.0   48.72107    18.9 31.73367    1.2  1.900052     15.4  40.89987
+3744      13.6   73.09514    23.2 41.03015    4.0 30.882353     17.7  52.61090
+3745      10.1   62.24117    32.2 57.29899    6.2 59.383134     13.3  29.72117
+3746      21.7   88.69942    59.9 91.55779    9.1 82.326913     20.4  64.46134
+3747      11.7   67.72229    56.1 88.31658    9.3 83.224883     22.0  70.53232
+      PopChar PopCharSc PopCharP Child_10 Pop_10_64 Elderly65 Hispanic   White
+3742 55.42148  5.749009 58.49723  13.3882   74.3294   12.2824  68.1412 20.7294
+3743 31.73120  3.291557 22.33989   9.7584   72.7664   17.4752  28.7132 53.3995
+3744 27.52994  2.855750 16.50277  12.0504   77.4570   10.4926  10.9507 26.3918
+3745 45.51235  4.721110 43.58296  11.2607   81.4442    7.2951  58.2273 16.1438
+3746 80.43337  8.343554 92.93999  18.4226   72.1586    9.4188  91.4114  6.9425
+3747 67.59201  7.011489 76.72718  14.8431   75.0636   10.0933  91.0941  1.3147
+     AfricanAm NativeAm OtherMult Shape_Leng Shape_Area    AAPI
+3742    2.0941   0.3529    0.8941   6661.381  1537875.2  7.7882
+3743    1.5733   0.0000    7.1549   7166.131  1938015.8  9.1590
+3744    3.3677   0.0000    3.3677   3941.782   485563.0 55.9221
+3745    8.9967   0.0000    1.1098   8020.091  3015660.7 15.5223
+3746    0.6728   0.2577    0.7157   4949.117   811895.5  0.0000
+3747    1.9084   0.0000    0.0000   4420.127   509871.8  5.6828
+                           geometry
+3742 POLYGON ((-117.9024 34.1437...
+3743 POLYGON ((-117.9917 34.1565...
+3744 POLYGON ((-118.0496 34.1316...
+3745 POLYGON ((-117.9987 34.1459...
+3746 POLYGON ((-118.1874 33.9744...
+3747 POLYGON ((-118.1636 33.9750...</code></pre>
+</div>
+</div>
+<section id="create-a-locations-table" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="create-a-locations-table"><span class="header-section-number">5.2.1</span> Create a Locations Table</h3>
+<p>I want to show the location of this classroom and the neighborhood where I live. Let’s add locations again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">34.1100576</span>, <span class="fl">33.8895145</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lng <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">117.710074</span>, <span class="sc">-</span><span class="fl">117.319014</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>locations <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(lat, lng) </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       lat       lng
+1 34.11006 -117.7101
+2 33.88951 -117.3190</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="visualize-the-data---geospatial-ggplot-edition" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="visualize-the-data---geospatial-ggplot-edition"><span class="header-section-number">5.3</span> Visualize the Data - Geospatial <code>ggplot</code> Edition</h2>
+<p>While the tidyverse doesn’t have all the features of leaflet, it can be a quick way to visualize geospatial data for static maps and there are times when adding a static <code>ggplot</code> map is sufficient and actually preferred to the more detailed <code>leaflet</code> maps.</p>
+<p>Let’s do a few example <code>ggplot</code> maps.</p>
+<section id="visualization-functions" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="visualization-functions"><span class="header-section-number">5.3.1</span> Visualization functions</h3>
+<ul>
+<li><code>ggplot()</code>
+<ul>
+<li><code>geom_sf()</code> - display <code>sf</code> spatial data</li>
+<li><code>theme_bw()</code> - a cleaner background and visualization than default gray background for <code>ggplot</code></li>
+<li><code>theme_min()</code> - minimalist theme</li>
+</ul></li>
+</ul>
+</section>
+<section id="make-a-basic-visualization" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="make-a-basic-visualization"><span class="header-section-number">5.3.2</span> Make a basic visualization</h3>
+<p>Start with the North Carolina data and make a basic <code>ggplot</code> and <code>geom_sf</code> map as shown in <a href="#fig-ggBasic">Figure&nbsp;<span>5.2</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nc) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-ggBasic" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-ggBasic-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.2: ggplot map for North Carolina counties</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that <code>ggplot</code> uses <code>+</code> rather than the <code>magrittr %&gt;%</code> for connecting lines of code.</p>
+<p>In contrast to the <code>leaflet</code> map, the ggplot defaults to showing the x- and y-axis coordinates (latitude and longitude), shows guidelines, and only draws the counties in the dataset, rather than defaulting to showing an interactive map.</p>
+<p><a href="#fig-ggSoCal">Figure&nbsp;<span>5.3</span></a> shows the same style of map replacing <code>nc</code> with <code>SoCalEJ</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> SoCalEJ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-ggSoCal" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-ggSoCal-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.3: ggplot map for census tracts in Inland SoCal counties</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="improve-the-visualization" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="improve-the-visualization"><span class="header-section-number">5.3.3</span> Improve the Visualization</h3>
+<p>We have many options to improve a ‘ggplot’ visualization. Let’s start by cleaning up the background using <code>theme_bw()</code>. `theme_bw() changes the background from gray to a cleaner black-white style as shown in <a href="#fig-ggTheme">Figure&nbsp;<span>5.4</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-ggTheme" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-ggTheme-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.4: ggplot map for North Carolina counties using theme_bw()</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can apply a minimalist aesthetic by choosing <code>theme_minimal()</code> as shown in <a href="#fig-ggMinimal">Figure&nbsp;<span>5.5</span></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-ggMinimal" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-ggMinimal-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.5: ggplot map for North Carolina counties using theme_bw()</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s add colors in a ggplot way.</p>
+<p>Use <code>aes(fill = &lt;VARIABLE NAME&gt;)</code> to assign a category to color the counties by. The color palette to fill with is selected in <code>scale_fill_&lt;TYPE&gt;</code> where TYPE can be any of the following categories</p>
+<ul>
+<li>binned</li>
+<li>brewer</li>
+<li>continuous</li>
+<li>date or datetime</li>
+<li>discrete</li>
+<li>fermenter</li>
+<li>viridis</li>
+</ul>
+<p>First let’s use the default palette for <strong>BIR79</strong> to show the county birthrates in 1979. Adding <code>fill = BIR79</code> to the <code>aes()</code> defaults to the <em>Blues</em> palette. <span class="quarto-unresolved-ref">?fig-ggFill</span> shows the result of adding a fill color scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggFill</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="maps2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let’s change that to a viridis color scale. The function <code>scale_fill_viridis_c()</code> adds a fancier color-blind viridis palette in a continuous scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggFill</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="maps2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also add other geoms, like points or labels to this map. Let’s try to label the counties.</p>
+<p>The <code>nc</code> dataset has a variable called <em>NAME</em> for the county names. <span class="quarto-unresolved-ref">?fig-ggNames</span> shows the figure when we add the county names using the function <code>geom_sf_text()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggNames</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nc) <span class="sc">+</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">'white'</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+give correct results for longitude/latitude data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="maps2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There is a lot going on in that function. I made the text white <em>color = ‘white’</em>, the size of the font 1.5 <em>size = 1.5</em>, and added the label aesthetic with <em>aes(label = NAME)</em>. If you remove the size or the color, you can see why those alterations were made.</p>
+<section id="exercise---improve-the-socalej-visualization" class="level4" data-number="5.3.3.1">
+<h4 data-number="5.3.3.1" class="anchored" data-anchor-id="exercise---improve-the-socalej-visualization"><span class="header-section-number">5.3.3.1</span> Exercise - Improve the SoCalEJ Visualization</h4>
+<ol type="1">
+<li>Add a different <code>theme</code> from one of the <a href="https://ggplot2-book.org/polishing.html">theme options</a></li>
+<li>Show a variable (categorical, continuous, or quantile) using a fill option.</li>
+<li>Add two or more SoCal locations to the map using <code>geom_point</code> and your locations table. If that is easy, try increasing the salience of the points through size, color, or shape modifications to that layer.</li>
+</ol>
+<p><a href="#fig-ggSoCal">Figure&nbsp;<span>5.3</span></a> shows a potential example of what that might look like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggSoCal</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for SoCal </span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> SoCalEJ, <span class="fu">aes</span>(<span class="at">fill =</span> DieselPM_P)) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> locations,  <span class="fu">aes</span>(<span class="at">x =</span> lng, <span class="at">y =</span> lat), <span class="at">color =</span> <span class="st">'orange'</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">'A'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="maps2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -338,13 +757,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./EJdata.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Environmental Justice - Data</span></span>
+      <a href="./AQMD.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Environmental Justice Conference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./syllabus.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Course Syllabus</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./assignment1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
