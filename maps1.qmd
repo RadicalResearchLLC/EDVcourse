@@ -1,4 +1,4 @@
-# Introduction to Spatial Visualization {#sec-maps1}
+# Introduction to Spatial Visualization - 1 {#sec-maps1}
 
 ::: {.callout-note appearance="simple"}
 Today we will be focusing on the practice of geospatial data visualization.
@@ -450,3 +450,8 @@ leaflet(data = SoCalEJ) %>%
             values = ~DieselPM_P)
 
 ```
+
+
+
+
+

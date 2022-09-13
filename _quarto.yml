@@ -15,14 +15,14 @@ book:
         - information.qmd
         - coding1.qmd
         - maps1.qmd
+        - AQMD.qmd
+        - maps2.qmd
         - assignment1.qmd
     - part: EJ.qmd
       chapters:
-        - AQMD.qmd
         - EJtheory.qmd
         - EJtools.qmd
         - EJdata.qmd
-        - maps2.qmd
   appendices: 
     - syllabus.qmd  
     - tools.qmd
