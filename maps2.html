@@ -580,51 +580,54 @@ CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
 <li>fermenter</li>
 <li>viridis</li>
 </ul>
-<p>First let’s use the default palette for <strong>BIR79</strong> to show the county birthrates in 1979. Adding <code>fill = BIR79</code> to the <code>aes()</code> defaults to the <em>Blues</em> palette. <span class="quarto-unresolved-ref">?fig-ggFill</span> shows the result of adding a fill color scale.</p>
+<p>First let’s use the default palette for <strong>BIR79</strong> to show the county birthrates in 1979. Adding <code>fill = BIR79</code> to the <code>aes()</code> defaults to the <em>Blues</em> palette. <a href="#fig-countyFill">Figure&nbsp;<span>5.6</span></a> shows the result of adding a fill color scale.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggFill</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="maps2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div id="fig-countyFill" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-countyFill-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.6: ggplot map for North Carolina counties using theme_bw() with fill</figcaption><p></p>
+</figure>
 </div>
 </div>
-<p>Let’s change that to a viridis color scale. The function <code>scale_fill_viridis_c()</code> adds a fancier color-blind viridis palette in a continuous scale.</p>
+</div>
+<p>Let’s change that to a viridis color scale. The function <code>scale_fill_viridis_c()</code> adds a fancier color-blind viridis palette in a continuous scale. <a href="#fig-viridis">Figure&nbsp;<span>5.7</span></a> shows this color scale option.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggFill</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc, <span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="maps2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div id="fig-viridis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-viridis-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.7: ggplot map for North Carolina counties using theme_bw() with viridis</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We can also add other geoms, like points or labels to this map. Let’s try to label the counties.</p>
-<p>The <code>nc</code> dataset has a variable called <em>NAME</em> for the county names. <span class="quarto-unresolved-ref">?fig-ggNames</span> shows the figure when we add the county names using the function <code>geom_sf_text()</code>.</p>
+<p>The <code>nc</code> dataset has a variable called <em>NAME</em> for the county names. <a href="#fig-wNames">Figure&nbsp;<span>5.8</span></a> shows the figure when we add the county names using the function <code>geom_sf_text()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggNames</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for North Carolina counties using theme_bw()</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nc) <span class="sc">+</span> </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">'white'</span>) <span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> nc) <span class="sc">+</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> BIR79)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> NAME), <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">'white'</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
 give correct results for longitude/latitude data</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="maps2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div id="fig-wNames" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-wNames-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.8: ggplot map for North Carolina counties with names overlaid</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <p>There is a lot going on in that function. I made the text white <em>color = ‘white’</em>, the size of the font 1.5 <em>size = 1.5</em>, and added the label aesthetic with <em>aes(label = NAME)</em>. If you remove the size or the color, you can see why those alterations were made.</p>
@@ -635,19 +638,15 @@ give correct results for longitude/latitude data</code></pre>
 <li>Show a variable (categorical, continuous, or quantile) using a fill option.</li>
 <li>Add two or more SoCal locations to the map using <code>geom_point</code> and your locations table. If that is easy, try increasing the salience of the points through size, color, or shape modifications to that layer.</li>
 </ol>
-<p><a href="#fig-ggSoCal">Figure&nbsp;<span>5.3</span></a> shows a potential example of what that might look like.</p>
+<p><a href="#fig-diesel">Figure&nbsp;<span>5.9</span></a> shows a potential example of what that might look like.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggSoCal</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: ggplot map for SoCal </span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> SoCalEJ, <span class="fu">aes</span>(<span class="at">fill =</span> DieselPM_P)) <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> locations,  <span class="fu">aes</span>(<span class="at">x =</span> lng, <span class="at">y =</span> lat), <span class="at">color =</span> <span class="st">'orange'</span>) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">'A'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="maps2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div id="fig-diesel" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-diesel-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.9: ggplot map for SoCal Diesel PM Percentile</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 
