@@ -152,12 +152,11 @@ The color palette to fill with is selected in `scale_fill_<TYPE>` where TYPE can
 * fermenter
 * viridis
 
-First let's use the default palette for **BIR79** to show the county birthrates in 1979. Adding `fill = BIR79` to the `aes()` defaults to the _Blues_ palette. @fig-ggFill shows the result of adding a fill color scale. 
+First let's use the default palette for **BIR79** to show the county birthrates in 1979. Adding `fill = BIR79` to the `aes()` defaults to the _Blues_ palette. @fig-countyFill shows the result of adding a fill color scale. 
 
 ```{r}
-
-#| label: fig-ggFill
-#| fig-cap: ggplot map for North Carolina counties using theme_bw()
+#| label: fig-countyFill
+#| fig-cap: ggplot map for North Carolina counties using theme_bw() with fill
 #| echo: true
 
 ggplot() + 
@@ -165,12 +164,11 @@ ggplot() +
   theme_bw() 
 
 ```
-Let's change that to a viridis color scale. The function `scale_fill_viridis_c()` adds a fancier color-blind viridis palette in a continuous scale.  
+Let's change that to a viridis color scale. The function `scale_fill_viridis_c()` adds a fancier color-blind viridis palette in a continuous scale. @fig-viridis shows this color scale option.
 
 ```{r}
-
-#| label: fig-ggFill
-#| fig-cap: ggplot map for North Carolina counties using theme_bw()
+#| label: fig-viridis
+#| fig-cap: ggplot map for North Carolina counties using theme_bw() with viridis
 #| echo: true
 
 ggplot() + 
@@ -181,14 +179,13 @@ ggplot() +
 ```
 We can also add other geoms, like points or labels to this map.  Let's try to label the counties.
 
-The `nc` dataset has a variable called _NAME_ for the county names. @fig-ggNames shows the figure when we add the
+The `nc` dataset has a variable called _NAME_ for the county names. @fig-wNames shows the figure when we add the
 county names using the function `geom_sf_text()`.  
 
 
 ```{r}
-
-#| label: fig-ggNames
-#| fig-cap: ggplot map for North Carolina counties using theme_bw()
+#| label: fig-wNames
+#| fig-cap: ggplot map for North Carolina counties with names overlaid
 #| echo: true
 
 ggplot(data = nc) + 
@@ -206,12 +203,11 @@ There is a lot going on in that function. I made the text white _color = 'white'
 2. Show a variable (categorical, continuous, or quantile) using a fill option.
 3. Add two or more SoCal locations to the map using `geom_point` and your locations table. If that is easy, try increasing the salience of the points through size, color, or shape modifications to that layer.  
 
-@fig-ggSoCal shows a potential example of what that might look like.
+@fig-diesel shows a potential example of what that might look like.
 
 ```{r}
-
-#| label: fig-ggSoCal
-#| fig-cap: ggplot map for SoCal 
+#| label: fig-diesel
+#| fig-cap: ggplot map for SoCal Diesel PM Percentile
 #| echo: false
 
 ggplot() + 
