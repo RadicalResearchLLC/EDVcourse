@@ -33,3 +33,17 @@ unit1 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>%
   #column_spec(3, link = 'html')
 
 ```
+
+## Graded Assignment - Visualization Critique Paper
+
+Choose a environmental data visualization. This can include static figures, interactive graphics, infographics, apps, videos, animations, etc. Please get approval from Mike if you are choosing something that may not meet a standard definition of an environmental data visualization.  
+
+Write a two-page paper (12-point font or less) describing the visualization and salient features that you think are interesting and noteworthy. Include a picture or link to your chosen visualization (does not count towards 2-page minimum). In your critique, please include ten individual points that fit into at least one of these categories. Include at least 3 of these categories in your paper.
+
+1. Things that you like, or think are done well
+2. Things that you dislike, or think are done poorly
+3. Improvements you would make to the visualization (can be additions or subtractions from features in the visualization)
+4. Features that provide interesting structure to the data and make it more informative
+5. Features that you find aid in communicating knowledge or help **tell the story**.  
+
+Assignment is due September 28th, 2022 at the beginning of class.  Assignments can be emailed or physically turned in. This assignment is worth 100 points. Spelling, grammar, and sentence structure will be a minor component of the score (~10 points).    

@@ -218,3 +218,23 @@ ggplot() +
 
 ```
 
+It is really hard to see the details here.  Let's learn one last trick to zoom in on a `ggplot` to adjust the axes.
+The `scale_x_continuous()` and `scale_y_continuous()` functions allow us to set different axis limits.
+@fig-zoomyDiesel shows the 
+
+```{r}
+#| label: fig-zoomyDiesel
+#| fig-cap: ggplot map for SoCal Diesel PM Percentile zoomed into Claremont and Ontario.
+#| echo: true
+
+ggplot() + 
+  geom_sf(data = SoCalEJ, aes(fill = DieselPM_P)) +
+  geom_point(data = locations,  aes(x = lng, y = lat), color = 'orange') +
+  theme_bw() +
+  scale_fill_viridis_c(option = 'A', direction = -1) +
+  scale_x_continuous(limits = c(-118, -117)) +
+  scale_y_continuous(limits = c(33.7, 34.2))
+
+```
+
+```

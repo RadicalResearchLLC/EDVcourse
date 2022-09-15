@@ -287,7 +287,7 @@ Let's iterate and make some improvements!
 
 @fig-black shows what happens we just change the color from blue to black. Both the fill and line color are changed.
 
-```{r}
+```{r} 
 #| label: fig-black 
 #| fig-cap: Leaflet map with North Carolina Counties and color changed to black
 #| echo: true
