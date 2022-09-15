@@ -649,6 +649,25 @@ give correct results for longitude/latitude data</code></pre>
 </div>
 </div>
 </div>
+<p>It is really hard to see the details here. Let’s learn one last trick to zoom in on a <code>ggplot</code> to adjust the axes. The <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code> functions allow us to set different axis limits. <a href="#fig-zoomyDiesel">Figure&nbsp;<span>5.10</span></a> shows the</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> SoCalEJ, <span class="fu">aes</span>(<span class="at">fill =</span> DieselPM_P)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> locations,  <span class="fu">aes</span>(<span class="at">x =</span> lng, <span class="at">y =</span> lat), <span class="at">color =</span> <span class="st">'orange'</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">'A'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">118</span>, <span class="sc">-</span><span class="dv">117</span>)) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">33.7</span>, <span class="fl">34.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-zoomyDiesel" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps2_files/figure-html/fig-zoomyDiesel-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.10: ggplot map for SoCal Diesel PM Percentile zoomed into Claremont and Ontario.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>```</p>
 
 
 </section>
