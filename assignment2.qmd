@@ -3,4 +3,25 @@
 ::: {.callout-note appearance="simple"}
 This includes the list of assignments for Unit 2 - Environmental Justice
 :::
-  
+
+```{r}
+#| label: tbl-unit2assignments
+#| tbl-cap: Assignments from Unit 2
+#| echo: false
+#| warning: false
+library(dplyr)
+library(kableExtra)
+
+assignment <- c('Wiki entry on Environmental Justice')
+due.Date <- c('Sept 21, 2022')
+source <- c('https://en.wikipedia.org/wiki/Environmental_justice')
+
+unit2 <- data.frame(assignment, due.Date, source)# %>% 
+
+unit2 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>% 
+  select(-source) %>% 
+  kableExtra::kable('html', escape = FALSE) %>% 
+  kable_material_dark(c('condensed', 'hover')) %>% 
+  column_spec(1, width = '20em') #%>
+
+```
