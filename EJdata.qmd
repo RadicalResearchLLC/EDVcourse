@@ -1,4 +1,4 @@
-# Environmental Justice - Data {#sec-EJdata}
+# EJ - Data {#sec-EJdata}
 
 ::: {.callout-note appearance="simple"}
 Under Construction. Come back soon! 
