@@ -23,6 +23,8 @@ book:
         - EJtheory.qmd
         - EJtools.qmd
         - EJdata.qmd
+        - CCAEJ.qmd
+        - assignment2.qmd
   appendices: 
     - syllabus.qmd  
     - tools.qmd
