@@ -136,10 +136,11 @@ Make a facet plot to show many indicator maps centered around Pitzer College as 
 #| warning: false
 
 ggplot(data = SoCal_SocioEc, aes(fill = percent)) +
-  geom_sf(size = 0) +
+  geom_sf(color = 'gray60', size = 0) +
   theme_minimal() +
   facet_wrap(~indicator, nrow = 3) +
-  scale_fill_viridis_c(option = 'A', direction = -1, alpha = 0.8) +
+  #scale_fill_viridis_c(option = 'F', direction = -1, alpha = 0.8) +
+  scale_fill_gradient2(low = 'white', mid = 'grey70', high = '#720000', midpoint = 65) +
   scale_x_continuous(limits = c(-117.9, -117.5), breaks = c(-117.85, -117.7, -117.55)) +
   scale_y_continuous(limits = c(34.0, 34.15))
 
