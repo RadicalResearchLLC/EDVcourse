@@ -131,6 +131,7 @@ Make a facet plot to show many indicator maps centered around Pitzer College as 
 
 ```{r}
 #| label: fig-facetEJMap
+#| fig-cap: Small multiples map of socioeconomic indicators from CalEnviroScreen
 #| echo: true
 #| warning: false
 
