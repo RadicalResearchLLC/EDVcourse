@@ -460,17 +460,18 @@ Projected CRS: NAD83 / California Albers</code></pre>
 <p>Make a facet plot to show many indicator maps centered around Pitzer College as shown in <a href="#fig-facetEJMap">Figure&nbsp;<span>7.5</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SoCal_SocioEc, <span class="fu">aes</span>(<span class="at">fill =</span> percent)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">size =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="st">'gray60'</span>, <span class="at">size =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>indicator, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">'A'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">117.9</span>, <span class="sc">-</span><span class="fl">117.5</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">117.85</span>, <span class="sc">-</span><span class="fl">117.7</span>, <span class="sc">-</span><span class="fl">117.55</span>)) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">34.0</span>, <span class="fl">34.15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_fill_viridis_c(option = 'F', direction = -1, alpha = 0.8) +</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">'white'</span>, <span class="at">mid =</span> <span class="st">'grey70'</span>, <span class="at">high =</span> <span class="st">'#720000'</span>, <span class="at">midpoint =</span> <span class="dv">65</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">117.9</span>, <span class="sc">-</span><span class="fl">117.5</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">117.85</span>, <span class="sc">-</span><span class="fl">117.7</span>, <span class="sc">-</span><span class="fl">117.55</span>)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">34.0</span>, <span class="fl">34.15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facetEJMap" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="EJtheory_files/figure-html/fig-facetEJMap-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.5: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.5: Small multiples map of socioeconomic indicators from CalEnviroScreen</figcaption><p></p>
 </figure>
 </div>
 </div>
