@@ -77,7 +77,7 @@ Let's do a few example `ggplot` maps.
 * `ggplot()`
   + `geom_sf()` - display `sf` spatial data 
   + `theme_bw()` - a cleaner background and visualization than default gray background for `ggplot`
-  + `theme_min()` - minimalist theme
+  + `theme_minimal()` - minimalist theme
   
 ### Make a basic visualization
 
@@ -113,7 +113,7 @@ ggplot() +
 
 ### Improve the Visualization
 
-We have many options to improve a 'ggplot' visualization.  Let's start by cleaning up the background using `theme_bw()`. `theme_bw() changes the background from gray to a cleaner black-white style as shown in @fig-ggTheme.
+We have many options to improve a `ggplot` visualization.  Let's start by cleaning up the background using `theme_bw()`. `theme_bw()` changes the background from gray to a cleaner black-white style as shown in @fig-ggTheme.
 
 ```{r}
 #| label: fig-ggTheme
