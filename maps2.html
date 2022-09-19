@@ -514,7 +514,7 @@ CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
 <ul>
 <li><code>geom_sf()</code> - display <code>sf</code> spatial data</li>
 <li><code>theme_bw()</code> - a cleaner background and visualization than default gray background for <code>ggplot</code></li>
-<li><code>theme_min()</code> - minimalist theme</li>
+<li><code>theme_minimal()</code> - minimalist theme</li>
 </ul></li>
 </ul>
 </section>
@@ -551,7 +551,7 @@ CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
 </section>
 <section id="improve-the-visualization" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="improve-the-visualization"><span class="header-section-number">5.3.3</span> Improve the Visualization</h3>
-<p>We have many options to improve a ‘ggplot’ visualization. Let’s start by cleaning up the background using <code>theme_bw()</code>. `theme_bw() changes the background from gray to a cleaner black-white style as shown in <a href="#fig-ggTheme">Figure&nbsp;<span>5.4</span></a>.</p>
+<p>We have many options to improve a <code>ggplot</code> visualization. Let’s start by cleaning up the background using <code>theme_bw()</code>. <code>theme_bw()</code> changes the background from gray to a cleaner black-white style as shown in <a href="#fig-ggTheme">Figure&nbsp;<span>5.4</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nc) <span class="sc">+</span></span>
