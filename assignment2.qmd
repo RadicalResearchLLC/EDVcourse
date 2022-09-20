@@ -12,9 +12,12 @@ This includes the list of assignments for Unit 2 - Environmental Justice
 library(dplyr)
 library(kableExtra)
 
-assignment <- c('Wiki entry on Environmental Justice')
-due.Date <- c('Sept 21, 2022')
-source <- c('https://en.wikipedia.org/wiki/Environmental_justice')
+assignment <- c('Wiki entry on Environmental Justice', 'EJScreen Exploration',
+                'CalEnviroScreen Exploration', 'Bullard et al., 2013 - Living on the Frontline of Environmental Assault')
+due.Date <- c('Sept 21, 2022', 'Sept 23, 2022', 'Sept 23, 2022', 'Sept 28, 2022')
+source <- c('https://en.wikipedia.org/wiki/Environmental_justice',
+            'https://ejscreen.epa.gov/mapper/',     'https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40',
+            '')
 
 unit2 <- data.frame(assignment, due.Date, source)# %>% 
 

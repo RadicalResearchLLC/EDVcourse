@@ -1,7 +1,7 @@
-# EJ - Theory {#sec-EJtheory}
+# EJ - Overview {#sec-EJtheory}
 
 ::: {.callout-note appearance="simple"}
-Today we will focus on the definition(s), theory, and visualization of Environmental Justice
+Today we will focus on the definition(s), theory, tools, and visualization of Environmental Justice
 :::
 
 ## Definitions
@@ -47,8 +47,10 @@ For today, I want to focus on the intersection of the **concepts** of environmen
 
 @fig-CalBurden shows the CalEnviroScreen tool pollution burden index for SoCal. The CalEnviroScreen tool is made up of two categories of data indicators, as documented in the 207 page CalEnviroScreen4.0 [report](https://oehha.ca.gov/media/downloads/calenviroscreen/report/calenviroscreen40reportf2021.pdf).
 
-1. Pollution Burden - negative environmental indicators of either pollution exposure and environmental effects (e.g., ozone, PM, traffic, drinking water contaminants, toxic release facilities)
+1. Pollution Burden - negative environmental indicators of either pollution exposure or environmental effects (e.g., ozone, PM, traffic, drinking water contaminants, toxic release facilities)
 2. Population Characteristics - health and socio-economic indicators (e.g., asthma, education, unemployment, low birth weight) - economic, educational, and linguistic indicators are included.
+
+The _Pollution Burden_ score and _Population Characteristics_ score are multiplied to determine the final CalEnviroScreen Score.  
 
 CalEnviroScreen4.0 does not have race/ethnicity explicitly as an explanatory variable or part of the base indicator. A six-page [supplementary analysis](https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40raceanalysisf2021.pdf) and brief [storymap](https://storymaps.arcgis.com/stories/f555670d30a942e4b46b18293e2795a7) give a cursory description of the EJ results.   
 
@@ -79,6 +81,8 @@ The EJI uses [three broad categories](https://www.atsdr.cdc.gov/placeandhealth/e
 1. Social Vulnerability - Subgroups in this category include racial/ethnic minority status, socioeconomic categories, household demographics, and housing type
 2. Environmental Burden - Subgroups in this category include air pollution, hazardous and toxic sites, built environment, transportation corridors, and water pollution
 3. Health Vulnerablity - This category includes five pre-existing chronic diseases, including asthma, cancer, blood pressure, diabetes, and mental health.
+
+The three indicator categories are each weighted equally and averaged to generate a final single indicator value for the EJI.  Each individual category is also available via mouseover or click on specific map locations.
 
 ### Discussion 2
 

@@ -1,5 +1,44 @@
-# EJ - Tools {#sec-EJtools}
+# EJ - Data, Tools, and Visualization {#sec-EJtools}
 
 ::: {.callout-note appearance="simple"}
-Under Construction. Come back soon! 
+Today we will focus on the data, tools, and visualization of current U.S. Environmental Justice tools
 :::
+
+The EPA and California EPA both agree that this is the definition of Environmental Justice (**EJ**).
+
+::: {.callout-note appearance="important"}
+The fair treatment and meaningful involvement of all people regardless of race, color, culture, national origin, income, and educational levels with respect to the development, implementation, and enforcement of protective environmental laws, regulations, and policies. _Fair treatment_ means that no population, due to policy or economic disempowerment, is forced to bear a disproportionate burden of the negative human health or environmental impacts of pollution or other environmental consequences resulting from industrial, municipal, and commercial operations or the execution of federal, state, local, and tribal programs and policies 
+:::
+
+## Data Categories in EJ Tools  
+
+As discussed, in the previous lesson, there are a few broad categories of data that are currently used in Environmental Justice (**EJ**) tools.  Let's recap them here.
+
+1. **Pollution Burden** - negative environmental indicators of either pollution exposure, built environment, or environmental effects (e.g., ozone, PM, traffic, drinking water contaminants, toxic release facilities)
+2. **Socioeconomic indicators** - demographic and economic indicators of population
+3. **Health vulnerability** - an indicator of population level health-effect data such as asthma, cancer, diabetes, cardiovascular, and low birth-weight
+
+### Discussion 1
+
+1. What data is needed to understand the _fair treatment_ principle of EJ?
+2. What data is needed to understand the _meaningful involvement_ principle of EJ?
+3. What other data would help to assess EJ in the US?
+4. How does data availability limit our understanding of EJ?
+
+## Not Data 
+
+Meaningful involvement is a very nebulous and hard-to-measure concept. Within the context of EJ, it indicates public participation with stakeholders and the influence to shape decision-making. 
+
+The EPA has a resource on [public participation](https://www.epa.gov/international-cooperation/public-participation-guide-introduction-guide) in decision-making.  
+
+:::{.callout-note appearance="simple"}
+Public participation is a process, not a single event. It consists of a series of activities and actions by a sponsor agency over the full lifespan of a project to both inform the public and obtain input from them. Public participation affords stakeholders (those that have an interest or stake in an issue, such as individuals, interest groups, communities) the opportunity to influence decisions that affect their lives.
+:::
+
+A large part of that framework is based on a schematic as shown in @fig-schematic of the different possible levels of involvement by stakeholders in decision-making. The schematic is from the [International Association of Public Participation](www.iap2.org).
+
+[Public Participation Spectrum](https://iap2canada.ca/resources/Pictures/spectrum%20ENG.png){#fig-schematic}
+
+
+
+
