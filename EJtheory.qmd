@@ -60,7 +60,7 @@ Individual indicators can be explored as shown in @fig-CardioV visualization of 
 
 ### EPA's EJScreen
 
-![EJSCREEN Ozone Indicator](images/EJScreen1.png){#fig-screen} 
+![EJSCREEN Ozone Indicator](images/EJscreen1.png){#fig-screen} 
 
 @fig-screen shows the EPA's EJScreen index for ozone in SoCal. The U.S. Environmental Protection Agency's EJScreen tool is also made up of two categories of data indicators, as documented in the 115-page [technical report](https://www.epa.gov/sites/default/files/2021-04/documents/ejscreen_technical_document.pdf). EPA documentation states that EJScreen is a _'pre-decisional screening tool, and was not meant to be the basis for agency decision-making or determinations regarding the existence or absence of EJ concerns. It should also not be used to identify or label an area as an "EJ community."_ 
 

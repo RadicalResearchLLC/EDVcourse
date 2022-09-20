@@ -37,7 +37,7 @@ Public participation is a process, not a single event. It consists of a series o
 
 A large part of that framework is based on a schematic as shown in @fig-schematic of the different possible levels of involvement by stakeholders in decision-making. The schematic is from the [International Association of Public Participation](www.iap2.org).
 
-[Public Participation Spectrum](https://iap2canada.ca/resources/Pictures/spectrum%20ENG.png){#fig-schematic}
+![Public Participation Spectrum](https://iap2canada.ca/resources/Pictures/spectrum%20ENG.png){#fig-schematic}
 
 
 
