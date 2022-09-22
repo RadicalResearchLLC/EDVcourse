@@ -1,7 +1,7 @@
-# EJ - Data, Tools, and Visualization {#sec-EJtools}
+# EJ - Data Driven Visualization {#sec-EJtools}
 
 ::: {.callout-note appearance="simple"}
-Today we will focus on the data, tools, and visualization of current U.S. Environmental Justice tools
+Today we will focus on a bit of theory on data and then engage in the practice of data driven visualization
 :::
 
 The EPA and California EPA both agree that this is the definition of Environmental Justice (**EJ**).
@@ -35,10 +35,171 @@ The EPA has a resource on [public participation](https://www.epa.gov/internation
 Public participation is a process, not a single event. It consists of a series of activities and actions by a sponsor agency over the full lifespan of a project to both inform the public and obtain input from them. Public participation affords stakeholders (those that have an interest or stake in an issue, such as individuals, interest groups, communities) the opportunity to influence decisions that affect their lives.
 :::
 
-A large part of that framework is based on a schematic as shown in @fig-schematic of the different possible levels of involvement by stakeholders in decision-making. The schematic is from the [International Association of Public Participation](www.iap2.org).
+A large part of that framework is based on a schematic as shown in @fig-schematic of the different possible levels of involvement by stakeholders in decision-making. The schematic is from the [International Association of Public Participation](https://www.iap2.org).
 
 ![Public Participation Spectrum](https://iap2canada.ca/resources/Pictures/spectrum%20ENG.png){#fig-schematic}
 
+Quantifying _meaningful involvement_ in a public participation process of decision-making is complicated and difficult to track. It is also a subjective judgement, although one could have systematic criteria for evaluating it. Moreover, the issue is probably better described as one in which the _involvement_ levels are unequal between different stakeholder groups. In other words, developers and industry stakeholders are provided greater opportunity to shape policy and decision-making compared to residential and environmental stakeholders. 
 
+### Discussion 2.
 
+1. How does a lack of data shape our ability to communicate and visualize an issue?
+2. How does one collect data to visualize _meaningful involvement_?  
+
+## Case Study - SoCal Warehouses
+
+I have been doing work with the Redford Conservancy on warehouses in the [Inland Empire](https://en.wikipedia.org/wiki/Inland_Empire). I think it is an excellent dataset for us to explore as an in-class project. And I have many half-formed ideas for visualization that I think would be interesting to explore as a class.    
+
+The tool I have developed is called [WarehouseCITY](https://radicalresearch.shinyapps.io/WarehouseCITY/). The code repository is located on [github](https://github.com/RadicalResearchLLC/WarehouseMap).  
+
+#### Visualization Ideas - Pick one!
+
+* Analysis of warehouse development in the last decade relative to CalEnviroScreen pollution burden, socioeconomic indicators, and racial/ethnic indicators. (hard)  
+* Figure showing the trend in average warehouse size over time in the LA Basin – show the increasing size (ez)
+* Figure showing the average warehouse location (size-weighted) over time in the LA Basin – show the westward drift (probably ez) 
+* Animated figure showing the cumulative jurisdiction specific warehouse growth in a “race” – total acreage? Percent warehouse? (moderate)
+* Per capita warehouse growth by jurisdiction (ez if population is ez)
+
+#### Load libraries
+
+```{r}
+#| echo: true
+#| warning: false
+
+library(sf)
+library(tidyverse)
+library(leaflet)
+
+```
+
+#### Acquire data
+
+Pull the data for CalEnviroScreen4.0 again.  
+
+```{r}
+#| echo: true
+#| warning: false
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+We will also pull warehouse data for the first time!  New data incoming!
+
+```{r}
+#| echo: true
+#| warning: false
+
+WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/warehouse.geoJSON'
+warehouses <- st_read(WH.url) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+Check to see what the `warehouses` dataset looks like.
+
+```{r}
+#| echo: true
+#| warning: false
+
+head(warehouses)
+```
+#### Basic Visualization
+
+This is geospatial data, so we should put it in an interactive `leaflet` map to do an initial visualization. @fig-basicWH shows a very basic polygon leaflet map.
+
+```{r}
+#| label: fig-basicWH
+#| fig-cap: Basic leaflet warehouse map
+#| echo: true
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = warehouses)
+```
+
+#### Are Warehouses Getting Bigger?
+
+I want to be able to show warehouse size trends over time. The `warehouses` data set has multiple variables to indicate the year it was built.
+
+Let's visualize the trend in warehouse sizes over time using the `geom_boxplot()` function in `ggplot`. 
+
+A box plot shows a distribution of values in summary form. It shows the 25th, mean, and 75th percentile as a box, then shows whiskers which indicate a value of 1.5X the interquartile (i.e., 25th to 75th percentile) range, then shows individual points for outliers.  
+
+I will also limit our analysis to the data since 2004 to make the graphic legible while still showing each year.  I will use the `filter()` function to remove years prior to 2004 from the analysis.  
+
+@fig-boxes shows the warehouse size trend in SoCal but it is really hard to see the trend due to the high outliers.    
+
+```{r}
+#| label: fig-boxes
+#| fig-cap: Basic boxplot of warehouse sizes since 2004
+#| echo: true
+
+warehouses %>% 
+  filter(year_built >= 2004) %>%
+  ggplot() +
+  geom_boxplot(aes(x = year_chr, y = floorSpace.sq.ft)) 
+```
+
+The x-axis is horrible, the y-axis is horrible, and the theme is bad, and the labels are bad. We've got to make this better.  
+
+We can fix this in a stepwise fashion. First we need to see if this is interesting, so let's fix the substantive items that stop us from detecting a trend first. We need to make our y-axis limits smaller so we can the differences in those boxes.  We use `scale_y_continuous()` and the limits option to fix that.
+
+@fig-smallBoxes shows what it looks like if we limit the scale between 0 and 2,000,000 sq.ft.
+
+```{r}
+#| label: fig-smallBoxes
+#| fig-cap: Boxplot of warehouse sizes since 2004 better y-axis
+#| echo: true
+
+warehouses %>% 
+  filter(year_built >= 2004) %>%
+  ggplot() +
+  geom_boxplot(aes(x = year_chr, y = floorSpace.sq.ft)) +
+  scale_y_continuous(limits = c(0,2000000))
+```
+
+That's better. But let's make it pretty `theme_bw()`, fix the labels `labs()`, and facet wrap this by county. @fig-trendInSize shows the results.  
+
+```{r}
+#| label: fig-trendInSize
+#| fig-cap: Boxplot of warehouse sizes since 2004
+#| echo: true
+
+warehouses %>% 
+  filter(year_built >= 2004) %>%
+  ggplot() +
+  geom_boxplot(aes(x = year_chr, y = floorSpace.sq.ft)) +
+  scale_y_continuous(limits = c(0,2000000)) +
+  theme_bw() +
+  labs(x = 'Year built', y = 'Warehouse size (sq.ft.)') +
+  facet_wrap(~county)
+```
+Grrr. We broke the x-axis labels and I spelled San Bernardino incorrectly.  
+
+@fig-fixLabels shows how to rotate the x-axis labels using `theme()` and `element_text`. I also edited the San Bernardino county data for the figure, and I added a `geom_jitter()` to show the density of warehouse sizes by year.  
+
+```{r}
+#| label: fig-fixLabels
+#| fig-cap: Boxplot of warehouse sizes since 2004
+#| echo: true
+
+warehouses %>% 
+  filter(year_built >= 2004) %>%
+  mutate(county = ifelse(county == 'San Bernadino', 'San Bernardino', county )) %>% 
+  ggplot() +
+  geom_boxplot(aes(x = year_chr, y = floorSpace.sq.ft)) +
+  geom_jitter(aes(x = year_chr, y = floorSpace.sq.ft), alpha = 0.2, size = 1) +
+  scale_y_continuous(limits = c(0,2000000)) +
+  theme_bw() +
+  labs(x = 'Year built', y = 'Warehouse size (sq.ft.)') +
+  facet_wrap(~county) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+```
+
+### Classroom Coding Session
+
+Now it is time to pick some things you want to explore using either the warehouses or SoCalEJ dataset. Try things out and see what you can learn.
 
