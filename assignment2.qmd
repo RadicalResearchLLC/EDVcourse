@@ -13,11 +13,11 @@ library(dplyr)
 library(kableExtra)
 
 assignment <- c('Wiki entry on Environmental Justice', 'EJScreen Exploration',
-                'CalEnviroScreen Exploration', 'Bullard et al., 2013 - Living on the Frontline of Environmental Assault')
-due.Date <- c('Sept 21, 2022', 'Sept 23, 2022', 'Sept 23, 2022', 'Sept 28, 2022')
+                'CalEnviroScreen Exploration', 'Bullard et al., 2013 - Living on the Frontline of Environmental Assault', 'ProPublica - Sacrifice Zones')
+due.Date <- c('Sept 21, 2022', 'Sept 23, 2022', 'Sept 23, 2022', 'Sept 28, 2022', 'Sept 30, 2022')
 source <- c('https://en.wikipedia.org/wiki/Environmental_justice',
             'https://ejscreen.epa.gov/mapper/',     'https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40',
-            '')
+            '', 'https://projects.propublica.org/toxmap/')
 
 unit2 <- data.frame(assignment, due.Date, source)# %>% 
 

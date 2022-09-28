@@ -38,6 +38,7 @@ format:
     theme: united
     toc: true
     toc-depth: 4
+    code-link: true
     
 
 

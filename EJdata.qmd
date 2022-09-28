@@ -1,5 +1,289 @@
-# EJ - Data {#sec-EJdata}
+# EJ - Exploratory Analysis Case Study {#sec-EJdata}
 
 ::: {.callout-note appearance="simple"}
-Under Construction. Come back soon! 
+Today we will practice visualization-based analysis of EJ data using R.
 :::
+
+Today we will be iterating on a visualization-based analysis as shown in the conceptual model in @fig-TidyverseFramework 
+
+![Tidyverse framework for exploratory analysis](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
+
+## Load and Import Steps
+
+Load the libraries we'll be using today.
+
+```{r}
+#| label: load libraries
+#| warning: false
+#| echo: true
+#| output: false
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+```
+
+Import the SoCalEJ dataset again, if you don't have it already loaded.
+
+```{r}
+#| label: acquire SoCalEJ data
+#| warning: false
+#| echo: true
+#| output: false
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+## Basic Visualization
+
+Let's compare some variables by county to see how the counties are different.
+
+Pick your own variable to plot - do not pick OzoneP which is my variable for now.
+
+Use `filter(...)` to only keep values above or equal to zero. We don't want to include census tracts that are missing data that have _-999_ values. 
+
+@fig-OzoneCounty shows the distribution of ozone exposure percentages by county.
+
+```{r}
+#| label: fig-OzoneCounty
+#| fig-cap: Ozone census tract distribution by county
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(OzoneP >= 0) %>% 
+  ggplot(aes(x = County, y = OzoneP)) +
+  geom_boxplot()
+
+```
+
+There are clear differences in ozone by county, with the Inland counties having higher ozone than the coastal counties. The differences are statistically _significant_. 
+
+Unfortunately, a wide dataset is not great at displaying multivariate information in `ggplot`. A bit of tidying is needed to display multiple variables.  
+
+## Tidy and Transform
+
+I am going to demonstrate a few somewhat fancy data manipulation techniques. This is somewhat advanced database programming. While this is very helpful for visualization, it goes beyond the things I expect you to learn for this course. 
+
+This code does three things.
+
+1. Remove the geometry using `st_set_geometry(value = NULL)`
+2. Transform the data table from wide to long using `pivot_longer(...)`
+3. Remove values below zero using `filter()`
+
+```{r}
+#| label: Tidy data for manipulation
+#| echo: true
+#| warning: false
+
+# select socioeconomic indicators and make them narrow - only include counties above 70%
+SoCal_narrow <- SoCalEJ %>% 
+  st_set_geometry(value = NULL) %>% 
+  pivot_longer(cols = c(5:66), names_to = 'variable', values_to = 'value') %>% 
+  filter(value >=0)
+
+```
+
+Let's compare the SoCalEJ and SoCal_narrow datasets using `head()`.
+
+```{r}
+#| label: Look at head of outputs
+#| echo: true
+#| warning: false
+
+head(SoCalEJ)
+head(SoCal_narrow)
+
+```
+
+The `SoCal_narrow` dataset has taken the 60+ columns from `SoCalEJ` and condensed them into a single column indicating the variable and another column indicating the value for that variable. This is very useful for grouping and visualizing by category of information.  
+
+Now let's display a box plot with three pollution variables simultaneously using this narrow dataset as shown in @fig-threePollutants. We again use `filter()`, but we combine it with the `%in%` operator to select multiple variables to display.
+
+```{r}
+#| label: fig-threePollutants
+#| fig-cap: Comparison of ozone, diesel PM, and Pollution burden by county
+#| echo: true
+#| warning: false
+
+SoCal_narrow %>% 
+  filter(variable %in% c('OzoneP', 'DieselPM_P', 'PolBurdP')) %>% 
+  ggplot(aes(x = County, y = value, fill= variable)) +
+  geom_boxplot()
+
+```
+
+Cool!  Now we are seeing some interesting differences.  
+
+### Exercise 1.
+
+1. Create a boxplot that displays five simultaneous variables by County, either by adding two new variables and/or replacing the existing variables. I recommend showing the percentage values that end in **P**.
+2. Choose a different `theme()`
+3. Show a box plot of the six racial and ethnic variables - Hispanic, White, AfricanAm, NativeAm, OtherMult, and AAPI. It should look something like @fig-ethnicRace
+
+```{r}
+#| label: fig-ethnicRace
+#| fig-cap: Comparison of racial and ethnic population distributions by county
+#| echo: false
+#| warning: false
+
+SoCal_narrow %>% 
+  filter(variable %in% c('Hispanic', 'White', 'AfricanAm',
+                         'NativeAm', 'OtherMult', 'AAPI')) %>% 
+  ggplot(aes(x = County, y = value, fill= variable)) +
+  geom_boxplot() +
+  theme_bw()
+
+```
+
+### Explore the Dataset
+
+Data visualization isn't just a final product.  To get to the final product usually requires doing significant **visual exploration** to reveal information and knowledge.
+
+Let's walk through a few examples of methods to explore the data.
+
+#### Scatter plots
+
+Is there a relationship between a dependent and an independent variable or 3? Scatter plots and fits help to examine that.  
+
+@fig-poverty investigates poverty as an independent variable with the pollution burden indicator by county. 
+
+```{r}
+#| label: fig-poverty
+#| fig-cap: Relationship of poverty and pollution burden by county
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(PovertyP >= 0) %>% 
+  ggplot(aes(x = PovertyP, y = PolBurdP, color = County)) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~County)
+
+```
+
+Very interesting dataset here.  Poverty percentage in a census tract increases pollution burden in Orange, LA, and Riverside County but has no impact in San Bernardino. Riverside is the least pollution burdened on average, while both LA and Orange County have the highest pollution burden.  
+
+Let's look at one other scatter plot of estimated pollution burden and a health outcome.
+
+```{r}
+#| label: fig-pollBurden
+#| fig-cap: Relationship of pollution burden and cardiovascular disease by county
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(PolBurdP >= 0 & CardiovasP >= 0) %>% 
+  ggplot(aes(x = PolBurdP, y = CardiovasP, color = County)) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~County)
+
+```
+
+Very strange here. Orange County has a positive relationship, but the other counties have non-linear relationships between these two variables.  
+
+#### Exercise 2.
+
+1. Generate a hypothesis of a causal relationship that you can test.  Does variable X cause variable Y to increase/decrease?
+2. Prepare a four-county scatter-plot of your selected variables you think may have a causal relationship.
+3. Examine the results.  Is there a relationship?  Does it vary by county?  
+
+#### Histograms
+
+Histograms are useful ways to explore a distribution of values.
+
+The basic histogram is shown in @fig-histogram. The distribution of high pollution burden census tracts is skewed right towards higher values (i.e., worst scores). 
+
+```{r}
+#| label: fig-histogram
+#| fig-cap: Distribution of pollution burden scores by census tract
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(PolBurdP >= 0)  %>% 
+  ggplot(aes(x = PolBurdP)) +
+  geom_histogram() #+
+  #theme_bw() +
+  #facet_wrap(~County)
+
+```
+
+Now let's make that prettier and add a `facet_wrap()` by county as shown in @fig-histoPretty. I'll also fix the axis labels using the `labs()` function to name them real names. 
+
+```{r}
+#| label: fig-histoPretty
+#| fig-cap: Distribution of pollution burden scores by census tract and county
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(PolBurdP >= 0)  %>% 
+  ggplot(aes(x = PolBurdP, fill = County)) +
+  geom_histogram() +
+  theme_bw() +
+  facet_wrap(~County) +
+  labs(x = 'Pollution Burden (%)', 
+       y = 'Count of census tracts')
+
+```
+
+Now, we can clearly see very big differences in census tract counts and distributions of the pollution burden variable. LA County has a massive distribution of highly burdened census tracts.
+
+#### Exercise 3.
+
+1. Choose a variable you think is interesting and make a four-county histogram plot of it.
+2. Is there a story that you can start to craft with your histogram?  
+
+### Bar and Column plots (column is usually better)
+
+Basic example of a bar plot is shown in @fig-Bar.
+
+```{r}
+#| label: fig-Bar
+#| fig-cap: Basic bar plot
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(PolBurdP >= 0)  %>% 
+  ggplot(aes(x = County)) +
+  geom_bar() 
+
+```
+
+There are more census tracts in LA than the other counties, because far more people live in LA than the other counties.
+
+We can try to put the places in there, but it gets messy as shown in fig-Bar2 when looking at San Bernardino places. I've switched them to the y-axis to make it horizontal and made the font text smaller using 
+
+```{r}
+#| label: fig-Bar2
+#| fig-cap: Basic bar plot
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  filter(County == 'San Bernardino') %>% 
+  ggplot(aes(y = ApproxLoc)) +
+  geom_bar() +
+  theme(axis.text = element_text(size = 6)) +
+  labs(y = '', x = 'Count of census tracts')
+
+```
+
+Note that `geom_bar()` works well with categorical variables, but doesn't like continuous and numerical values.  
+
+### Exploration and Improvisation
+
+In this section, we are going to follow your interests to generate visualizations improvisationally. Hopefully there will be minimal struggle.  
+
+
+
+
