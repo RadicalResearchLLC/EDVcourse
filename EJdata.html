@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.1.168">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Environmental Data Visualization - 9&nbsp; EJ - Data</title>
+<title>Environmental Data Visualization - 9&nbsp; EJ - Exploratory Analysis Case Study</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,8 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -60,28 +118,19 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Data</span></h1>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Exploratory Analysis Case Study</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Environmental Data Visualization</a> 
     </div>
@@ -93,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
@@ -110,8 +159,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></a>
   </div>
@@ -142,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./EJ.html" class="sidebar-item-text sidebar-link">Unit 2: Environmental Justice</a>
@@ -150,8 +199,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EJtheory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">EJ - Overview</span></a>
   </div>
@@ -163,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./EJdata.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Data</span></a>
+  <a href="./EJdata.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Exploratory Analysis Case Study</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -177,7 +226,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Appendices</a>
@@ -185,8 +234,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./syllabus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Course Syllabus</span></a>
   </div>
@@ -207,20 +256,37 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#load-and-import-steps" id="toc-load-and-import-steps" class="nav-link active" data-scroll-target="#load-and-import-steps"><span class="toc-section-number">9.1</span>  Load and Import Steps</a></li>
+  <li><a href="#basic-visualization" id="toc-basic-visualization" class="nav-link" data-scroll-target="#basic-visualization"><span class="toc-section-number">9.2</span>  Basic Visualization</a></li>
+  <li>
+<a href="#tidy-and-transform" id="toc-tidy-and-transform" class="nav-link" data-scroll-target="#tidy-and-transform"><span class="toc-section-number">9.3</span>  Tidy and Transform</a>
+  <ul>
+<li><a href="#exercise-1." id="toc-exercise-1." class="nav-link" data-scroll-target="#exercise-1."><span class="toc-section-number">9.3.1</span>  Exercise 1.</a></li>
+  <li>
+<a href="#explore-the-dataset" id="toc-explore-the-dataset" class="nav-link" data-scroll-target="#explore-the-dataset"><span class="toc-section-number">9.3.2</span>  Explore the Dataset</a>
+  <ul class="collapse">
+<li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"><span class="toc-section-number">9.3.2.1</span>  Scatter plots</a></li>
+  <li><a href="#exercise-2." id="toc-exercise-2." class="nav-link" data-scroll-target="#exercise-2."><span class="toc-section-number">9.3.2.2</span>  Exercise 2.</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="toc-section-number">9.3.2.3</span>  Histograms</a></li>
+  <li><a href="#exercise-3." id="toc-exercise-3." class="nav-link" data-scroll-target="#exercise-3."><span class="toc-section-number">9.3.2.4</span>  Exercise 3.</a></li>
+  </ul>
+</li>
+  <li><a href="#bar-and-column-plots-column-is-usually-better" id="toc-bar-and-column-plots-column-is-usually-better" class="nav-link" data-scroll-target="#bar-and-column-plots-column-is-usually-better"><span class="toc-section-number">9.3.3</span>  Bar and Column plots (column is usually better)</a></li>
+  <li><a href="#exploration-and-improvisation" id="toc-exploration-and-improvisation" class="nav-link" data-scroll-target="#exploration-and-improvisation"><span class="toc-section-number">9.3.4</span>  Exploration and Improvisation</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span id="sec-EJdata" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Data</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-EJdata" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Exploratory Analysis Case Study</span></span></h1>
 </div>
 
 
@@ -232,23 +298,335 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
-
-<div class="callout-note callout callout-style-simple">
+</header><div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Under Construction. Come back soon!</p>
+<p>Today we will practice visualization-based analysis of EJ data using R.</p>
 </div>
 </div>
 </div>
+<p>Today we will be iterating on a visualization-based analysis as shown in the conceptual model in <a href="#fig-TidyverseFramework">Figure&nbsp;<span>9.1</span></a></p>
+<div id="fig-TidyverseFramework" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.1: Tidyverse framework for exploratory analysis</figcaption><p></p>
+</figure>
+</div>
+<section id="load-and-import-steps" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="load-and-import-steps">
+<span class="header-section-number">9.1</span> Load and Import Steps</h2>
+<p>Load the libraries we’ll be using today.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Import the SoCalEJ dataset again, if you don’t have it already loaded.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">URL.path</span> <span class="op">&lt;-</span> <span class="st">'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'</span></span>
+<span><span class="va">SoCalEJ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="va">URL.path</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="basic-visualization" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="basic-visualization">
+<span class="header-section-number">9.2</span> Basic Visualization</h2>
+<p>Let’s compare some variables by county to see how the counties are different.</p>
+<p>Pick your own variable to plot - do not pick OzoneP which is my variable for now.</p>
+<p>Use <code>filter(...)</code> to only keep values above or equal to zero. We don’t want to include census tracts that are missing data that have <em>-999</em> values.</p>
+<p><a href="#fig-OzoneCounty">Figure&nbsp;<span>9.2</span></a> shows the distribution of ozone exposure percentages by county.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">OzoneP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">County</span>, y <span class="op">=</span> <span class="va">OzoneP</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-OzoneCounty" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-OzoneCounty-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.2: Ozone census tract distribution by county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are clear differences in ozone by county, with the Inland counties having higher ozone than the coastal counties. The differences are statistically <em>significant</em>.</p>
+<p>Unfortunately, a wide dataset is not great at displaying multivariate information in <code>ggplot</code>. A bit of tidying is needed to display multiple variables.</p>
+</section><section id="tidy-and-transform" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="tidy-and-transform">
+<span class="header-section-number">9.3</span> Tidy and Transform</h2>
+<p>I am going to demonstrate a few somewhat fancy data manipulation techniques. This is somewhat advanced database programming. While this is very helpful for visualization, it goes beyond the things I expect you to learn for this course.</p>
+<p>This code does three things.</p>
+<ol type="1">
+<li>Remove the geometry using <code>st_set_geometry(value = NULL)</code>
+</li>
+<li>Transform the data table from wide to long using <code>pivot_longer(...)</code>
+</li>
+<li>Remove values below zero using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>
+</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># select socioeconomic indicators and make them narrow - only include counties above 70%</span></span>
+<span><span class="va">SoCal_narrow</span> <span class="op">&lt;-</span> <span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_set_geometry</a></span><span class="op">(</span>value <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">66</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'variable'</span>, values_to <span class="op">=</span> <span class="st">'value'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">&gt;=</span><span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s compare the SoCalEJ and SoCal_narrow datasets using <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">SoCalEJ</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 66 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -117.874 ymin: 33.5556 xmax: -117.7157 ymax: 33.64253
+CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
+       Tract   ZIP County     ApproxLoc TotPop19   CIscore   CIscoreP
+1 6059062640 92656 Orange   Aliso Viejo     3741  9.642007 12.1028744
+2 6059062641 92637 Orange   Aliso Viejo     5376 10.569290 14.3343419
+3 6059062642 92625 Orange Newport Beach     2834  3.038871  0.6807867
+4 6059062643 92657 Orange Newport Beach     7231  6.538151  5.8497226
+5 6059062644 92660 Orange Newport Beach     8487  8.873604 10.4009077
+6 6059062645 92657 Orange Newport Beach     6527  6.033648  4.7402925
+       Ozone   OzoneP     PM2_5  PM2_5_P   DieselPM DieselPM_P  Pesticide
+1 0.05165298 65.36403  9.445785 43.88301 0.14536744   50.13068 0.00000000
+2 0.05219839 66.80772  9.785209 46.89484 0.07372588   27.41755 0.00000000
+3 0.04827750 55.38270 10.433417 52.03485 0.03478566   12.40821 0.06496406
+4 0.04901945 58.23273 10.013395 49.29683 0.03594981   12.90604 0.00000000
+5 0.04863521 56.96329 10.565404 52.63223 0.07701293   28.73678 0.00000000
+6 0.04863521 56.96329 10.329985 51.28811 0.04047264   14.58619 0.00000000
+  PesticideP   Tox_Rel Tox_Rel_P   Traffic TrafficP DrinkWat DrinkWatP
+1    0.00000  293.8420  41.44786  999.0182  57.7125 177.3831  5.907331
+2    0.00000  681.0703  57.65191 1051.9778  61.2250 312.7169 25.939803
+3   22.58621 1557.6400  74.05601  874.8193  49.5000 332.6654 32.284251
+4    0.00000 1349.2300  70.69267 1169.7532  67.4250 332.6654 32.284251
+5    0.00000 1889.5133  78.03201 1383.9867  74.9500 332.6654 32.284251
+6    0.00000 1589.1400  74.44361 1025.2790  59.5750 332.6654 32.284251
+       Lead    Lead_P Cleanup  CleanupP GWThreat GWThreatP HazWaste HazWasteP
+1 18.450498 10.737240     0.0  0.000000      0.0  0.000000    0.280  46.80344
+2  9.898042  3.730309     0.0  0.000000      0.0  0.000000    0.280  46.80344
+3 14.263664  6.830498     4.5 40.836133      2.0 14.311805    0.150  26.67108
+4  5.594984  1.600504     0.0  0.000000      0.5  2.722896    0.210  37.68365
+5 16.777373  9.061122     0.0  0.000000      7.5 39.448780    0.395  60.22502
+6 12.086059  5.343415     0.7  9.593132      2.0 14.311805    0.100  16.63799
+  ImpWatBod ImpWatBodP SolWaste SolWasteP PollBurd PolBurdSc PolBurdP Asthma
+1         7   66.73667        0   0.00000 30.50123  3.724194 18.95457  21.70
+2         7   66.73667        2  52.89805 35.23480  4.302163 29.71998  21.74
+3         8   72.15456        0   0.00000 35.68847  4.357555 30.77785  14.93
+4         6   58.69383        0   0.00000 30.97653  3.782228 19.87554  10.33
+5         2   23.87652        2  52.89805 39.48486  4.821094 41.44368  13.88
+6         3   33.15834        2  52.89805 32.98028  4.026885 24.04480  10.51
+     AsthmaP LowBirtWt   LowBirWP Cardiovas CardiovasP Educatn     EducatP
+1 11.2786640      4.45 37.2337696      9.74 27.5049850     1.0    1.771703
+2 11.3908275      3.50 16.2176033      8.72 18.8310070     8.4   35.876993
+3  3.7263210      1.18  0.2950988      5.41  1.8569292  -999.0 -999.000000
+4  0.9845464      5.39 61.9450860      4.46  0.3988036     2.0    5.859276
+5  2.7542373      2.86  7.6597383      5.43  1.9192423     3.7   14.781068
+6  1.0343968      4.64 42.1991275      4.65  0.4860419     0.0    0.000000
+  Ling_Isol Ling_IsolP Poverty  PovertyP Unempl     UnemplP HousBurd HousBurdP
+1       1.1   7.375829    20.0 34.208543    3.0   17.113483     19.9 62.420786
+2       4.4  33.942347    12.9 16.821608    2.6   11.868818     19.5 60.925222
+3       0.0   0.000000     9.5  8.982412    0.9    1.145237     14.5 35.817490
+4       3.9  30.694275     6.9  4.170854    2.6   11.868818      8.5  8.504436
+5       5.0  37.664095    12.3 15.326633    4.0   30.882353     18.9 58.225602
+6       1.0   6.266071    11.5 13.517588 -999.0 -999.000000     14.8 37.477820
+    PopChar PopCharSc   PopCharP Child_10 Pop_10_64 Elderly65 Hispanic   White
+1 24.958604 2.5890185 13.2375189  10.9864   81.7696    7.2441  16.4662 63.2184
+2 23.683405 2.4567389 11.7750882  13.2812   61.9792   24.7396  22.0238 55.2455
+3  6.722867 0.6973798  0.2647504   5.9280   49.6471   44.4248   5.6104 89.6260
+4 16.664505 1.7286508  4.9167927   7.9657   67.7361   24.2982   4.4530 63.9331
+5 17.743511 1.8405788  5.8119012  10.4866   72.3224   17.1910   8.8488 82.0785
+6 14.444279 1.4983412  3.3787191  11.0311   68.4388   20.5301   3.8302 74.7664
+  AfricanAm NativeAm OtherMult Shape_Leng Shape_Area    AAPI
+1    4.9452   0.0000    3.6087   5604.596    1467574 11.7616
+2    1.3765   0.0000    3.5900   6244.598    2143255 17.7641
+3    0.3881   0.0000    1.4467   6803.947    2048571  2.9287
+4    0.0000   0.3042    6.0987  26448.643   18729420 25.2109
+5    0.0000   0.0000    1.1076  10964.108    4361037  7.9651
+6    0.2911   0.0000    0.8733   9833.066    5754643 20.2390
+                        geometry
+1 POLYGON ((-117.7178 33.5569...
+2 POLYGON ((-117.7166 33.6003...
+3 POLYGON ((-117.8596 33.6074...
+4 POLYGON ((-117.7986 33.6059...
+5 POLYGON ((-117.8521 33.6073...
+6 POLYGON ((-117.8269 33.6063...</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">SoCal_narrow</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+       Tract   ZIP County ApproxLoc   variable     value
+       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;
+1 6059062640 92656 Orange Aliso Viejo TotPop19 3741     
+2 6059062640 92656 Orange Aliso Viejo CIscore     9.64  
+3 6059062640 92656 Orange Aliso Viejo CIscoreP   12.1   
+4 6059062640 92656 Orange Aliso Viejo Ozone       0.0517
+5 6059062640 92656 Orange Aliso Viejo OzoneP     65.4   
+6 6059062640 92656 Orange Aliso Viejo PM2_5       9.45  </code></pre>
+</div>
+</div>
+<p>The <code>SoCal_narrow</code> dataset has taken the 60+ columns from <code>SoCalEJ</code> and condensed them into a single column indicating the variable and another column indicating the value for that variable. This is very useful for grouping and visualizing by category of information.</p>
+<p>Now let’s display a box plot with three pollution variables simultaneously using this narrow dataset as shown in <a href="#fig-threePollutants">Figure&nbsp;<span>9.3</span></a>. We again use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, but we combine it with the <code>%in%</code> operator to select multiple variables to display.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCal_narrow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">variable</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'OzoneP'</span>, <span class="st">'DieselPM_P'</span>, <span class="st">'PolBurdP'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">County</span>, y <span class="op">=</span> <span class="va">value</span>, fill<span class="op">=</span> <span class="va">variable</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-threePollutants" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-threePollutants-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.3: Comparison of ozone, diesel PM, and Pollution burden by county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cool! Now we are seeing some interesting differences.</p>
+<section id="exercise-1." class="level3" data-number="9.3.1"><h3 data-number="9.3.1" class="anchored" data-anchor-id="exercise-1.">
+<span class="header-section-number">9.3.1</span> Exercise 1.</h3>
+<ol type="1">
+<li>Create a boxplot that displays five simultaneous variables by County, either by adding two new variables and/or replacing the existing variables. I recommend showing the percentage values that end in <strong>P</strong>.</li>
+<li>Choose a different <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code>
+</li>
+<li>Show a box plot of the six racial and ethnic variables - Hispanic, White, AfricanAm, NativeAm, OtherMult, and AAPI. It should look something like <a href="#fig-ethnicRace">Figure&nbsp;<span>9.4</span></a>
+</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ethnicRace" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-ethnicRace-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.4: Comparison of racial and ethnic population distributions by county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="explore-the-dataset" class="level3" data-number="9.3.2"><h3 data-number="9.3.2" class="anchored" data-anchor-id="explore-the-dataset">
+<span class="header-section-number">9.3.2</span> Explore the Dataset</h3>
+<p>Data visualization isn’t just a final product. To get to the final product usually requires doing significant <strong>visual exploration</strong> to reveal information and knowledge.</p>
+<p>Let’s walk through a few examples of methods to explore the data.</p>
+<section id="scatter-plots" class="level4" data-number="9.3.2.1"><h4 data-number="9.3.2.1" class="anchored" data-anchor-id="scatter-plots">
+<span class="header-section-number">9.3.2.1</span> Scatter plots</h4>
+<p>Is there a relationship between a dependent and an independent variable or 3? Scatter plots and fits help to examine that.</p>
+<p><a href="#fig-poverty">Figure&nbsp;<span>9.5</span></a> investigates poverty as an independent variable with the pollution burden indicator by county.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PovertyP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PovertyP</span>, y <span class="op">=</span> <span class="va">PolBurdP</span>, color <span class="op">=</span> <span class="va">County</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">County</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-poverty" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-poverty-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.5: Relationship of poverty and pollution burden by county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Very interesting dataset here. Poverty percentage in a census tract increases pollution burden in Orange, LA, and Riverside County but has no impact in San Bernardino. Riverside is the least pollution burdened on average, while both LA and Orange County have the highest pollution burden.</p>
+<p>Let’s look at one other scatter plot of estimated pollution burden and a health outcome.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PolBurdP</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">CardiovasP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PolBurdP</span>, y <span class="op">=</span> <span class="va">CardiovasP</span>, color <span class="op">=</span> <span class="va">County</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">County</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pollBurden" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-pollBurden-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.6: Relationship of pollution burden and cardiovascular disease by county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Very strange here. Orange County has a positive relationship, but the other counties have non-linear relationships between these two variables.</p>
+</section><section id="exercise-2." class="level4" data-number="9.3.2.2"><h4 data-number="9.3.2.2" class="anchored" data-anchor-id="exercise-2.">
+<span class="header-section-number">9.3.2.2</span> Exercise 2.</h4>
+<ol type="1">
+<li>Generate a hypothesis of a causal relationship that you can test. Does variable X cause variable Y to increase/decrease?</li>
+<li>Prepare a four-county scatter-plot of your selected variables you think may have a causal relationship.</li>
+<li>Examine the results. Is there a relationship? Does it vary by county?</li>
+</ol></section><section id="histograms" class="level4" data-number="9.3.2.3"><h4 data-number="9.3.2.3" class="anchored" data-anchor-id="histograms">
+<span class="header-section-number">9.3.2.3</span> Histograms</h4>
+<p>Histograms are useful ways to explore a distribution of values.</p>
+<p>The basic histogram is shown in <a href="#fig-histogram">Figure&nbsp;<span>9.7</span></a>. The distribution of high pollution burden census tracts is skewed right towards higher values (i.e., worst scores).</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PolBurdP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PolBurdP</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="co">#+</span></span>
+<span>  <span class="co">#theme_bw() +</span></span>
+<span>  <span class="co">#facet_wrap(~County)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-histogram" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-histogram-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.7: Distribution of pollution burden scores by census tract</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let’s make that prettier and add a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> by county as shown in <a href="#fig-histoPretty">Figure&nbsp;<span>9.8</span></a>. I’ll also fix the axis labels using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function to name them real names.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PolBurdP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PolBurdP</span>, fill <span class="op">=</span> <span class="va">County</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">County</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">'Pollution Burden (%)'</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">'Count of census tracts'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-histoPretty" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-histoPretty-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.8: Distribution of pollution burden scores by census tract and county</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, we can clearly see very big differences in census tract counts and distributions of the pollution burden variable. LA County has a massive distribution of highly burdened census tracts.</p>
+</section><section id="exercise-3." class="level4" data-number="9.3.2.4"><h4 data-number="9.3.2.4" class="anchored" data-anchor-id="exercise-3.">
+<span class="header-section-number">9.3.2.4</span> Exercise 3.</h4>
+<ol type="1">
+<li>Choose a variable you think is interesting and make a four-county histogram plot of it.</li>
+<li>Is there a story that you can start to craft with your histogram?</li>
+</ol></section></section><section id="bar-and-column-plots-column-is-usually-better" class="level3" data-number="9.3.3"><h3 data-number="9.3.3" class="anchored" data-anchor-id="bar-and-column-plots-column-is-usually-better">
+<span class="header-section-number">9.3.3</span> Bar and Column plots (column is usually better)</h3>
+<p>Basic example of a bar plot is shown in <a href="#fig-Bar">Figure&nbsp;<span>9.9</span></a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">PolBurdP</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">County</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-Bar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-Bar-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.9: Basic bar plot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are more census tracts in LA than the other counties, because far more people live in LA than the other counties.</p>
+<p>We can try to put the places in there, but it gets messy as shown in fig-Bar2 when looking at San Bernardino places. I’ve switched them to the y-axis to make it horizontal and made the font text smaller using</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">County</span> <span class="op">==</span> <span class="st">'San Bernardino'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">ApproxLoc</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">''</span>, x <span class="op">=</span> <span class="st">'Count of census tracts'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-Bar2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="EJdata_files/figure-html/fig-Bar2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.10: Basic bar plot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> works well with categorical variables, but doesn’t like continuous and numerical values.</p>
+</section><section id="exploration-and-improvisation" class="level3" data-number="9.3.4"><h3 data-number="9.3.4" class="anchored" data-anchor-id="exploration-and-improvisation">
+<span class="header-section-number">9.3.4</span> Exploration and Improvisation</h3>
+<p>In this section, we are going to follow your interests to generate visualizations improvisationally. Hopefully there will be minimal struggle.</p>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -345,9 +723,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./EJtools.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">EJ - Data Driven Visualization</span></span>
       </a>          
