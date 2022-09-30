@@ -13,11 +13,13 @@ library(dplyr)
 library(kableExtra)
 
 assignment <- c('Wiki entry on Environmental Justice', 'EJScreen Exploration',
-                'CalEnviroScreen Exploration', 'Bullard et al., 2013 - Living on the Frontline of Environmental Assault', 'ProPublica - Sacrifice Zones')
-due.Date <- c('Sept 21, 2022', 'Sept 23, 2022', 'Sept 23, 2022', 'Sept 28, 2022', 'Sept 30, 2022')
+                'CalEnviroScreen Exploration', 'Bullard et al., 2013 - Living on the Frontline of Environmental Assault', 'ProPublica - Sacrifice Zones',
+                'Importing Data in R - RMRWR - Chapter 5.1 and 5.2')
+due.Date <- c('Sept 21, 2022', 'Sept 23, 2022', 'Sept 23, 2022', 'Sept 28, 2022', 'Sept 30, 2022', 'Oct 5, 2022')
 source <- c('https://en.wikipedia.org/wiki/Environmental_justice',
             'https://ejscreen.epa.gov/mapper/',     'https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40',
-            '', 'https://projects.propublica.org/toxmap/')
+            '', 'https://projects.propublica.org/toxmap/',
+            'https://www.bookdown.org/pdr_higgins/rmrwr/importing-your-data-into-r.html#reading-data-with-the-readr-package')
 
 unit2 <- data.frame(assignment, due.Date, source)# %>% 
 
@@ -28,3 +30,26 @@ unit2 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>%
   column_spec(1, width = '20em') #%>
 
 ```
+
+## Graded Assignment - EJ Visualization 
+
+Choose an environmental justice dataset. Three options we've discussed in class are:
+
+* [CalEnviroScreen](https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40shpf2021shp.zip) - WARNING - 20+Mb zip file
+* [EPA EJScreen](https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR.gdb.zip) - WARNING - 480+ Mb zip file
+* [CDC & ATSRD EJI tool](https://experience.arcgis.com/experience/10788c3e860d489e9e8a63a2238bb63d) - state level downloads - pick geoJSON format for maps!
+
+If data downloads are scary, it is perfectly ok to use the in-class `SoCalEJ` dataset we have used as an example for in-class coding assignments. 
+
+The assignment is to create a new visualization or remix of a visualization using some of the data from the chosen EJ dataset. Visualization options include:
+
+1. Leaflet map(s)
+2. ggplot geom_sf map(s)
+3. ggplot figure(s) using some other geom (boxplot, point, bar, histogram)
+4. Some combination of 1, 2, and 3
+
+::: {.callout-note appearance="simple"}
+More details to follow by end of day today.
+:::
+
+Assignment is due October 12th, 2022 at the beginning of class. Please send the .R script and the visualization. Assignments should be emailed. This assignment is worth 100 points. Coding will not be graded but will potentially be used to reproduce the figure on my local machine. Points will be awarded for making at least four unique changes to the figure to tell a story. Details to follow.  

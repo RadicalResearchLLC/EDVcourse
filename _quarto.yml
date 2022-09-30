@@ -24,6 +24,7 @@ book:
         - EJtools.qmd
         - EJdata.qmd
         - CCAEJ.qmd
+        - import.qmd
         - assignment2.qmd
   appendices: 
     - syllabus.qmd  

@@ -1,0 +1,5 @@
+# Importing and Exporting Data {#sec-import}
+
+::: {.callout-note appearance="simple"}
+Today we will focus on the practice of acquiring, importing, and exporting data.
+:::
