@@ -336,11 +336,25 @@
     "text": "10.2 Speakers\n\nAna Gonzalez - Executive Director\nGabriela (Gaby) Mendez - Community Organizer - also a student at UC Riverside"
   },
   {
+    "objectID": "import.html",
+    "href": "import.html",
+    "title": "11  Importing and Exporting Data",
+    "section": "",
+    "text": "Today we will focus on the practice of acquiring, importing, and exporting data."
+  },
+  {
     "objectID": "assignment2.html",
     "href": "assignment2.html",
-    "title": "11  Assignments for Unit 2 - EJ",
+    "title": "12  Assignments for Unit 2 - EJ",
     "section": "",
-    "text": "Table 11.1:  Assignments from Unit 2 \n \n assignment \n    due.Date \n    link \n  \n\n\n Wiki entry on Environmental Justice \n    Sept 21, 2022 \n    1 \n  \n\n EJScreen Exploration \n    Sept 23, 2022 \n    2 \n  \n\n CalEnviroScreen Exploration \n    Sept 23, 2022 \n    3 \n  \n\n Bullard et al., 2013 - Living on the Frontline of Environmental Assault \n    Sept 28, 2022 \n    4 \n  \n\n ProPublica - Sacrifice Zones \n    Sept 30, 2022 \n    5"
+    "text": "This includes the list of assignments for Unit 2 - Environmental Justice"
+  },
+  {
+    "objectID": "assignment2.html#graded-assignment---ej-visualization",
+    "href": "assignment2.html#graded-assignment---ej-visualization",
+    "title": "12  Assignments for Unit 2 - EJ",
+    "section": "\n12.1 Graded Assignment - EJ Visualization",
+    "text": "12.1 Graded Assignment - EJ Visualization\nChoose an environmental justice dataset. Three options we’ve discussed in class are:\n\n\nCalEnviroScreen - WARNING - 20+Mb zip file\n\nEPA EJScreen - WARNING - 480+ Mb zip file\n\nCDC & ATSRD EJI tool - state level downloads - pick geoJSON format for maps!\n\nIf data downloads are scary, it is perfectly ok to use the in-class SoCalEJ dataset we have used as an example for in-class coding assignments.\nThe assignment is to create a new visualization or remix of a visualization using some of the data from the chosen EJ dataset. Visualization options include:\n\nLeaflet map(s)\nggplot geom_sf map(s)\nggplot figure(s) using some other geom (boxplot, point, bar, histogram)\nSome combination of 1, 2, and 3\n\n\n\n\n\n\n\nMore details to follow by end of day today.\n\n\n\nAssignment is due October 12th, 2022 at the beginning of class. Please send the .R script and the visualization. Assignments should be emailed. This assignment is worth 100 points. Coding will not be graded but will potentially be used to reproduce the figure on my local machine. Points will be awarded for making at least four unique changes to the figure to tell a story. Details to follow."
   },
   {
     "objectID": "syllabus.html",
