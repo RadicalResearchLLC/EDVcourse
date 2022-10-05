@@ -24,8 +24,13 @@ book:
         - EJtools.qmd
         - EJdata.qmd
         - CCAEJ.qmd
-        - import.qmd
         - assignment2.qmd
+    - part: data.qmd
+        - import.qmd
+        - export.qmd
+        - context.qmd
+        - projects.qmd
+        - assignment3.qmd
   appendices: 
     - syllabus.qmd  
     - tools.qmd

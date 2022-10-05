@@ -39,7 +39,7 @@ Choose an environmental justice dataset. Three options we've discussed in class 
 * [EPA EJScreen](https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR.gdb.zip) - WARNING - 480+ Mb zip file
 * [CDC & ATSRD EJI tool](https://experience.arcgis.com/experience/10788c3e860d489e9e8a63a2238bb63d) - state level downloads - pick geoJSON format for maps!
 
-If data downloads are scary, it is perfectly ok to use the in-class `SoCalEJ` dataset we have used as an example for in-class coding assignments. 
+If data downloads are not something you are comfortable with, it is perfectly ok to use the in-class `SoCalEJ` dataset we have used as an example for in-class coding assignments. 
 
 The assignment is to create a new visualization or remix of a visualization using some of the data from the chosen EJ dataset. Visualization options include:
 
@@ -48,8 +48,8 @@ The assignment is to create a new visualization or remix of a visualization usin
 3. ggplot figure(s) using some other geom (boxplot, point, bar, histogram)
 4. Some combination of 1, 2, and 3
 
-::: {.callout-note appearance="simple"}
-More details to follow by end of day today.
-:::
+Points will be awarded for successfully generating a unique visualization, for having made four distinct visualization choices that are different from the standard tool, and for documenting those four unique features in the accompanying email, or as commented text within the `.R script` file you submit as part of the assignment. Note, the goal is to make an attractive figure, not a super ugly one.  Choices that do not aid in improving the feature for the audience will not be considered on point. For example, making the font enormous or tiny is a negative feature. 
 
-Assignment is due October 12th, 2022 at the beginning of class. Please send the .R script and the visualization. Assignments should be emailed. This assignment is worth 100 points. Coding will not be graded but will potentially be used to reproduce the figure on my local machine. Points will be awarded for making at least four unique changes to the figure to tell a story. Details to follow.  
+In other words, the goal is to make a _better_ visualization, not just a **different** visualization. When describing the four feature changes, describe in one sentence why the features _improve_ the visualization.  
+
+Assignment is currently due October 12th, 2022 at the beginning of class. Please send the `.R script` and an exported visualization via email. This assignment is worth 100 points. Coding style will not be graded. Scripts will be used to reproduce the figure on my local machine - deviations between code and exported figure will likely result in deducted points. 
