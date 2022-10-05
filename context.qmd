@@ -1,0 +1,11 @@
+# Contextualizing Data {#sec-context}
+
+::: {.callout-note appearance="simple"}
+Today we have a guest lecture from Dr. Jeanine Finn, Head of Data and Digital Scholarship Services at the Honnold Library.    
+:::
+  
+## Speaker
+
+* Dr. Jeanine Finn - **Head of Data and Digital Scholarship Services** at the [Honnold Library](https://library.claremont.edu/)
+ 
+

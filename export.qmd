@@ -1,0 +1,5 @@
+# Exporting visualizations and data {#sec-export}
+
+::: {.callout-note appearance="simple"}
+Today we focus on the practice of data visualization by cover data export ('saving')  
+:::

@@ -1,0 +1,16 @@
+# Unit 2: Data {#sec-data}
+
+::: {.callout-note appearance="simple"}
+This unit focuses on the **data** of Environmental Data Visualization - import, export, context, and finding the right dataset to use.  
+:::
+  
+## Data
+
+Unfortunately, no class on Environmental Data Visualization can be complete without at 
+least an introduction to the import and export of data and visualizations. In previous units, we've covered the basics of visualization, and the basics of environment through the lens of environmental justice.  In this unit, we deal with the least satisfactory and potentially most frustrating component of the chain - data. 
+
+I'll provide an overview of data import functions and data export functions. Then we will have a guest lecture on data ownership and context that goes into the theory and ethics of data generation and ownership. 
+
+@fig-spiner provides a meme of the iconic android Data from [Star Trek: TNG](https://memory-alpha.fandom.com/wiki/Star_Trek:_The_Next_Generation) 
+
+![Brent Spiner](https://i.pinimg.com/originals/fa/ee/58/faee5899865660de818cfba6255ea6a9.jpg){#fig-spiner}
