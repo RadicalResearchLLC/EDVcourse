@@ -3,3 +3,313 @@
 ::: {.callout-note appearance="simple"}
 Today we will focus on the practice of acquiring, importing, and exporting data.
 :::
+
+Our framework for the workflow of data visualization is shown in @fig-TidyverseFramework
+
+![Tidyverse](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
+
+In our previous sections, we've made the import process as painless as possible by providing direct datasets from within packages or pre-cleaned and simple datasets for import. However, that is a luxury that most new visualizations will not have available. Instead, finding and properly importing the dataset is the key step to doing an analysis. 
+  
+## Load and Install Packages
+  
+As always, we should load the packages we need to import the data. There are many specialized data import packages, but `tidyverse` and `sf` are a good start and can handle many standard tables and geospatial data files.  Remember, you can check to make sure a package is loaded in your R session by checking on the _files, plots, and packages_ panel, clicking on the _Packages_ tab, and scrolling down to `tidyverse` and `sf` to make sure they are checked.
+
+```{r}
+#| label: load tidyverse
+#| echo: true
+
+library(tidyverse)
+library(sf)
+
+```
+
+## Importing Data
+
+As the reading assignment showed, there are many functions for reading in tabular data, depending on the formatting of the table. The base function for reading data usually has `read` in it.  
+
+The `readr` package is part of the `tidyverse` and is a good starting point for reading in some simple tabular data formats. Unfortunately, there are dozens of possible data formats that are commonly used. 
+
+* `read_csv()` - import comma-separated value formats
+* `read_tsv()` - import tab-separated value formats
+* `read_delim()` - import _delimiter_ specific formats - user specifies the _delimiter_ (e.g., semicolon)
+* `read_table()` - import whitespace-separated value formats
+
+People use spreadsheets instead of simple text files a lot of the time. If you are dealing with MS Excel then the `readxl` package is useful. If dealing with a google spreadsheet, then the `googlesheets4` package is what you need.  
+
+* `readxl::read_excel()` - import a worksheet from an Excel spreadsheet  
+* `googlesheets::read_sheet()` - import a sheet from a Google sheet - requires user authentication credentials
+
+Lastly, we've already used the `sf` library to import geospatial data. 
+
+* `sf::read_sf()` - import a geospatial file 
+
+### Direct reading files from a URL
+
+In the easiest and best scenario, one can simply read the data directly from a URL.  
+
+[NOAA Global Monitoring Laboratory](https://gml.noaa.gov/) provides text file data that we can directly access on greenhouse gases.   
+
+My PhD dissertation had a couple of chapters on methane (isotopic compositions), so let's look at monthly average methane concentrations. 
+
+[Methane monthly average concentrations sampled by flasks](https://gml.noaa.gov/dv/data/index.php?category=Greenhouse%2BGases&parameter_name=Methane&frequency=Monthly%2BAverages&type=Flask)  
+
+I selected Alert, Nunavut, in Canada (ALT). Methane's chemical formula is CH~4~. Therefore, I will
+assign the path of URL.ALT.CH4  
+
+```{r}
+#| label: URL for Alert methane monthly averages
+#| echo: TRUE
+
+URL.ALT.CH4 <- 'https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/txt/ch4_alt_surface-flask_1_ccgg_month.txt'
+```
+
+If we go to that [link](https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/txt/ch4_alt_surface-flask_1_ccgg_month.txt), we see a bunch of header text (70 lines), then the data. The data appears to be tab-delimited or fixed width format. Therefore, I will try using the `read_tsv()` function and `skip` the first 70 lines.
+
+Knowing this, let's try to import the data. I am going to demonstrate my mistakes because this type of process often requires multiple attempts to get it to work. I want to show that so you see the types of error messages and can identify examples of what to try next.
+
+```{r}
+#| label: ALT methane monthly average import
+#| echo: TRUE
+
+ALT.CH4 <- read_tsv(URL.ALT.CH4, skip = 70)
+
+head(ALT.CH4)
+```
+
+Hmmm, it looked promising but nope. It assigned everything to one column. Those aren't tabs delimiting the columns. I will try `read_table()` instead since that covers whitespace-separated values.
+
+```{r}
+#| label: ALT methane monthly average import 2
+#| echo: TRUE
+
+ALT.CH4 <- read_table(URL.ALT.CH4, skip = 70)
+
+head(ALT.CH4)
+
+
+```
+
+Much better!  But it doesn't have the column headers. Let's assign `skip = 69` instead of `skip = 70`
+
+```{r}
+#| label: ALT methane monthly average import 3
+#| echo: TRUE
+
+ALT.CH4 <- read_table(URL.ALT.CH4, skip = 69)
+
+head(ALT.CH4)
+
+```
+
+Nope, the column names are going to need to be manually assigned. The `colnames()` function allows a user to rename column headers. 
+
+```{r}
+#| label: ALT methane monthly average import 4
+#| echo: TRUE
+
+ALT.CH4 <- read_table(URL.ALT.CH4, skip = 70) 
+
+headers <- c('site', 'year', 'month', 'value')
+colnames(ALT.CH4) <- headers
+
+head(ALT.CH4)
+
+```
+
+Looking good!  Let's take quick look with a visualization (sorry, can't resist). I do need to do one processing step to combine the month and year columns. I'll do that the quick and dirty way rather than deal with _date_ formats which are notoriously problematic.
+
+I will use the `mutate()` function to create a new mutant decimal.date variable, then use that to display the data in a `ggplot()` with a `geom_point()` and a `geom_smooth()` overlay in @fig-MethaneTrend
+
+```{r}
+#| label: fig-MethaneTrend
+#| fig-cap: Trend in Methane concentrations (ppb) at Alert, Canada
+#| echo: TRUE
+
+ALT.CH4 %>% 
+  mutate(decimal.Date = (year + month/12)) %>% 
+  ggplot(aes(x = decimal.Date, y = value)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw() +
+  labs(x = 'Year', y = 'Methane concentration (ppb)',
+       title = 'Alert, Canada - methane trend')
+
+```
+
+#### Exercise 1. 
+
+1. Go to [NOAA](https://gml.noaa.gov/dv/data/index.php?category=Greenhouse%2BGases&parameter_name=Methane&frequency=Monthly%2BAverages&type=Flask) and select a site other than Alert to download. If you choose CO~2~ or another gas, the header length may change. Look at your choice to identify changes.
+2. Get the URL and assign it to a pathname that identifies the site and data.
+3. Download the data using the `read_table()` function and assign it to a named table.
+4. Fix the column headers and check the first five rows using `head()`
+5. Plot a time series using `ggplot()` for your dataset - fix the title and labels to name your site and data properly.
+6. (optional) Make a facet plot showing each month as a separate facet to understand seasonal trends. @fig-seasonal
+
+```{r}
+#| label: fig-seasonal
+#| fig-cap: Trend in Methane concentrations (ppb) at Alert, Canada by month
+#| echo: false
+
+ALT.CH4 %>% 
+  #mutate(decimal.Date = (year + month/12)) %>% 
+  ggplot(aes(x = year, y = value)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw() +
+  labs(x = 'Year', y = 'Methane concentration (ppb)',
+       title = 'Alert, Canada - methane trend by month') +
+  facet_wrap(~month, ncol = 4)
+
+```
+
+## Downloading Data
+
+There sure were a lot of sites with data.  What if I wanted to download all of them? I could go one by one and click on every link, but that sure seems inefficient.
+
+NOAA has us covered again, with an [ftp directory](https://gml.noaa.gov/dv/data.html) that allows to download a whole network of data simultaneously.  
+
+**Ack! The [network data](https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/ch4_surface-flask_1_ccgg_ASCIItext.zip) is a zip file!** 
+
+Now I can't read it in directly. Time to figure out pathnames on our machines.
+
+The functions for identifying the working directory is `getwd()`. One can change the directory by using the function `setwd()`.  For now, we just need to make sure that we can find the data we download and put it in the right directory to work with. 
+
+```{r}
+#| label: Check directory
+#| echo: true
+
+getwd()
+```
+When I run the function `getwd()`, it outputs the path of the working directory on my machine. Your machine will have a different path.
+
+The most reproducible path to ensure that the data is in the right working directory is to download the file directly to it using the `download.file()` function. In it, I put the path to the file, and the name I want the file to be saved as. 
+
+```{r}
+#| label: download zip file
+#| echo: true
+
+Network.URL <- 'https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/ch4_surface-flask_1_ccgg_ASCIItext.zip'
+
+download.file(Network.URL, 'NOAA_CH4.zip')
+
+```
+
+If the function worked, a loading bar should have shown your progress and the output should indicate that a 5.6 MB file was downloaded.
+
+I can now look in my _files, plots, packages_ panel to see if the file is there. 
+
+Once the data is downloaded, I can unzip it and see how it looks.
+
+* `unzip()` extracts zip files.
+
+```{r}
+#| label: unzip and load the methane data
+#| echo: true
+
+unzipped.files <- unzip(zipfile = 'NOAA_CH4.zip')
+
+head(unzipped.files)
+```
+
+Unfortunately, this data set is 116 individual text files; they haven't done any of the work for us in assembling this into a single dataset. Let's look at some random text files to see if they are the same format or different formats.  
+
+```{r}
+#| label: create a single dataset
+#| echo: true
+#| warning: false
+
+data1 <- read_table(unzipped.files[1], skip = 160)
+data5 <- read_table(unzipped.files[5], skip = 160)
+data32 <- read_table(unzipped.files[32], skip = 160)
+data107 <- read_table(unzipped.files[107], skip = 160)
+
+```
+
+These data are a different format than the simple stuff we were pulling earlier. We can get some of these to work, but they aren't all the same, so we'd need to write a program to wrangle this data together.  Unfortunate, but now we know.
+
+::: {.callout-note appearance="warning"}
+Dealing with other people's data is fraught with peril. Data is hard to deal with. I include this example to indicate that dealing with data import and tidying is 80+% of being able to visualize a dataset.
+:::
+
+### Downloading a well-behaved dataset
+
+Let's go grab the CalEnviroScreen Shapefile. I promise you this dataset is better behaved.
+
+The link is on the [main site](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) below the mapping tool under **Data and Additional Materials**.
+
+We want that shapefile, which is zipped again. I assign the path, then save it as a `.zip` file. On my Windows machine download.file didn't work, which is a known certificate issue on https:// type downloads. If it doesn't work 
+
+```{r}
+#| label: download CalEnviroScreen zipped shapefile 
+#| echo: true
+
+CalEJ.URL <- 'https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40shpf2021shp.zip'
+download.file(url = CalEJ.URL, 'CalEJ.zip')
+### This doesn't work on my machine - likely a Windows problem
+```
+
+```{r}
+#| label: alternate download option
+#| echo: true
+#| 
+#install.packages('downloader')
+downloader::download(CalEJ.URL, 'CalEJ.zip', mode = 'wb')
+
+```
+
+Check your _files_ panel to make sure the dataset is ~7.9 Mb. If it is 212 kb, it didn't work.  
+
+Let us see if we can now read in the California EJ shapefile and see the whole state's data.
+
+We need to run `unzip()` and `read_sf()` to import the dataset. 
+
+First I tried to read it directly from within the R environment. That broke and didn't work and doesn't render properly. 
+
+```{r}
+#| label: unzip and read the shapefile data 1
+#| echo: true
+
+unzipped_EJ <- unzip('CalEJ.zip')
+#read_sf(unzipped_EJ)
+
+```
+
+It turns out that one needs to extract the unzipped files into a directory in order to read it in. Ok, let's modify that `unzip()` function to include the option to extract it to a directory using the `exdir` option. We'll define a directory path to use in both `unzip()` and `read_sf()`. We also need to add the coordinate transformation of `st_transform()` for good old world geodectic system 84.   
+
+```{r}
+#| label: unzip and read the shapefile data 2
+#| echo: true
+
+directory_name <- 'CalEJ_shapefiles' 
+unzip('CalEJ.zip', exdir = directory_name)
+CalEJ4 <- read_sf(dsn = directory_name) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+Success!
+
+Let's make a quick visualization for the State for the _CIscoreP_ variable as shown in @fig-Cal. This indicates areas with highest environmental and vulnerable population indicators. I'm going to borrow a lot of the code we used in our first spatial visualization lecture   
+
+```{r}
+#| label: fig-Cal
+#| echo: true
+#| fig-cap: CalEnviroScreen map for CIScore for the whole state
+
+library(leaflet)
+CalEJ4 <- filter(CalEJ4, CIscoreP >=0)
+
+palEJ <- colorNumeric(palette = 'YlOrBr', domain = CalEJ4$CIscoreP, n = 6)
+
+leaflet(data = CalEJ4) %>% 
+  addTiles() %>% 
+  addPolygons(stroke = FALSE,
+              fillColor = ~palEJ(CIscoreP),
+              fillOpacity = 0.8) %>% 
+  addLegend(pal = palEJ, 
+            title = 'CalEnviroScreen Impact (%)', 
+            values = ~CIscoreP)
+
+```
+
+```
