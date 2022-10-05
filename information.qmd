@@ -74,9 +74,10 @@ Why isn't this course called **Environmental Information Visualization**?
 
 ## Abstraction
 
-When we talk about the weather and use a data visualization, we are abstracting from @fig-actualweather to a 2-D representation of some numbers, colors, or pictures on a pixelized screen.  
+When we talk about the weather and use a data visualization, we are abstracting from @fig-lightning to a 2-D representation of some numbers, colors, or pictures on a pixelized screen.  
 
-![PalmSprings](images/palm_springs_lightning.jpg){#fig-actualweather}
+![Palm Springs](images/palm_springs_lightning.jpg){#fig-lightning}
+
 🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️🌩️
 
 Data visualization is an artistic abstraction.  
