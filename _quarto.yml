@@ -26,6 +26,7 @@ book:
         - CCAEJ.qmd
         - assignment2.qmd
     - part: data.qmd
+      chapters:
         - import.qmd
         - export.qmd
         - context.qmd
