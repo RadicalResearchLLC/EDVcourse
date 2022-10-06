@@ -1,5 +1,218 @@
 # Exporting visualizations and data {#sec-export}
 
 ::: {.callout-note appearance="simple"}
-Today we focus on the practice of data visualization by cover data export ('saving')  
+Today we focus on the practice of exporting completed visualizations  
 :::
+
+In order to communicate using visualization, one usually needs to save it to a form that can be used to communicate. Today will focus on static images but there
+are options for interactive formats like HTML or Shiny that embed interactivity.
+
+## Load libraries
+
+```{r}
+#| label: load tidyverse, sf, and leaflet
+#| echo: true
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+
+```
+
+## Import data
+
+Load SoCalEJ for the demonstration. 
+
+```{r}
+#| label: load SoCalEJ dataset
+#| echo: true
+#| warning: false
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+## Transform data for ggplot group & facet visualization
+
+```{r}
+#| label: Narrow data for manipulation
+#| echo: true
+#| warning: false
+
+SoCal_narrow <- SoCalEJ %>% 
+  st_set_geometry(value = NULL) %>% 
+  pivot_longer(cols = c(5:66), names_to = 'variable', values_to = 'value') %>% 
+  filter(value >=0)
+
+```
+
+## Create a ggplot visualization
+
+I will start with one of our pretty ggplot examples from @sec-EJdata. Let's remix the racial and ethnic population percentage by census tract and county. @fig-ethnicDistribution shows the figure. 
+
+```{r}
+#| label: fig-ethnicDistribution
+#| echo: true
+#| fig-cap: Racial and ethnic population distribution by county in SoCal census tracts.
+
+SoCal_narrow %>% 
+  filter(variable %in% c('Hispanic', 'White', 'AfricanAm',
+                         'NativeAm', 'OtherMult', 'AAPI')) %>% 
+  ggplot(aes(x = variable, y = value, fill= County)) +
+  geom_boxplot() +
+  theme_bw() + 
+  labs(x = '', y = 'Percent of population')
+```
+
+## Exporting Visualizations
+
+### Option 1 - Point and Click{#sec-PointClick}
+
+The point and click option is available after one creates a visualization.
+
+1. Go to the _files, plots, and packages_ panel of RStudio.
+2. Click on the _Plots_ tab.
+3. Click on the _Export_ button as shown in @fig-exportButton
+4. Choose whether to _Save as Image_ or _Save as PDF_.  
+5. Rename file save to something more descriptive than **RPlot**
+6. Click _Save_
+7. File should now be saved to your working directory - `getwd()` will identify that path, and it should be accessible through the _Files_ tab of the 
+
+![Export button is here on my machine](images/export_button.png){#fig-exportButton}
+
+### Option 2. For `ggplot()` files, use `ggsave()`
+
+This is pretty straightforward and a bit more reproducible and customizable than the manual point and click process. A minimal example of a `.png` export is shown below.
+
+```{r}
+#| label: ggsave example 1
+#| echo: true
+
+ggsave(filename = 'boxplot.png')
+```
+One can then go to the _Files_ panel, sort by modified and there should be a file named _boxplot.png_.  Note that `ggsave()` defaults to saving the last image created.
+
+One can save files as a variety of image formats, with specified dimensions. 
+
+```{r}
+#| label: ggsave example 2
+#| echo: true
+
+ggsave(filename = 'boxplot.jpg', width = 5, height = 4, units = 'in')
+
+```
+
+There are a number of export options within `ggsave()`, but the defaults should be pretty good for now. 
+
+Lastly, it can sometimes be important to directly save a ggplot within R. Then one can manually assign the exact image file to export.  The code below demonstrates this, and is most important when automating exporting many (e.g., 100s) of images.
+
+```{r}
+#| label: ggsave example 3
+#| echo: true
+
+Vis <- SoCal_narrow %>% 
+  filter(variable %in% c('Hispanic', 'White', 'AfricanAm',
+                         'NativeAm', 'OtherMult', 'AAPI')) %>% 
+  ggplot(aes(x = variable, y = value, fill= County)) +
+  geom_boxplot() +
+  theme_bw() + 
+  labs(x = '', y = 'Percent of population')
+
+ggsave('boxplot.pdf', plot = Vis)
+
+```
+
+In this third example, we assign the image to the pointer Viz.  Then the `ggsave()` option `plot = ` is used to assign the image to save the file Viz to a `.pdf` export.  
+
+## Leaflet Visualization - Static
+
+First, I am going to map Diesel PM for the SoCalEJ dataset in Leaflet, following the examples from @sec-import. @fig-DPM is the result.
+
+```{r}
+#| label: fig-DPM
+#| fig-cap: Diesel PM percentiles in SoCal
+#| echo: true
+
+palDPM <- colorNumeric(palette = 'YlOrBr', domain = SoCalEJ$DieselPM_P)
+
+leaflet(data = SoCalEJ) %>% 
+  addTiles() %>% 
+  setView(lat = 33.8, lng = -117.60, zoom = 9) %>% 
+  addPolygons(stroke = FALSE,
+              fillColor = ~palDPM(DieselPM_P),
+              fillOpacity = 0.5) %>% 
+  addLegend(pal = palDPM, 
+            title = 'Diesel PM (%)', 
+            values = ~DieselPM_P)
+
+```
+
+### Option 1. Point and Click.
+
+Repeat similar steps as shown in @sec-PointClick.  Here are the steps for exporting an interactive HTML map manually.
+
+1. Go to the _files, plots, and packages_ panel of RStudio.
+2. Click on the _Plots_ tab.
+3. Click on the _Export_ button as shown in @fig-exportButton
+4. Choose to _Save as Web Page_.  
+5. Rename file save to something more descriptive than **RPlot**
+6. Click _Save_
+7. File should now be saved to your working directory - `getwd()` will identify that path, and it should be accessible through the _Files_ tab. On my machine it also loads directly into  my default web browser.
+
+### Option 2. `htmlwidgets` package for exports
+
+As always, there is a package to do a specific thing that be done point and click style. `htmlwidgets` provides the `saveWidget()` function for exporting leaflet maps as HTML.
+
+#### Install the package and load it.
+
+```{r}
+#| label: install htmlwidgets
+#| echo: true
+#| eval: false
+
+install.packages('htmlwidgets')
+```
+
+```{r}
+#| label: load htmlwidgets
+#| echo: true
+
+library(htmlwidgets)
+```
+
+#### Save Leaflet as a Static Image 
+
+First, the map needs to be assigned a name.  In this case, it is assigned the name **DPM_map**.  
+
+```{r}
+#| label: assign leaflet map to named file
+#| echo: true
+
+DPM_map <- leaflet(data = SoCalEJ) %>% 
+  addTiles() %>% 
+  setView(lat = 33.8, lng = -117.60, zoom = 9) %>% 
+  addPolygons(stroke = FALSE,
+              fillColor = ~palDPM(DieselPM_P),
+              fillOpacity = 0.5) %>% 
+  addLegend(pal = palDPM, 
+            title = 'Diesel PM (%)', 
+            values = ~DieselPM_P)
+
+```
+
+Look at the _Environment_ panel and **DPM_map** is now an environmental data of type `Large leaflet (8 elements, 11.6 MB)`. 
+
+Now the map can be saved using `saveWidgets()`
+
+```{r}
+#| label: save html map
+#| echo: true
+
+saveWidget(widget = DPM_map, file = 'DPM_map.html')
+```
+
+And that's it. Check in _Files_ and we have the DPM_map.html. 
+
+You are now experts!  

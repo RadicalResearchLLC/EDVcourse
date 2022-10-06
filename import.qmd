@@ -1,7 +1,7 @@
 # Importing Data {#sec-import}
 
 ::: {.callout-note appearance="simple"}
-Today we will focus on the practice of acquiring, importing, and exporting data.
+Today we will focus on the practice of importing data.
 :::
 
 Our framework for the workflow of data visualization is shown in @fig-TidyverseFramework
@@ -9,6 +9,8 @@ Our framework for the workflow of data visualization is shown in @fig-TidyverseF
 ![Tidyverse](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
 
 In our previous sections, we've made the import process as painless as possible by providing direct datasets from within packages or pre-cleaned and simple datasets for import. However, that is a luxury that most new visualizations will not have available. Instead, finding and properly importing the dataset is the key step to doing an analysis. 
+
+Acquiring and importing data is the most complicated part of this course and data visualization in general. This Unit is done now, rather than at the beginning, because of its difficulty and low-payoff. 
   
 ## Load and Install Packages
   
@@ -22,7 +24,6 @@ library(tidyverse)
 library(sf)
 
 ```
-
 ## Importing Data
 
 As the reading assignment showed, there are many functions for reading in tabular data, depending on the formatting of the table. The base function for reading data usually has `read` in it.  
@@ -47,7 +48,7 @@ Lastly, we've already used the `sf` library to import geospatial data.
 
 In the easiest and best scenario, one can simply read the data directly from a URL.  
 
-[NOAA Global Monitoring Laboratory](https://gml.noaa.gov/) provides text file data that we can directly access on greenhouse gases.   
+[NOAA Global Monitoring Laboratory](https://gml.noaa.gov/) provides text file data that we can directly access on greenhouse gases monthly average concentrations. It has also has individual flask samples, which are much messier; I recommend staying away from those unless you are doing high-level research on individual samples.   
 
 My PhD dissertation had a couple of chapters on methane (isotopic compositions), so let's look at monthly average methane concentrations. 
 
@@ -75,8 +76,11 @@ ALT.CH4 <- read_tsv(URL.ALT.CH4, skip = 70)
 
 head(ALT.CH4)
 ```
+::: {.callout-note appearance="warning"}
+Caution! 
+:::
 
-Hmmm, it looked promising but nope. It assigned everything to one column. Those aren't tabs delimiting the columns. I will try `read_table()` instead since that covers whitespace-separated values.
+The `read_tsv()` assigned everything to one column instead of four; this is a **bad import**. One can conclude that it isn't tabs delimiting the columns, since `read_tsv()` failed to import it correctly. I will try `read_table()` next since that covers whitespace-separated values (i.e., spaces between columns).
 
 ```{r}
 #| label: ALT methane monthly average import 2
@@ -85,7 +89,6 @@ Hmmm, it looked promising but nope. It assigned everything to one column. Those 
 ALT.CH4 <- read_table(URL.ALT.CH4, skip = 70)
 
 head(ALT.CH4)
-
 
 ```
 
@@ -100,8 +103,11 @@ ALT.CH4 <- read_table(URL.ALT.CH4, skip = 69)
 head(ALT.CH4)
 
 ```
+::: {.callout-note appearance="warning"}
+Caution! Now it is six columns - the header row doesn't match the data.
+:::
 
-Nope, the column names are going to need to be manually assigned. The `colnames()` function allows a user to rename column headers. 
+The column names are going to need to be manually assigned. The `colnames()` function allows a user to rename column headers. The code is specific to this data file and may not be appropriate for other CH~4~ files from this site. **Always** look at the data to make sure it is as expected.
 
 ```{r}
 #| label: ALT methane monthly average import 4
@@ -116,7 +122,7 @@ head(ALT.CH4)
 
 ```
 
-Looking good!  Let's take quick look with a visualization (sorry, can't resist). I do need to do one processing step to combine the month and year columns. I'll do that the quick and dirty way rather than deal with _date_ formats which are notoriously problematic.
+Looking good! Now it is time for a quick visualization (sorry, can't resist). I do need to do one processing step to combine the month and year columns. I'll do that the quick and dirty way rather than deal with _date_ formats which are notoriously complex.
 
 I will use the `mutate()` function to create a new mutant decimal.date variable, then use that to display the data in a `ggplot()` with a `geom_point()` and a `geom_smooth()` overlay in @fig-MethaneTrend
 
@@ -129,6 +135,7 @@ ALT.CH4 %>%
   mutate(decimal.Date = (year + month/12)) %>% 
   ggplot(aes(x = decimal.Date, y = value)) +
   geom_point() +
+  geom_line(alpha = 0.6) +
   geom_smooth() +
   theme_bw() +
   labs(x = 'Year', y = 'Methane concentration (ppb)',
@@ -151,7 +158,6 @@ ALT.CH4 %>%
 #| echo: false
 
 ALT.CH4 %>% 
-  #mutate(decimal.Date = (year + month/12)) %>% 
   ggplot(aes(x = year, y = value)) +
   geom_point() +
   geom_smooth() +
@@ -194,7 +200,7 @@ download.file(Network.URL, 'NOAA_CH4.zip')
 
 ```
 
-If the function worked, a loading bar should have shown your progress and the output should indicate that a 5.6 MB file was downloaded.
+If the function worked, a loading bar should have shown your progress and the output should indicate that a 5.6 MB file was downloaded. 
 
 I can now look in my _files, plots, packages_ panel to see if the file is there. 
 
@@ -228,16 +234,16 @@ data107 <- read_table(unzipped.files[107], skip = 160)
 These data are a different format than the simple stuff we were pulling earlier. We can get some of these to work, but they aren't all the same, so we'd need to write a program to wrangle this data together.  Unfortunate, but now we know.
 
 ::: {.callout-note appearance="warning"}
-Dealing with other people's data is fraught with peril. Data is hard to deal with. I include this example to indicate that dealing with data import and tidying is 80+% of being able to visualize a dataset.
+Dealing with other people's data is fraught with peril. Data is hard to deal with. I include this example to indicate that dealing with data import and tidying is 80+% of the time required to be able to visualize a dataset.
 :::
 
 ### Downloading a well-behaved dataset
 
-Let's go grab the CalEnviroScreen Shapefile. I promise you this dataset is better behaved.
+Time to acquire the CalEnviroScreen Shapefile. This dataset should be well-mannered.
 
 The link is on the [main site](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) below the mapping tool under **Data and Additional Materials**.
 
-We want that shapefile, which is zipped again. I assign the path, then save it as a `.zip` file. On my Windows machine download.file didn't work, which is a known certificate issue on https:// type downloads. If it doesn't work 
+We want the shapefile, which is zipped again. I assign the path, then save it as a `.zip` file. On my Windows machine download.file didn't work, which is a known certificate issue on https:// type downloads. If it doesn't work then 
 
 ```{r}
 #| label: download CalEnviroScreen zipped shapefile 
@@ -248,11 +254,55 @@ download.file(url = CalEJ.URL, 'CalEJ.zip')
 ### This doesn't work on my machine - likely a Windows problem
 ```
 
+::: {.callout-note appearance="warning"}
+Caution! This code didn't work. 
+:::
+
+Ok, the solution that worked on a Windows PC is to install and load the `downloader()` package.
+
 ```{r}
-#| label: alternate download option
+#| label: downloader installation
 #| echo: true
-#| 
-#install.packages('downloader')
+#| eval: false
+
+install.packages('downloader')
+
+```
+
+```{r}
+#| label: load downloader 
+#| echo: true
+
+library(downloader)
+
+```
+
+Check the _packages_ panel to make sure it installed correctly. The `downloader` package should have a checkmark next to it.
+
+Unfortunately, downloader has different modes for different operating systems.
+
+::: {.callout-note appearance="warning"}
+Caution! Only run the line of code appropriate to your Operating System
+:::
+
+```{r}
+#| label: Mac downloader code
+#| echo: true
+#| eval: false
+
+## MacOS
+downloader::download(CalEJ.URL, 'CalEJ.zip', mode = 'curl')
+
+```
+
+On a **PC**, this code works to download the CalEJ zipped dataset.
+Most of you have Macs - and mode = 'wb' doesn't work for Macs. 
+
+```{r}
+#| label: Windows download 
+#| echo: true
+
+##WindowsOS
 downloader::download(CalEJ.URL, 'CalEJ.zip', mode = 'wb')
 
 ```
@@ -264,15 +314,6 @@ Let us see if we can now read in the California EJ shapefile and see the whole s
 We need to run `unzip()` and `read_sf()` to import the dataset. 
 
 First I tried to read it directly from within the R environment. That broke and didn't work and doesn't render properly. 
-
-```{r}
-#| label: unzip and read the shapefile data 1
-#| echo: true
-
-unzipped_EJ <- unzip('CalEJ.zip')
-#read_sf(unzipped_EJ)
-
-```
 
 It turns out that one needs to extract the unzipped files into a directory in order to read it in. Ok, let's modify that `unzip()` function to include the option to extract it to a directory using the `exdir` option. We'll define a directory path to use in both `unzip()` and `read_sf()`. We also need to add the coordinate transformation of `st_transform()` for good old world geodectic system 84.   
 
