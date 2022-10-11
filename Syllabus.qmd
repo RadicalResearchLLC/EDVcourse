@@ -2,13 +2,13 @@
 
 ## Course Description
 
-This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas).  
+This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA's EJScreen, EPA's EnviroAtlas).
 
 ## Course Materials
 
 Go [here](http://radicalresearch.llc/EDVcourse/) to see all course materials.
 
-The course materials are built using the [quarto](https://quarto.org/docs/guide) environment which is [R Markdown](https://rmarkdown.rstudio.com/) adjacent, but allows a user to embed functional code in R, Python, Julia, and/or Observable JS. 
+The course materials are built using the [quarto](https://quarto.org/docs/guide) environment which is [R Markdown](https://rmarkdown.rstudio.com/) adjacent, but allows a user to embed functional code in R, Python, Julia, and/or Observable JS.
 
 All code used is on [github](https://github.com/RadicalResearchLLC/EDVcourse)
 
@@ -16,57 +16,57 @@ Any readings assigned will be emailed to students and/or posted to Box for downl
 
 ## Course Goals & Learning Objectives
 
-Upon successful completion of this course, students will 
+Upon successful completion of this course, students will
 
-* acquire critical thinking skills on the display of visual information
-* improve team-based collaboration abilities by working on group projects
-* know how to acquire, [tidy](https://www.tidyverse.org/), and summarize quantitative environmental datasets
-* create graphs and maps in [R](https://cran.r-project.org/)
-* critically review current environmental justice tools such as [CalEnviroScreen](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) and [EJScreen](https://www.epa.gov/ejscreen)
-* understand basic theory and ethics of environmental data visualization
+-   acquire critical thinking skills on the display of visual information
+-   improve team-based collaboration abilities by working on group projects
+-   know how to acquire, [tidy](https://www.tidyverse.org/), and summarize quantitative environmental datasets
+-   create graphs and maps in [R](https://cran.r-project.org/)
+-   critically review current environmental justice tools such as [CalEnviroScreen](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40) and [EJScreen](https://www.epa.gov/ejscreen)
+-   understand basic theory and ethics of environmental data visualization
 
 ## Student Learning Outcomes
 
-1. Critical Thinking, Quantitative Reasoning, and Effective Expression - Upon completion of this course, student's will be able to critically examine the elements of environmental data visualization, create effective maps and graphs of environmental data, and effectively communicate environmental ideas in a quantitative visual manner.  It will also focus on the theory and ethics of data visualization with readings and critical analysis of existing environmental justice tools.
+1.  Critical Thinking, Quantitative Reasoning, and Effective Expression - Upon completion of this course, student's will be able to critically examine the elements of environmental data visualization, create effective maps and graphs of environmental data, and effectively communicate environmental ideas in a quantitative visual manner. It will also focus on the theory and ethics of data visualization with readings and critical analysis of existing environmental justice tools.
 
-2. Social Justice Theory - This course will identify and quantitatively explore the unequal distribution and access to natural resources (Environmental Justice) within California and the United States. Students will critically examine the ways Environmental Justice is currently characterized by government agencies and describe the types of data visualization used to quantitatively identify areas of disproportional impact and understand the limitations of existing tools in promoting effective change.   
+2.  Social Justice Theory - This course will identify and quantitatively explore the unequal distribution and access to natural resources (Environmental Justice) within California and the United States. Students will critically examine the ways Environmental Justice is currently characterized by government agencies and describe the types of data visualization used to quantitatively identify areas of disproportional impact and understand the limitations of existing tools in promoting effective change.
 
 ## Classroom Approach
 
-In-person class time will include approximately 40% of time to devoted to lectures, 30% to hands-on coding and data visualization, and 30% to discussion. 
+In-person class time will include approximately 40% of time to devoted to lectures, 30% to hands-on coding and data visualization, and 30% to discussion.
 
 ## Assignments and Activities
 
-* Classroom participation during discussion sections
-* Classroom participation during coding sessions
-* Assigned reading (Tufte, news and peer-review articles, online books)
-* Assigned review of web tools (CalEnviroScreen, EJScreen, EnviroAtlas)
-* Group coding projects
-* Class presentation on an environmental data visualization
-* Three individual projects displaying environmental data
-* Group project displaying environmental data
-* Final exam
+-   Classroom participation during discussion sections
+-   Classroom participation during coding sessions
+-   Assigned reading (Tufte, news and peer-review articles, online books)
+-   Assigned review of web tools (CalEnviroScreen, EJScreen, EnviroAtlas)
+-   Group coding projects
+-   Class presentation on an environmental data visualization
+-   Three individual projects displaying environmental data
+-   Group project displaying environmental data
+-   Final exam
 
 ## Grading and Assessment Breakdown
 
-The class will be based on a total of 1000 points. 
+The class will be based on a total of 1000 points.
 
-* The group project displaying environmental data visualization will count for 200 points 
-* The three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).
-  + Remix of an environmental justice dataset from an existing EJ tool
-  + A written critique of an existing environmental data visualization 
-  + A student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)
-* A presentation on environmental data visualization in Environmental Justice tools will count for 200 points
-* Classroom participation will count for 100 points throughout the course of the semester. 
-  + These points will be awarded for attendance and active participation in classroom discussion and coding sessions.   
-  + Online attendance and participation will count towards this activity in case of sickness or inability to attend in-person.  
-  + Missing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.  
-* Final exam will count for 200 points. This will cover theory, ethics, and environmental justice.  
-* Extra credit - TBD
+-   The group project displaying environmental data visualization will count for 200 points
+-   The three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).
+    -   Remix of an environmental justice dataset from an existing EJ tool
+    -   A written critique of an existing environmental data visualization
+    -   A student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)
+-   A presentation on environmental data visualization in Environmental Justice tools will count for 200 points
+-   Classroom participation will count for 100 points throughout the course of the semester.
+    -   These points will be awarded for attendance and active participation in classroom discussion and coding sessions.\
+    -   Online attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\
+    -   Missing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\
+-   Final exam will count for 200 points. This will cover theory, ethics, and environmental justice.\
+-   Extra credit - TBD
 
 Students get a single **free** individual or group project that can be late by up to seven days from the due date. For the group project, if a member of the group has already used their individual **free** late project, the group cannot use other individual free periods. If any other project is late, scores will be reduced by 10% per day beyond the due date of the project.
 
-The final exam and assigned presentation date require a doctor's note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.   
+The final exam and assigned presentation date require a doctor's note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.
 
 @tbl-scores
 
@@ -75,7 +75,6 @@ The final exam and assigned presentation date require a doctor's note for an exc
 #| tbl-cap: Breakdown of course points
 #| echo: false
 #| warning: false
-
 Assignments <- c('Group Project - data visualization', 'Individual project 1 - EJ tool remix', 
                 'Individual Project 2 - written critique (minimum 2 pages)',
                 'Individual Project 3 - data visualization',
@@ -83,22 +82,18 @@ Assignments <- c('Group Project - data visualization', 'Individual project 1 - E
                 'Classroom participation',
                 'Final exam', 'Extra Credit')
 Points <- c(200, 100, 100, 100, 200, 100, 200, 50)
-
 table.score <- data.frame(Assignments, Points)
-
 kableExtra::kable(table.score)
-
 ```
 
 ## Office Hours
 
-* Mondays 9 AM - 11 AM on [Pitzer Zoom](https://pitzer.zoom.us/j/2600893680) 
-* Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy 
+-   Mondays 9 AM - 11 AM on [Pitzer Zoom](https://pitzer.zoom.us/j/2600893680)
+-   Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy
 
 ## Contact Info
 
-The best way to get a hold of me is email: michael_mccarthy@pitzer.edu
-You may also see emails from my business address: mikem@radicalresearch.llc
+The best way to get a hold of me is email: michael_mccarthy\@pitzer.edu You may also see emails from my business address: mikem\@radicalresearch.llc
 
 ## Course materials
 
@@ -108,23 +103,23 @@ Go [here](http://radicalresearch.llc/EDVcourse/) to see all course materials.
 
 ## COVID policy
 
-COVID-19 safety guidelines and recommendations continue to evolve. Please read Pitzer’s [Community Messages](https://www.pitzer.edu/pathway-forward/category/community-messages/) and [FAQs](https://www.pitzer.edu/pathway-forward/frequently-asked-questions/faqs/) and visit the Student Health Services (SHS) [COVID page](https://services.claremont.edu/covid/) for the latest campus information and guidance.
+COVID-19 safety guidelines and recommendations continue to evolve. Please read Pitzer's [Community Messages](https://www.pitzer.edu/pathway-forward/category/community-messages/) and [FAQs](https://www.pitzer.edu/pathway-forward/frequently-asked-questions/faqs/) and visit the Student Health Services (SHS) [COVID page](https://services.claremont.edu/covid/) for the latest campus information and guidance.
 
 ![SneezeCFD](images/COVID_mask.png)
 
 I will be wearing a mask in any indoor environment with others around. All applicable campus and LA County policies will apply in this class and I will follow them to the extent feasible. If mask wearing is optional under Pitzer and LA County guidelines, then it is in this classroom as well. If you need to sneeze, cover up with an elbow...
 
-If we do have a COVID breakout or otherwise require hybrid/remote class environments through Zoom, I will post meeting links via email.   
+If we do have a COVID breakout or otherwise require hybrid/remote class environments through Zoom, I will post meeting links via email.
 
 ## Readings
 
 The theory of environmental data visualization will use selected readings assigned to students. Every other class will involve a discussion of an assigned reading or analysis of an environmental data visualization.
 
-Assigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles.  A selection of readings that are likely to be discussed in the course includes:
+Assigned readings will include selections from books, peer-review journal articles, websites, and newspaper articles. A selection of readings that are likely to be discussed in the course includes:
 
-* Selections from Tufte's book 'The Visual Display of Quantitative Information' [@tufteVisualDisplayQuantitative2001]
-* Selections from Tufte's book 'Envisioning Information' [@tufteEnvisioningInformation2013]
-* Selections from Hadley Wickham's "Grammar of Graphics" with ggplot2, shiny, and other R packages. [@wickhamWelcomeTidyverse2019] 
-* A selection of Peer-review journal articles listed in the references below. [@hortonEnhancingOperationalValue2020; @kelleherTenGuidelinesEffective2011; @vanbeekEnvironmentalVisualizationsFraming2020; @gommehVisualDiscourseCoalitions2021; @murchieFundamentalsGraphicDesign2020; @graingerEnvironmentalDataVisualisation2016]
-* Newspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth [@facebookOpEdWeMapped2022]
-* Readings on the meaning, use, and technical limitations of Environmental Justice tools
+-   Selections from Tufte's book 'The Visual Display of Quantitative Information' [@tufteVisualDisplayQuantitative2001]
+-   Selections from Tufte's book 'Envisioning Information' [@tufteEnvisioningInformation2013]
+-   Selections from Hadley Wickham's "Grammar of Graphics" with ggplot2, shiny, and other R packages. [@wickhamWelcomeTidyverse2019]
+-   A selection of Peer-review journal articles listed in the references below. [@hortonEnhancingOperationalValue2020; @kelleherTenGuidelinesEffective2011; @vanbeekEnvironmentalVisualizationsFraming2020; @gommehVisualDiscourseCoalitions2021; @murchieFundamentalsGraphicDesign2020; @graingerEnvironmentalDataVisualisation2016]
+-   Newspaper articles such as the LA Times article by Professor Phillips on Inland Empire Warehouse growth [@facebookOpEdWeMapped2022]
+-   Readings on the meaning, use, and technical limitations of Environmental Justice tools

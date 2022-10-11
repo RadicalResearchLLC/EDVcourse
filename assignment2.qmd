@@ -52,4 +52,4 @@ Points will be awarded for successfully generating a unique visualization, for h
 
 In other words, the goal is to make a _better_ visualization, not just a **different** visualization. When describing the four feature changes, describe in one sentence why the features _improve_ the visualization.  
 
-Assignment is currently due October 12th, 2022 at the beginning of class. Please send the `.R script` and an exported visualization via email. This assignment is worth 100 points. Coding style will not be graded. Scripts will be used to reproduce the figure on my local machine - deviations between code and exported figure will likely result in deducted points. 
+Assignment is currently due **October 14th, 2022** at the beginning of class. Please send the `.R script` and an exported visualization via email. This assignment is worth 100 points. Coding style will not be graded. Scripts will be used to reproduce the figure on my local machine - deviations between code and exported figure will likely result in deducted points. 
