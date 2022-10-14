@@ -30,6 +30,7 @@ book:
         - import.qmd
         - export.qmd
         - context.qmd
+        - import2.qmd
         - assignment3.qmd
   appendices: 
     - syllabus.qmd  
