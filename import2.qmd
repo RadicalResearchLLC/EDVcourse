@@ -1,0 +1,279 @@
+# Importing Data - Part 2 {#sec-import2}
+
+::: {.callout-note appearance="simple"}
+Today we will focus on the practice of importing data - better than last time.
+:::
+
+Our framework for the workflow of data visualization is shown in @fig-TidyverseFramework
+
+![Tidyverse](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png){#fig-TidyverseFramework}
+
+Acquiring and importing data is the most complicated part of this course and data visualization in general. This Unit is done now, rather than at the beginning, because of its difficulty and low-payoff.
+
+## Load and Install Packages
+
+As always, we should load the packages we need to import the data. There are many specialized data import packages, but `tidyverse` and `sf` are a good start and can handle many standard tables and geospatial data files. Remember, you can check to make sure a package is loaded in your R session by checking on the *files, plots, and packages* panel, clicking on the *Packages* tab, and scrolling down to `tidyverse` and `sf` to make sure they are checked.
+
+```{r}
+#| label: load tidyverse, sf, leaflet
+#| echo: true
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(htmltools)
+
+```
+
+## Option 1. Point and Click Download, File Save, Read
+
+The basic way to acquire data is the Point and Click method. This is a step-by-step instruction for doing that.
+
+### Find and Download Data
+
+Go to [CalEnviroScreen](https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-40)
+
+Download the *Zipped Shapefile* shown in the screenshot in @fig-download
+
+![CalEnviroScreen Shapefile Location](/images/CalEJScreen_download.png){#fig-download}
+
+By default, downloads are often placed in a **Downloads** directory, although you may have changed that on your local machine.
+
+::: {.callout-note appearance="simple"}
+You can skip the next step if you directly save the zip file to your working directory.
+:::
+
+### Move the Zipped Shapefile to the R Working Directory
+
+By default, downloads are often placed in a **Downloads** directory, although you may have changed that on your local machine. If this occurred in your download, the zipped needs to be either (a) moved to the R working directory or (b) identify the filepath of the default download directory and work with it from there.
+
+For today, I will only show path (a) because it is good data science practice to keep the data in a directory associated with the visualization.
+
+1.  Identify the directory where the zipped shapefile was downloaded. On my machine, this is a **Downloads** folder which can be accessed through my web browser after the file download is complete as shown in @fig-openFolder. The name of the file is **calenviroscreen40shpf2021shp.zip**.
+
+![Browser download](/images/download_complete.png){#fig-openFolder} 2. Identify the R working directory on your machine using the `getwd()` function.
+
+```{r}
+#| label: find working directory
+#| echo: true
+
+getwd()
+```
+
+3.  Move **calenviroscreen40shpf2021shp.zip** from the default download directory to the R working directory. Either drag it, copy and paste it, or cut and paste it. For Macs - use the [Finder](https://support.apple.com/en-us/HT201732) tool. For PCs, use [File Explorer](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1).
+
+4.  Check your *Files, Plots, and Packages* panel to see the zipped file is identified by RStudio. See the example in @fig-filesPanel.
+
+![Files, Plots, and Packages Panel](/images/inDirectory.png){#fig-filesPanel}
+
+If you see the **calenviroscreen40shpf2021shp.zip** in the directory on your machine, congratulations! You are a winner!
+
+### Unzip the data - Two Ways
+
+Although the data is in the right place, it is not directly readable while zipped.
+
+#### Point and Click Unzip
+
+I think the process is basically the same for Mac and PC, but we will identify this in class.
+
+-   On a Mac, [Double-click the .zip file](https://support.apple.com/guide/mac-help/zip-and-unzip-files-and-folders-on-mac-mchlp2528/mac). The unzipped item appears in the same folder as the .zip file.
+
+-   On a PC, right-clicking on a zipped file will bring up a menu that includes an **Extract All** option. Choosing the **Extract All** option brings up a pathname to extract the file to. The default is to extract the zip file to a subfolder named after the zip file.
+
+Again, go to the *Files, Plots, and Packages* panel and check if there is a folder called **calenviroscreen40shpf2021shp** as shown in @fig-panel2
+
+![Shapefile folder is in the working directory!](/images/folder.png){#fig-panel2}
+
+#### Unzip with Code
+
+Same idea. Use the `unzip()` function to unzip the zipped shapefile folder. We will save it in a separate directory to test if this way works independently of point and click method. The `unzip()` function needs two arguments - the path of the `zipfile =`, and the export directory name `exdir =`.
+
+```{r}
+#| label: Unzip the CalEnviroscreen zipped file
+#| echo: true
+
+directory <- 'CalEJ4'
+unzip(zipfile = 'calenviroscreen40shpf2021shp.zip', exdir = directory)
+
+```
+
+Check the *Files* panel. Is there a new **CalEJ4** folder as shown in @fig-codeUnzip?
+
+![Another Shapefile folder is in the working directory!](/images/double.png){#fig-codeUnzip} \### Import the Shapefile
+
+The `sf` library is used to import geospatial data. The `read_sf()` is great at read and identifying the type of spatial file.
+
+Shapefiles are the [**esri**](https://www.esri.com/en-us/home) propietary geospatial format and are very common.
+
+The CalEnviroScreen data are in the shapefile format, which is a bunch of individual files organized in a folder directory. In the **calenviroscreen40shpf2021shp** directory, there are 8 individual files with 8 different file extensions. We can ignore that and just point `read_sf()` at the directory and it will do the rest. The `dsn =` argument stands for *data source name* which can be a directory, file, or a database.
+
+```{r}
+#| label: import CalEnviroScreen4.0 dataset
+#| echo: true
+
+CalEJ <- read_sf(dsn = directory)
+
+```
+
+Check the *Environment* panel after running this line of code. Is there a CalEJ file with 8035 observations of 67 variables present?
+
+If so, success is yours! Let's make a map of Pesticide census tract percentiles to celebrate with @fig-CaliforniaPesticide!
+
+### Visualize the data
+
+```{r}
+#| label: fig-CaliforniaPesticide
+#| echo: true
+#| fig-cap: Pesticide percentile census tracts in California
+
+CalEJ <- CalEJ %>% 
+  filter(PesticideP >=0) %>%
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+palPest <- colorNumeric(palette = 'Reds', domain = CalEJ$PesticideP)
+
+  leaflet(data = CalEJ) %>% 
+    addTiles() %>% 
+    addPolygons(color = ~palPest(PesticideP),
+                fillOpacity = 0.5,
+                weight = 2,
+                label = ~htmlEscape(ApproxLoc)) %>% 
+    addLegend(pal = palPest,
+              title = 'Pesticide (%)', 
+              values = ~PesticideP)
+```
+
+### Option 2 - Directly Read the Dataset
+
+[Methane monthly average concentrations sampled by flasks](https://gml.noaa.gov/dv/data/index.php?category=Greenhouse%2BGases&parameter_name=Methane&frequency=Monthly%2BAverages&type=Flask)  
+
+Today I am selecting Mauna Loa (MLO) in Hawaii. Methane's chemical formula is CH~4~. Therefore, I will
+assign the path of URL.MLO.CH4
+
+```{r}
+#| label: URL for Mauna Loa methane monthly averages
+#| echo: TRUE
+
+URL.MLO.CH4 <- file.path( 'https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/txt/ch4_mlo_surface-flask_1_ccgg_month.txt')
+```
+
+We did this before for Alert, let's try the successful code using the `read_table()` function. Note, that when I follow the link, the first line of the dataset says there are **71 header lines**. 
+
+```{r}
+#| label: MLO methane monthly average import 2
+#| echo: TRUE
+
+MLO.CH4 <- read_table(URL.MLO.CH4, skip = 71)
+
+head(MLO.CH4)
+```
+
+```{r}
+#| label: MLO methane headers fix
+#| echo: TRUE
+
+headers <- c('site', 'year', 'month', 'value')
+colnames(MLO.CH4) <- headers
+
+head(MLO.CH4)
+```
+
+This is better.
+
+We can now visualize the data in @fig-MLOMethaneTrend.  
+```{r}
+#| label: fig-MLOMethaneTrend
+#| fig-cap: Trend in Methane concentrations (ppb) at Mauna Loa, Hawaii
+#| echo: TRUE
+
+MLO.CH4 %>% 
+  mutate(decimal.Date = (year + month/12)) %>% 
+  ggplot(aes(x = decimal.Date, y = value)) +
+  geom_point() +
+  geom_line(alpha = 0.6) +
+  geom_smooth() +
+  theme_bw() +
+  labs(x = 'Year', y = 'Methane concentration (ppb)',
+       title = 'Mauna Loa - methane trend')
+```
+
+### Advanced data visualization
+
+Now that we have Mauna Loa, I want to add the Alert dataset to it using the code we developed last week. This code downloads the Alert dataset and renames its headers.
+
+```{r}
+#| label: URL for Alert methane monthly averages
+#| echo: TRUE
+
+URL.ALT.CH4 <- file.path( 'https://gml.noaa.gov/aftp/data/trace_gases/ch4/flask/surface/txt/ch4_alt_surface-flask_1_ccgg_month.txt')
+ALT.CH4 <- read_table(URL.ALT.CH4, skip = 70)
+colnames(ALT.CH4) <- headers
+
+```
+
+Now we can put the datasets together to make a combined visualization. The `bind_rows()` function from `tidyverse` let's us put the datasets take together since they have the same headers. Then we can use the `color` argument to `aes()` to get two separate time series as shown in @fig-bothTrend. I also grouped the data by the shape of the symbol to ensure that the two datasets are distinguishable.  
+
+```{r}
+#| label: fig-bothTrend
+#| fig-cap: Trend in Methane concentrations (ppb) at Mauna Loa, Hawaii and Alert, Canada
+#| echo: TRUE
+CH4 <- bind_rows(ALT.CH4, MLO.CH4)
+
+CH4 %>% 
+  mutate(decimal.Date = (year + month/12)) %>% 
+  ggplot(aes(x = decimal.Date, y = value, color = site, shape = site)) +
+  geom_point() +
+  geom_line(alpha = 0.6) +
+  #geom_smooth(se = FALSE) +
+  theme_bw() +
+  labs(x = 'Year', y = 'Methane concentration (ppb)',
+       title = 'Methane trend')
+
+```
+
+### Downloading secured zip files
+
+I have not yet found a reliable method to get this to work every time on Macs and PCs. Stay tuned.
+
+## Exercise 1.
+
+1. Go to the [Environmental Justice Index](https://experience.arcgis.com/experience/10788c3e860d489e9e8a63a2238bb63d) Accessibility Tool.    
+2. Pick a state from the dropdown menu.
+3. Press the **Apply** button
+4. An **Actions** button should appear as shown on @fig-Action. Press the Actions button, select _Export All_ and choose **Export to geoJSON**.
+
+![Action button](/images/Action.png){#fig-Action}
+5. A file named **DataRecords.geojson** should appear in your default download folder.
+6. Move the **DataRecords.geojson** file to the working directory.
+7. Check the _Files_ panel. Is **DataRecords.geojson** there?  
+8. Read in the file using `read_sf()`. The `dsn` argument can point directly to the file name for this type of file. Assign it a name that incorporates EJI and the state abbreviation.  
+9. Check the _Environment_ panel.  Did it import?
+10. Make a visualization - but not a map because projections are wonky?
+
+```{r}
+#| label: EJI index for California
+#| echo: true
+#| fig-cap: EJI index for California
+
+CA_EJI_raw <- read_sf(dsn = 'DataRecords.geojson') %>% 
+  filter(rpl_eji >=0) #%>% 
+st_is_valid(CA_EJI_raw)
+
+CA_EJI <- st_set_geometry(CA_EJI_raw, value = NULL)
+
+CA_EJI %>% 
+  ggplot(aes(x = epl_rail, y = epl_dslpm)) + 
+  geom_point() +
+  theme_bw()
+
+```
+
+Let's look at in ggplot.
+
+```{r}
+#| label: ggplot map of CA EJI
+#| echo: true
+
+
+```
+
