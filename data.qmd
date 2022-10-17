@@ -1,4 +1,4 @@
-# Unit 2: Data {#sec-data}
+# Unit 3: Data {#sec-data}
 
 ::: {.callout-note appearance="simple"}
 This unit focuses on the **data** of Environmental Data Visualization - import, export, context, and finding the right dataset to use.  

@@ -1,0 +1,15 @@
+# Unit 4: Special Projects {#sec-projects}
+
+::: {.callout-note appearance="simple"}
+This unit focuses on the class projects.  
+:::
+  
+## Projects
+  
+In this unit, we will focus on the topics of interest for the class projects. 
+
+I will provide a basic overview of the topic areas, but the class will spend most of the time leading the research. Three graded assignments are associated with this section.
+
+* Individual visualization - prototype
+* Group presentation - likely in groups of four
+* Group project - likely in groups of eight - TBD
