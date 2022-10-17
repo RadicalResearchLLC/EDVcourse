@@ -49,9 +49,11 @@ By default, downloads are often placed in a **Downloads** directory, although yo
 
 For today, I will only show path (a) because it is good data science practice to keep the data in a directory associated with the visualization.
 
-1.  Identify the directory where the zipped shapefile was downloaded. On my machine, this is a **Downloads** folder which can be accessed through my web browser after the file download is complete as shown in @fig-openFolder. The name of the file is **calenviroscreen40shpf2021shp.zip**.
+1.  Identify the directory where the zipped shapefile was downloaded. On my machine, this is a **Downloads** folder which can be accessed through my web browser after the file download is complete; @fig-openFolder shows an example. The name of the file is **calenviroscreen40shpf2021shp.zip**.
 
-![Browser download](/images/download_complete.png){#fig-openFolder} 2. Identify the R working directory on your machine using the `getwd()` function.
+![Browser download](/images/download_complete.png){#fig-openFolder} 
+
+2. Identify the R working directory on your machine using the `getwd()` function.
 
 ```{r}
 #| label: find working directory
@@ -97,9 +99,10 @@ unzip(zipfile = 'calenviroscreen40shpf2021shp.zip', exdir = directory)
 
 ```
 
-Check the *Files* panel. Is there a new **CalEJ4** folder as shown in @fig-codeUnzip?
+Check the *Files* panel. Check for a new **CalEJ4** folder; @fig-codeUnzip shows how it looks on my machine.
 
-![Another Shapefile folder is in the working directory!](/images/double.png){#fig-codeUnzip} \### Import the Shapefile
+![Another Shapefile folder is in the working directory!](/images/double.png){#fig-codeUnzip} 
+### Import the Shapefile
 
 The `sf` library is used to import geospatial data. The `read_sf()` is great at read and identifying the type of spatial file.
 
@@ -240,7 +243,7 @@ I have not yet found a reliable method to get this to work every time on Macs an
 1. Go to the [Environmental Justice Index](https://experience.arcgis.com/experience/10788c3e860d489e9e8a63a2238bb63d) Accessibility Tool.    
 2. Pick a state from the dropdown menu.
 3. Press the **Apply** button
-4. An **Actions** button should appear as shown on @fig-Action. Press the Actions button, select _Export All_ and choose **Export to geoJSON**.
+4. An **Actions** button should appear; @fig-Action shows where that is. Press the Actions button, select _Export All_ and choose **Export to geoJSON**.
 
 ![Action button](/images/Action.png){#fig-Action}
 5. A file named **DataRecords.geojson** should appear in your default download folder.
