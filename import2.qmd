@@ -257,9 +257,14 @@ I have not yet found a reliable method to get this to work every time on Macs an
 
 CA_EJI_raw <- read_sf(dsn = 'DataRecords.geojson') %>% 
   filter(rpl_eji >=0) #%>% 
-st_is_valid(CA_EJI_raw)
+
+# unfortunately, this data is in some weird projection that isn't properly identified but might be equal albers conformal conic
+#st_is_valid(CA_EJI_raw)
+#st_crs(CA_EJI_raw)
 
 CA_EJI <- st_set_geometry(CA_EJI_raw, value = NULL)
+CA_EJI_raw <- st_set_crs(CA_EJI_raw, 
+                         '+proj=aea +lat_0=37.5 +lon_0=-96 +lat_1=29.5 +lat_2=45.5 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +type=crs')
 
 CA_EJI %>% 
   ggplot(aes(x = epl_rail, y = epl_dslpm)) + 
@@ -268,12 +273,15 @@ CA_EJI %>%
 
 ```
 
-Let's look at in ggplot.
+@fig-EJI_polygons shows Diesel PM from their environmental indicators layer for San Bernardino County.
 
 ```{r}
-#| label: ggplot map of CA EJI
+#| label: fig-EJI_polygons
 #| echo: true
 
+ggplot(data = CA_EJI_raw) +
+  geom_sf(aes(fill = epl_dslpm)) +
+  theme_bw()
 
 ```
 
