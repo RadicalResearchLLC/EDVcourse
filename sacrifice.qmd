@@ -1,0 +1,34 @@
+# Sacrifice Zones {#sec-sacrifice}
+
+::: {.callout-note appearance="simple"}
+Today we will focus on the basics of Sacrifice Zones.
+:::
+
+## Definition
+
+A **sacrifice zone** is a geographic area permanently impaired by heavy environmental alterations or economic disinvestment, often through locally unwanted land use (LULU). This term is a description of the geographic area where **fenceline communities** live adjacent to pollution sources. These communities are often low-income and disproportionately minority.    
+
+### Fenceline community
+
+A neighborhood that is immediately adjacent to a major source of pollution, such as an industrial facility, military base, major roadway, intermodal facility, port, or airport. Proximity to the emissions source is a key determinant for exposure, but not the only one.
+
+### Risk Assessment
+
+The U.S. EPA has a framework for assessing risk and managing risk. @fig-riskAssess shows a schematic of how that's done.
+
+![Risk Assessment Framework](https://www.epa.gov/sites/default/files/2014-05/image002.jpg){#fig-riskAssess}
+
+Risk assessment has four main steps.
+
+1. Hazard identification - what thing(s) are causing the adverse affects and what adverse effects are they causing? Types of effects include cancer, reproductive, neurological, respiratory, and/or environmental.
+2. Dose-response assessment - quantify the toxicity for each chemical for a given adverse outcome
+3. Exposure assessment - characterize the amount of chemical in the environment and the exposure routes for individuals (e.g., inhalation, ingestion, dermal) 
+4. Risk assessment - Multiply exposure by dose-response across affected populations to get risk estimates.  
+
+
+
+
+
+
+
+

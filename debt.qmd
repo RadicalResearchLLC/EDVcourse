@@ -1,0 +1,5 @@
+# Ecological Debt {#sec-debt}
+
+::: {.callout-note appearance="simple"}
+Today we will focus on the basics of Ecological Debt.
+:::
