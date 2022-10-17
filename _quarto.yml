@@ -32,6 +32,11 @@ book:
         - context.qmd
         - import2.qmd
         - assignment3.qmd
+    - part: projects.qmd
+      chapters:
+        - sacrifice.qmd
+        - debt.qmd
+        - assignment4.qmd
   appendices: 
     - syllabus.qmd  
     - tools.qmd
