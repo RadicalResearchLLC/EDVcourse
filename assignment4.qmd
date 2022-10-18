@@ -3,3 +3,25 @@
 ::: {.callout-note appearance="simple"}
 This includes the list of assignments for Unit 4 associated with Projects.
 :::
+
+```{r}
+#| label: tbl-unit4assignments
+#| tbl-cap: Assignments from Unit 4
+#| echo: false
+#| warning: false
+library(dplyr)
+library(kableExtra)
+
+assignment <- c('Haley et al., Historical Redlining and Present Air Pollution in US Cities')
+due.Date <- c('Oct 21, 2022')
+source <- c('https://pubs.acs.org/doi/pdf/10.1021/acs.estlett.1c01012')
+
+unit4 <- data.frame(assignment, due.Date, source)# %>% 
+
+unit4 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>% 
+  select(-source) %>% 
+  kableExtra::kable('html', escape = FALSE) %>% 
+  kable_material_dark(c('condensed', 'hover')) %>% 
+  column_spec(1, width = '20em') #%>
+
+```
