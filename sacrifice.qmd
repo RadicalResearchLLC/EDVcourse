@@ -25,6 +25,55 @@ Risk assessment has four main steps.
 3. Exposure assessment - characterize the amount of chemical in the environment and the exposure routes for individuals (e.g., inhalation, ingestion, dermal) 
 4. Risk assessment - Multiply exposure by dose-response across affected populations to get risk estimates.  
 
+After a risk assessment is performed, Risk Management swoops in to decide the way to mitigate risk.  
+
+I don't think this class is likely to do a full-fledged Risk Assessment as part of a Sacrifice Zones project.  This is just background.
+
+### Sacrifice Zone Case Study - [ProPublica](https://www.propublica.org/series/sacrifice-zones)
+
+This article was a reading assignment earlier in the semester. @fig-proPublica shows the ominous red-gray color-scheme they use throughout.   
+
+![ProPublica Sacrifice Zone Map](https://assets-c3.propublica.org/images/externals/_threeTwo1600w/toxmap-3x2_2021-11-01-204225_lkky.png){#fig-proPublica}
+
+Let's walk through how they did this analysis using the Tidyverse model of data visualization.
+
+#### Data 
+
+ProPublica used data from the U.S. EPA's [Risk Screening Environmental Indicators](https://www.epa.gov/rsei) model. It includes [Toxic Release Inventory (TRI)](https://www.epa.gov/toxics-release-inventory-tri-program), modeled emissions from a dispersion model called AERMOD, and then dose-response values. It then estimates exposures from individual facilities to nearby grid cells for populations within 49 kilometers from each facility.  
+#### Results
+
+ProPublica made really scary maps and showed the worst locations and facilities. EPA provides the whole dataset and shows a [map](https://www.epa.gov/rsei/rsei-results-map) that makes it incredibly difficult to find where the sacrifice zones are. Both groups provide visualizations of the same data, but the stories being told could not be more different.    
+
+#### Discussion
+
+Both the EPA RSEI map and the ProPublica visualizations use the same underlying data. 
+
+* Who is the audience? Are they the same?
+* What design choices were made by EPA and ProPublica? 
+* Why do they look so different? 
+* What is being communicated in the two maps?
+
+#### Air Toxics Dashboard 
+
+Last year, when I started my own business, I made a data dashboard Air Toxics, imaginatively named [Air Toxics Data Dashboard](https://radicalresearch.shinyapps.io/ToxicsDashboard/). It is a technocratic tool, meant to help explore air toxics concentrations from a health risk perspective.  
+
+This isn't really a sacrifice zone dashboard, although it can be used to identify sites with particularly high risk from individual air toxics.  
+
+* Who is the audience?
+* What design choices were made to display data?
+* Why does this look so different from the EPA and ProPublica visualizations?
+* What is being communicated?  
+
+### Project Discussion
+
+* What type of sacrifice zones might be interesting to look at?
+* What data do you need to visualize those sacrifice zones?
+* Is that data readily available? 
+
+
+
+
+
 
 
 
