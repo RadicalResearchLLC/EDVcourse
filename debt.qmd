@@ -3,3 +3,126 @@
 ::: {.callout-note appearance="simple"}
 Today we will focus on the basics of Ecological Debt.
 :::
+
+## Definition
+
+The accumulation of obligations through inequitable resource exploitation, pollution, and habitat degradation.  This is most commonly associated with the disequilibrium in the global North who overexploit the global commons and thus owe an **ecological debt** to those who underexploit those resources in the global South. This has been quantified through **climate debt** which examines emissions differentials in carbon budgets and adaptation costs which will accrue primarily to poorer countries. It also includes historical negative externalities (pollution, resource depletion) in economic development such as pollution and resource extraction in rich developed countries.
+
+## Mono Lake Case Study
+
+A local example of ecological debt within the state of California is the transfer of water from the mountains and reservoirs of Northern California and the Eastern Sierras to the Southern California. One prominent example of the ecological harm is [Mono Lake](https://www.monolake.org/). @fig-Mono shows the location of Mono Lake.  
+
+```{r}
+#| label: fig-Mono
+#| echo: true
+#| fig-cap: Map of Mono Lake
+
+library(leaflet)
+
+# Hat tip to Ian for this Minimap code! Really nice for showing the bigger picture!
+leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(provider = providers$Esri.WorldImagery) %>% 
+  setView(lng = -118.98, lat = 38.0086, zoom = 9) %>% 
+  addMiniMap(width = 100,
+             height = 100)
+
+```
+
+Mono Lake is part of the Owens Valley in the Eastern Sierra. Surface flow diversions and sustained groundwater pumping that started in 1905 in the Owens Valley provides up to 75% of the annual water supply for Los Angeles through the LA aqueduct. That water diversion has dropped the level of Mono Lake, increasing salinity and causing extreme dust storms (particulates - PM~10~) from the exposed salts of the dried lakebed. @fig-LakeElev shows the levels of Mono Lake over time and the timing of the State Water Board Decision to restore lake levels.
+
+![Mono Lake water elevation over time](https://www.monolake.org/wp-content/uploads/2022/05/rainbow-graph-771x663.jpg){#fig-LakeElev}
+
+### Data 
+
+* Lake levels
+* Historical water use along the LA aqueduct
+* Owens Valley PM~10~ concentrations
+
+## Ecological Footprint and Biocapacity 
+
+The [Global Footprint Network](https://www.footprintnetwork.org/) attempts to identify the ecological footprint of individuals and countries.  
+
+### Definitions
+
+#### Ecological Footprint
+
+A measure of the area of _biologically productive land and water_ required to (1) produce all the resources consumed by an individual, population, or activity and (2) absorb the waste generated. Units are in _global hectares_.  A hectare is 100 acres or 10,000 m^2^.   
+
+#### Biocapacity
+
+A measure of the capacity of an ecosystem to regenerate biological resources. Biocapacity can change over time as a result of climate and management practices. It is calculated by multiplying _area_ by _yield factor_ and an _equivalence factor_ and is measured in _global hectares_.   
+
+#### Global hectares
+
+Global hectares are a measure of area weighted by the biological productive of the landtype. Global hectare is an earth averaged unit, but it may vary slightly over time because of changes in climate and management practices.  
+
+#### Ecological Deficit
+
+The difference between the _Biocapacity_ and _Ecological Footprint_ of a region or country. When the footprint exceeds the biocapacity, a region or country runs an annual ecological deficit. Cumulative ecological deficits (and/or reserves) are the Ecological Footprint Networks measure of **Ecological Debt**.  
+
+### Ecological Debt Case Study
+
+The [Footprint scenario tool](https://www.footprintnetwork.org/resources/footprint-scenario-tool/) is a measure of ecological debt in units of "Earth Debt". Instead of comparing regions with local deficits or reserves, this tool estimates the cumulative ecological debt accumulated globally. It is a measure of the current _unsustainable_ biological resource extraction and waste generation.  
+
+#### Data
+
+* **Free** [public data set](https://www.footprintnetwork.org/licenses/public-data-package-free/) I have sent a copy of this dataset to everyone's box folder, I think.  
+* [API](https://data.footprintnetwork.org/#/api) (application programming interface for automated data pulls.
+
+Place the excel spreadsheet **NFA 2022 Public Data Package 1.1** into your working directory. Check the files panel to see if it is there.
+
+```{r}
+#| label: load readxl library 
+#| echo: true
+
+library(readxl)
+
+```
+
+This spreadsheet has six worksheets.  Three are just text.  
+
+```{r}
+#| label: import dataset
+#| echo: true
+
+filename <- 'NFA 2022 Public Data Package 1.1.xlsx'
+country_results <- read_excel(filename, sheet = 'Country Results 2022 Ed (2018)', skip = 21) 
+```
+
+Did it work?  Let's check the first five rows.
+
+```{r}
+#|label: check import
+#|echo: true
+
+head(country_results)
+```
+
+And let's see if we can reproduce their primary figure. @fig-Footie
+shows my first try.
+
+```{r}
+#| label: fig-Footpie
+#| echo: true
+library(tidyverse)
+
+#Note, you may need to install this package before this code will work on your machine.  
+library(janitor)
+
+country_clean <- country_results %>% 
+  janitor::clean_names()
+
+  country_clean %>%  
+  ggplot() + 
+  geom_point(aes(x = hdi, y = total_ecological_footprint_consumption, 
+                 color = region)) +
+  theme_bw() + 
+  labs(y = 'Ecological Footprint per Capita (consumed)',
+       x = 'Human Development Index',
+       title = 'Ecological Footprint and HDI by country (2018)') +
+  geom_hline(yintercept = 1.6, color = 'green', linetype = 'dashed') +
+  geom_vline(xintercept = 0.7, color = 'blue', linetype = 'dashed') +
+  geom_vline(xintercept = 0.8, color = 'blue', linetype = 'dashed')
+```
+
