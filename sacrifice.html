@@ -284,8 +284,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sacrifice-zone-case-study---propublica" id="toc-sacrifice-zone-case-study---propublica" class="nav-link" data-scroll-target="#sacrifice-zone-case-study---propublica"><span class="toc-section-number">17.1.3</span>  Sacrifice Zone Case Study - ProPublica</a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">17.1.3.1</span>  Data</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="toc-section-number">17.1.3.2</span>  Discussion</a></li>
-  <li><a href="#air-toxics-dashboard" id="toc-air-toxics-dashboard" class="nav-link" data-scroll-target="#air-toxics-dashboard"><span class="toc-section-number">17.1.3.3</span>  Air Toxics Dashboard</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="toc-section-number">17.1.3.2</span>  Results</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="toc-section-number">17.1.3.3</span>  Discussion</a></li>
+  <li><a href="#air-toxics-dashboard" id="toc-air-toxics-dashboard" class="nav-link" data-scroll-target="#air-toxics-dashboard"><span class="toc-section-number">17.1.3.4</span>  Air Toxics Dashboard</a></li>
   </ul></li>
   <li><a href="#project-discussion" id="toc-project-discussion" class="nav-link" data-scroll-target="#project-discussion"><span class="toc-section-number">17.1.4</span>  Project Discussion</a></li>
   </ul></li>
@@ -359,12 +360,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Let’s walk through how they did this analysis using the Tidyverse model of data visualization.</p>
 <section id="data" class="level4" data-number="17.1.3.1">
 <h4 data-number="17.1.3.1" class="anchored" data-anchor-id="data"><span class="header-section-number">17.1.3.1</span> Data</h4>
-<p>ProPublica used data from the U.S. EPA’s <a href="https://www.epa.gov/rsei">Risk Screening Environmental Indicators</a> model. It includes <a href="https://www.epa.gov/toxics-release-inventory-tri-program">Toxic Release Inventory (TRI)</a>, modeled emissions from a dispersion model called AERMOD, and then dose-response values. It then estimates exposures from individual facilities to nearby grid cells for populations within 49 kilometers from each facility.<br>
-#### Results</p>
+<p>ProPublica used data from the U.S. EPA’s <a href="https://www.epa.gov/rsei">Risk Screening Environmental Indicators</a> model. It includes <a href="https://www.epa.gov/toxics-release-inventory-tri-program">Toxic Release Inventory (TRI)</a>, modeled emissions from a dispersion model called AERMOD, and then dose-response values. It then estimates exposures from individual facilities to nearby grid cells for populations within 49 kilometers from each facility.</p>
+</section>
+<section id="results" class="level4" data-number="17.1.3.2">
+<h4 data-number="17.1.3.2" class="anchored" data-anchor-id="results"><span class="header-section-number">17.1.3.2</span> Results</h4>
 <p>ProPublica made really scary maps and showed the worst locations and facilities. EPA provides the whole dataset and shows a <a href="https://www.epa.gov/rsei/rsei-results-map">map</a> that makes it incredibly difficult to find where the sacrifice zones are. Both groups provide visualizations of the same data, but the stories being told could not be more different.</p>
 </section>
-<section id="discussion" class="level4" data-number="17.1.3.2">
-<h4 data-number="17.1.3.2" class="anchored" data-anchor-id="discussion"><span class="header-section-number">17.1.3.2</span> Discussion</h4>
+<section id="discussion" class="level4" data-number="17.1.3.3">
+<h4 data-number="17.1.3.3" class="anchored" data-anchor-id="discussion"><span class="header-section-number">17.1.3.3</span> Discussion</h4>
 <p>Both the EPA RSEI map and the ProPublica visualizations use the same underlying data.</p>
 <ul>
 <li>Who is the audience? Are they the same?</li>
@@ -373,8 +376,8 @@ ul.task-list li input[type="checkbox"] {
 <li>What is being communicated in the two maps?</li>
 </ul>
 </section>
-<section id="air-toxics-dashboard" class="level4" data-number="17.1.3.3">
-<h4 data-number="17.1.3.3" class="anchored" data-anchor-id="air-toxics-dashboard"><span class="header-section-number">17.1.3.3</span> Air Toxics Dashboard</h4>
+<section id="air-toxics-dashboard" class="level4" data-number="17.1.3.4">
+<h4 data-number="17.1.3.4" class="anchored" data-anchor-id="air-toxics-dashboard"><span class="header-section-number">17.1.3.4</span> Air Toxics Dashboard</h4>
 <p>Last year, when I started my own business, I made a data dashboard Air Toxics, imaginatively named <a href="https://radicalresearch.shinyapps.io/ToxicsDashboard/">Air Toxics Data Dashboard</a>. It is a technocratic tool, meant to help explore air toxics concentrations from a health risk perspective.</p>
 <p>This isn’t really a sacrifice zone dashboard, although it can be used to identify sites with particularly high risk from individual air toxics.</p>
 <ul>

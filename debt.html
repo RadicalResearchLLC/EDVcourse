@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.1.168">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Environmental Data Visualization - 18&nbsp; Ecological Debt</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,8 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -59,29 +117,24 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
+}</script><script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="site_libs/jquery-1.12.4/jquery.min.js"></script><link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script><link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script><script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script><script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script><link href="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet">
+<script src="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script><script src="site_libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Ecological Debt</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Environmental Data Visualization</a> 
     </div>
@@ -93,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
@@ -110,8 +163,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></a>
   </div>
@@ -142,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./EJ.html" class="sidebar-item-text sidebar-link">Unit 2: Environmental Justice</a>
@@ -150,8 +203,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EJtheory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">EJ - Overview</span></a>
   </div>
@@ -177,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./data.html" class="sidebar-item-text sidebar-link">Unit 3: Data</a>
@@ -185,8 +238,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
   </div>
@@ -212,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./projects.html" class="sidebar-item-text sidebar-link">Unit 4: Special Projects</a>
@@ -220,8 +273,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sacrifice.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sacrifice Zones</span></a>
   </div>
@@ -237,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Appendices</a>
@@ -245,8 +298,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./syllabus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Course Syllabus</span></a>
   </div>
@@ -267,19 +320,44 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="toc-section-number">18.1</span>  Definition</a></li>
+  <li>
+<a href="#mono-lake-case-study" id="toc-mono-lake-case-study" class="nav-link" data-scroll-target="#mono-lake-case-study"><span class="toc-section-number">18.2</span>  Mono Lake Case Study</a>
+  <ul>
+<li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">18.2.1</span>  Data</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#ecological-footprint-and-biocapacity" id="toc-ecological-footprint-and-biocapacity" class="nav-link" data-scroll-target="#ecological-footprint-and-biocapacity"><span class="toc-section-number">18.3</span>  Ecological Footprint and Biocapacity</a>
+  <ul>
+<li>
+<a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="toc-section-number">18.3.1</span>  Definitions</a>
+  <ul class="collapse">
+<li><a href="#ecological-footprint" id="toc-ecological-footprint" class="nav-link" data-scroll-target="#ecological-footprint"><span class="toc-section-number">18.3.1.1</span>  Ecological Footprint</a></li>
+  <li><a href="#biocapacity" id="toc-biocapacity" class="nav-link" data-scroll-target="#biocapacity"><span class="toc-section-number">18.3.1.2</span>  Biocapacity</a></li>
+  <li><a href="#global-hectares" id="toc-global-hectares" class="nav-link" data-scroll-target="#global-hectares"><span class="toc-section-number">18.3.1.3</span>  Global hectares</a></li>
+  <li><a href="#ecological-deficit" id="toc-ecological-deficit" class="nav-link" data-scroll-target="#ecological-deficit"><span class="toc-section-number">18.3.1.4</span>  Ecological Deficit</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#ecological-debt-case-study" id="toc-ecological-debt-case-study" class="nav-link" data-scroll-target="#ecological-debt-case-study"><span class="toc-section-number">18.3.2</span>  Ecological Debt Case Study</a>
+  <ul class="collapse">
+<li><a href="#data-1" id="toc-data-1" class="nav-link" data-scroll-target="#data-1"><span class="toc-section-number">18.3.2.1</span>  Data</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="sec-debt" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Ecological Debt</span></span></h1>
 </div>
 
@@ -292,9 +370,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
-
-<div class="callout-note callout callout-style-simple">
+</header><div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -304,11 +380,170 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<section id="definition" class="level2" data-number="18.1"><h2 data-number="18.1" class="anchored" data-anchor-id="definition">
+<span class="header-section-number">18.1</span> Definition</h2>
+<p>The accumulation of obligations through inequitable resource exploitation, pollution, and habitat degradation. This is most commonly associated with the disequilibrium in the global North who overexploit the global commons and thus owe an <strong>ecological debt</strong> to those who underexploit those resources in the global South. This has been quantified through <strong>climate debt</strong> which examines emissions differentials in carbon budgets and adaptation costs which will accrue primarily to poorer countries. It also includes historical negative externalities (pollution, resource depletion) in economic development such as pollution and resource extraction in rich developed countries.</p>
+</section><section id="mono-lake-case-study" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="mono-lake-case-study">
+<span class="header-section-number">18.2</span> Mono Lake Case Study</h2>
+<p>A local example of ecological debt within the state of California is the transfer of water from the mountains and reservoirs of Northern California and the Eastern Sierras to the Southern California. One prominent example of the ecological harm is <a href="https://www.monolake.org/">Mono Lake</a>. <a href="#fig-Mono">Figure&nbsp;<span>18.1</span></a> shows the location of Mono Lake.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Hat tip to Ian for this Minimap code! Really nice for showing the bigger picture!</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html">addProviderTiles</a></span><span class="op">(</span>provider <span class="op">=</span> <span class="va">providers</span><span class="op">$</span><span class="va">Esri.WorldImagery</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">118.98</span>, lat <span class="op">=</span> <span class="fl">38.0086</span>, zoom <span class="op">=</span> <span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addMiniMap.html">addMiniMap</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>             height <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-Mono" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="htmlwidget-8954101f1aa135e21cf7" style="width:100%;height:464px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8954101f1aa135e21cf7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",100,100,19,19,-5,false,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]}],"setView":[[38.0086,-118.98],9,[]]},"evals":[],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;18.1: Map of Mono Lake</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>Mono Lake is part of the Owens Valley in the Eastern Sierra. Surface flow diversions and sustained groundwater pumping that started in 1905 in the Owens Valley provides up to 75% of the annual water supply for Los Angeles through the LA aqueduct. That water diversion has dropped the level of Mono Lake, increasing salinity and causing extreme dust storms (particulates - PM<sub>10</sub>) from the exposed salts of the dried lakebed. <a href="#fig-LakeElev">Figure&nbsp;<span>18.2</span></a> shows the levels of Mono Lake over time and the timing of the State Water Board Decision to restore lake levels.</p>
+<div id="fig-LakeElev" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="https://www.monolake.org/wp-content/uploads/2022/05/rainbow-graph-771x663.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;18.2: Mono Lake water elevation over time</figcaption><p></p>
+</figure>
+</div>
+<section id="data" class="level3" data-number="18.2.1"><h3 data-number="18.2.1" class="anchored" data-anchor-id="data">
+<span class="header-section-number">18.2.1</span> Data</h3>
+<ul>
+<li>Lake levels</li>
+<li>Historical water use along the LA aqueduct</li>
+<li>Owens Valley PM<sub>10</sub> concentrations</li>
+</ul></section></section><section id="ecological-footprint-and-biocapacity" class="level2" data-number="18.3"><h2 data-number="18.3" class="anchored" data-anchor-id="ecological-footprint-and-biocapacity">
+<span class="header-section-number">18.3</span> Ecological Footprint and Biocapacity</h2>
+<p>The <a href="https://www.footprintnetwork.org/">Global Footprint Network</a> attempts to identify the ecological footprint of individuals and countries.</p>
+<section id="definitions" class="level3" data-number="18.3.1"><h3 data-number="18.3.1" class="anchored" data-anchor-id="definitions">
+<span class="header-section-number">18.3.1</span> Definitions</h3>
+<section id="ecological-footprint" class="level4" data-number="18.3.1.1"><h4 data-number="18.3.1.1" class="anchored" data-anchor-id="ecological-footprint">
+<span class="header-section-number">18.3.1.1</span> Ecological Footprint</h4>
+<p>A measure of the area of <em>biologically productive land and water</em> required to (1) produce all the resources consumed by an individual, population, or activity and (2) absorb the waste generated. Units are in <em>global hectares</em>. A hectare is 100 acres or 10,000 m<sup>2</sup>.</p>
+</section><section id="biocapacity" class="level4" data-number="18.3.1.2"><h4 data-number="18.3.1.2" class="anchored" data-anchor-id="biocapacity">
+<span class="header-section-number">18.3.1.2</span> Biocapacity</h4>
+<p>A measure of the capacity of an ecosystem to regenerate biological resources. Biocapacity can change over time as a result of climate and management practices. It is calculated by multiplying <em>area</em> by <em>yield factor</em> and an <em>equivalence factor</em> and is measured in <em>global hectares</em>.</p>
+</section><section id="global-hectares" class="level4" data-number="18.3.1.3"><h4 data-number="18.3.1.3" class="anchored" data-anchor-id="global-hectares">
+<span class="header-section-number">18.3.1.3</span> Global hectares</h4>
+<p>Global hectares are a measure of area weighted by the biological productive of the landtype. Global hectare is an earth averaged unit, but it may vary slightly over time because of changes in climate and management practices.</p>
+</section><section id="ecological-deficit" class="level4" data-number="18.3.1.4"><h4 data-number="18.3.1.4" class="anchored" data-anchor-id="ecological-deficit">
+<span class="header-section-number">18.3.1.4</span> Ecological Deficit</h4>
+<p>The difference between the <em>Biocapacity</em> and <em>Ecological Footprint</em> of a region or country. When the footprint exceeds the biocapacity, a region or country runs an annual ecological deficit. Cumulative ecological deficits (and/or reserves) are the Ecological Footprint Networks measure of <strong>Ecological Debt</strong>.</p>
+</section></section><section id="ecological-debt-case-study" class="level3" data-number="18.3.2"><h3 data-number="18.3.2" class="anchored" data-anchor-id="ecological-debt-case-study">
+<span class="header-section-number">18.3.2</span> Ecological Debt Case Study</h3>
+<p>The <a href="https://www.footprintnetwork.org/resources/footprint-scenario-tool/">Footprint scenario tool</a> is a measure of ecological debt in units of “Earth Debt”. Instead of comparing regions with local deficits or reserves, this tool estimates the cumulative ecological debt accumulated globally. It is a measure of the current <em>unsustainable</em> biological resource extraction and waste generation.</p>
+<section id="data-1" class="level4" data-number="18.3.2.1"><h4 data-number="18.3.2.1" class="anchored" data-anchor-id="data-1">
+<span class="header-section-number">18.3.2.1</span> Data</h4>
+<ul>
+<li>
+<strong>Free</strong> <a href="https://www.footprintnetwork.org/licenses/public-data-package-free/">public data set</a> I have sent a copy of this dataset to everyone’s box folder, I think.<br>
+</li>
+<li>
+<a href="https://data.footprintnetwork.org/#/api">API</a> (application programming interface for automated data pulls.</li>
+</ul>
+<p>Place the excel spreadsheet <strong>NFA 2022 Public Data Package 1.1</strong> into your working directory. Check the files panel to see if it is there.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This spreadsheet has six worksheets. Three are just text.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">filename</span> <span class="op">&lt;-</span> <span class="st">'NFA 2022 Public Data Package 1.1.xlsx'</span></span>
+<span><span class="va">country_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">filename</span>, sheet <span class="op">=</span> <span class="st">'Country Results 2022 Ed (2018)'</span>, skip <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `Cropland Footprint` -&gt; `Cropland Footprint...10`
+• `Grazing Footprint` -&gt; `Grazing Footprint...11`
+• `Forest Product Footprint` -&gt; `Forest Product Footprint...12`
+• `Fish Footprint` -&gt; `Fish Footprint...13`
+• `Built up land` -&gt; `Built up land...14`
+• `Carbon Footprint` -&gt; `Carbon Footprint...15`
+• `Cropland Footprint` -&gt; `Cropland Footprint...17`
+• `Grazing Footprint` -&gt; `Grazing Footprint...18`
+• `Forest Product Footprint` -&gt; `Forest Product Footprint...19`
+• `Fish Footprint` -&gt; `Fish Footprint...20`
+• `Built up land` -&gt; `Built up land...21`
+• `Carbon Footprint` -&gt; `Carbon Footprint...22`
+• `Built up land` -&gt; `Built up land...28`</code></pre>
+</div>
+</div>
+<p>Did it work? Let’s check the first five rows.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#|label: check import</span></span>
+<span><span class="co">#|echo: true</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">country_results</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 33
+  Country     Data …¹  SDGi Life …²   HDI Per C…³ Region Incom…⁴ Popul…⁵ Cropl…⁶
+  &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 Afghanistan 3A       53.9    64.5 0.509 564.61… Middl… LI      37.2      0.139
+2 Albania     3A       71      78.5 0.792 5046.0… Other… UM       2.88     0.362
+3 Algeria     3A       70.9    76.7 0.746 4759.8… Africa UM      42.2      0.250
+4 Angola      3A       50.3    60.8 0.582 3233.9… Africa LM      30.8      0.211
+5 Antigua an… 2B       NA      76.9 0.772 15134.… Centr… HI       0.0963  NA    
+6 Argentina   3A       72.8    76.5 0.842 10076.… South… UM      44.4      2.21 
+# … with 23 more variables: `Grazing Footprint...11` &lt;dbl&gt;,
+#   `Forest Product Footprint...12` &lt;dbl&gt;, `Fish Footprint...13` &lt;dbl&gt;,
+#   `Built up land...14` &lt;dbl&gt;, `Carbon Footprint...15` &lt;dbl&gt;,
+#   `Total Ecological Footprint (Production)` &lt;dbl&gt;,
+#   `Cropland Footprint...17` &lt;dbl&gt;, `Grazing Footprint...18` &lt;dbl&gt;,
+#   `Forest Product Footprint...19` &lt;dbl&gt;, `Fish Footprint...20` &lt;dbl&gt;,
+#   `Built up land...21` &lt;dbl&gt;, `Carbon Footprint...22` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>And let’s see if we can reproduce their primary figure. <span class="quarto-unresolved-ref">?fig-Footie</span> shows my first try.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.8     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.1
+✔ readr   2.1.2     ✔ forcats 0.5.2
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Note, you may need to install this package before this code will work on your machine.  </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">country_clean</span> <span class="op">&lt;-</span> <span class="va">country_results</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">country_clean</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hdi</span>, y <span class="op">=</span> <span class="va">total_ecological_footprint_consumption</span>, </span>
+<span>                 color <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">'Ecological Footprint per Capita (consumed)'</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">'Human Development Index'</span>,</span>
+<span>       title <span class="op">=</span> <span class="st">'Ecological Footprint and HDI by country (2018)'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">1.6</span>, color <span class="op">=</span> <span class="st">'green'</span>, linetype <span class="op">=</span> <span class="st">'dashed'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.7</span>, color <span class="op">=</span> <span class="st">'blue'</span>, linetype <span class="op">=</span> <span class="st">'dashed'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.8</span>, color <span class="op">=</span> <span class="st">'blue'</span>, linetype <span class="op">=</span> <span class="st">'dashed'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 26 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-Footpie" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="debt_files/figure-html/fig-Footpie-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;18.3: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -405,9 +640,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./sacrifice.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sacrifice Zones</span></span>
       </a>          
