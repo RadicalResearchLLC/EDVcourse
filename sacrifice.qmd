@@ -40,6 +40,7 @@ Let's walk through how they did this analysis using the Tidyverse model of data 
 #### Data 
 
 ProPublica used data from the U.S. EPA's [Risk Screening Environmental Indicators](https://www.epa.gov/rsei) model. It includes [Toxic Release Inventory (TRI)](https://www.epa.gov/toxics-release-inventory-tri-program), modeled emissions from a dispersion model called AERMOD, and then dose-response values. It then estimates exposures from individual facilities to nearby grid cells for populations within 49 kilometers from each facility.  
+
 #### Results
 
 ProPublica made really scary maps and showed the worst locations and facilities. EPA provides the whole dataset and shows a [map](https://www.epa.gov/rsei/rsei-results-map) that makes it incredibly difficult to find where the sacrifice zones are. Both groups provide visualizations of the same data, but the stories being told could not be more different.    
