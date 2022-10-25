@@ -36,6 +36,7 @@ book:
       chapters:
         - sacrifice.qmd
         - debt.qmd
+        - markdown.qmd
         - assignment4.qmd
   appendices: 
     - syllabus.qmd  
