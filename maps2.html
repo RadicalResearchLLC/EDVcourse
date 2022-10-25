@@ -282,7 +282,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></a>
+  <a href="./markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></a>
   </div>
 </li>
       </ul>
@@ -443,7 +448,7 @@ CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
   `https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON' 
   using driver `GeoJSON'
 Simple feature collection with 3747 features and 66 fields
-Geometry type: POLYGON
+Geometry type: MULTIPOLYGON
 Dimension:     XY
 Bounding box:  xmin: 97418.38 ymin: -577885.1 xmax: 539719.6 ymax: -236300
 Projected CRS: NAD83 / California Albers</code></pre>
@@ -451,7 +456,7 @@ Projected CRS: NAD83 / California Albers</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">SoCalEJ</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 66 fields
-Geometry type: POLYGON
+Geometry type: MULTIPOLYGON
 Dimension:     XY
 Bounding box:  xmin: -118.2062 ymin: 33.96317 xmax: -117.9014 ymax: 34.16102
 CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
@@ -519,12 +524,12 @@ CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
 3746    0.6728   0.2577    0.7157   4949.117   811895.5  0.0000
 3747    1.9084   0.0000    0.0000   4420.127   509871.8  5.6828
                            geometry
-3742 POLYGON ((-117.9024 34.1437...
-3743 POLYGON ((-117.9917 34.1565...
-3744 POLYGON ((-118.0496 34.1316...
-3745 POLYGON ((-117.9987 34.1459...
-3746 POLYGON ((-118.1874 33.9744...
-3747 POLYGON ((-118.1636 33.9750...</code></pre>
+3742 MULTIPOLYGON (((-117.9024 3...
+3743 MULTIPOLYGON (((-117.9917 3...
+3744 MULTIPOLYGON (((-118.0496 3...
+3745 MULTIPOLYGON (((-117.9987 3...
+3746 MULTIPOLYGON (((-118.1874 3...
+3747 MULTIPOLYGON (((-118.1636 3...</code></pre>
 </div>
 </div>
 <section id="create-a-locations-table" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="create-a-locations-table">

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.1.168">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Environmental Data Visualization - 6&nbsp; Assignments for Unit 1</title>
+<title>Environmental Data Visualization - 19&nbsp; R Markdown - Documents and Presentations in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,6 +17,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -26,8 +89,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./EJ.html" rel="next">
-<link href="./maps2.html" rel="prev">
+<link href="./assignment4.html" rel="next">
+<link href="./debt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -54,13 +117,13 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+}</script>
 </head>
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -124,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></a>
+  <a href="./assignment1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></a>
+  <a href="./markdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,12 +328,16 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#graded-assignment---visualization-critique-paper" id="toc-graded-assignment---visualization-critique-paper" class="nav-link active" data-scroll-target="#graded-assignment---visualization-critique-paper"><span class="toc-section-number">6.1</span>  Graded Assignment - Visualization Critique Paper</a></li>
+<li><a href="#r-markdown" id="toc-r-markdown" class="nav-link active" data-scroll-target="#r-markdown"><span class="toc-section-number">19.1</span>  R Markdown</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="toc-section-number">19.2</span>  Prerequisites</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="toc-section-number">19.3</span>  Resources</a></li>
+  <li><a href="#use-rmarkdown-to-make-a-presentation-to-teach-how-to-use-rmarkdown-to-make-a-presentation" id="toc-use-rmarkdown-to-make-a-presentation-to-teach-how-to-use-rmarkdown-to-make-a-presentation" class="nav-link" data-scroll-target="#use-rmarkdown-to-make-a-presentation-to-teach-how-to-use-rmarkdown-to-make-a-presentation"><span class="toc-section-number">19.4</span>  Use RMarkdown to make a Presentation to teach how to use RMarkdown to make a Presentation</a></li>
+  <li><a href="#exercise-1---create-a-presentation-using-your-visualization-assignment-code" id="toc-exercise-1---create-a-presentation-using-your-visualization-assignment-code" class="nav-link" data-scroll-target="#exercise-1---create-a-presentation-using-your-visualization-assignment-code"><span class="toc-section-number">19.5</span>  Exercise 1 - Create a Presentation using your Visualization Assignment Code</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-assignment1" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></span></h1>
+<h1 class="title"><span id="sec-presentations" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></span></h1>
 </div>
 
 
@@ -288,79 +355,68 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>This includes the list of assignments for Unit 1</p>
+<p>Today we focus on using R to make presentations - a key form of communication for data visualization. Dashboards and Documents can follow!</p>
 </div>
 </div>
+</div>
+<section id="r-markdown" class="level2" data-number="19.1"><h2 data-number="19.1" class="anchored" data-anchor-id="r-markdown">
+<span class="header-section-number">19.1</span> <a href="https://rmarkdown.rstudio.com/">R Markdown</a>
+</h2>
+<p>R Markdown is a package that enables an authoring framework. It enables:</p>
+<ul>
+<li>the storing and execution of R code</li>
+<li>the production of quality documents in formats including HTML, PDF, MS Word, dashboards, shiny apps, journal articles, websites, and more.</li>
+</ul></section><section id="prerequisites" class="level2" data-number="19.2"><h2 data-number="19.2" class="anchored" data-anchor-id="prerequisites">
+<span class="header-section-number">19.2</span> Prerequisites</h2>
+<p>Install and load <code>rmarkdown</code>. Install <code>plotly</code> too cause it is cool.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'rmarkdown'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'plotly'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
-<div id="tbl-unit1assignments" class="anchored">
-
-<table class=" lightable-material-dark lightable-hover" style="font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<caption>Table&nbsp;6.1:  Assignments from Unit 1 </caption>
- <thead><tr>
-<th style="text-align:left;"> assignment </th>
-   <th style="text-align:left;"> due.Date </th>
-   <th style="text-align:left;"> link </th>
-  </tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 20em; "> Install R </td>
-   <td style="text-align:left;"> Sept 2, 2022 </td>
-   <td style="text-align:left;"> <a href="http://radicalresearch.llc/EDVcourse/tools.html" style="     ">1</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> Install RStudio </td>
-   <td style="text-align:left;"> Sept 2, 2022 </td>
-   <td style="text-align:left;"> <a href="http://radicalresearch.llc/EDVcourse/tools.html" style="     ">2</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> Visual Salience Reading </td>
-   <td style="text-align:left;"> Sept 7, 2022 </td>
-   <td style="text-align:left;"> <a href="http://www.scholarpedia.org/article/Visual_salience" style="     ">3</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> R Graphics Cookbook - Preface and 1.1 through 1.5 in R Basics </td>
-   <td style="text-align:left;"> Sept 7, 2022 </td>
-   <td style="text-align:left;"> <a href="https://r-graphics.org/" style="     ">4</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> R for Data Science - 3. Data Visualization </td>
-   <td style="text-align:left;"> Sept 9, 2022 </td>
-   <td style="text-align:left;"> <a href="https://r4ds.had.co.nz/data-visualisation.html" style="     ">5</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> Leaflet for R </td>
-   <td style="text-align:left;"> Sept 14, 2022 </td>
-   <td style="text-align:left;"> <a href="https://rstudio.github.io/leaflet/" style="     ">6</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> LA Times - Prof. Phillips - Warehouse Growth </td>
-   <td style="text-align:left;"> Sept 16, 2022 </td>
-   <td style="text-align:left;"> <a href="" style="     ">7</a> </td>
-  </tr>
-<tr>
-<td style="text-align:left;width: 20em; "> Guardian - Maanvi Singh - Ontario Warehouses </td>
-   <td style="text-align:left;"> Sept 16, 2022 </td>
-   <td style="text-align:left;"> <a href="https://www.theguardian.com/us-news/2022/sep/13/ontario-california-amazon-warehouses" style="     ">8</a> </td>
-  </tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rmarkdown">rmarkdown</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<section id="graded-assignment---visualization-critique-paper" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="graded-assignment---visualization-critique-paper">
-<span class="header-section-number">6.1</span> Graded Assignment - Visualization Critique Paper</h2>
-<p>Choose a environmental data visualization. This can include static figures, interactive graphics, infographics, apps, videos, animations, etc. Please get approval from Mike if you are choosing something that may not meet a standard definition of an environmental data visualization.</p>
-<p>Write a two-page paper (12-point font or less) describing the visualization and salient features that you think are interesting and noteworthy. Include a picture or link to your chosen visualization (does not count towards 2-page minimum). In your critique, please include ten individual points that fit into at least one of these categories. Include at least 3 of these categories in your paper.</p>
+</section><section id="resources" class="level2" data-number="19.3"><h2 data-number="19.3" class="anchored" data-anchor-id="resources">
+<span class="header-section-number">19.3</span> Resources</h2>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown-2.0.pdf">RMarkdown cheatsheet</a> <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown reference guide</a></p>
+</section><section id="use-rmarkdown-to-make-a-presentation-to-teach-how-to-use-rmarkdown-to-make-a-presentation" class="level2" data-number="19.4"><h2 data-number="19.4" class="anchored" data-anchor-id="use-rmarkdown-to-make-a-presentation-to-teach-how-to-use-rmarkdown-to-make-a-presentation">
+<span class="header-section-number">19.4</span> Use RMarkdown to make a Presentation to teach how to use RMarkdown to make a Presentation</h2>
+<p>Check <strong>Box</strong> for today’s .Rmd file and knit .html slide presentation.</p>
+</section><section id="exercise-1---create-a-presentation-using-your-visualization-assignment-code" class="level2" data-number="19.5"><h2 data-number="19.5" class="anchored" data-anchor-id="exercise-1---create-a-presentation-using-your-visualization-assignment-code">
+<span class="header-section-number">19.5</span> Exercise 1 - Create a Presentation using your Visualization Assignment Code</h2>
 <ol type="1">
-<li>Things that you like, or think are done well</li>
-<li>Things that you dislike, or think are done poorly</li>
-<li>Improvements you would make to the visualization (can be additions or subtractions from features in the visualization)</li>
-<li>Features that provide interesting structure to the data and make it more informative</li>
-<li>Features that you find aid in communicating knowledge or help <strong>tell the story</strong>.</li>
+<li>Open <em>File</em>, <em>New File</em>, <em>R Markdown…</em>
+</li>
+<li>Select <em>Presentation</em>
+</li>
+<li>Add your name and a title</li>
+<li>Check out the template components</li>
+<li>Edit the introduction to include a sentence about the visualization you created for your last assignment.</li>
+<li>Add each of the four bullet points to the <strong>Slide with Bullets</strong>
+</li>
+<li>Replace the code chunks with the table and plot with the <code>R</code> code you used to generate your visualization, including the libraries, data download, and tidying steps. See the example code chunk below.</li>
+<li>Press the <strong>Knit</strong> button to generate a rendered HTML presentation.</li>
 </ol>
-<p>Assignment is due September 28th, 2022 at the beginning of class. Assignments can be emailed or physically turned in. This assignment is worth 100 points. Spelling, grammar, and sentence structure will be a minor component of the score (~10 points).</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">URL.path</span> <span class="op">&lt;-</span> <span class="st">'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'</span></span>
+<span><span class="va">SoCalEJ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="va">URL.path</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">palDPM</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/colorNumeric.html">colorNumeric</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'YlOrBr'</span>, domain <span class="op">=</span> <span class="va">SoCalEJ</span><span class="op">$</span><span class="va">DieselPM_P</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">SoCalEJ</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">33.8</span>, lng <span class="op">=</span> <span class="op">-</span><span class="fl">117.60</span>, zoom <span class="op">=</span> <span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addPolygons</a></span><span class="op">(</span>stroke <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>              fillColor <span class="op">=</span> <span class="op">~</span><span class="fu">palDPM</span><span class="op">(</span><span class="va">DieselPM_P</span><span class="op">)</span>,</span>
+<span>              fillOpacity <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addLegend.html">addLegend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="va">palDPM</span>, </span>
+<span>            title <span class="op">=</span> <span class="st">'Diesel PM (%)'</span>, </span>
+<span>            values <span class="op">=</span> <span class="op">~</span><span class="va">DieselPM_P</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -461,13 +517,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./maps2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization 2</span></span>
+      <a href="./debt.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Ecological Debt</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./EJ.html" class="pagination-link">
-        <span class="nav-page-text">Unit 2: Environmental Justice</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./assignment4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
