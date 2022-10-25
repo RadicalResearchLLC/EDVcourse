@@ -52,8 +52,7 @@ Check **Box** for today's .Rmd file and knit .html slide presentation.
 7. Replace the code chunks with the table and plot with the `R` code  you used to generate your visualization, including the libraries, data download, and tidying steps. See the example code chunk below.
 8. Press the **Knit** button to generate a rendered HTML presentation.
 
-```{r SoCalEJ, message = FALSE, warning = FALSE}
-#| echo: true
+```{r}
 #| label: example code chunk
 #| echo: true
 #| eval: false
