@@ -1,0 +1,246 @@
+# Research sites {#sec-research}
+
+::: {.callout-note appearance="simple"}
+Today is just going to be research oriented
+:::
+
+## California Water links
+
+[Los Angeles Department of Water and Power](https://www.ladwp.com/ladwp/faces/ladwp/aboutus/a-water/a-w-sourcesofsupply?_adf.ctrl-state=jm34e9std_4&_afrLoop=1092437083762566)
+
+[LA DWP 2020 Water Report](https://www.ladwp.com/cs/groups/ladwp/documents/pdf/mdaw/nzyy/~edisp/opladwpccb762836.pdf)
+
+[SoCal MWD Water sources](https://www.mwdh2o.com/securing-our-imported-supplies)
+
+[California average precipitation by county](https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/county/mapping/4/pcp/201902/1/value)
+
+[Public Policy Institute Water Use in CA](https://www.ppic.org/publication/water-use-in-california/)
+
+[California Water Plan Update 2023](https://water.ca.gov/Programs/California-Water-Plan/Update-2023) Check out the assumptions and estimates [draft report](https://water.ca.gov/-/media/DWR-Website/Web-Pages/Programs/California-Water-Plan/Docs/Update2023/PrePRD/CWP-Draft-AE-2023.pdf)
+
+[California Natural Resources Agency Open Data](https://data.cnra.ca.gov/group/water)
+
+### Precipitation data - California by County
+
+Grab data from [NOAA NCEI](https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/county/mapping/4/pcp/202102/12/value) climate data and check out the drought intensity with a visualization of `precipitation anomaly`.
+
+```{r}
+#| label: load library, download, prepare base figure
+#| echo: true
+
+library(tidyverse)
+
+county_precip <- read_csv('https://www.ncei.noaa.gov/cag/county/mapping/4-pcp-202102-12.csv', skip =3) %>% 
+  janitor::clean_names() %>% 
+  mutate(county = str_remove(location, ' County'))
+
+precip_points <- ggplot(data = county_precip, aes(x = x1901_2000_mean, y = anomaly_1901_2000_base_period)) +
+  #geom_point() + 
+  #geom_smooth(se = FALSE) +
+  geom_text(aes(label = county), size = 2, check_overlap = TRUE) +
+  theme_bw() +
+  labs(x = '1901-2000 precipitation average (inches)',
+       y = '2019 precipitation anomaly (inches)')
+
+```
+
+```{r}
+#| label: fig-precipitation1
+#| echo: true 
+
+precip_points
+#ggplotly(precip_points)
+
+```
+
+We can add that to a map, if we had a shapefile of California counties. The [California open data portal](https://data.ca.gov/dataset/ca-geographic-boundaries) has that info.
+
+Doing this one time, point and click is ok. Here are the steps.
+
+-   Download the zipped shapefile (not code)
+-   Move it to your working directory (not code)
+-   Unzip/extract the zip file (code or not code - your choice)
+-   Read in shapefile using `read_sf()` - (code)
+-   Transform to WGS84 coordinate reference system (code)
+-   Make a map (code)
+
+```{r}
+#| label: unzip, read, and transform steps for CA county shapes
+#| echo: true
+
+CA_county_dir <- 'CA_counties'
+zipfile = 'ca-county-boundaries.zip'
+## Note, I tried extracting to CA_counties first, but it added a second 'CA_counties/CA_counties' subdirectory, so this code just extracts to the working directory
+unzip(zipfile, exdir = getwd())
+
+#load sf
+library(sf)
+
+#read the data
+CA_county <- read_sf(dsn = CA_county_dir) %>% 
+ st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+@fig-CA_counties shows a map of California using `ggplot` and `geom_sf`
+
+```{r}
+#| label: fig-CA_counties
+#| echo: true
+#| warning: false
+
+ggplot(CA_county) +
+  geom_sf() +
+  theme_minimal() + 
+  geom_sf_text(aes(label = NAME), size = 1.5) +
+  labs(x = '', y = '')
+
+```
+
+### Time for a quick data science lesson
+
+Dataset `CA_county` has the geospatial information. Dataset `county_precip` has the precipitation data but doesn't have the geospatial information included.
+
+Putting the two datasets together is required to make the map to show spatial patterns in precipitation. Both datasets have a field that indicates the County Name. The `tidyverse` `dplyr` package has functions to [join datasets](https://dplyr.tidyverse.org/reference/mutate-joins.html) by common variables.
+
+-   `inner_join()` - keep only records present in both datasets.
+-   `left_join()` - keep **all** records from the *first* dataset and only matching variables from the second. Fill missing with **NA**
+-   `right_join()` - keep **all** records from the *second* dataset and only matching variables from the first. Fill missing with **NA**
+-   `full_join()` - keep **all** records both datasets - fill **NA** in any records where dataset is missing from one of the datasets.
+-   `anti_join()` - keep **only** records in the first dataset that don't occur in the second dataset.
+
+![Join Venn Diagrams - credit **Tavareshugo** github](https://tavareshugo.github.io/r-intro-tidyverse-gapminder/fig/07-dplyr_joins.svg)
+
+For the county case, California has 58 counties, but I will try an inner join to make sure that every county name matches.
+
+```{r}
+#| label: join county data
+#| echo: true
+
+GeoSpatial_precip <- inner_join(CA_county, county_precip,
+                                by = c('NAMELSAD' = 'location'))
+
+head(GeoSpatial_precip)
+
+```
+
+@fig-MapPrecip shows the 1901-2000 precipitation average by county and the 2019 precipitation anomaly by county.
+
+```{r}
+#| label: fig-MapPrecip
+#| echo: true
+
+GeoSpatial_precip %>% 
+  select(x1901_2000_mean, anomaly_1901_2000_base_period, 
+         county) %>% 
+  rename(meanPrecipitation = x1901_2000_mean,   precipitationAnomaly.2019 = anomaly_1901_2000_base_period ) %>% 
+  pivot_longer(cols = c(1,2), names_to = 'type', values_to = 'precip_in_inches') %>% 
+  ggplot(aes(fill = precip_in_inches)) +
+  geom_sf(color = 'grey60') + 
+  facet_wrap(~type) +
+ # scale_fill_distiller(palette = 'BrBG', type = 'div', direction = 1, name = 'Precipitation (inches)', mid = 0) +
+  scale_fill_gradient2() +
+  theme_minimal()
+
+```
+
+How much water didn't fall from the sky in 2019? I can estimate volumes if I have a county area. `st_area()` calculates the area and `mutate()` allows us to do some county level math to calculate volumes. Area X precipitation height = Volume. Google tells me that 1 inch is 0.0254 meters, to keep units consistent.
+
+```{r}
+#| label: data science volume calculations 
+#| echo: true
+
+calc_volume1 <- GeoSpatial_precip %>% 
+  select(county, anomaly_1901_2000_base_period) #%>% 
+
+calc_volume1$Area <- st_area(calc_volume1)
+
+calc_volume2 <- calc_volume1 %>% 
+  mutate(volume_m3 = as.numeric(anomaly_1901_2000_base_period * 0.0254 * Area))
+
+deficity <- calc_volume2 %>% 
+  ggplot(aes(fill = volume_m3)) +
+  geom_sf(color = 'grey60') + 
+  scale_fill_gradient2(name = '2019 Water deficit (m3)',
+                       labels = scales::comma_format()) +
+   geom_sf_text(aes(label = county), size = 1) +
+  theme_minimal() +
+  labs(x = '', y= '')
+
+deficity
+
+```
+
+## Air Toxics Sacrifice Zones Resources
+
+[Ethylene oxide sterilization facilities](https://www.epa.gov/hazardous-air-pollutants-ethylene-oxide/ethylene-oxide-commercial-sterilization-facilities)
+
+[Toxics Release Inventory Data](https://www.epa.gov/toxics-release-inventory-tri-program/tri-basic-data-files-calendar-years-1987-present)
+
+[SCAQMD Ethylene oxide investigation](http://www.aqmd.gov/home/eto), including a [letter from last month](http://www.aqmd.gov/docs/default-source/compliance/sterigenics/ontario-phrlf-designation-letter-9-29-22.pdf?sfvrsn=8) designating the Ontario facility a 'high risk' facility. And there's a facility not yet reported on within 1 mile of my house.
+
+[National Air Toxics Dashboard](https://radicalresearch.shinyapps.io/ToxicsDashboard/)
+
+[Professor Mike](https://scholar.google.com/citations?user=QcafrNIAAAAJ&hl=en)
+
+### Toxics Release Inventory
+
+Steps:
+
+-   Download the data from [TRI](https://www.epa.gov/toxics-release-inventory-tri-program/tri-basic-data-files-calendar-years-1987-present) - not code
+-   Move it to your working directory (not code)
+-   Read in `.csv` using `read_csv()` - (code)
+-   `filter()` for pollutants and sites of interest
+-   Display on map
+
+#### Import data from working directory
+
+```{r}
+#| label: import dataset
+#| echo: true
+
+TRI_2021 <- read_csv('2021_us.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(x34_chemical == 'Ethylene oxide') %>% 
+  select(x4_facility_name, x6_city, x12_latitude, x13_longitude, x48_5_1_fugitive_air, x49_5_2_stack_air, x62_on_site_release_total) %>% 
+  rename(facility = x4_facility_name,
+         city = x6_city,
+         lat = x12_latitude,
+         lng = x13_longitude,
+         emissions = x62_on_site_release_total)
+
+head(TRI_2021)
+
+```
+
+@fig-EtO
+
+```{r}
+#| label: fig-EtO
+#| fig-cap: Ethylene oxide facilities reporting to TRI in 2021
+#| echo: true
+
+library(leaflet)
+library(htmltools)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(provider = providers$Esri.WorldImagery, 
+                     group = 'Imagery') %>% 
+  addLayersControl(baseGroups = c('Basemap', 'Imagery'), overlayGroups = 'TRI EtO Facilities',
+                   options = layersControlOptions(collapsed = FALSE)) %>% 
+  addCircles(data = TRI_2021, weight = 1, stroke = FALSE,
+             color = 'red',
+             radius = ~emissions * 10, popup = ~facility,
+             opacity = 0.5,
+             group = 'TRI EtO Facilities') %>%
+  addCircles(data = TRI_2021, color = 'red', opacity = 0.3)
+
+```
+
+Examine this map and tell me at least three things that are wrong with it.
+
+
+
+
+

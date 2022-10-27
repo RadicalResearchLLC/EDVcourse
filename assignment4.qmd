@@ -28,17 +28,21 @@ unit4 %>% mutate(link = cell_spec(row.names(.), 'html', link = source)) %>%
 
 ## Group Presentation 
 
-Teams of approximately 4 students (3-5 allowed). End product is a 12 minute presentation in class using slides and data visualizations.  
+Due to present in class on **November 4, 2022**. Teams of approximately 8 students. End product is a 12 or 24 minute presentation in class using slides and data visualizations. 
+
+::: {.callout-note appearance="warning"}
+Absence from in-class presentation will need a Doctor's note or similar documentation to be able to make-up this assignment during Office Hours.
+:::
 
 It should include approximately:
 
-- 3 minutes of introduction and background
-- 3 minutes defining the scope of your Project
+- 6 minutes of introduction and background
+- 6 minutes defining the scope of your Project
   * Spatial extent (e.g., state of California)
   * Temporal extent (i.e., year-range)
   * Environmental variable(s) to be examined (air pollution, water, radiation, climate, etc.)
-- 3 minutes on what the team's hypothesis is and what data will be acquired for exploring that hypothesis.
-- 3 minutes on the visualization strategies that will help tell the story. What will the project look like (hand-drawn sketches or design mock-ups are fine).  
+- 6 minutes on what the team's hypothesis is and what data will be acquired for exploring that hypothesis.
+- 6 minutes on the visualization strategies that will help tell the story. What will the project look like (hand-drawn sketches or design mock-ups are fine).  
 
 ### Grading for Group Presentation Project
 
