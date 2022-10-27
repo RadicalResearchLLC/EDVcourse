@@ -46,6 +46,7 @@ precip_points <- ggplot(data = county_precip, aes(x = x1901_2000_mean, y = anoma
 
 ```{r}
 #| label: fig-precipitation1
+#| fig-cap: Relationship of mean precipitation to rainfall deficit by county in 2019
 #| echo: true 
 
 precip_points
@@ -88,6 +89,7 @@ CA_county <- read_sf(dsn = CA_county_dir) %>%
 #| label: fig-CA_counties
 #| echo: true
 #| warning: false
+#| fig-cap: California Counties
 
 ggplot(CA_county) +
   geom_sf() +
@@ -129,6 +131,7 @@ head(GeoSpatial_precip)
 ```{r}
 #| label: fig-MapPrecip
 #| echo: true
+#| fig-cap: Average 20th century rainfall and 2019 rainfall anomaly from 100 year mean by county
 
 GeoSpatial_precip %>% 
   select(x1901_2000_mean, anomaly_1901_2000_base_period, 
