@@ -38,6 +38,7 @@ book:
         - debt.qmd
         - markdown.qmd
         - research.qmd
+        - munging.qmd
         - assignment4.qmd
   appendices: 
     - syllabus.qmd  

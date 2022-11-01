@@ -1,0 +1,275 @@
+# Data Science 101 {#sec-munging}
+
+::: {.callout-note appearance="simple"}
+Today we focus on the practice of manipulating data in R
+:::
+
+## Introduction
+
+> 'Tidy datasets are all alike, but every messy dataset is messy in its own way.'\
+> --- Hadley Wickham
+
+![Hadley Wickham - Creator of the Tidyverse](https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg){width="200"}
+
+Mr. Wickham is of course quoting Tolstoy, but his observation is poignant and correct. Much of the work in data visualization is finagling one's dataset.
+
+Today, we will focus on some key functions to `tidy` messy data, as compiled by me. Examples will be provided using data from previous lectures.
+
+Let's get started with initializing today's R script to include the libraries we'll be using. Start with `tidyverse` and `sf`.
+
+```{r}
+#| label: load libraries
+#| echo: true
+#| message: false
+
+library(tidyverse)
+library(sf)
+
+```
+
+Next, install and load `janitor`.
+
+```{r}
+#| label: install janitor example
+#| echo: true
+#| eval: false
+
+install.packages('janitor')
+```
+
+```{r}
+#| label: load janitor
+#| echo: true
+#| message: false
+
+library(janitor)
+
+```
+
+### [`st_transform()`](https://r-spatial.github.io/sf/reference/st_transform.html)
+
+`st_transform()` transforms or converts coordinates of simple feature geospatial data. Spatial projections are fraught with peril in geospatial visualizations.  Our first function is one that has been used a bunch of times - `st_transform()`. Leaflet needs its data transformed into WGS84 and `st_transform()` is the function that makes the coordinate reference system go the right place. 
+
+```{r}
+#| label: Import SoCalEJ and warehouse data
+#| echo: true
+#| message: false
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/warehouse.geoJSON'
+warehouses <- st_read(WH.url) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+### [`janitor::clean_names()`](https://www.rdocumentation.org/packages/janitor/versions/1.2.0/topics/clean_names)
+
+The first step in being able to deal with a dataset is to have the names of the variables comport with standard R naming format. `clean_names()` gets rid of those spaces and standardizes the capitalization of letters for column names.  
+
+If your dataset column names have spaces or strange characters (parentheses, $, or /), the best way to deal with that is to instantly run `clean_names()`. R functions do not like special characters in variable names.  
+
+In @sec-debt we used `janitor::clean_names()` to fix the import of the ecological footprint excel spreadsheet.  Here's the example again.
+
+```{r}
+#| label: load readxl library 
+#| echo: true
+
+library(readxl)
+
+```
+
+```{r}
+#| label: import NFA dataset and clean its column names
+#| echo: true
+
+filename <- 'NFA 2022 Public Data Package 1.1.xlsx'
+country_results <- read_excel(filename, sheet = 'Country Results 2022 Ed (2018)', skip = 21) 
+
+names(country_results)
+
+country_results2 <- clean_names(country_results)
+names(country_results2)
+
+```
+
+The names are now all lower case, and there are no spaces or `...` or parentheses. There are extra arguments to provide different naming conventions for capitalization (snake, lower_camel, upper_lower, etc.)
+
+Here's an example for `lower_camel` case. Underscores are gone. New words are capitalized, but first letter of first word is not.     
+
+```{r}
+#| label: lower_camel 
+#| echo: true
+country_results3 <- clean_names(country_results2, case = 'lower_camel')
+names(country_results3)
+```
+
+### [`filter()`](https://dplyr.tidyverse.org/reference/filter.html)
+
+`filter()` is used to subset a data table, retaining any rows that meet the conditions of the filter. 
+
+- `filter()` is used on numbers by applying operators (e.g., >, =, <, >=, <=).  
+- `filter()` can be applied on character strings by using the identity operator `==`.  
+- `filter()` can be applied to multiple character strings by using the %in% operator on lists.  
+
+Here are three examples using SoCalEJ. First, example was done to remove the values that were set at -999; we only believed values from 0-100 were reasonable. @fig-AsthmaCounty uses filter to remove those values. I've also shown an example without the filter applied. Not removing those rows messes up our visualization.   
+
+```{r}
+#| label: fig-AsthmaCounty
+#| fig-cap: Asthma census tract distribution by county
+#| echo: true
+#| warning: false
+
+SoCalEJ %>% 
+  #filter()
+  ggplot(aes(x = County, y = AsthmaP)) +
+  geom_boxplot()
+
+SoCalEJ %>% 
+  filter(AsthmaP >= 0) %>% 
+  ggplot(aes(x = County, y = AsthmaP)) +
+  geom_boxplot()
+
+```
+
+In @sec-EJdata we also applied filter in two successive data transformations that are good examples of data munging. After creating a narrow data set, we apply `filter(value >=0)` to remove all negative values. Then we applied `filter(variable %in% c('OzoneP', 'DieselPM_P', 'PolBurdP'))` to select three specific variable choices out of the 55 we had available. If we exclude that second filter, the plot becomes crazy busy.  
+
+```{r}
+#| label: Tidy data for manipulation
+#| echo: true
+#| warning: false
+
+# select socioeconomic indicators and make them narrow - only include counties above 70%
+SoCal_narrow <- SoCalEJ %>% 
+  st_set_geometry(value = NULL) %>% 
+  pivot_longer(cols = c(5:66), names_to = 'variable', values_to = 'value') %>% 
+  filter(value >=0)
+
+SoCal_narrow %>% 
+  filter(variable %in% c('OzoneP', 'DieselPM_P', 'PolBurdP')) %>% 
+  ggplot(aes(x = County, y = value, fill= variable)) +
+  geom_boxplot()
+
+SoCal_narrow %>% 
+  #filter(variable %in% c('OzoneP', 'DieselPM_P', 'PolBurdP')) %>% 
+  ggplot(aes(x = County, y = value, fill= variable)) +
+  geom_boxplot()
+
+```
+
+### [`select()`](https://dplyr.tidyverse.org/reference/select.html)
+
+`select()` variables (i.e., columns) in a data table for retention. 
+
+- `select()` can be applied to subsets column number or name.
+- `select()` also has some pattern matching helpers.  
+
+@sec-research included an example of using `select()` on the Toxics Release Inventory dataset. It also demonstrate using `clean_names()` and `filter()` as part of the import process. The raw dataset is MESSY! 
+
+```{r}
+#| label: import TRI
+#| echo: true
+#| warning: false
+#| message: false
+
+## This is a test import of the first 25 rows of an 18,000 row dataset
+TRI_2021_raw <- read_csv('2021_us.csv', n_max = 25) #%>% 
+head(TRI_2021_raw)
+
+## This dataset is MESSY! Time to munge!
+
+TRI_2021 <- read_csv('2021_us.csv') %>% 
+  # make variable names better
+  janitor::clean_names() %>% 
+  # keep only Ethylene oxide facilities
+  filter(x34_chemical == 'Ethylene oxide') %>% 
+  # keep only the name, city, lat/lng, and emissions total columns
+  select(x4_facility_name, x6_city, x12_latitude, x13_longitude,    x62_on_site_release_total) %>% 
+  rename(facility = x4_facility_name,
+         city = x6_city,
+         lat = x12_latitude,
+         lng = x13_longitude,
+         emissions = x62_on_site_release_total)
+
+head(TRI_2021)
+
+```
+
+@fig-EtO
+
+```{r}
+#| label: fig-EtO
+#| fig-cap: Ethylene oxide facilities reporting to TRI in 2021
+#| echo: true
+#| message: false
+
+library(leaflet)
+library(htmltools)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(provider = providers$Esri.WorldImagery, 
+                     group = 'Imagery') %>% 
+  addLayersControl(baseGroups = c('Basemap', 'Imagery'), overlayGroups = 'TRI EtO Facilities',
+                   options = layersControlOptions(collapsed = FALSE)) %>% 
+  addCircles(data = TRI_2021, color = 'red', opacity = 0.3) %>% 
+  addCircles(data = TRI_2021, weight = 1, stroke = FALSE,
+             color = 'red',
+             radius = ~emissions * 10, popup = ~facility,
+             opacity = 0.5,
+             group = 'TRI EtO Facilities') 
+
+```
+
+### [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html)
+
+`mutate()` adds new variables and preserves existing ones. `mutate()` can be used to overwrite existing variables - careful with name choices.
+
+This is a great function for synthesizing information, transformations, and combining variables. 
+
+- changing units - use `mutate()`
+- creating a rate or normalizing data - use `mutate()`
+- need a new variable or category - use `mutate()`
+
+I used `mutate()` to create a decimal date function for our CH~4~ visualizations in @sec-import.  I used `mutate()` to correct the spelling of _San Bernardino_ in @sec-EJtools, in combination with the `ifelse()` function. I used `mutate()` in @sec-research to calculate volumes of rain by multiplying precipitation values (inches) by area (m^2^) of counties.
+
+Let's use `mutate()` to convert the TRI ethylene oxide emissions from pounds to kilograms to avoid imperialism. 
+
+1 pound = 0.453592 kilograms
+
+```{r}
+#| label: add kg emissions
+#| echo: true
+
+TRI_2021 <- TRI_2021 %>% 
+  mutate(emissions_kg = emissions*0.453592)
+head(TRI_2021)
+```
+
+### [`summarize()`](https://dplyr.tidyverse.org/reference/summarise.html)
+
+`summarize()` creates a new table that reduces a dataset to a summary of all observations.  When combined with the `group_by()` function, it allows extremely powerful manipulation and generation of summary statistics about a dataset.  
+
+I have not demonstrated `summarize()` yet in this class, which is a major deficiency on my part.  Let's examine it with `TRI_2021`.
+
+```{r}
+#| label: basic summarize
+#| echo: true
+#| warning: false
+
+EtO_summary <- TRI_2021 %>% 
+  summarize(count = n(), sum = sum(emissions), average = mean(emissions),
+            max = max(emissions), min = min(emissions), 
+            stdev = sd(emissions))
+
+library(kableExtra)
+# This is just a fancy table instead of showing the normal output
+kable(EtO_summary) %>% 
+  kable_material_dark(c('condensed', 'hover')) %>% 
+  column_spec(1, width = '20em') #%>
+```
+
+
+
