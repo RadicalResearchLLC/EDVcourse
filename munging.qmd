@@ -114,18 +114,13 @@ names(country_results3)
 - `filter()` can be applied on character strings by using the identity operator `==`.  
 - `filter()` can be applied to multiple character strings by using the %in% operator on lists.  
 
-Here are three examples using SoCalEJ. First, example was done to remove the values that were set at -999; we only believed values from 0-100 were reasonable. @fig-AsthmaCounty uses filter to remove those values. I've also shown an example without the filter applied. Not removing those rows messes up our visualization.   
+In the first example, `filter()`was applied to remove the values that were set at -999; we only believed values from 0-100 were reasonable.  @fig-Asthma_county1 uses `filter()` to remove those values. I've also shown an example without the filter applied in @fig-Asthma_all . Not removing those rows messes up our visualization.   
 
 ```{r}
-#| label: fig-AsthmaCounty
+#| label: fig-Asthma_county1
 #| fig-cap: Asthma census tract distribution by county
 #| echo: true
 #| warning: false
-
-SoCalEJ %>% 
-  #filter()
-  ggplot(aes(x = County, y = AsthmaP)) +
-  geom_boxplot()
 
 SoCalEJ %>% 
   filter(AsthmaP >= 0) %>% 
@@ -133,6 +128,17 @@ SoCalEJ %>%
   geom_boxplot()
 
 ```
+```{r}
+#| label: fig-Asthma_all
+#| fig-cap: Asthma census tract distribution by county without filter
+#| echo: true
+#| warning: false
+SoCalEJ %>% 
+  #filter()
+  ggplot(aes(x = County, y = AsthmaP)) +
+  geom_boxplot()
+```
+
 
 In @sec-EJdata we also applied filter in two successive data transformations that are good examples of data munging. After creating a narrow data set, we apply `filter(value >=0)` to remove all negative values. Then we applied `filter(variable %in% c('OzoneP', 'DieselPM_P', 'PolBurdP'))` to select three specific variable choices out of the 55 we had available. If we exclude that second filter, the plot becomes crazy busy.  
 
@@ -266,10 +272,36 @@ EtO_summary <- TRI_2021 %>%
 
 library(kableExtra)
 # This is just a fancy table instead of showing the normal output
-kable(EtO_summary) %>% 
-  kable_material_dark(c('condensed', 'hover')) %>% 
-  column_spec(1, width = '20em') #%>
+kable(EtO_summary)  
 ```
 
+A more interesting example includes the `group_by()` function. This function identifies categories to summarize the data by.  The SoCalEJ_narrow dataset has some simple grouping categories that can be used to show this. 
 
+```{r}
+#| label: group by summarize on SoCal_narrow
+#| echo: true
+
+SoCal_basic <- SoCal_narrow %>% 
+  group_by(variable) %>% 
+  summarize(count = n(), average = mean(value), min = min(value), max =       max(value), stdev = sd(value))
+
+kable(SoCal_basic, digits = 1, caption = 'An example summary Table',
+      format.args = list(scientific = FALSE))
+```
+
+And of course, we can combine our functions to dig even deeper. This example focuses on just a few variables to group the data into smaller subsets of County.
+
+```{r}
+#| label: group by summarize complicated
+#| echo: true
+
+SoCal_complicated <- SoCal_narrow %>% 
+  filter(variable %in% c('CIscoreP', 'AsthmaP', 'LowBirWP', 'CardiovasP')) %>% 
+  group_by(variable, County) %>% 
+  summarize(count = n(), average = mean(value), min = min(value), max =       max(value), stdev = sd(value))
+
+kable(SoCal_complicated, digits = 1, caption = 'An example summary Table',
+      format.args = list(scientific = FALSE))
+
+```
 
