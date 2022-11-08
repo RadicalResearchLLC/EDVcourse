@@ -1,0 +1,34 @@
+# Group Project Review - Projects {#sec-debrief}
+
+::: {.callout-note appearance="simple"}
+Today's class will be a review of the group presentations and in-class work on acquiring and importing data for the group project.
+:::
+
+## Presentation Review
+
+### The Good
+
+- Cool topics
+- Well researched
+- Interesting ideas for visualizations
+- Datasets looked feasible
+
+### The Bad
+
+- Date
+- Citations (or lack thereof)
+- Source attribution (or lack thereof)
+- Spatial scope
+- Unity of Vision
+
+## In-Class Exercise - Data Acquisition, Import, and Basic Visualization
+
+1. Identify the dataset
+2. Download the dataset
+3. Move the dataset to the working directory
+4. Open the dataset to look at its structure
+5. Read the dataset into R
+6. Munge the dataset - clean header names and filter to the spatial and temporal scale of interest
+7. Visualize the dataset - start with the basics
+
+

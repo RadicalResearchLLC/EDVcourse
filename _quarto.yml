@@ -39,6 +39,8 @@ book:
         - markdown.qmd
         - research.qmd
         - munging.qmd
+        - debrief.qmd
+        - maps3.qmd
         - assignment4.qmd
   appendices: 
     - syllabus.qmd  

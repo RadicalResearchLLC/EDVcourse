@@ -57,3 +57,21 @@ Total of 200 points.
   - 25 points for covering 4 topic areas
   - 20 points for having approximately equal talking time among team members
   - 30 points for content mastery and for answering questions from classmates and Professor Mike
+
+## Individual Visualization
+
+Due by email at 9:45 AM on **November 16, 2022**.  
+
+Assignment is a single visualization of data on the team's chosen topic. Assignment should provide an exported visualization `.png, .pdf, .html` and the `.R script` used to generate the visualization. Source of data should be clearly identified as a comment within the .R script.  
+
+Describe a minimum of three features that were selected to explore the dataset, either in the `.R script` or in the email.  Bullet points are fine.  
+
+## Grading for Individual Visualization Project
+
+Total of 100 points
+
+* 10 points for data source attribution 
+* 15 points for description of three features
+* 45 points for three features implementation in visualization
+* 10 points for aesthetics
+* 20 points for labels, legend, and in-visualization annotation  

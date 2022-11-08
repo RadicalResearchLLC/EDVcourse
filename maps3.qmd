@@ -1,0 +1,7 @@
+# Advanced Spatial Visualization {#sec-maps3}
+
+::: {.callout-note appearance="simple"}
+Today we will be focusing on the practice of fancy geospatial data visualization.
+:::
+
+Coming soon!
