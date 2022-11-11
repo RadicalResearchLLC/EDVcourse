@@ -279,4 +279,62 @@ annual_risk %>%
 ```
 
 
-### Example 4 - Water data from github?
+### Example 4 - [LA County Open Data Portal](https://data.lacounty.gov/search?categories=open%20data%2Chydro&q=water)
+
+I looked through some of the sources of data the Debt Team was trying to access. I am not a water domain expert, so I wanted simpler data sources.  The LA County Open Data Portal has a set of Hydro data layers that may be of use.
+
+One promising dataset was the [ground water basins layer](https://data.lacounty.gov/datasets/lacounty::ground-water-basins-feature-layer/explore?location=34.049054%2C-117.335615%2C8.36). I download a `GeoJSON` file format.  
+
+1. Download file - mine was named `Ground_Water_Basins_Feature_Layer.geojson`
+2. Move to working directory
+3. Read file using `read_sf()`
+4. Transform file to WGS84 using `st_transform()`
+5. Make a map using `leaflet()` as shown in @fig-groundwaterBasins
+
+```{r}
+#| label: fig-groundwaterBasins
+#| echo: true
+#| fig-cap: groundwater basins in LA county
+
+groundH2O <- read_sf(dsn = 'Ground_Water_Basins_Feature_Layer.geojson') %>% 
+   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84") 
+
+groundH2O %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(weight = 2,
+              label = ~htmlEscape(BASIN))
+
+```
+
+### Example 5. Aqueducts in California
+
+California Natural Resources Agency Open Data portal has an [aqueduct layer](https://data.cnra.ca.gov/dataset/i12-canals-and-aqueducts-local1).
+
+Repeat the steps from Example 4.  
+
+1. Download file - mine was named `i12_Canals_and_Aqueducts_local.geojson`
+2. Move to working directory
+3. Read file using `read_sf()`
+4. Transform file to WGS84 using `st_transform()`
+5. Make a map using `leaflet()` as shown in @fig-aqueducts - 
+6. Refine map to only show aqueducts that serve LA County - a 5 minute attempt is shown here, getting it right may require [research](https://www.watereducation.org/aquapedia/california-aqueduct)
+
+```{r}
+#| label: fig-aqueducts
+#| echo: true
+#| fig-cap: Aqueducts providing water to LA county
+
+aqua <- read_sf(dsn = 'i12_Canals_and_Aqueducts_local.geojson') %>% 
+   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84") 
+
+#Team Debt needs to fill this in.
+LACounty_aqua <- c('Main Canal', 'Los Angeles Aqueduct', 'Colorado River Aqueduct')
+
+aqua %>% 
+  filter(Name %in% LACounty_aqua) %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addPolylines(weight = 2,
+              label = ~htmlEscape(Name))
+```
