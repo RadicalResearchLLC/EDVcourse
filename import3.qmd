@@ -52,6 +52,7 @@ Run the following line of code to activate your key for the session. The key is 
 #| label: census api key
 #| echo: true
 #| eval: false
+#| message: false
 
 
 # Replace <YOUR KEY HERE> with the key from the census data api service
@@ -63,8 +64,9 @@ census_api_key('<YOUR KEY HERE>', install = TRUE)
 ```{r}
 #| label: census api key for real
 #| echo: false
+#| eval: false
 
-#census_api_key('b5554d6b880d7233a664782c7931421460b3f82f', install = TRUE)
+census_api_key('b5554d6b880d7233a664782c7931421460b3f82f', install = TRUE)
 
 ```
 
@@ -90,6 +92,7 @@ First, let's pull a census tract dataset to show how it works and how it quickly
 ```{r}
 #| label: get ACS data for LA County
 #| echo: true
+#| message: false
 
 LA <- get_acs(
   state = "CA",
@@ -146,6 +149,7 @@ Knowing income is nice, but a lot of the analysis was focused on racial variable
 ```{r}
 #| label: pull racial variables
 #| echo: TRUE
+#| message: FALSE
 
 # These are the list of racial variables from the decennial census
 racevars <- c(White = "P2_005N", 
@@ -195,6 +199,7 @@ Can we pull and display three parishes (i.e., Louisiana county equivalents) simu
 ```{r}
 #| label: cancer alley pull
 #| echo: true
+#| message: FALSE
 
 #Note, we use the same racial demographic variables in previous example
 
