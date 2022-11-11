@@ -25,10 +25,13 @@ Today is just going to be research oriented
 Grab data from [NOAA NCEI](https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/county/mapping/4/pcp/202102/12/value) climate data and check out the drought intensity with a visualization of `precipitation anomaly`.
 
 ```{r}
+library(tidyverse)
+```
+
+```{r}
 #| label: load library, download, prepare base figure
 #| echo: true
-
-library(tidyverse)
+#| eval: false
 
 county_precip <- read_csv('https://www.ncei.noaa.gov/cag/county/mapping/4-pcp-202102-12.csv', skip =3) %>% 
   janitor::clean_names() %>% 
@@ -48,9 +51,10 @@ precip_points <- ggplot(data = county_precip, aes(x = x1901_2000_mean, y = anoma
 #| label: fig-precipitation1
 #| fig-cap: Relationship of mean precipitation to rainfall deficit by county in 2019
 #| echo: true 
+#| eval: false
 
-precip_points
-#ggplotly(precip_points)
+#precip_points
+ggplotly(precip_points)
 
 ```
 
@@ -118,6 +122,7 @@ For the county case, California has 58 counties, but I will try an inner join to
 ```{r}
 #| label: join county data
 #| echo: true
+#| eval: false
 
 GeoSpatial_precip <- inner_join(CA_county, county_precip,
                                 by = c('NAMELSAD' = 'location'))
@@ -132,6 +137,7 @@ head(GeoSpatial_precip)
 #| label: fig-MapPrecip
 #| echo: true
 #| fig-cap: Average 20th century rainfall and 2019 rainfall anomaly from 100 year mean by county
+#| eval: false
 
 GeoSpatial_precip %>% 
   select(x1901_2000_mean, anomaly_1901_2000_base_period, 
@@ -152,6 +158,7 @@ How much water didn't fall from the sky in 2019? I can estimate volumes if I hav
 ```{r}
 #| label: data science volume calculations 
 #| echo: true
+#| eval: false
 
 calc_volume1 <- GeoSpatial_precip %>% 
   select(county, anomaly_1901_2000_base_period) #%>% 
