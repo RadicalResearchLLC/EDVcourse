@@ -1,7 +1,342 @@
 # Advanced Spatial Visualization {#sec-maps3}
 
 ::: {.callout-note appearance="simple"}
-Today we will be focusing on the practice of fancy geospatial data visualization.
+Today we will be focusing on the theory and practice of fancy geospatial data visualization.
 :::
 
-Coming soon!
+## Visual Categories and Encodings
+
+Let's go back to the beginning of this course. There are 3 categories of information that can be displayed.
+
+1. Quantitative
+2. Qualitative
+3. Spatial
+
+[Lecture 1.2.1](http://radicalresearch.llc/EDVcourse/information.html#categories-of-information-illustrated-by-the-newspaper-weather-visualization)
+
+The three types of data can be encoded in:
+
+- Geometric primitives - points, lines, and areas
+- Visual channels - size, color, shape, position, angle, and texture
+
+An advanced spatial visualization covering multiple layers of information needs to use multiple sets of encodings to convey information quickly and intuitively while not overwhelming the audience.   
+
+## Circles, Lines, and Polygons - Oh My!
+
+Fancy maps need distinct visual encodings, so the eye can be drawn the salient features.
+
+One key way to do this is through ensuring different types/styles/aesthetics are displayed as unique fingerprints of visual encodings.
+
+Let's combine the three datasets we have showed in class for the sacrifice zones projects as example 1. 
+
+First, get all the libraries we need loaded up.
+
+```{r}
+#| label: load libraries
+#| echo: true
+#| message: false
+
+library(tidycensus)
+library(tidyverse)
+library(leaflet)
+library(sf)
+library(htmltools)
+
+```
+
+### Example 1 - Race and Toxic Emissions
+
+#### Acquire datasets
+
+##### Demographic data from `tidycensus`
+
+We pulled racial data from the census for Jefferson County, TX last week in Section [23.2.2](http://radicalresearch.llc/EDVcourse/import3.html#example-2---jefferson-county-texas---racial-variables).  Repeat that query.  
+
+```{r}
+#| label: Pull Jefferson, County demographic information
+#| echo: true
+
+# These are the list of racial variables from the decennial census
+racevars <- c(White = "P2_005N", 
+              Black = "P2_006N", 
+              Asian = "P2_008N", 
+              Hispanic = "P2_002N")
+
+JeffCo <- get_decennial(
+  geography = "tract",
+  variables = racevars,
+  state = "TX",
+  county = "Jefferson County",
+  geometry = TRUE,
+  summary_var = "P2_001N",
+  year = 2020
+) 
+```
+
+##### Toxics Release Inventory Emissions 
+
+The TRI dataset provides self-reported emissions of air toxics from large regulated industrial facilities.  
+
+```{r}
+#| label: Pull TRI emissions for JeffCo, TX - keep 3 key air toxics, fix lat and lng
+#| echo: true
+
+TRI_2021 <- read_csv('https://data.epa.gov/efservice/downloads/tri/mv_tri_basic_download/2021_US/csv') %>% 
+  janitor::clean_names() %>%
+  filter(x8_st == 'TX') %>%
+  filter(x7_county == 'JEFFERSON') %>% 
+  filter(x34_chemical %in% c('1,3-Butadiene', 'Benzene', 'Ethylene oxide')) %>% 
+  rename(pollutant = x34_chemical, 
+         lat = x12_latitude, 
+         lng = x13_longitude,
+         emissions = x62_on_site_release_total,
+         name = x4_facility_name) %>% 
+  select(pollutant, name, lat, lng, emissions)
+
+```
+
+#### Make some exploratory maps 
+
+First, let's show the fraction of African Americans by census tract in Jefferson County. In Figure 23.2, we used `ggplot` and `geom_sf()`. Let's show it using `leaflet` this time.  
+
+In `leaflet()`, we need to define a color palette for our variable of interest. 
+
+First, let's examine our demographic census dataset of _JeffCo_. Key columns include:
+
+- **GEOID** - [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) census tract ID
+- **NAME** - Census tract name and number
+- **variable** - racial category
+- **value** - population count for the racial category in a census tract
+- **summary_value** - population count for _ALL_ racial categories in a census tract
+- **geometry** - geospatial info
+
+```{r}
+#| label: Loot at JeffCo
+#| echo: true
+
+head(JeffCo, 10)
+```
+
+The data I want to show is the **Percentage** of a census tract that is _White_. I can use the `mutate()` function to create a new _percent_ variable and the `filter()` function to only keep the _White_ subset.
+
+```{r}
+#| label: munge the demographic data
+#| echo: true
+
+JeffCo2 <- JeffCo %>% 
+  mutate(percent = (100*value/summary_value)) %>% 
+  filter(variable == 'White') %>% 
+  filter(summary_value > 0) %>% 
+   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+head(JeffCo2)
+
+```
+
+And now I can make a basic `leaflet()` map. @fig-WhiteJeffCo shows the percent of a census tract that is white.  The `addLegend()` function provides a helpful interpretative map.   
+
+```{r}
+#| label: fig-WhiteJeffCo
+#| echo: true
+#| fig-cap: Demographics of Jefferson County, TX by census tract 2020 
+
+palJeff <- colorNumeric(palette = 'Oranges', domain = JeffCo2$percent, reverse = T)
+
+leaflet(data = JeffCo2) %>% 
+  addTiles() %>% 
+  addPolygons(color = 'black',
+              weight = 1,
+              fillColor = ~palJeff(percent),
+              fillOpacity = 0.6) %>% 
+  addLegend(title = 'White Population (%)',
+            pal = palJeff,
+            values = ~percent)
+
+```
+
+Now let's show the TRI emissions locations in a second map. 
+
+- use `addCircles()` and the **radius** argument to show magnitude of emissions
+- define a `colorFactor()` palette for the pollutants
+- show the names of facilities using the **label** argument.
+
+@fig-JeffCoToxics shows the map of emissions sources.
+
+```{r}
+#| label: fig-JeffCoToxics
+#| echo: true
+#| fig-cap: TRI emissions of Benzene, 1,3-butadiene, and ethylene oxice in Jefferson County, TX in 2021 
+
+palEmissions <- colorFactor(palette = c('red', 'blue', 'black'), domain = TRI_2021$pollutant)
+
+leaflet(data = TRI_2021) %>% 
+  addTiles() %>% 
+  addCircles(weight = 1,
+             color = ~palEmissions(pollutant),
+             radius = ~emissions * 0.1,
+             label = ~htmlEscape(name)) %>% 
+  addLegend(title = 'Pollutant',
+            pal = palEmissions,
+            values = ~pollutant)
+
+```
+
+And we can put those two together.  Remember, when there are multiple data layers and datasets, each layer needs to have its data assigned within each function call where it is relied on. So we'll move the `data = <DATALAYER>` argument from the `leaflet()` function to the `addPolygons`, `addCircles`, and `addLegends` functions.  
+
+@fig-combinedTox_Race
+
+```{r}
+#| label: fig-combinedTox_Race
+#| echo: true
+#| fig-cap: Racial demographics and TRI emissions of Benzene, 1,3-butadiene, and ethylene oxice in Jefferson County, TX in 2020-2021 
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = JeffCo2,
+              color = 'black',
+              weight = 1,
+              fillColor = ~palJeff(percent),
+              fillOpacity = 0.6) %>% 
+  addLegend(data = JeffCo2,
+            title = 'White Population (%)',
+            pal = palJeff,
+            values = ~percent) %>% 
+  addCircles(data = TRI_2021,
+             weight = 1,
+             color = ~palEmissions(pollutant),
+             radius = ~emissions * 0.1,
+             label = ~htmlEscape(name)) %>% 
+  addLegend(data = TRI_2021,
+            title = 'Pollutant',
+            pal = palEmissions,
+            values = ~pollutant)
+
+```
+
+#### Discussion and Critique
+
+Do Circles and Polygons overlay in a useful way?
+
+What changes do you think would make this map more usable and intuitive?
+
+#### Exercise 1. Team Sacrifice 
+
+1. Add a [minimap](http://radicalresearch.llc/EDVcourse/debt.html#mono-lake-case-study)
+2. Adjust the `fillOpacity` of both layers to improve salience
+3. Decide as a team to implement another feature.
+
+### Example 2. Water in LA County
+
+LA County runs an annual water deficit, which requires large annual imports of water from multiple sources.  Let's try to quantify these flows.
+
+Let's start with the supply of water data from the city of Los Angeles.  
+
+Here is a [LADWP water supply in acre-feet.](https://data.lacity.org/City-Infrastructure-Service-Requests/LADWP-Water-Supply-in-Acre-Feet/qyvz-diiw/data)
+
+```{r}
+#| label: acquire LA City water data
+#| echo: true
+library(janitor)
+
+H2O_data <- read_csv('https://data.lacity.org/api/views/qyvz-diiw/rows.csv?accessType=DOWNLOAD') %>% 
+  clean_names()
+
+```
+
+#### Plot water supply over time
+
+@fig-BarWater shows a simple bar chart of LA City water supply sources. Note that there is some fancy data manipulation first though. Also, there's a call to the `scales` package to make the x-axis label nicer.   
+
+```{r}
+#| label: fig-BarWater
+#| echo: true
+#| fig-cap: Water supply trends for LA City
+
+H2O_data %>% 
+  select(1, 3:6) %>% 
+  pivot_longer(names_to = 'parameter', values_to = 'acreFeet', cols = 2:5) %>% 
+  mutate(date_value = lubridate::mdy_hms(date_value)) %>% 
+  ggplot(aes(x = date_value, y = acreFeet, fill = parameter)) +
+    #geom_line() +
+    #geom_point() +
+    geom_bar(stat = 'identity') +
+    theme_bw() +
+    scale_x_datetime(labels = scales::label_date_short(), date_breaks = '5 years') +
+    labs(x = '', y = 'Supply in Acre Feet')
+  
+```
+
+It is very clear that groundwater and recycling are minimal.  Most water is imported from MWD or the LA Aqueduct, with a general long-term trend to rely more on MWD over time.   
+
+The LA Aqueduct gets its water from the Owens Valley and by diverting water from Mono Lake. That source is restricted in the last 20 years due to agreements to stop diverting so much water in drought years in order to keep Mono Lake levels stable. 
+
+More complicated is the MWD - Municipal water district.  
+
+Water in the MWD comes from three main sources.
+
+![MWD Water Sources](https://www.mwdh2o.com/media/voqpwgk1/wwgowchart_rev2-02.svg)
+
+Now, there are three separate sources feeding into MWD supply.  The Colorado River Aqueduct, the State Water Project, and the local sources.
+
+Can we show the relative magnitudes for each of the aqueducts on a map? 
+
+Let's go get some aqueducts! We did this in [23.2.6](http://radicalresearch.llc/EDVcourse/import3.html#example-5.-aqueducts-in-california)
+
+```{r}
+#| label: aqueducts
+#| echo: true
+
+geojson.URL <- 'https://gis.data.cnra.ca.gov/datasets/b788fb2628844f54b92e46dac5bb7229_0.geojson?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D'
+
+aqua3 <- read_sf(dsn = geojson.URL) %>% 
+    st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+@fig-aqueDucted shows the basic version of aqueducts feeding LA county water supply. Advanced version is possible!
+
+```{r}
+#| label: fig-aqueDucted
+#| echo: true
+#| fig-cap: Aqueducts supplying LA County water 
+
+LACounty_aqua <- c('Main Canal', 'Los Angeles Aqueduct', 'Colorado River Aqueduct')
+
+aqua3 %>% 
+  filter(Name %in% LACounty_aqua) %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addPolylines(weight = 2,
+              label = ~htmlEscape(Name))
+```
+
+Calculate latest ten-year average water contribution from LA aqueduct and MWD sources.  @tbl-H2O_avg shows the values.
+
+
+```{r}
+#| label: tbl-H2O_avg
+#| echo: true
+#| tbl-cap: Percent of water from sources
+
+H2O_2 <- H2O_data %>% 
+  mutate(yr = lubridate::year(lubridate::mdy_hms(date_value))) %>% 
+           filter(yr > 2006) %>% 
+           summarize(avg_LA_aqueduct = mean(la_aqueduct_percent_of_total),
+                     avg_MWD = mean(mwd_percent_of_total)) %>%
+  mutate(CO_aqueduct = 0.25*avg_MWD, state_water_project = 0.35*avg_MWD)
+         
+kableExtra::kable(H2O_2)         
+```
+           
+Ok, about 32% of water came from the LA aqueduct, 13.7% came from Colorado River Aqueduct, and 19.2% came from the State water project. That's about 65% of the water imported from the three aqueducts.  
+
+I can now overlay some markers or change the aqueduct thickness or think of some other way to visualize the source of the water coming to LA county.  
+
+#### Exercise #2
+
+Team Debt - 
+
+1. Add some markers to the source of the aqueducts with popup labels showing the magnitude of water
+2. Add the aqueducts as separte polyline layers with separate weights to indicate relative flows?
+3. What other way would you show this information?  A [sankey](https://github.com/davidsjoberg/ggsankey) diagram? 
+
