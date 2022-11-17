@@ -171,7 +171,8 @@ nearRail1kSchools <- buffSchool1000 %>%
   st_join(CalRail, left = FALSE) %>% 
   st_set_geometry(value = NULL) %>% 
   left_join(schools) %>% 
-  st_as_sf() 
+  st_as_sf() %>% 
+  distinct()
   
 ```
 
@@ -223,8 +224,8 @@ I am using the `DT` package to make an interactive and sortable table.
  
 narrowNearRail <- nearRail1kSchools %>% 
   st_set_geometry(value = NULL) %>% 
-  select(School, Level, District, City, ROW_OWNER) #>% 
-#  rename()
+  select(School, Level, District, City, ROW_OWNER) %>% 
+  distinct()
 
 ```
 
