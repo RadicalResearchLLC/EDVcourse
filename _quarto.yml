@@ -42,6 +42,7 @@ book:
         - debrief.qmd
         - import3.qmd
         - maps3.qmd
+        - School_near_rail.qmd
         - assignment4.qmd
   appendices: 
     - syllabus.qmd  

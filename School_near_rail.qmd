@@ -1,0 +1,241 @@
+# Advanced Spatial Analysis {#sec-Schools_near_rail}
+
+::: {.callout-note appearance="simple"}
+Today we will be focusing on the practice of fancy geospatial data analysis and visualization.
+:::
+
+## Data
+
+School database from [California School Campus Database](https://www.californiaschoolcampusdatabase.org/)
+
+Rail line geospatial data from [OpenRailwayMap](https://www.openrailwaymap.org/) and [CalTrans Open Data](https://gisdata-caltrans.opendata.arcgis.com/search?tags=Rail) - not as good for railyards, intermodal facilities, spurs, and other bits.
+
+City boundaries for Colton are from [San Bernardino County Open Data] portal(https://open.sbcounty.gov/search?collection=Dataset&q=cities).  
+
+```{r}
+#| label: load libraries
+#| echo: true
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(htmltools)
+
+```
+
+
+```{r}
+#| label: import California School Data
+#| echo: true
+
+schools <- sf::read_sf(dsn = 'CSCD_2021.gdb') %>% 
+  filter(County %in% c('San Bernardino', 'Riverside')) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84") %>% 
+  filter(CDSCode != 33670330131607) %>% 
+  filter(CDSCode != 33672310114066) %>% 
+  select(School, District, City, Status, Level, Shape) %>% 
+  st_make_valid()
+
+unique(schools$Level)
+
+```
+
+
+```{r}
+#| label: import Colton data
+#| echo: true 
+
+Cities <- read_sf('community_geojson/SBDCities_and_Towns.geojson') %>% 
+ st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84") %>%
+  filter(GROUP_TYPE == 'CITY')
+
+```
+
+
+@fig-Schools shows the data for schools in the Inland Empire with a railway overlay.
+
+```{r}
+#| label: fig-Schools
+#| echo: true
+#| fig-cap: schools and rails
+
+palGrades <- colorFactor(palette = 'Dark2', domain = schools$Level)
+
+leaflet() %>% 
+  addTiles() %>% 
+  setView(lat = 34.05167, lng = -117.33796, zoom = 12) %>% 
+  addProviderTiles(providers$Esri.WorldImagery, group = 'Aerial') %>% 
+  addProviderTiles(providers$OpenRailwayMap, group = 'Rail') %>% 
+  addLayersControl(baseGroups = c('Basemap', 'Aerial')) %>% 
+  addPolygons(data = Cities, 
+              color = 'black',
+              fillColor = 'grey',
+              weight = 1,
+              fillOpacity = 0.1,
+              label = ~htmlEscape(NAME)) %>% 
+   addPolygons(data = schools,
+               color = ~palGrades(Level),
+               fillOpacity = 0.8,
+               weight = 2,
+               group = 'Schools',
+               label = ~htmlEscape(School)) %>% 
+  addLegend(data = schools,
+            pal = palGrades,
+            values = ~Level,
+            position = 'bottomleft')
+
+```
+
+Import CalTrans active rail layer for comparison.  Not sure how to get the fancy OpenRailwayMap info with all the spurs and intermodal facilities. @fig-Rail2 shows the California rail network links.
+
+```{r}
+#| label: import California Rail network data
+#| echo: true
+
+CalRail <- read_sf(dsn = 'community_geojson/California_Rail_Network.geojson') %>% 
+   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84") #%>%
+
+```
+
+```{r}
+#| label: fig-Rail2
+#| echo: true
+#| fig-cap: California Rail Network from CalTrans
+
+leaflet() %>% 
+  addTiles() %>% 
+  addPolylines(data = CalRail,
+               color = 'black',
+               weight = 2)
+```
+
+### Analysis
+
+Create a 1,000 foot buffer around schools.  The goal is to identify schools within a set distance of rail.
+
+The `st_buffer()` function can be used to create shape specific boundaries around polygons.
+
+```{r}
+#| label: create a school buffer of 1,000 feet for this analysis
+#| echo: true
+
+buffSchool1000 <- schools %>% 
+  #default units are meters, 304 m = 1000 ft
+  st_buffer(dist = 304)
+
+```
+
+@fig-Buffercheck shows the schools with their new buffer as a gray overlay.
+
+```{r}
+#| label: fig-Buffercheck
+#| echo: true
+#| fig-cap: Testing buffer around schools to make sure the calculation and distance looks right
+
+leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(provider = providers$Stamen.TonerLite) %>% 
+  setView(lat = 34.05167, lng = -117.33796, zoom = 12) %>% 
+  addPolygons(data = buffSchool1000,
+              fillOpacity = 0.4,
+              color = 'gray',
+              weight = 1) %>% 
+  addPolygons(data = schools,
+               color = ~palGrades(Level),
+               fillOpacity = 0.8,
+               weight = 2,
+               group = 'Schools',
+               label = ~htmlEscape(School)) %>% 
+  addLegend(data = schools,
+            pal = palGrades,
+            values = ~Level,
+            position = 'bottomleft') %>% 
+  addPolylines(data = CalRail,
+               color = 'red',
+               weight = 4)
+
+```
+
+Alright, we have the two pieces - a buffered set of schools and an active rail lines layer.  
+
+The next function we'll use is `st_join()`. `st_join()` is a spatial filter that joins records of one geospatial dataset (x) with another geospatial dataset (y) through spatial intersections.
+
+If the two spatial layers intersect (i.e., touch or overlap), the records will be returned.
+
+
+```{r}
+#| label: join buffSchool1000 and CalRail
+#| echo: true
+
+nearRail1kSchools <- buffSchool1000 %>% 
+  st_join(CalRail, left = FALSE) %>% 
+  st_set_geometry(value = NULL) %>% 
+  left_join(schools) %>% 
+  st_as_sf() 
+  
+```
+
+@fig-nearRailSchools shows the schools within 1,000 feet of active rail lines.
+
+```{r}
+#| label: fig-nearRailSchools
+#| echo: true
+#| fig-cap: Schools within 1,000 feet of active rail lines in the Inland Empire
+
+leaflet() %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addProviderTiles(provider = providers$Stamen.TonerLite) %>% 
+  setView(lat = 34.05167, lng = -117.33796, zoom = 12) %>% 
+  addPolygons(data = buffSchool1000,
+              fillOpacity = 0.2,
+              color = 'gray',
+              weight = 0) %>% 
+  addPolygons(data = schools,
+               color = ~palGrades(Level),
+               fillOpacity = 0.2,
+               weight = 2,
+               group = 'Schools',
+               label = ~htmlEscape(School)) %>% 
+  addLegend(data = schools,
+            pal = palGrades,
+            values = ~Level,
+            position = 'bottomleft') %>% 
+  addPolylines(data = CalRail,
+               color = 'red',
+               weight = 4) %>% 
+  addPolygons(data = nearRail1kSchools,
+               color = ~palGrades(Level),
+               fillOpacity = 1,
+               weight = 4,
+               group = 'Near Rail Schools',
+               label = ~htmlEscape(School)) #%>%
+
+```
+
+The table below shows a sortable table of schools within 1,000 feet of active rail line.
+
+I am using the `DT` package to make an interactive and sortable table.  
+
+```{r}
+#| label: select columsn for display in table
+#| echo: true
+ 
+narrowNearRail <- nearRail1kSchools %>% 
+  st_set_geometry(value = NULL) %>% 
+  select(School, Level, District, City, ROW_OWNER) #>% 
+#  rename()
+
+```
+
+```{r}
+#| label: tbl-railSchools
+#| echo: true
+#| tbl-cap: Schools within 1,000 feet of active rail lines in the Inland Empire
+
+DT::datatable(narrowNearRail,
+               rownames = FALSE,
+               options = list(dom = 'fp',
+                              pageLength = 15))
+```
+
