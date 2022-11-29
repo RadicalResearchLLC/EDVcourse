@@ -43,6 +43,7 @@ book:
         - import3.qmd
         - maps3.qmd
         - School_near_rail.qmd
+        - chartJunk.qmd
         - assignment4.qmd
   appendices: 
     - syllabus.qmd  

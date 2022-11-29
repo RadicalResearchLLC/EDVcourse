@@ -1,0 +1,65 @@
+# Chartjunk, Data-Ink Ratios, and Visualization Theory {#sec-chartJunk}
+
+::: {.callout-note appearance="simple"}
+Today we will be focusing on the theory of data visualization. 
+:::
+
+## Chartjunk
+
+Chart Junk is a term first used by Edward Tufte in his book _The Quantitative Display of Visual Information_. He defined it as:
+
+::: {.callout-note appearance="simple"}
+The interior decoration fo graphics generates a lot of ink that does not tell the viewer anything new.  The purpose of decoration varies-to make the graphic appear more scientific and precise, to enliven the display, to give the designer an opportunity to exercise artistic skills. Regardless of its cause it is all non-data-ink or redundant data-ink, and it is often chartjunk.
+:::
+
+In other words, Tufte believes that embellishment, decoration, and ornamentation is typically bad in a data visualization. While I can talk about this, it is better to just show examples of chartjunk.
+
+Just do an image search for _chartjunk_ in your browser. Here's a few examples.
+
+@fig-Mario shows a very simple bar chart with lots of colors, patterns, and 
+
+![Mario looking bar chart](https://upload.wikimedia.org/wikipedia/commons/c/c9/Chartjunk-example.svg){#fig-Mario}
+
+@fig-Diamonds shows a price line chart embellished with a decorative reclining lady. This is what Tufte calls a **Duck** - elevating design over data.  
+
+![Infamous diamonds line](https://businessq-software.com/wp-content/uploads/2019/02/6-1.png){#fig-Diamonds}
+
+@fig-MentalHealth shows a pie chart of video analysis by medical professionals. Only three values are shown, yet there is a flourish of colors, cartoons, clipart, and embellishment.  
+
+![Pie Chartjunk](https://preview.redd.it/dwq6o8q4ko2a1.png?width=1536&format=png&auto=webp&s=cfab5e9fc693e6f07343f8d6b4f919bdf35d8120){#fig-MentalHealth}
+
+Tufte was pretty crufty about anything that was not minimalist. He is an pro-modernist design and anti-baroque design.  And there is some research that suggests more ornamented and interesting visualizations stick with people longer than minimal designs.
+
+## Data-Ink Ratios
+
+The second Tufte-ism is the ratio of data-ink. This is a quantitative measure indicating the amount of 'ink' used to convey data/information in a visualization. Any 'ink' not conveying information is considered superfluous and redundant.
+
+![Data Ink Ratio](https://speedwell.com.au/-/media/Project/Speedwell/Public-Website/Blog/2019/visualdesign_Data-ink-ratiojpg.png)
+
+A simple example from the tidyverse would be to compare the default theme for a `ggplot()` with `theme_bw()` or `theme_minimal()`. 
+
+Here's [Figure 5-2](http://radicalresearch.llc/EDVcourse/maps2.html#fig-ggBasic) with the default theme. Notice all that background 'ink' in gray. 
+
+Tufte would definitely prefer [Figure 5-5](http://radicalresearch.llc/EDVcourse/maps2.html#fig-ggMinimal) where we removed all that background and even the frame around the outside of the map.
+
+This is an aesthetic preference, especially in the modern era where almost all of the visualization we engage with is on a computer/tablet/phone. There is no amount of pixel-ink that is consumed. And in some cases the brightness of a white background may be antithetical and harmful, such as in the ProPublica Sacrifice Zone visualizations as shown in [Figure 17.2](http://radicalresearch.llc/EDVcourse/sacrifice.html#fig-proPublica).
+
+## What makes a map in `leaflet` bad?
+
+Most of the teams are using `leaflet` maps.  What things in `leaflet` look bad and don't work?
+
+Discuss
+
+## Class Exercise - work on group visualization
+
+Here's a framework for the final group visualization from the [Junk Charts Blog](https://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html)
+
+- What is the practical question?
+- What does the data you have say about the question?
+- What do the individual visualizations say?
+
+I would add:
+
+- Who is the audience for the visualization?
+
+
