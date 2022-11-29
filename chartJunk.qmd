@@ -9,7 +9,7 @@ Today we will be focusing on the theory of data visualization.
 Chart Junk is a term first used by Edward Tufte in his book _The Quantitative Display of Visual Information_. He defined it as:
 
 ::: {.callout-note appearance="simple"}
-The interior decoration fo graphics generates a lot of ink that does not tell the viewer anything new.  The purpose of decoration varies-to make the graphic appear more scientific and precise, to enliven the display, to give the designer an opportunity to exercise artistic skills. Regardless of its cause it is all non-data-ink or redundant data-ink, and it is often chartjunk.
+The interior decoration of graphics generates a lot of ink that does not tell the viewer anything new.  The purpose of decoration varies-to make the graphic appear more scientific and precise, to enliven the display, to give the designer an opportunity to exercise artistic skills. Regardless of its cause it is all non-data-ink or redundant data-ink, and it is often chartjunk.
 :::
 
 In other words, Tufte believes that embellishment, decoration, and ornamentation is typically bad in a data visualization. While I can talk about this, it is better to just show examples of chartjunk.
