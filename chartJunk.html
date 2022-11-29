@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Environmental Data Visualization - Introductions</title>
+<title>Environmental Data Visualization - 26&nbsp; Chartjunk, Data-Ink Ratios, and Visualization Theory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./weather.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./assignment4.html" rel="next">
+<link href="./School_near_rail.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Introductions</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">Introductions</a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introductions</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chartJunk.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></a>
+  <a href="./chartJunk.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -317,9 +317,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course Description</a></li>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link" data-scroll-target="#about-me">About Me</a></li>
-  <li><a href="#about-you" id="toc-about-you" class="nav-link" data-scroll-target="#about-you">About You</a></li>
+  <li><a href="#chartjunk" id="toc-chartjunk" class="nav-link active" data-scroll-target="#chartjunk"><span class="toc-section-number">26.1</span>  Chartjunk</a></li>
+  <li><a href="#data-ink-ratios" id="toc-data-ink-ratios" class="nav-link" data-scroll-target="#data-ink-ratios"><span class="toc-section-number">26.2</span>  Data-Ink Ratios</a></li>
+  <li><a href="#what-makes-a-map-in-leaflet-bad" id="toc-what-makes-a-map-in-leaflet-bad" class="nav-link" data-scroll-target="#what-makes-a-map-in-leaflet-bad"><span class="toc-section-number">26.3</span>  What makes a map in <code>leaflet</code> bad?</a></li>
+  <li><a href="#class-exercise---work-on-group-visualization" id="toc-class-exercise---work-on-group-visualization" class="nav-link" data-scroll-target="#class-exercise---work-on-group-visualization"><span class="toc-section-number">26.4</span>  Class Exercise - work on group visualization</a></li>
   </ul>
 </nav>
     </div>
@@ -328,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-intro" class="quarto-section-identifier d-none d-lg-block">Introductions</span></h1>
+<h1 class="title"><span id="sec-chartJunk" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></span></h1>
 </div>
 
 
@@ -342,60 +343,84 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Welcome to <strong>EA 078 PZ: Environmental Data Visualization</strong>!</p>
-<section id="course-description" class="level2">
-<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
-<p>This is an introductory course on the theory and practice of effective communication with quantitative data. This course will introduce the theory of data visualization, discuss the ethics of data visualization, provide hands-on training in acquiring, tidying, and visualizing quantitative environmental data, and critically examine current environmental justice tools (CalEnviroScreen, EPA’s EJScreen, EPA’s EnviroAtlas).</p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Today we will be focusing on the theory of data visualization.</p>
+</div>
+</div>
+</div>
+<section id="chartjunk" class="level2" data-number="26.1">
+<h2 data-number="26.1" class="anchored" data-anchor-id="chartjunk"><span class="header-section-number">26.1</span> Chartjunk</h2>
+<p>Chart Junk is a term first used by Edward Tufte in his book <em>The Quantitative Display of Visual Information</em>. He defined it as:</p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The interior decoration of graphics generates a lot of ink that does not tell the viewer anything new. The purpose of decoration varies-to make the graphic appear more scientific and precise, to enliven the display, to give the designer an opportunity to exercise artistic skills. Regardless of its cause it is all non-data-ink or redundant data-ink, and it is often chartjunk.</p>
+</div>
+</div>
+</div>
+<p>In other words, Tufte believes that embellishment, decoration, and ornamentation is typically bad in a data visualization. While I can talk about this, it is better to just show examples of chartjunk.</p>
+<p>Just do an image search for <em>chartjunk</em> in your browser. Here’s a few examples.</p>
+<p><a href="#fig-Mario">Figure&nbsp;<span>26.1</span></a> shows a very simple bar chart with lots of colors, patterns, and</p>
+<div id="fig-Mario" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Chartjunk-example.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;26.1: Mario looking bar chart</figcaption><p></p>
+</figure>
+</div>
+<p><a href="#fig-Diamonds">Figure&nbsp;<span>26.2</span></a> shows a price line chart embellished with a decorative reclining lady. This is what Tufte calls a <strong>Duck</strong> - elevating design over data.</p>
+<div id="fig-Diamonds" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://businessq-software.com/wp-content/uploads/2019/02/6-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;26.2: Infamous diamonds line</figcaption><p></p>
+</figure>
+</div>
+<p><a href="#fig-MentalHealth">Figure&nbsp;<span>26.3</span></a> shows a pie chart of video analysis by medical professionals. Only three values are shown, yet there is a flourish of colors, cartoons, clipart, and embellishment.</p>
+<div id="fig-MentalHealth" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://preview.redd.it/dwq6o8q4ko2a1.png?width=1536&amp;format=png&amp;auto=webp&amp;s=cfab5e9fc693e6f07343f8d6b4f919bdf35d8120" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;26.3: Pie Chartjunk</figcaption><p></p>
+</figure>
+</div>
+<p>Tufte was pretty crufty about anything that was not minimalist. He is an pro-modernist design and anti-baroque design. And there is some research that suggests more ornamented and interesting visualizations stick with people longer than minimal designs.</p>
 </section>
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About Me</h2>
-<p>Call me any of the following:</p>
-<ul>
-<li>Mike</li>
-<li>Dr.&nbsp;Mike</li>
-<li>Professor Mike</li>
-<li>Dr.&nbsp;McCarthy</li>
-<li>Professor McCarthy</li>
-</ul>
-<p>My pronouns are he/him. Here is some of my background.</p>
-<ul>
-<li>Adjunct Professor</li>
-<li>I have been an Environmental Consultant for ~20 years
-<ul>
-<li>currently I am a sole propietor at <a href="http:/radicalresearch.llc">Radical Research LLC</a></li>
-<li>prior to that I worked at a company called <a href="www.sonomatech.com">Sonoma Technology, Inc.</a></li>
-</ul></li>
-<li>Trained as a chemist/atmospheric chemist
-<ul>
-<li>undergrad at <a href="www.creighton.edu">Creighton University</a></li>
-<li>grad school at <a href="www.berkeley.edu">UC Berkeley</a></li>
-</ul></li>
-<li>In my spare time, I enjoy
-<ul>
-<li>games (board, tabletop roleplaying, video games)</li>
-<li>yoga</li>
-<li>swimming</li>
-<li>fighting warehouse development in my neighborhood</li>
-</ul></li>
-<li>My spouse is a Professor of Botany and Plant Sciences at <a href="www.ucr.edu">UC Riverside</a>, and my son is a student in middle school</li>
-<li>My goals for this course
-<ul>
-<li>bounce ideas around for cool new ways of looking at environmental data</li>
-<li>explore and connect with your environmental interests</li>
-<li>continuously improve my teaching to better meet your needs</li>
-<li>learn new ways of thinking about problems</li>
-<li>build tools to empower, inform, and persuade our communities</li>
-</ul></li>
-</ul>
+<section id="data-ink-ratios" class="level2" data-number="26.2">
+<h2 data-number="26.2" class="anchored" data-anchor-id="data-ink-ratios"><span class="header-section-number">26.2</span> Data-Ink Ratios</h2>
+<p>The second Tufte-ism is the ratio of data-ink. This is a quantitative measure indicating the amount of ‘ink’ used to convey data/information in a visualization. Any ‘ink’ not conveying information is considered superfluous and redundant.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://speedwell.com.au/-/media/Project/Speedwell/Public-Website/Blog/2019/visualdesign_Data-ink-ratiojpg.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Data Ink Ratio</figcaption><p></p>
+</figure>
+</div>
+<p>A simple example from the tidyverse would be to compare the default theme for a <code>ggplot()</code> with <code>theme_bw()</code> or <code>theme_minimal()</code>.</p>
+<p>Here’s <a href="http://radicalresearch.llc/EDVcourse/maps2.html#fig-ggBasic">Figure 5-2</a> with the default theme. Notice all that background ‘ink’ in gray.</p>
+<p>Tufte would definitely prefer <a href="http://radicalresearch.llc/EDVcourse/maps2.html#fig-ggMinimal">Figure 5-5</a> where we removed all that background and even the frame around the outside of the map.</p>
+<p>This is an aesthetic preference, especially in the modern era where almost all of the visualization we engage with is on a computer/tablet/phone. There is no amount of pixel-ink that is consumed. And in some cases the brightness of a white background may be antithetical and harmful, such as in the ProPublica Sacrifice Zone visualizations as shown in <a href="http://radicalresearch.llc/EDVcourse/sacrifice.html#fig-proPublica">Figure 17.2</a>.</p>
 </section>
-<section id="about-you" class="level2">
-<h2 class="anchored" data-anchor-id="about-you">About You</h2>
-<p>Now it is your turn to introduce yourself. Please address the following four bullets. Please add anything else you think will be helpful for me and/or your colleagues to know about you.</p>
+<section id="what-makes-a-map-in-leaflet-bad" class="level2" data-number="26.3">
+<h2 data-number="26.3" class="anchored" data-anchor-id="what-makes-a-map-in-leaflet-bad"><span class="header-section-number">26.3</span> What makes a map in <code>leaflet</code> bad?</h2>
+<p>Most of the teams are using <code>leaflet</code> maps. What things in <code>leaflet</code> look bad and don’t work?</p>
+<p>Discuss</p>
+</section>
+<section id="class-exercise---work-on-group-visualization" class="level2" data-number="26.4">
+<h2 data-number="26.4" class="anchored" data-anchor-id="class-exercise---work-on-group-visualization"><span class="header-section-number">26.4</span> Class Exercise - work on group visualization</h2>
+<p>Here’s a framework for the final group visualization from the <a href="https://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html">Junk Charts Blog</a></p>
 <ul>
-<li>Name (as you would like to be addressed)</li>
-<li>Year</li>
-<li>Major/Field</li>
-<li>Your goal(s) for this course (if any)</li>
+<li>What is the practical question?</li>
+<li>What does the data you have say about the question?</li>
+<li>What do the individual visualizations say?</li>
+</ul>
+<p>I would add:</p>
+<ul>
+<li>Who is the audience for the visualization?</li>
 </ul>
 
 
@@ -502,13 +527,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./School_near_rail.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced Spatial Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./weather.html" class="pagination-link">
-        <span class="nav-page-text">Unit 1: Weather</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./assignment4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
