@@ -74,4 +74,25 @@ Total of 100 points
 * 15 points for description of three features
 * 45 points for three features implementation in visualization
 * 10 points for aesthetics
-* 20 points for labels, legend, and in-visualization annotation  
+* 20 points for labels, legend, and in-visualization annotation 
+
+## Group Visualization
+
+Due by email at 9:45 AM on **December 7, 2022**
+
+Assignment is a visualization on the team's chosen topic. Assignment should provide an exported visualization `.png, .pdf, .html` and the `.R script` used to generate the visualization(s). Source(s) of data should be clearly identified as a comment within the .R script.  
+
+Describe a the features that were selected to explore the dataset, either in the `.R script` or in the email. Bullet points are fine.   
+
+Document in a single paragraph how the visualization shows the group theme (Sacrifice Zone or Ecological Debt). I want a brief story of how the visualization illustrates that. 
+## Grading for Group Visualization Project
+
+Total of 200 points
+
+* 25 points for data source attribution 
+* 25 points for description of features
+* 50 points for features implementation in visualization(s)
+* 25 points for aesthetics
+* 25 points for labels, legend, and in-visualization annotation 
+* 25 points for the visualization providing insight into the group theme
+* 25 points for group participation - (team grading)
