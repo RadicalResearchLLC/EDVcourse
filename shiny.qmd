@@ -1,0 +1,281 @@
+# Shiny Apps {#sec-shiny}
+
+::: {.callout-note appearance="simple"}
+Today we focus on building a shiny app
+:::
+
+## `Shiny`
+
+[`shiny`](https://shiny.rstudio.com/) is an R package that is used to build interactive web apps. In the modern day, it is useful to be able to build visualizations that others can view on the internet(s).
+
+![Shiny Firefly Reference](https://media.giphy.com/media/4kmCVXOTFBddu/giphy.gif)
+
+I will show you how to build a simple web app using the SoCalEJ dataset today.
+
+First, we install `shiny`.
+
+```{r}
+#| label: install shiny
+#| echo: true
+#| message: false
+#| eval: false
+
+install.packages('shiny')
+```
+
+Second, we restart RStudio so that the shiny template is loaded into RStudio.
+
+::: {.callout-note appearance="warning"}
+Close and restart RStudio!
+:::
+
+Three, we load some libraries.
+
+```{r}
+#| label: load libraries
+#| echo: true
+#| message: false
+
+library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
+
+```
+
+## Prepare the dataset
+
+For most apps, we want to prepare the dataset for display. While we can technically do all the import and munging in `shiny` within an app, it is often better to do the pre-processing of data first, as it will improve the app performance to not have to download data and munge it to make a figure.
+
+We will acquire and tidy the SoCalEJ dataset we've used many times.
+
+Acquire the data - same as in [Section 9.1](http://radicalresearch.llc/EDVcourse/EJdata.html#load-and-import-steps)
+
+```{r}
+#| label: import SoCalEJ dataset again
+#| echo: true
+#| warning: false
+#| message: false
+
+URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'
+SoCalEJ <- st_read(URL.path) %>% 
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+```
+
+Tidy the data by transforming it from a wide to a narrow dataset - much the same as in [Section 9.3](http://radicalresearch.llc/EDVcourse/EJdata.html#load-and-import-steps).
+
+```{r}
+#| label: transform dataset from wide to narrow
+#| echo: true
+#| warning: false
+#| message: false
+
+# select indicators and make them narrow - we remove geometry because it 
+# duplicates geometry in the pivot
+SoCal_narrow1 <- SoCalEJ %>% 
+  st_set_geometry(value = NULL) %>% 
+  pivot_longer(cols = c(5:66), names_to = 'variable', values_to = 'value') %>% 
+  filter(value >=0)
+
+head(SoCal_narrow1, 5)
+
+# Select census tracts and geometry
+
+SoCal_geometry <- SoCalEJ %>% 
+  select(Tract, geometry)
+
+head(SoCal_geometry, 5)
+
+# Join narrow data and geometry again - this adds the geometry back in for the map
+
+SoCal_narrow <- SoCal_narrow1 %>% 
+  left_join(SoCal_geometry) %>%   
+  #this fixes the dataset to 
+  st_as_sf() %>% 
+  #standard projection transformation.
+  st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+head(SoCal_narrow, 5)
+
+# remove interim dataframes to optimize dataset management
+rm(ls = SoCal_geometry, SoCalEJ)
+```
+
+Last data processing step is to create a list of variables and arrange them alphabetically. Use `select()` to keep only the variable, `distinct()` to keep only one instance of each variable, and `arrange()` to order them.
+
+```{r}
+#| label: create list of variables
+#| echo: true
+
+list <- SoCal_narrow1 %>% 
+  select(variable) %>% 
+  distinct() %>% 
+  arrange(variable)
+
+head(list, 10)
+```
+
+## Shiny time
+
+### Resources on Shiny
+
+[Tutorial](https://shiny.rstudio.com/tutorial/) [Cheatsheet](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf)
+
+### Step 1 - New file - Shiny App
+
+1.  Go to the **File** menu
+2.  Select **New File**
+3.  Select **Shiny Web App...**
+4.  A window will pop up asking you to name the app - type **SoCalEJ**
+5.  Press the **Create** button
+
+@fig-menuShiny shows where to go.
+
+![New Shiny App from the menu](images/shinyApp.png){#fig-menuShiny}
+
+### Step 2 - Shiny App Default Template
+
+A new file called **app.R** should open. The default app.R template is a functional app.
+
+Press **Run App** as shown in @fig-runApp .
+
+![Run app button is here](images/runApp.png){#fig-runApp}
+
+When you press the button, an App called 'Old Faithful Geyser Data' appears. The slider input is interactive, allowing the user to choose the number of histogram bins.
+
+Let's hear a Whoot if this worked for you.
+
+Close the app (not minimize!) by pressing the STOP button in RStudio or closing the app window.
+
+### Step 3 - Modify the app.
+
+We are going to change things one at a time. Debugging shiny apps is even harder than normal R code.
+
+#### Change the title
+
+Let's change the title first. Currently it is: `titlePanel("Old Faithful Geyser Data"),`
+
+Replace the existing line 16 with the new title.
+
+```{r}
+#| label: replace title
+#| echo: true
+#| eval: false
+
+titlePanel("SoCal Enviroscreen App"),
+
+```
+
+#### Replace `sliderInput()` with `selectInput()`
+
+While `sliderInput()` is great for numbers, it is not useful for selecting categorical variables like the SoCalEJ dataset contains.
+
+Replace **code lines 21-25** with a `selectInput()` shown below. This creates a dropdown menu. We will design it to allow the user to select the variable of interest `list$variable` and the default selection `DieselPM_P`.
+
+However, it will also break the figure below. That's ok because we're going to replace it in the next two steps.
+
+```{r}
+#| label: replace input
+#| echo: true
+#| eval: false
+
+    selectInput(inputId = 'metric',
+      label = 'Pick a metric',
+      choices = list$variable, 
+      selected = 'DieselPM_P')
+```
+
+@fig-brokenApp displays the output when running the app after this change.
+
+![Broken figure dropdown version](images/appBroke.png){#fig-brokenApp}
+  
+#### Change the histogram output to **SoCal_narrow1** data
+
+Let's make a working figure. A histogram is fine as an example, but we'll do a ggplot following the style of [Figure 9.8](http://radicalresearch.llc/EDVcourse/EJdata.html#fig-histoPretty).
+
+Let's use that code chunk from Lecture 9 as the basis for our new figure. The one thing we need to do is `filter()` the variable based on the user input. The user selected `input$metric` takes the selection from the dropdown menu and reacts whenever the user picks a different option. So instead of using a `filter` on a named variable like **DieselPM_P**, we have a reactive variable which the user can modify through the dropdown menu.
+
+We need to replace the original histogram output from lines 39-45 to our slightly modified `ggplot` code from Figure 9.8.
+
+```{r}
+#| label: replace output
+#| echo: true
+#| eval: false
+
+      # dataset is SoCal_narrow1
+      SoCal_narrow1 %>% 
+        # filter based on the input$metric
+        filter(variable == input$metric)  %>% 
+        #create a ggplot by county, value
+        ggplot(aes(x = value, fill = County)) +
+        geom_histogram() +
+        theme_bw() +
+        facet_wrap(~County) +
+        labs(x = input$metric, 
+             y = 'Count of census tracts') 
+```
+
+This whole code chunk exists within the **wrapper** of `output$distPlot <- renderPlot({})`. That part of the code doesn't have to change at all. That part of the code chunk tells the app to make a plot and render it in the app. The name of the plot is **distPlot**. The ui portion of the app on line 29 describes where it goes - in the main panel.
+
+If this code chunk works for you, pressing **Run App** will generate a shiny app that has a reactive dropdown menu allowing you to create 50+ histograms. Shiny apps are amazingly powerful tools to generate the same plot N different ways.
+
+#### Make it spatial with a `leaflet` interactive map.
+
+Adding a map to an app is the capstone.
+
+There's two parts to add.
+
+1.  add `leafletOutput('map')` to the ui in the `mainPanel()`
+2.  add `output$map <- renderLeaflet({CODE GOES HERE})` to the server.
+
+First, let's do the ui part cause that is easy. On line 28 there is a code chunk that currently says `mainPanel(plotOutput("distPlot))`. Replace that with the code chunk below that puts in a comma and a `leafletOutput('map')`.
+
+```{r}
+#| label: edit the UI main panel
+#| echo: true
+#| eval: false
+
+
+        mainPanel(
+           plotOutput("distPlot"),
+           leafletOutput("map")
+        )
+
+```
+
+Next, we'll paste in a big old code chunk to insert a leaflet map. It has four parts.
+
+1.  The **wrapper**
+2.  A reactive table that only includes the selected metric.
+3.  A reactive color palette
+4.  A leaflet map
+
+I'm just going to show it all at once and we'll diagram it within the app from innermost to outermost.
+
+```{r}
+#| label: Big reactive leaflet code chunk
+#| echo: true
+#| eval: false
+
+output$map <- renderLeaflet({
+      
+      # filter geometry dataset for the user input
+     metricSoCal <- SoCal_narrow %>% 
+       filter(variable == input$metric) %>% 
+
+      # Create a dynamic color palette based on the metric
+     palM <- colorNumeric(palette = 'magma', 
+        domain = metricSoCal$value)
+      
+        #This is the map - note that the legend title is dynamic
+      leaflet(metricSoCal) %>% 
+        addTiles() %>% 
+        setView(lat = 33.8, lng = -117.60, zoom = 9) %>% 
+        addPolygons(color = ~palM(value),
+                    weight = 1) %>% 
+        addLegend(pal = palM,
+                  title = input$metric,
+                  values = ~value)
+    })
+```
