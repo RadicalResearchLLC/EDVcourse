@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.168">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Environmental Data Visualization - 27&nbsp; Shiny Apps</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assignment4.html" rel="next">
+<link href="./chartJunk.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Shiny Apps</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Environmental Data Visualization</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">Introductions</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./weather.html" class="sidebar-item-text sidebar-link">Unit 1: Weather</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./information.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentals of Data Visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coding1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding in R - Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization - 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./AQMD.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Environmental Justice Conference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Spatial Visualization 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Assignments for Unit 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./EJ.html" class="sidebar-item-text sidebar-link">Unit 2: Environmental Justice</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EJtheory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">EJ - Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EJtools.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">EJ - Data Driven Visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EJdata.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">EJ - Exploratory Analysis Case Study</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./CCAEJ.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Center for Community Action and Environmental Justice</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assignments for Unit 2 - EJ</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./data.html" class="sidebar-item-text sidebar-link">Unit 3: Data</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Importing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Exporting visualizations and data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./context.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contextualizing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Importing Data - Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Assignments for Unit 3 - Data</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./projects.html" class="sidebar-item-text sidebar-link">Unit 4: Special Projects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sacrifice.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Sacrifice Zones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debt.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Ecological Debt</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">R Markdown - Documents and Presentations in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./research.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Research sites</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./munging.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Data Science 101</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./debrief.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Group Project Review - Projects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Importing Data - Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Advanced Spatial Visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./School_near_rail.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced Spatial Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chartJunk.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Shiny Apps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Course Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tools.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">R and RStudio Installation and Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#shiny" id="toc-shiny" class="nav-link active" data-scroll-target="#shiny"><span class="toc-section-number">27.1</span>  <code>Shiny</code></a></li>
+  <li><a href="#prepare-the-dataset" id="toc-prepare-the-dataset" class="nav-link" data-scroll-target="#prepare-the-dataset"><span class="toc-section-number">27.2</span>  Prepare the dataset</a></li>
+  <li>
+<a href="#shiny-time" id="toc-shiny-time" class="nav-link" data-scroll-target="#shiny-time"><span class="toc-section-number">27.3</span>  Shiny time</a>
+  <ul>
+<li><a href="#resources-on-shiny" id="toc-resources-on-shiny" class="nav-link" data-scroll-target="#resources-on-shiny"><span class="toc-section-number">27.3.1</span>  Resources on Shiny</a></li>
+  <li><a href="#step-1---new-file---shiny-app" id="toc-step-1---new-file---shiny-app" class="nav-link" data-scroll-target="#step-1---new-file---shiny-app"><span class="toc-section-number">27.3.2</span>  Step 1 - New file - Shiny App</a></li>
+  <li><a href="#step-2---shiny-app-default-template" id="toc-step-2---shiny-app-default-template" class="nav-link" data-scroll-target="#step-2---shiny-app-default-template"><span class="toc-section-number">27.3.3</span>  Step 2 - Shiny App Default Template</a></li>
+  <li>
+<a href="#step-3---modify-the-app." id="toc-step-3---modify-the-app." class="nav-link" data-scroll-target="#step-3---modify-the-app."><span class="toc-section-number">27.3.4</span>  Step 3 - Modify the app.</a>
+  <ul class="collapse">
+<li><a href="#change-the-title" id="toc-change-the-title" class="nav-link" data-scroll-target="#change-the-title"><span class="toc-section-number">27.3.4.1</span>  Change the title</a></li>
+  <li><a href="#replace-sliderinput-with-selectinput" id="toc-replace-sliderinput-with-selectinput" class="nav-link" data-scroll-target="#replace-sliderinput-with-selectinput"><span class="toc-section-number">27.3.4.2</span>  Replace <code>sliderInput()</code> with <code>selectInput()</code></a></li>
+  <li><a href="#change-the-histogram-output-to-socal_narrow1-data" id="toc-change-the-histogram-output-to-socal_narrow1-data" class="nav-link" data-scroll-target="#change-the-histogram-output-to-socal_narrow1-data"><span class="toc-section-number">27.3.4.3</span>  Change the histogram output to <strong>SoCal_narrow1</strong> data</a></li>
+  <li><a href="#make-it-spatial-with-a-leaflet-interactive-map." id="toc-make-it-spatial-with-a-leaflet-interactive-map." class="nav-link" data-scroll-target="#make-it-spatial-with-a-leaflet-interactive-map."><span class="toc-section-number">27.3.4.4</span>  Make it spatial with a <code>leaflet</code> interactive map.</a></li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-shiny" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Shiny Apps</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header><div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Today we focus on building a shiny app</p>
+</div>
+</div>
+</div>
+<section id="shiny" class="level2" data-number="27.1"><h2 data-number="27.1" class="anchored" data-anchor-id="shiny">
+<span class="header-section-number">27.1</span> <code>Shiny</code>
+</h2>
+<p><a href="https://shiny.rstudio.com/"><code>shiny</code></a> is an R package that is used to build interactive web apps. In the modern day, it is useful to be able to build visualizations that others can view on the internet(s).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://media.giphy.com/media/4kmCVXOTFBddu/giphy.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Shiny Firefly Reference</figcaption><p></p>
+</figure>
+</div>
+<p>I will show you how to build a simple web app using the SoCalEJ dataset today.</p>
+<p>First, we install <code>shiny</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'shiny'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second, we restart RStudio so that the shiny template is loaded into RStudio.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Close and restart RStudio!</p>
+</div>
+</div>
+<p>Three, we load some libraries.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="prepare-the-dataset" class="level2" data-number="27.2"><h2 data-number="27.2" class="anchored" data-anchor-id="prepare-the-dataset">
+<span class="header-section-number">27.2</span> Prepare the dataset</h2>
+<p>For most apps, we want to prepare the dataset for display. While we can technically do all the import and munging in <code>shiny</code> within an app, it is often better to do the pre-processing of data first, as it will improve the app performance to not have to download data and munge it to make a figure.</p>
+<p>We will acquire and tidy the SoCalEJ dataset we’ve used many times.</p>
+<p>Acquire the data - same as in <a href="http://radicalresearch.llc/EDVcourse/EJdata.html#load-and-import-steps">Section 9.1</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">URL.path</span> <span class="op">&lt;-</span> <span class="st">'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON'</span></span>
+<span><span class="va">SoCalEJ</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="va">URL.path</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `CalEJ' from data source 
+  `https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main/CalEJ4/CalEJ.geoJSON' 
+  using driver `GeoJSON'
+Simple feature collection with 3747 features and 66 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 97418.38 ymin: -577885.1 xmax: 539719.6 ymax: -236300
+Projected CRS: NAD83 / California Albers</code></pre>
+</div>
+</div>
+<p>Tidy the data by transforming it from a wide to a narrow dataset - much the same as in <a href="http://radicalresearch.llc/EDVcourse/EJdata.html#load-and-import-steps">Section 9.3</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># select indicators and make them narrow - we remove geometry because it </span></span>
+<span><span class="co"># duplicates geometry in the pivot</span></span>
+<span><span class="va">SoCal_narrow1</span> <span class="op">&lt;-</span> <span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_set_geometry</a></span><span class="op">(</span>value <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">66</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'variable'</span>, values_to <span class="op">=</span> <span class="st">'value'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">value</span> <span class="op">&gt;=</span><span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">SoCal_narrow1</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 6
+       Tract   ZIP County ApproxLoc   variable     value
+       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;
+1 6059062640 92656 Orange Aliso Viejo TotPop19 3741     
+2 6059062640 92656 Orange Aliso Viejo CIscore     9.64  
+3 6059062640 92656 Orange Aliso Viejo CIscoreP   12.1   
+4 6059062640 92656 Orange Aliso Viejo Ozone       0.0517
+5 6059062640 92656 Orange Aliso Viejo OzoneP     65.4   </code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Select census tracts and geometry</span></span>
+<span></span>
+<span><span class="va">SoCal_geometry</span> <span class="op">&lt;-</span> <span class="va">SoCalEJ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Tract</span>, <span class="va">geometry</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">SoCal_geometry</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 1 field
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -117.874 ymin: 33.5556 xmax: -117.7157 ymax: 33.64253
+CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
+       Tract                       geometry
+1 6059062640 MULTIPOLYGON (((-117.7178 3...
+2 6059062641 MULTIPOLYGON (((-117.7166 3...
+3 6059062642 MULTIPOLYGON (((-117.8596 3...
+4 6059062643 MULTIPOLYGON (((-117.7986 3...
+5 6059062644 MULTIPOLYGON (((-117.8521 3...</code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Join narrow data and geometry again - this adds the geometry back in for the map</span></span>
+<span></span>
+<span><span class="va">SoCal_narrow</span> <span class="op">&lt;-</span> <span class="va">SoCal_narrow1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">SoCal_geometry</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   </span>
+<span>  <span class="co">#this fixes the dataset to </span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="co">#standard projection transformation.</span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="st">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">SoCal_narrow</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 6 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -117.7306 ymin: 33.5556 xmax: -117.7163 ymax: 33.57209
+CRS:           +proj=longlat +ellps=WGS84 +datum=WGS84
+# A tibble: 5 × 7
+       Tract   ZIP County ApproxLoc   variable   value                  geometry
+       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;        &lt;MULTIPOLYGON [°]&gt;
+1 6059062640 92656 Orange Aliso Viejo TotPop19 3.74e+3 (((-117.7178 33.55696, -…
+2 6059062640 92656 Orange Aliso Viejo CIscore  9.64e+0 (((-117.7178 33.55696, -…
+3 6059062640 92656 Orange Aliso Viejo CIscoreP 1.21e+1 (((-117.7178 33.55696, -…
+4 6059062640 92656 Orange Aliso Viejo Ozone    5.17e-2 (((-117.7178 33.55696, -…
+5 6059062640 92656 Orange Aliso Viejo OzoneP   6.54e+1 (((-117.7178 33.55696, -…</code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove interim dataframes to optimize dataset management</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>ls <span class="op">=</span> <span class="va">SoCal_geometry</span>, <span class="va">SoCalEJ</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Last data processing step is to create a list of variables and arrange them alphabetically. Use <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to keep only the variable, <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> to keep only one instance of each variable, and <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> to order them.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list</span> <span class="op">&lt;-</span> <span class="va">SoCal_narrow1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">list</span>, <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 1
+   variable  
+   &lt;chr&gt;     
+ 1 AAPI      
+ 2 AfricanAm 
+ 3 Asthma    
+ 4 AsthmaP   
+ 5 Cardiovas 
+ 6 CardiovasP
+ 7 Child_10  
+ 8 CIscore   
+ 9 CIscoreP  
+10 Cleanup   </code></pre>
+</div>
+</div>
+</section><section id="shiny-time" class="level2" data-number="27.3"><h2 data-number="27.3" class="anchored" data-anchor-id="shiny-time">
+<span class="header-section-number">27.3</span> Shiny time</h2>
+<section id="resources-on-shiny" class="level3" data-number="27.3.1"><h3 data-number="27.3.1" class="anchored" data-anchor-id="resources-on-shiny">
+<span class="header-section-number">27.3.1</span> Resources on Shiny</h3>
+<p><a href="https://shiny.rstudio.com/tutorial/">Tutorial</a> <a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">Cheatsheet</a></p>
+</section><section id="step-1---new-file---shiny-app" class="level3" data-number="27.3.2"><h3 data-number="27.3.2" class="anchored" data-anchor-id="step-1---new-file---shiny-app">
+<span class="header-section-number">27.3.2</span> Step 1 - New file - Shiny App</h3>
+<ol type="1">
+<li>Go to the <strong>File</strong> menu</li>
+<li>Select <strong>New File</strong>
+</li>
+<li>Select <strong>Shiny Web App…</strong>
+</li>
+<li>A window will pop up asking you to name the app - type <strong>SoCalEJ</strong>
+</li>
+<li>Press the <strong>Create</strong> button</li>
+</ol>
+<p><a href="#fig-menuShiny">Figure&nbsp;<span>27.1</span></a> shows where to go.</p>
+<div id="fig-menuShiny" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/shinyApp.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;27.1: New Shiny App from the menu</figcaption><p></p>
+</figure>
+</div>
+</section><section id="step-2---shiny-app-default-template" class="level3" data-number="27.3.3"><h3 data-number="27.3.3" class="anchored" data-anchor-id="step-2---shiny-app-default-template">
+<span class="header-section-number">27.3.3</span> Step 2 - Shiny App Default Template</h3>
+<p>A new file called <strong>app.R</strong> should open. The default app.R template is a functional app.</p>
+<p>Press <strong>Run App</strong> as shown in <a href="#fig-runApp">Figure&nbsp;<span>27.2</span></a> .</p>
+<div id="fig-runApp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/runApp.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;27.2: Run app button is here</figcaption><p></p>
+</figure>
+</div>
+<p>When you press the button, an App called ‘Old Faithful Geyser Data’ appears. The slider input is interactive, allowing the user to choose the number of histogram bins.</p>
+<p>Let’s hear a Whoot if this worked for you.</p>
+<p>Close the app (not minimize!) by pressing the STOP button in RStudio or closing the app window.</p>
+</section><section id="step-3---modify-the-app." class="level3" data-number="27.3.4"><h3 data-number="27.3.4" class="anchored" data-anchor-id="step-3---modify-the-app.">
+<span class="header-section-number">27.3.4</span> Step 3 - Modify the app.</h3>
+<p>We are going to change things one at a time. Debugging shiny apps is even harder than normal R code.</p>
+<section id="change-the-title" class="level4" data-number="27.3.4.1"><h4 data-number="27.3.4.1" class="anchored" data-anchor-id="change-the-title">
+<span class="header-section-number">27.3.4.1</span> Change the title</h4>
+<p>Let’s change the title first. Currently it is: <code>titlePanel("Old Faithful Geyser Data"),</code></p>
+<p>Replace the existing line 16 with the new title.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">titlePanel</span>(<span class="st">"SoCal Enviroscreen App"</span>),</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="replace-sliderinput-with-selectinput" class="level4" data-number="27.3.4.2"><h4 data-number="27.3.4.2" class="anchored" data-anchor-id="replace-sliderinput-with-selectinput">
+<span class="header-section-number">27.3.4.2</span> Replace <code>sliderInput()</code> with <code>selectInput()</code>
+</h4>
+<p>While <code><a href="https://shiny.rstudio.com/reference/shiny/latest/sliderInput.html">sliderInput()</a></code> is great for numbers, it is not useful for selecting categorical variables like the SoCalEJ dataset contains.</p>
+<p>Replace <strong>code lines 21-25</strong> with a <code><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">selectInput()</a></code> shown below. This creates a dropdown menu. We will design it to allow the user to select the variable of interest <code>list$variable</code> and the default selection <code>DieselPM_P</code>.</p>
+<p>However, it will also break the figure below. That’s ok because we’re going to replace it in the next two steps.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/selectInput.html">selectInput</a></span><span class="op">(</span>inputId <span class="op">=</span> <span class="st">'metric'</span>,</span>
+<span>      label <span class="op">=</span> <span class="st">'Pick a metric'</span>,</span>
+<span>      choices <span class="op">=</span> <span class="va">list</span><span class="op">$</span><span class="va">variable</span>, </span>
+<span>      selected <span class="op">=</span> <span class="st">'DieselPM_P'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-brokenApp">Figure&nbsp;<span>27.3</span></a> displays the output when running the app after this change.</p>
+<div id="fig-brokenApp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/appBroke.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;27.3: Broken figure dropdown version</figcaption><p></p>
+</figure>
+</div>
+</section><section id="change-the-histogram-output-to-socal_narrow1-data" class="level4" data-number="27.3.4.3"><h4 data-number="27.3.4.3" class="anchored" data-anchor-id="change-the-histogram-output-to-socal_narrow1-data">
+<span class="header-section-number">27.3.4.3</span> Change the histogram output to <strong>SoCal_narrow1</strong> data</h4>
+<p>Let’s make a working figure. A histogram is fine as an example, but we’ll do a ggplot following the style of <a href="http://radicalresearch.llc/EDVcourse/EJdata.html#fig-histoPretty">Figure 9.8</a>.</p>
+<p>Let’s use that code chunk from Lecture 9 as the basis for our new figure. The one thing we need to do is <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> the variable based on the user input. The user selected <code>input$metric</code> takes the selection from the dropdown menu and reacts whenever the user picks a different option. So instead of using a <code>filter</code> on a named variable like <strong>DieselPM_P</strong>, we have a reactive variable which the user can modify through the dropdown menu.</p>
+<p>We need to replace the original histogram output from lines 39-45 to our slightly modified <code>ggplot</code> code from Figure 9.8.</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>      <span class="co"># dataset is SoCal_narrow1</span></span>
+<span>      <span class="va">SoCal_narrow1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="co"># filter based on the input$metric</span></span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">variable</span> <span class="op">==</span> <span class="va">input</span><span class="op">$</span><span class="va">metric</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="co">#create a ggplot by county, value</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">value</span>, fill <span class="op">=</span> <span class="va">County</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">County</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">metric</span>, </span>
+<span>             y <span class="op">=</span> <span class="st">'Count of census tracts'</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This whole code chunk exists within the <strong>wrapper</strong> of <code>output$distPlot &lt;- renderPlot({})</code>. That part of the code doesn’t have to change at all. That part of the code chunk tells the app to make a plot and render it in the app. The name of the plot is <strong>distPlot</strong>. The ui portion of the app on line 29 describes where it goes - in the main panel.</p>
+<p>If this code chunk works for you, pressing <strong>Run App</strong> will generate a shiny app that has a reactive dropdown menu allowing you to create 50+ histograms. Shiny apps are amazingly powerful tools to generate the same plot N different ways.</p>
+</section><section id="make-it-spatial-with-a-leaflet-interactive-map." class="level4" data-number="27.3.4.4"><h4 data-number="27.3.4.4" class="anchored" data-anchor-id="make-it-spatial-with-a-leaflet-interactive-map.">
+<span class="header-section-number">27.3.4.4</span> Make it spatial with a <code>leaflet</code> interactive map.</h4>
+<p>Adding a map to an app is the capstone.</p>
+<p>There’s two parts to add.</p>
+<ol type="1">
+<li>add <code>leafletOutput('map')</code> to the ui in the <code><a href="https://shiny.rstudio.com/reference/shiny/latest/sidebarLayout.html">mainPanel()</a></code>
+</li>
+<li>add <code>output$map &lt;- renderLeaflet({CODE GOES HERE})</code> to the server.</li>
+</ol>
+<p>First, let’s do the ui part cause that is easy. On line 28 there is a code chunk that currently says <code>mainPanel(plotOutput("distPlot))</code>. Replace that with the code chunk below that puts in a comma and a <code>leafletOutput('map')</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>        <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/sidebarLayout.html">mainPanel</a></span><span class="op">(</span></span>
+<span>           <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"distPlot"</span><span class="op">)</span>,</span>
+<span>           <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">leafletOutput</a></span><span class="op">(</span><span class="st">"map"</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we’ll paste in a big old code chunk to insert a leaflet map. It has four parts.</p>
+<ol type="1">
+<li>The <strong>wrapper</strong>
+</li>
+<li>A reactive table that only includes the selected metric.</li>
+<li>A reactive color palette</li>
+<li>A leaflet map</li>
+</ol>
+<p>I’m just going to show it all at once and we’ll diagram it within the app from innermost to outermost.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output</span><span class="op">$</span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">renderLeaflet</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>      </span>
+<span>      <span class="co"># filter geometry dataset for the user input</span></span>
+<span>     <span class="va">metricSoCal</span> <span class="op">&lt;-</span> <span class="va">SoCal_narrow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>       <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">variable</span> <span class="op">==</span> <span class="va">input</span><span class="op">$</span><span class="va">metric</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span></span>
+<span>      <span class="co"># Create a dynamic color palette based on the metric</span></span>
+<span>     <span class="va">palM</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/colorNumeric.html">colorNumeric</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'magma'</span>, </span>
+<span>        domain <span class="op">=</span> <span class="va">metricSoCal</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
+<span>      </span>
+<span>        <span class="co">#This is the map - note that the legend title is dynamic</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="va">metricSoCal</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">33.8</span>, lng <span class="op">=</span> <span class="op">-</span><span class="fl">117.60</span>, zoom <span class="op">=</span> <span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addPolygons</a></span><span class="op">(</span>color <span class="op">=</span> <span class="op">~</span><span class="fu">palM</span><span class="op">(</span><span class="va">value</span><span class="op">)</span>,</span>
+<span>                    weight <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addLegend.html">addLegend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="va">palM</span>,</span>
+<span>                  title <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">metric</span>,</span>
+<span>                  values <span class="op">=</span> <span class="op">~</span><span class="va">value</span><span class="op">)</span></span>
+<span>    <span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./chartJunk.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chartjunk, Data-Ink Ratios, and Visualization Theory</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./assignment4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Assignments for Unit 4 - Projects</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
