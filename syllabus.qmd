@@ -39,34 +39,33 @@ In-person class time will include approximately 40% of time to devoted to lectur
 
 -   Classroom participation during discussion sections
 -   Classroom participation during coding sessions
--   Assigned reading (Tufte, news and peer-review articles, online books)
+-   Assigned reading (news and peer-review articles, online books)
 -   Assigned review of web tools (CalEnviroScreen, EJScreen, EnviroAtlas)
 -   Group coding projects
 -   Class presentation on an environmental data visualization
--   Three individual projects displaying environmental data
--   Group project displaying environmental data
--   Final exam
+-   Three individual projects displaying or critiquing environmental data visualizations
+-   Group project creating an environmental data visualization
+
 
 ## Grading and Assessment Breakdown
 
 The class will be based on a total of 1000 points.
 
--   The group project displaying environmental data visualization will count for 200 points
--   The three individual projects displaying or reviewing environmental data will count for 100 points each (300 in total).
+-   The group project displaying environmental data visualization will count for 250 points
+-   The three individual projects displaying or reviewing environmental data will count for 150 points each (450 in total).
     -   Remix of an environmental justice dataset from an existing EJ tool
     -   A written critique of an existing environmental data visualization
     -   A student proposed and executed environmental data visualization (map, figure, infographic, interactive tool)
 -   A presentation on environmental data visualization in Environmental Justice tools will count for 200 points
--   Classroom participation will count for 100 points throughout the course of the semester.
-    -   These points will be awarded for attendance and active participation in classroom discussion and coding sessions.\
-    -   Online attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\
-    -   Missing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\
--   Final exam will count for 200 points. This will cover theory, ethics, and environmental justice.\
--   Extra credit - TBD
+-   Classroom participation will count for 100 points throughout the course of the semester. These points will be awarded for attendance and active participation in classroom discussion and coding sessions. Online attendance and participation will count towards this activity in case of sickness or inability to attend in-person.\
+-   Missing classroom discussion and coding sessions can be made up for 80% credit within two weeks or 50% credit within four weeks by attending online or in-person office hours.\
+-   Extra credit - Identifying errors in course lectures, asking questions of guest speakers, 
 
 Students get a single **free** individual or group project that can be late by up to seven days from the due date. For the group project, if a member of the group has already used their individual **free** late project, the group cannot use other individual free periods. If any other project is late, scores will be reduced by 10% per day beyond the due date of the project.
 
 The final exam and assigned presentation date require a doctor's note for an excused absence. If unexcused, the student can make up the presentation or final exam for 75% credit within one week of the assigned date.
+
+This course will be attempting to engage in _ungrading_ to give scholars more control over their own review of their progress and success in the class.  The goal is for internal motivation and ownership of the definition of classroom success.  I will be updating the syllabus in the first few weeks of class to define how ungrading will work in practice before the first assignment is graded.  
 
 @tbl-scores
 
@@ -75,13 +74,13 @@ The final exam and assigned presentation date require a doctor's note for an exc
 #| tbl-cap: Breakdown of course points
 #| echo: false
 #| warning: false
-Assignments <- c('Group Project - data visualization', 'Individual project 1 - EJ tool remix', 
-                'Individual Project 2 - written critique (minimum 2 pages)',
+Assignments <- c('Group Project - data visualization', 'Individual project 1 - written critique of existing visualization', 
+                'Individual Project 2 - - EJ tool remix',
                 'Individual Project 3 - data visualization',
                 'Presentation on EJ tools',
                 'Classroom participation',
-                'Final exam', 'Extra Credit')
-Points <- c(200, 100, 100, 100, 200, 100, 200, 50)
+                'Extra Credit')
+Points <- c(250, 150, 150, 150, 200, 100, 50)
 table.score <- data.frame(Assignments, Points)
 kableExtra::kable(table.score)
 ```
