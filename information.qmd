@@ -161,13 +161,14 @@ This code imports monthly mean Mauna Loa CO~2~ data from [NOAA GMD CMDL](https:/
 #label: ImportCO2
 #warning: false
 
-co2 <- fread('https://www.gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt', 
- skip = 53 ) #%>%
-#head(co2)
+co2 <- read_table('https://www.gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt',
+                  skip = 57 ) #%>%
+
 fieldNames <- c('year', 'month', 'decDate', 'meanCO2', 'trendedCO2', 'days', 'stdev', 'unc')
 colnames(co2) <- fieldNames
 
 tail(co2)
+head(co2)
 
 ```
 
