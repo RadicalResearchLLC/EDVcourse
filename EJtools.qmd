@@ -92,7 +92,7 @@ We will also pull warehouse data for the first time!  New data incoming!
 #| echo: true
 #| warning: false
 
-WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/warehouse.geoJSON'
+WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/finalParcels.geojson'
 warehouses <- st_read(WH.url) %>% 
   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
 
