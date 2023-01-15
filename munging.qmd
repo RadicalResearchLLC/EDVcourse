@@ -59,7 +59,7 @@ URL.path <- 'https://raw.githubusercontent.com/RadicalResearchLLC/EDVcourse/main
 SoCalEJ <- st_read(URL.path) %>% 
   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
 
-WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/warehouse.geoJSON'
+WH.url <- 'https://raw.githubusercontent.com/RadicalResearchLLC/WarehouseMap/main/WarehouseCITY/geoJSON/finalParcels.geojson'
 warehouses <- st_read(WH.url) %>% 
   st_transform("+proj=longlat +ellps=WGS84 +datum=WGS84")
 
