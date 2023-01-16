@@ -30,7 +30,7 @@ book:
         - import.qmd
         - export.qmd
         - context.qmd
-        - import2.qmd
+  #      - import2.qmd
         - assignment3.qmd
     - part: projects.qmd
       chapters:
