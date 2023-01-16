@@ -88,11 +88,11 @@ kableExtra::kable(table.score)
 ## Office Hours
 
 -   Mondays 9 AM - 11 AM on [Pitzer Zoom](https://pitzer.zoom.us/j/2600893680)
--   Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - Redford Conservancy
+-   Fridays 9:00-9:30 and 11:00 - 11:30 AM (before and after class) - hopefully in Skandera P106 if the classroom is not occupied.
 
 ## Contact Info
 
-The best way to get a hold of me is email: michael_mccarthy\@pitzer.edu You may also see emails from my business address: mikem\@radicalresearch.llc
+The best way to get a hold of me is email: michael_mccarthy\@pitzer.edu You are also likely to see emails from my business email: mikem\@radicalresearch.llc
 
 ## Course materials
 
